@@ -6,16 +6,27 @@ if [[ $# -eq 3 ]]; then
 	results_dir=$2
 	[[ "${results_dir}" == */ ]] && results_dir="${results_dir: : -1}"
 	overwrite=$3
-elif [[ $# -eq 4 ]]; then
+elif [[ $# -eq 5 ]]; then
 	raw_dir=$1
 	[[ "${raw_dir}" == */ ]] && raw_dir="${raw_dir: : -1}"
 	results_dir=$2
 	[[ "${results_dir}" == */ ]] && results_dir="${results_dir: : -1}"
-	n_files=$4
+	splitmode=$4
+	if [[ $splitmode -eq 1 ]]; then
+		n_files=$5
+		echo "Splitting in $n_files job lists"
+	elif [[ $splitmode -eq 2 ]]; then
+		n_lines_per_file=$5
+		echo "Splitting in joblists with $n_lines_per_file lines per file"
+	else
+		echo "ERROR: Split mode not understood."
+		echo "Choose SPLIT_MODE = 1 (split in N files)"
+		echo "Choose SPLIT_MODE = 2 (split in files with N lines)"
+	fi
 	overwrite=$3
 else
 	echo "ERROR: Unxepected number of arguments."
-	echo "USAGE: bash $0 RAW_DIR RESULTS_DIR OVERWRITE N_FILES(optional)"
+	echo "USAGE: bash $0 RAW_DIR RESULTS_DIR OVERWRITE [SPLIT_MODE N]"
 	exit 1
 fi
 id=$(basename $results_dir)
@@ -48,6 +59,11 @@ if [[ $n_files != '' ]]; then
 	if [[ $n_lines_per_file -eq 0 ]]; then
 		n_lines_per_file=1
 	fi
+	for filename in "${joblist_name%.*}"_SLICE*; do
+		rm $filename
+	done
+        split -dl $n_lines_per_file --additional-suffix=.sh $joblist_name "${joblist_name%.*}"_SLICE
+elif [[ $n_lines_per_file != '' ]]; then
 	for filename in "${joblist_name%.*}"_SLICE*; do
 		rm $filename
 	done

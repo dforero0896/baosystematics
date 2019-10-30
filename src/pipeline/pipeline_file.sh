@@ -37,14 +37,14 @@ ascii_filename_ran=$mocks_gal_rdz/$(basename $raw_filename_ran | sed -e 's/\.fit
 if [[ ! -e $ascii_filename_dat ]]; then
 	python /global/cscratch1/sd/dforero/baosystematics/src/misc/fits2ascii.py $raw_filename_dat $ascii_filename_dat
 elif [[ $overwrite -eq 1 ]]; then
-	rm $ascii_filename_dat
+	rm -v $ascii_filename_dat
 	python /global/cscratch1/sd/dforero/baosystematics/src/misc/fits2ascii.py $raw_filename_dat $ascii_filename_dat
 fi
 if [[ ! -e $ascii_filename_ran ]]; then
 	python /global/cscratch1/sd/dforero/baosystematics/src/misc/fits2ascii.py $raw_filename_ran $ascii_filename_ran
 elif [[ $overwrite -eq 1 ]]; then
-	rm $ascii_filename_ran
-	python /global/cscratch1/sd/dforero/baosystematics/src/misc/fits2ascii.py $raw_filename_dat $ascii_filename_dat
+	rm -v $ascii_filename_ran
+	python /global/cscratch1/sd/dforero/baosystematics/src/misc/fits2ascii.py $raw_filename_ran $ascii_filename_ran
 fi
 echo CONVERT SKY TO COMOVING COORDINATES
 mocks_gal_xyz=$results_dir/mocks_gal_xyz
@@ -57,13 +57,13 @@ xyz_filename_ran=$mocks_gal_xyz/$(basename $ascii_filename_ran | sed -e 's/ELG/E
 if [[ ! -e $xyz_filename_dat ]]; then
 	/global/cscratch1/sd/dforero/baosystematics/bin/rdz2xyz -c /global/cscratch1/sd/dforero/baosystematics/src/coord_conv/rdz2xyz.conf -i $ascii_filename_dat -o $xyz_filename_dat
 elif [[ $overwrite -eq 1 ]]; then
-	rm $xyz_filename_dat
+	rm -v $xyz_filename_dat
 	/global/cscratch1/sd/dforero/baosystematics/bin/rdz2xyz -c /global/cscratch1/sd/dforero/baosystematics/src/coord_conv/rdz2xyz.conf -i $ascii_filename_dat -o $xyz_filename_dat
 fi
 if [[ ! -e $xyz_filename_ran ]]; then
 	/global/cscratch1/sd/dforero/baosystematics/bin/rdz2xyz -c /global/cscratch1/sd/dforero/baosystematics/src/coord_conv/rdz2xyz.conf -i $ascii_filename_ran -o $xyz_filename_ran
 elif [[ $overwrite -eq 1 ]]; then
-	rm $xyz_filename_ran
+	rm -v $xyz_filename_ran
 	/global/cscratch1/sd/dforero/baosystematics/bin/rdz2xyz -c /global/cscratch1/sd/dforero/baosystematics/src/coord_conv/rdz2xyz.conf -i $ascii_filename_ran -o $xyz_filename_ran
 fi
 
@@ -78,7 +78,7 @@ raw_void_filename_dat=$mocks_void_xyz/$(basename $xyz_filename_dat | sed -e 's/\
 if [[ ! -e $raw_void_filename_dat ]]; then
 	/global/cscratch1/sd/dforero/baosystematics/bin/DIVE $xyz_filename_dat $raw_void_filename_dat
 elif [[ $overwrite -eq 1 ]]; then
-	rm $raw_void_filename_dat
+	rm -v $raw_void_filename_dat
 	/global/cscratch1/sd/dforero/baosystematics/bin/DIVE $xyz_filename_dat $raw_void_filename_dat
 fi
 
@@ -92,7 +92,7 @@ rdz_void_filename_dat=$mocks_void_rdz/$(basename $raw_void_filename_dat | sed -e
 if [[ ! -e $rdz_void_filename_dat ]]; then
 	/global/cscratch1/sd/dforero/baosystematics/bin/xyz2rdz -c /global/cscratch1/sd/dforero/baosystematics/src/coord_conv/xyz2rdz.conf -i $raw_void_filename_dat -o $rdz_void_filename_dat
 elif [[ $overwrite -eq 1 ]]; then
-	rm $rdz_void_filename_dat
+	rm -v $rdz_void_filename_dat
 	/global/cscratch1/sd/dforero/baosystematics/bin/xyz2rdz -c /global/cscratch1/sd/dforero/baosystematics/src/coord_conv/xyz2rdz.conf -i $raw_void_filename_dat -o $rdz_void_filename_dat
 fi
 
