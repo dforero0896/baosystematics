@@ -8,3 +8,4 @@ do
 	echo "Processing job list $joblist_basename""_SLICE$i.sh"
 	/global/cscratch1/sd/dforero/baosystematics/bin/OMPrun $(echo $joblist_basename)_SLICE$i.sh	
 done
+exit
