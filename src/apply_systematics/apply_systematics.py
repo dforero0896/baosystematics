@@ -37,21 +37,19 @@ sys.stdout.write('Read file %s\n'%os.path.basename(filename_dat))
 table_ran = Table.read(filename_ran, format='fits', hdu=1)
 sys.stdout.write('Read file %s\n'%os.path.basename(filename_ran))
 table_dat_syst = apply_systematics(table_dat)
-print(np.mean(table_dat_syst.group_by('chunk')['WEIGHT_SYSTOT'].groups[0]))
-print(min(table_dat_syst['Z']))
-z_counts_dat, _ = np.histogram(table_dat_syst['Z'].data, z_bin_edges, weights = table_dat_syst['WEIGHT_COMP'].data)
-table_ran_syst = apply_systematics(table_ran)
-z_counts_ran, _ = np.histogram(table_ran_syst['Z'].data, z_bin_edges, weights = table_ran_syst['COMP_BOSS'].data**-1)
-volume_eff = z_counts_ran / raw_random_density
+#TODO: Should SYSTOT be renormalized so that mean(SYSTOT) = 1 in each chunk?
+print(np.mean(table_dat_syst.group_by('chunk')['WEIGHT_SYSTOT'].groups[0])) # TODO: Check if n(z) is to be computed by chunk.
+z_counts_dat, _ = np.histogram(table_dat_syst['Z'].data, z_bin_edges, weights = table_dat_syst['WEIGHT_COMP'].data) #TODO: Check if dat counts should be weighted in the computation.
+table_ran_syst = table_ran[(table_ran['WEIGHT_SYSTOT']!=0) & (table_ran['COMP_BOSS'] != 0) & (table_ran['veto'])] #Only apply SYSTOT to ran.
+z_counts_ran, _ = np.histogram(table_ran_syst['Z'].data, z_bin_edges, weights = table_ran_syst['COMP_BOSS'].data**-1) #TODO:Should this be weighted by SYSTOT * (COMP_BOSS^-1)?
+volume_eff = z_counts_ran / raw_random_density #TODO: Check computation of V_eff (effective area)
 new_nz = z_counts_dat / volume_eff
-new_nz_interp = interpolate.interp1d(z_bin_edges, np.pad(new_nz, (0,1), 'constant', constant_values=new_nz[-1]), kind = 'linear')
+new_nz_interp = interpolate.interp1d(z_bin_edges, np.pad(new_nz, (0,1), 'constant', constant_values=new_nz[-1]), kind = 'linear') # Interpolation with bin edges.
 table_dat_syst['NZ'] = new_nz_interp(table_dat_syst['Z'].data)
-#for i in range(len(z_bin_centers)):
+#for i in range(len(z_bin_centers)): # Instead of linear interpolation.
 #	table_dat_syst['NZ'][(table_dat_syst['Z'] > z_bin_edges[i]) & (table_dat_syst['Z'] < z_bin_edges[i+1])] = new_nz[i] #= z_counts_dat / volume_eff
 table_dat_syst['WEIGHT_FKP'] = (1 + table_dat_syst['NZ']*P0)**(-1)
-table_ran_syst['WEIGHT_FKP'] = (1 + table_ran_syst['NZ']*P0)**(-1)
 table_dat_syst['WEIGHT_ALL'] = table_dat_syst['WEIGHT_COMP'] * table_dat_syst['WEIGHT_FKP']
-table_ran_syst['WEIGHT_ALL'] = table_ran_syst['WEIGHT_COMP'] * table_ran_syst['WEIGHT_FKP']
 #table_dat_syst['RA','DEC','Z','WEIGHT_ALL','WEIGHT_COMP','WEIGHT_FKP','NZ'].write(outname_dat, format='ascii.commented_header', overwrite=True, formats={'RA':'%.8g','DEC':'%.8g','Z':'%.8g', 'WEIGHT_ALL':'%.8g','WEIGHT_COMP':'%.8g','WEIGHT_FKP':'%.8g', 'NZ':'%.8g'})
 sys.stdout.write('Wrote file %s\n'%os.path.basename(outname_dat))
 #table_ran_syst['RA','DEC','Z','WEIGHT_ALL','WEIGHT_COMP','WEIGHT_FKP','NZ'].write(outname_ran, format='ascii.commented_header', overwrite=True, formats={'RA':'%.8g','DEC':'%.8g','Z':'%.8g', 'WEIGHT_ALL':'%.8g','WEIGHT_COMP':'%.8g','WEIGHT_FKP':'%.8g', 'NZ':'%.8g'})
