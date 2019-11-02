@@ -23,7 +23,7 @@ else:
 if not os.path.isdir(out):
 	os.mkdir(out)
 p, name = os.path.split(mock_in)
-title = name.replace('TwoPCF_mockavg_', '').replace('_', ' ').upper()
+title = name.replace('TwoPCF_mockavg_', '').replace('_', ' ').replace('.ascii','').upper()
 mocks = np.loadtxt(mock_in)
 if len(sys.argv)==4:
 	obs = np.loadtxt(obs_in)
