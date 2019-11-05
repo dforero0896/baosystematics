@@ -4,8 +4,9 @@ import numpy as np
 import sys
 from scipy import interpolate
 import matplotlib.pyplot as plt
-if len(sys.argv) > 6:
-	sys.stderr.write('Usage: {} INPUT OUTPUT SYS_EFFECT [SYS_EFFECT SYS_EFFECT]\n'.format(sys.argv[0]))
+if len(sys.argv) > 6 or len(sys.argv) < 4:
+	sys.stderr.write('ERROR:\tUnexpected number of arguments.\n')
+	sys.stderr.write('Usage:\t{} INPUT OUTPUT SYS_EFFECT [SYS_EFFECT SYS_EFFECT]\n'.format(sys.argv[0]))
 	sys.exit(1)
 systematic_effects = ['CP', 'NOZ', 'SYSTOT']
 sys_effect = [s.upper() for s in sys.argv[3:]]
