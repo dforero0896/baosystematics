@@ -24,7 +24,7 @@ if [[ $# -gt 5 ]] && [[ $# -lt 9 ]]; then
 	sys_effect_1=$6
 	sys_effect_2=$7
 	sys_effect_3=$8
-	sys_effects="SYSTOT NOZ CP"
+	sys_effects="SYSTOT NOZ CP NONE"
 	for sys_input in $sys_effect_1 $sys_effect_2 $sys_effect_3; do
 		counter=0
 		for seffect in $sys_effects; do
@@ -34,9 +34,9 @@ if [[ $# -gt 5 ]] && [[ $# -lt 9 ]]; then
 				counter=$(( $counter + 1 ))
 			fi
 		done
-		if [[ $counter -gt 2 ]]; then
+		if [[ $counter -gt 3 ]]; then
 			echo "ERROR: Unvalid systematic effects: $sys_input."
-			echo "Choose SYS_EFFECT = SYSTOT, NOZ, CP."
+			echo "Choose SYS_EFFECT = SYSTOT, NOZ, CP, NONE."
 			exit 1
 		fi
 	done
