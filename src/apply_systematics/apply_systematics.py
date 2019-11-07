@@ -33,33 +33,31 @@ z_bin_edges = np.arange(z_min, z_max+delta_z, delta_z)
 z_bin_centers = ((z_bin_edges + 0.5 * delta_z))[:-1]
 
 def apply_systematics(table, none=none):
+	table=table.group_by('chunk')
+	sys.stdout.write('%i lines before applying systematics\n'%len(table))
 	table['WEIGHT_COMP_ALLSYS'] = table['WEIGHT_SYSTOT'] * table['WEIGHT_CP'] * table['WEIGHT_NOZ'] * table['veto']
-	allsys_weight_comp = table['WEIGHT_COMP_ALLSYS'].sum() 
-	sys.stdout.write('Original effective number of tracers %.2f\n'%allsys_weight_comp)
 	if none:
 		table['WEIGHT_COMP']=1.
 	else:
 		table['WEIGHT_COMP'] = np.prod([table['WEIGHT_%s'%s] for s in sys_effect], axis = 0)
 	t_new = table[(table['WEIGHT_COMP']!=0) & (table['veto'])]
+	for chunk in table.groups.keys['chunk']:
+		mask = t_new['chunk']==chunk 
+		allsys_weight_comp = table[table['chunk']==chunk]['WEIGHT_COMP_ALLSYS'].sum() 
+		partialsys_weight_comp = t_new[mask]['WEIGHT_COMP'].sum()
+		t_new['WEIGHT_COMP'][mask]*=allsys_weight_comp/partialsys_weight_comp
+	allsys_weight_comp = table['WEIGHT_COMP_ALLSYS'].sum() 
+	sys.stdout.write('Original effective number of tracers %.2f\n'%allsys_weight_comp)
 	partialsys_weight_comp = t_new['WEIGHT_COMP'].sum()
-	t_new['WEIGHT_COMP']*=allsys_weight_comp/partialsys_weight_comp
-	sys.stdout.write('New effective number of tracers %.2f\n'%t_new['WEIGHT_COMP'].sum())
+	sys.stdout.write('New effective number of tracers %.2f\n'%partialsys_weight_comp)
 	sys.stdout.write('%i lines left after applying systematics\n'%len(t_new))
 	return t_new 
-
 table_dat = Table.read(filename_dat, format='fits', hdu=1)
 sys.stdout.write('Read file %s\n'%os.path.basename(filename_dat))
 table_dat_syst = apply_systematics(table_dat)
 table_ran = Table.read(filename_ran, format='fits', hdu=1)
 sys.stdout.write('Read file %s\n'%os.path.basename(filename_ran))
 table_ran_syst = apply_systematics(table_ran) #Renormalize to only SYSTOT
-#z_counts_dat, _ = np.histogram(table_dat_syst['Z'].data, z_bin_edges, weights = table_dat_syst['WEIGHT_COMP'].data)
-#z_counts_ran, _ = np.histogram(table_ran_syst['Z'].data, z_bin_edges, weights = table_ran_syst['WEIGHT_COMP'].data)
-#new_nz_interp = interpolate.interp1d(z_bin_edges, np.pad(new_nz, (0,1), 'constant', constant_values=new_nz[-1]), kind = 'linear') # Interpolation with bin edges.
-#table_dat_syst['NZ'] = new_nz_interp(table_dat_syst['Z'].data)
-#for i in range(len(z_bin_centers)): # Instead of linear interpolation.
-#	table_dat_syst['NZ'][(table_dat_syst['Z'] > z_bin_edges[i]) & (table_dat_syst['Z'] < z_bin_edges[i+1])] = new_nz[i] #= z_counts_dat / volume_eff
-#table_dat_syst['WEIGHT_FKP'] = (1 + table_dat_syst['NZ']*P0)**(-1)
 table_dat_syst['WEIGHT_ALL'] = table_dat_syst['WEIGHT_COMP'] * table_dat_syst['WEIGHT_FKP']
 table_ran_syst['WEIGHT_ALL'] = table_ran_syst['WEIGHT_COMP'] * table_ran_syst['WEIGHT_FKP']
 table_dat_syst['RA','DEC','Z','WEIGHT_ALL','WEIGHT_COMP','WEIGHT_FKP','NZ'].write(outname_dat, format='ascii.commented_header', overwrite=True, formats={'RA':'%.8g','DEC':'%.8g','Z':'%.8g', 'WEIGHT_ALL':'%.8g','WEIGHT_COMP':'%.8g','WEIGHT_FKP':'%.8g', 'NZ':'%.8g'})
