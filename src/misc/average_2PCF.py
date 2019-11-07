@@ -32,6 +32,8 @@ out = sys.argv[2]
 if not os.path.isdir(out):
 	os.mkdir(out)
 data = np.array(list(gen))
+if len(data) == 0:
+	sys.exit('ERROR: No files found.')
 mocks_mean = data.mean(axis=0)
 mocks_std = data.std(axis=0)
 mean_data_0, mean_data_1 = mocks_mean[:,1], mocks_mean[:,2]
