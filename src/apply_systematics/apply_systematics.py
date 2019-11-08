@@ -2,8 +2,6 @@ import os
 from astropy.table import Table
 import numpy as np
 import sys
-from scipy import interpolate
-import matplotlib.pyplot as plt
 if len(sys.argv) > 6 or len(sys.argv) < 4:
 	sys.stderr.write('ERROR:\tUnexpected number of arguments.\n')
 	sys.stderr.write('Usage:\t{} INPUT OUTPUT SYS_EFFECT [SYS_EFFECT SYS_EFFECT]\n'.format(sys.argv[0]))

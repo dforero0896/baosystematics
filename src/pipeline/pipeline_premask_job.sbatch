@@ -4,26 +4,22 @@
 #SBATCH -J premask_all         # Name of the job
 #SBATCH --output=/global/cscratch1/sd/dforero/baosystematics/results/jobout/%x_%a.out 
 #SBATCH --error=/global/cscratch1/sd/dforero/baosystematics/results/jobout/%x_%a.err
-#SBATCH --array=0-2
-#SBATCH -p regular           # Partition
+#SBATCH -q regular           # Partition
+#SBATCH -C haswell
 #SBATCH --mail-user=daniel.forerosanchez@epfl.ch
 #SBATCH --mail-type=BEGIN,END,FAIL,ARRAY_TASKS
-#SBATCH --cpus-per-task=1
-#SBATCH --mem=12G
+#SBATCH --cpus-per-task=50
+#SBATCH --mem=48G
 
 module add python
-if [[ $# -ne 1 ]]; then
-	echo ERROR: No ID provided.
-	echo USAGE: $0 ID
+if [[ $# -ne 3 ]]; then
+	echo ERROR: Unexpected number of arguments.
+	echo USAGE: $0 ID INITIAL_SLICE END_SLICE
 	exit 1
 fi
 id=$1
+init_slice=$2
+end_slice=$3
 joblist="/global/cscratch1/sd/dforero/baosystematics/src/pipeline/joblists/premask_joblist_$id.sh"
-joblist_len=$(wc -l < $joblist)
-lines_per_task=$(( $joblist_len / $SLURM_ARRAY_TASK_COUNT ))
-start=$(( $SLURM_ARRAY_TASK_ID * $lines_per_task + 1 ))
-end=$(( ( $SLURM_ARRAY_TASK_ID + 1 ) * $lines_per_task ))
-while read -r comm ; do
-	echo Task $SLURM_ARRAY_TASK_ID handling lines $start to $end.
-	$comm
-done <<< "$(tail -$joblist_len $joblist | head -$end | tail -$lines_per_task)"
+bash /global/cscratch1/sd/dforero/baosystematics/src/pipeline/omprun_slices.sh /global/cscratch1/sd/dforero/baosystematics/src/pipeline/joblists/premask_joblist_$id $init_slice $end_slice
+
