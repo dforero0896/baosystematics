@@ -28,7 +28,7 @@ mocks = np.loadtxt(mock_in)
 if len(sys.argv)==4:
 	obs = np.loadtxt(obs_in)
 xdata = mocks[:,0]
-fig, ax = plt.subplots(2,1,figsize = (5, 8), sharex = True)
+fig, ax = plt.subplots(2,1,figsize = (4, 7), sharex = True)
 plt.rcParams.update({'font.size': 15})
 plt.rcParams.update({'axes.labelsize': 'xx-large'})
 for i,a in enumerate(ax):
