@@ -30,7 +30,7 @@ if len(sys.argv)==4:
 xdata = mocks[:,0]
 fig, ax = plt.subplots(2,1,figsize = (5, 8), sharex = True)
 plt.rcParams.update({'font.size': 15})
-plt.rcParams.update({'axes.labelsize': 'x-large'})
+plt.rcParams.update({'axes.labelsize': 'xx-large'})
 for i,a in enumerate(ax):
 	a.set_ylabel('$s^2\\xi_%i$'%(2*i))
 	a.fill_between(xdata, xdata**2*(mocks[:,2*i+1] - mocks[:,2*(i+1)]),xdata**2*(mocks[:,2*i+1] + mocks[:,2*(i+1)]), alpha=0.5, color='r', label = '$1\sigma$')
