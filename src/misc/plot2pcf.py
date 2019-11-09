@@ -29,7 +29,7 @@ if len(sys.argv)==4:
 	obs = np.loadtxt(obs_in)
 xdata = mocks[:,0]
 fig, ax = plt.subplots(2,1,figsize = (5, 8), sharex = True)
-plt.rcParams.update({'font.size': 15})
+plt.rcParams.update({'font.size': 10})
 plt.rcParams.update({'axes.labelsize': 'xx-large'})
 for i,a in enumerate(ax):
 	a.set_ylabel('$s^2\\xi_%i$'%(2*i))
