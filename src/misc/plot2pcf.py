@@ -18,7 +18,7 @@ elif len(sys.argv) == 3:
 	mock_in = sys.argv[1]
 	out = sys.argv[2]
 else:
-	sys.stdout.write('Usage: %s [OBS_IN] MOCK_IN OUT_PATH\n'%sys.argv[0])
+	sys.stderr.write('Usage: %s [OBS_IN] MOCK_IN OUT_PATH\n'%sys.argv[0])
 	sys.exit(1)
 if not os.path.isdir(out):
 	os.mkdir(out)
@@ -28,9 +28,9 @@ mocks = np.loadtxt(mock_in)
 if len(sys.argv)==4:
 	obs = np.loadtxt(obs_in)
 xdata = mocks[:,0]
-fig, ax = plt.subplots(2,1,figsize = (7, 11), sharex = True)
-plt.rcParams.update({'font.size': 18})
-plt.rcParams.update({'axes.labelsize': 'large'})
+fig, ax = plt.subplots(2,1,figsize = (5, 8), sharex = True)
+plt.rcParams.update({'font.size': 15})
+plt.rcParams.update({'axes.labelsize': 'x-large'})
 for i,a in enumerate(ax):
 	a.set_ylabel('$s^2\\xi_%i$'%(2*i))
 	a.fill_between(xdata, xdata**2*(mocks[:,2*i+1] - mocks[:,2*(i+1)]),xdata**2*(mocks[:,2*i+1] + mocks[:,2*(i+1)]), alpha=0.5, color='r', label = '$1\sigma$')
