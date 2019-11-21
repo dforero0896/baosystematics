@@ -29,7 +29,7 @@ for i, fileName in enumerate(f):
 		fmt = 1
 	if os.path.isfile(outfile) and not overwrite:
 		continue 
-	bash_script.write('/home/epfl/dforero/zhao/void/baosystematics/bin/brickmask/vetomask --input=%s --output=%s --format=%i --conf=%s\n'%(infile, outfile, fmt, config_file))
+	bash_script.write('/global/cscratch1/sd/dforero/baosystematics/bin/vetomask --input=%s --output=%s --format=%i --conf=%s\n'%(infile, outfile, fmt, config_file))
 	sys.stdout.write("Done %i/%i\r"%(i,len(f)))
 
 
