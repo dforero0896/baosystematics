@@ -17,5 +17,5 @@ mockFile='mocklist.dat'
 saveMockList(mockPath, mockFile)
 #os.system('/home/epfl/zhaoc/work/codes/BAOfit/code_nest/bestfit -c baofit.conf -i %s -m %s -o %s -b %s'%(input2PCF, mockFile, outFile, bestFitFile))
 
-os.system('/home/epfl/zhaoc/work/codes/BAOfit/code_nest/BAOfit -c baofit.conf -i %s -m %s -o %s -b %s'%(input2PCF, mockFile, outFile, bestFitFile))
+os.system('/global/cscratch1/sd/dforero/baosystematics/bin/BAOfit_galaxy/BAOfit -c baofit.conf -i %s -m %s -o %s -b %s'%(input2PCF, mockFile, outFile, bestFitFile))
 

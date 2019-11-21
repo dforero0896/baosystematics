@@ -31,7 +31,7 @@ dictionary = open(os.path.join(inPath,'../dicts/dictionary%i.dat'%this_slice), '
 for k, filename in enumerate(f1[this_slice]):
     key = 'k'+str(k)+'p'+str(this_slice)
     dictionary.write(filename+'\t'+str(key)+'\n')
-    ascii_df = pd.read_csv(os.path.join(inPath,filename), sep = ' ', header = None, names = ['RAD', 'DEC', 'Z', 'R'])
+    ascii_df = pd.read_csv(os.path.join(inPath,filename), sep = ' ', header = None, names = ['RA', 'DEC', 'Z', 'R'])
     ascii_df['KEY'] = [key]*len(ascii_df['R'])
     tables.append(ascii_df)
     sys.stdout.write( '%i/%i Done\r'%(k, len(f)))

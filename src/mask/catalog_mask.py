@@ -17,7 +17,10 @@ except StopIteration:
 	sys.exit(1)
 if not os.path.isdir(outPath):
 	os.system('mkdir %s'%outPath)
-bash_script = open(os.path.join(this_dir,'catalog_mask_%s.sh'%joblist_id), 'w')
+outdir=os.path.join(this_dir, 'joblist')
+if not os.path.isdir(outdir):
+	os.mkdir(outdir)
+bash_script = open(os.path.join(outdir,'catalog_mask_%s.sh'%joblist_id), 'w')
 for i, fileName in enumerate(f):
 	_, infile_ext = os.path.splitext(fileName)
 	infile = os.path.join(inPath, fileName)
