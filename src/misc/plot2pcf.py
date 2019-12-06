@@ -7,6 +7,7 @@ import os
 import re
 import numpy as np
 import matplotlib as mpl
+mpl.use("Agg")
 #mpl.rcParams['text.usetex'] = True
 #mpl.rcParams['text.latex.preamble'] = [r'\usepackage{amsmath}'] #for \text command
 

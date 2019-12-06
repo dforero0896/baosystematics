@@ -28,7 +28,6 @@ else:
 ext=os.path.splitext(infile)
 WORKDIR='/global/cscratch1/sd/dforero/baosystematics/'
 MASKDIR=os.path.join(WORKDIR, 'data/ELG_masks')
-
 mskbit = intable[mskbit_col].astype('int16')
 # mskbits:
 # 2**0: valid

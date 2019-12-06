@@ -7,14 +7,14 @@ if len(sys.argv) == 6:
 	overwrite = bool(int(sys.argv[5]))
 	r_min = None
 	r_max = r_min
-	sys.stdout.write('Looking for gal catalogs')
+	sys.stdout.write('Looking for gal catalogs\n')
 elif len(sys.argv) == 9:
 	cat_type = 'void'
 	r_min = sys.argv[5]
 	r_max = sys.argv[6]
 	ran_void_cat = sys.argv[7]
 	overwrite = bool(int(sys.argv[8]))
-	sys.stdout.write('Looking for void catalogs')
+	sys.stdout.write('Looking for void catalogs\n')
 else:
 	sys.stderr.write('ERROR:\tUnexpected number of arguments.\nUSAGE:\tpython %s INPUT_PATH OUTPUT_PATH JOB_LIST_ID CONF_FILE [R_MIN R_MAX VOID_RAN_DIR] OVERWRITE\n'%os.path.basename(sys.argv[0]))
 	sys.exit(1)
@@ -48,7 +48,6 @@ job_sub_name = os.path.join(joblist_dir, 'fcfcJob.sbatch')
 bash_script = open(bash_script_name, 'w')
 fdat = [fn for fn in f if '.dat.' in fn]
 for fileno, fileName in enumerate(fdat):
-	print(fileName)
 	out_file = os.path.join(outPath,'TwoPCF_'+fileName)
 	if os.path.isfile(out_file) and not overwrite:
 		continue
