@@ -12,8 +12,11 @@ from astropy.io import fits, ascii
 if len(sys.argv)!=3:
 	sys.exit('ERROR:\tUnexpected number of arguments.\nUSAGE:\t{} INPUT OUTPUT'.format(sys.argv[0]))
 infile = sys.argv[1]
+output = sys.argv[2]
+if not os.path.isdir(output):
+	os.mkdir(output)
 ascii_incols = ['RA', 'DEC', 'Z', 'R', 'VETOMASK', 'MCHUNK']
-outfile = infile.replace('MASKED', 'COMPMASKED')
+outfile = os.path.basename(infile).replace('MASKED', 'COMPMASKED')
 mskbit_col = 'VETOMASK'
 mskbit_col_new = 'newbit'
 
@@ -27,7 +30,6 @@ WORKDIR='/global/cscratch1/sd/dforero/baosystematics/'
 MASKDIR=os.path.join(WORKDIR, 'data/ELG_masks')
 
 mskbit = intable[mskbit_col].astype('int16')
-
 # mskbits:
 # 2**0: valid
 # 2**1: grz-depth
@@ -92,5 +94,5 @@ mskcol = Column(name=mskbit_col_new, data=mskbit)
 intable.add_column(mskcol)
 if '.fits' in infile:
 	intable.write(os.path.join(output,outfile), format='fits', overwrite=True)
-elif iofmt == 'ascii':
+else:
 	intable.write(os.path.join(output, outfile), format='ascii.no_header', overwrite=True)

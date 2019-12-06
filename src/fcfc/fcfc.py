@@ -7,12 +7,14 @@ if len(sys.argv) == 6:
 	overwrite = bool(int(sys.argv[5]))
 	r_min = None
 	r_max = r_min
+	sys.stdout.write('Looking for gal catalogs')
 elif len(sys.argv) == 9:
 	cat_type = 'void'
 	r_min = sys.argv[5]
 	r_max = sys.argv[6]
 	ran_void_cat = sys.argv[7]
 	overwrite = bool(int(sys.argv[8]))
+	sys.stdout.write('Looking for void catalogs')
 else:
 	sys.stderr.write('ERROR:\tUnexpected number of arguments.\nUSAGE:\tpython %s INPUT_PATH OUTPUT_PATH JOB_LIST_ID CONF_FILE [R_MIN R_MAX VOID_RAN_DIR] OVERWRITE\n'%os.path.basename(sys.argv[0]))
 	sys.exit(1)
@@ -21,6 +23,8 @@ inPath = sys.argv[1]
 outPath = sys.argv[2]
 joblist_id = sys.argv[3]
 conf_file = sys.argv[4]
+WORKDIR="/global/cscratch1/sd/dforero/baosystematics"
+RUN=os.path.join(WORKDIR, 'bin/2pcf')
 try:
 	(_, _, f) = next(os.walk(inPath))
 except StopIteration:
@@ -53,7 +57,7 @@ for fileno, fileName in enumerate(fdat):
 	dd_file = os.path.join(outPath,'DD_files/DD_'+fileName)
 	dr_file = os.path.join(outPath,'DR_files/DR_'+fileName)
 	if cat_type=='void':
-		ran_cat_file = '/home/epfl/dforero/zhao/void/baosystematics/results/%s/void_ran/EZ_ELG_RDZ_void_ran_%s.ascii'%(joblist_id, reg)
+		ran_cat_file = os.path.join(WORKDIR,'results/%s/void_ran/EZ_ELG_RDZ_void_ran_%s.ascii'%(joblist_id, reg))
 		if not os.path.exists(ran_cat_file):
 			sys.stdout.write('ERROR:\tRandom void catalog not found.\n')
 			sys.exit(1)
@@ -69,7 +73,7 @@ for fileno, fileName in enumerate(fdat):
 		count_mode = 7
 	if not os.path.isfile(ran_cat_file):
 		continue
-	bash_script.write('srun -n 1 -c 64 /global/cscratch1/sd/dforero/baosystematics/bin/2pcf --conf=%s --data=%s --rand=%s --rand-convert=1 --data-convert=1 --count-mode=%s --dd=%s --dr=%s --rr=%s --output=%s --data-aux-min=%s --data-aux-max=%s --rand-aux-min=%s --rand-aux-max=%s\n'%(conf_file, dat_cat_file, ran_cat_file, count_mode, dd_file, dr_file, rr_file, out_file, r_min, r_max, r_min, r_max))
+	bash_script.write('srun -n 1 -c 64 %s --conf=%s --data=%s --rand=%s --rand-convert=1 --data-convert=1 --count-mode=%s --dd=%s --dr=%s --rr=%s --output=%s --data-aux-min=%s --data-aux-max=%s --rand-aux-min=%s --rand-aux-max=%s\n'%(RUN, conf_file, dat_cat_file, ran_cat_file, count_mode, dd_file, dr_file, rr_file, out_file, r_min, r_max, r_min, r_max))
 bash_script.close()
 dd_dir = os.path.join(outPath, 'DD_files')
 dr_dir = os.path.join(outPath, 'DR_files')

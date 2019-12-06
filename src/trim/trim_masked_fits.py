@@ -22,10 +22,13 @@ try:
 except StopIteration:
 	sys.stdout.write('ERROR: Empty input directory.\n')
 	sys.exit(1)
+if not os.path.isdir(outPath):
+	os.mkdir(outPath)
 sys.stdout.write('Loading dictionary...\t\t\t\t')
 dictionary = np.loadtxt(os.path.join(outPath,'../dicts/dictionary%i.dat'%this_slice), delimiter='\t', dtype=str)
 sys.stdout.write('DONE\nLoading catalog...\t\t\t\t')
 fits_df = Table.read(os.path.join(inPath,'superCatalog.%s%i.fits'%(supercat_name,this_slice)), format='fits').to_pandas()
+fits_df['KEY'] = fits_df['KEY'].str.decode('utf-8')
 sys.stdout.write('DONE\n')
 fits_df = fits_df[fits_df[mskcol]==1]
 for filename, key in dictionary:
@@ -34,5 +37,5 @@ for filename, key in dictionary:
 		continue
 	sys.stdout.write('Splitting %s\t\t\t\t'%filename)
 	this_mock = fits_df[fits_df['KEY']==key]
-	this_mock[['RAD', 'DEC', 'Z', 'R']].to_csv(outFile, sep='\t', header = False, index=False)
+	this_mock[['RA', 'DEC', 'Z', 'R']].to_csv(outFile, sep='\t', header = False, index=False)
 	sys.stdout.write('DONE\n')
