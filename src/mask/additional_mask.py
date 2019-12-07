@@ -29,6 +29,9 @@ ext=os.path.splitext(infile)
 WORKDIR='/global/cscratch1/sd/dforero/baosystematics/'
 MASKDIR=os.path.join(WORKDIR, 'data/ELG_masks')
 mskbit = intable[mskbit_col].astype('int16')
+if os.path.isfile(os.path.join(output, outfile)):
+	sys.stdout.write('File already exists.\n')
+	sys.exit(0)
 # mskbits:
 # 2**0: valid
 # 2**1: grz-depth
@@ -43,7 +46,7 @@ mskbit = intable[mskbit_col].astype('int16')
 mskbitcheck = os.path.join(MASKDIR, 'ELG_allobj.mskbitcheck.hp1024.fits')
 threshold = 0.1
 nside = 1024; nest = False
-
+sys.stdout.write('Applying masks to %s\n'%os.path.basename(infile))
 data = Table.read(mskbitcheck, format='fits', hdu=1)
 mask = np.zeros(len(data), dtype='bool')
 for key in ['grz','xybug','any','t2b','bright']:

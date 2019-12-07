@@ -1,0 +1,1 @@
+/global/cscratch1/sd/dforero/baosystematics/bin/vetomask --input=/global/cscratch1/sd/dforero/baosystematics/results/nosyst_v7/mocks_void_rdz_merged/superCatalog7.fits --output=/global/cscratch1/sd/dforero/baosystematics/results/nosyst_v7/mocks_void_rdz_vetomask/superCatalog.MASKED7.fits --format=1 --conf=/global/cscratch1/sd/dforero/baosystematics/src/mask/brickmask.conf
