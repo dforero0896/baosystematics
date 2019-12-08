@@ -3,14 +3,25 @@ import numpy as np
 from getdist import loadMCSamples
 import sys, os
 
-if len(sys.argv) != 2:
-  print('Usage: {} FILE_ROOT'.format(sys.argv[0]), file=sys.stderr)
+if len(sys.argv) != 3:
+  print('Usage: {} FILE_ROOT CAT_TYPE'.format(sys.argv[0]), file=sys.stderr)
   sys.exit(1)
 
+# Getting catalog type
+cat_type = sys.argv[2]
+
 # Setting parameter names and ranges
-npar = 4
-names = ['alpha', 'B', 'Snl', 'c']
-labels = [r'$\alpha$', r'$B$', r'$\Sigma_{\rm nl}$', r'$c$']
+if cat_type == 'void':
+  npar = 4
+  names = ['alpha', 'B', 'Snl', 'c']
+  labels = [r'$\alpha$', r'$B$', r'$\Sigma_{\rm nl}$', r'$c$']
+elif cat_type=='gal':
+  npar = 3
+  names = ['alpha', 'B', 'Snl']
+  labels = [r'$\alpha$', r'$B$', r'$\Sigma_{\rm nl}$']
+else:
+  sys.exit('ERROR:\tCatalog type not understood.\nCAT_TYPE=void, gal\n')
+
 lowbound = ['N'] * npar
 upbound = ['N'] * npar
 
