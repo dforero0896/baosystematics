@@ -2,12 +2,18 @@
 import os
 import sys
 import tempfile
+import numpy as np
+from mpi4py import MPI
+nproc = MPI.COMM_WORLD.Get_size()   # Size of communicator
+iproc = MPI.COMM_WORLD.Get_rank()   # Ranks in communicator
+inode = MPI.Get_processor_name()    # Node where this MPI process runs
+
 if len(sys.argv)!=4:
 	sys.exit('ERROR:\tUnexpected number of arguments.\nUSAGE:\t{0} INPUT_DIR OUT_DIR CAT_TYPE'.format(sys.argv[0]))
 input2PCF = sys.argv[1]
 outPath = sys.argv[2]
 cat_type = sys.argv[3]
-WORKDIR='/global/cscratch1/sd/dforero/baosystematics/'
+WORKDIR='/hpcstorage/dforero/projects/baosystematics/'
 try:
 	(_, _, in2pcf) = next(os.walk(input2PCF))
 except StopIteration:
@@ -27,20 +33,24 @@ else:
 for m in in2pcf:
 	mockFile.writelines(os.path.join(input2PCF, m+'\n'))
 print(mockFile.read())
-for idx, tpcf in enumerate(in2pcf):
+files = np.array_split(in2pcf, nproc)
+for idx, tpcf in enumerate(files[iproc]):
 	tpcf_fn = os.path.join(input2PCF, tpcf)
 	print(tpcf_fn)
 	tpcf_base, ext = os.path.splitext(tpcf)
-	if idx==0:
+	if idx==0 and not os.path.isfile(r):
 		c = os.path.join(WORKDIR,'src/baofit/baofit_covcomp.conf')
 	else:
 		c = os.path.join(WORKDIR,'src/baofit/baofit.conf')
 	i = tpcf_fn
 	m = mockFile_name
 	o = os.path.join(outPath, tpcf_base+'_')
-	b = o+'mystats.txt' # Check if the output of stats_center exists.
-	if os.path.isfile(b):
-		continue
-	os.system('%s -c %s -i %s -m %s -o %s -b %s -r %s'%(run, c, i, m, o, b, r))
-	os.system('python %s %s %s'%(os.path.join(WORKDIR, 'src/baofit/stats_center.py'), o, cat_type))
+	b = o+'bestfit.txt' 
+	# Check if the output of stats_center exists.
+	if not os.path.isfile(b.replace('bestfit', 'mystats')):
+		os.system('%s -c %s -i %s -m %s -o %s -b %s -r %s'%(run, c, i, m, o, b, r))
+		os.system('python %s %s %s'%(os.path.join(WORKDIR, 'src/baofit/stats_center.py'), o, cat_type))
+	if not os.path.isfile(b):
+		os.system('%s -c %s -i %s -m %s -o %s -b %s -r %s'%(run.replace('BAOfit', 'bestfit'), c, i, m, o, b, r))
 mockFile.close()
+MPI.Finalize()
