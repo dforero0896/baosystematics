@@ -7,6 +7,11 @@ import matplotlib.pyplot as plt
 if len(sys.argv) == 3:
 	path = sys.argv[1]
 	outpath = sys.argv[2]
+	if not os.path.isdir(outpath):
+		os.makedirs(outpath)
+		os.mkdir(os.path.join(outpath, 'RR_files'))
+		os.mkdir(os.path.join(outpath, 'DR_files'))
+		os.mkdir(os.path.join(outpath, 'DD_files'))
 else:
 	sys.stdout.write('ERROR:\tUnexpected number of arguments.\nUsage {0} IN_PATH OUT_PATH\n'.format(sys.argv[0]))
 	sys.exit(1)
@@ -39,6 +44,8 @@ x = (d[0] + d[1]) * 0.5 #bin center
 smin, smax = d[0], d[1]
 
 for f in DDfn:
+	if not os.path.isfile(os.path.join(path,f.replace('DD', 'TwoPCF'))) or not  os.path.isfile(os.path.join(path, f.replace('NGC', 'SGC').replace('DD', 'TwoPCF'))):
+		continue
 	for i, r in enumerate(regions):
 		fn = f.replace('NGC', r)
 		ddfn = os.path.join(path,'DD_files',fn)
@@ -52,7 +59,7 @@ for f in DDfn:
 		d = np.loadtxt(drfn, unpack=True, usecols=(3,5))
 		dr[i] = d[0]
 		qdr[i] = d[1]
-		#Import RR file if dealing with mocks.
+		#Import RR file if dealing with galaxies.
 		if 'EZ' in f and 'VOID' not in f:
 			rrfn = os.path.join(path,'RR_files',fn.replace('DD', 'RR'))
 			d = np.loadtxt(rrfn, unpack=True, usecols=(3,5))
