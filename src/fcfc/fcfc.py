@@ -7,16 +7,31 @@ if len(sys.argv) == 6:
 	overwrite = bool(int(sys.argv[5]))
 	r_min = None
 	r_max = r_min
+	subsample_size = None
 	sys.stdout.write('Looking for gal catalogs\n')
+if len(sys.argv) == 7:
+	cat_type = 'gal'
+	subsample_size = int(sys.argv[5])
+	overwrite = bool(int(sys.argv[6]))
+	r_min = None
+	r_max = r_min
+	sys.stdout.write('Looking for gal catalogs\n')
+elif len(sys.argv) == 8:
+	cat_type = 'void'
+	r_min = sys.argv[5]
+	r_max = sys.argv[6]
+	overwrite = bool(int(sys.argv[7]))
+	subsample_size = None
+	sys.stdout.write('Looking for void catalogs\n')
 elif len(sys.argv) == 9:
 	cat_type = 'void'
 	r_min = sys.argv[5]
 	r_max = sys.argv[6]
-	ran_void_cat = sys.argv[7]
+	subsample_size = int(sys.argv[7])
 	overwrite = bool(int(sys.argv[8]))
 	sys.stdout.write('Looking for void catalogs\n')
 else:
-	sys.stderr.write('ERROR:\tUnexpected number of arguments.\nUSAGE:\tpython %s INPUT_PATH OUTPUT_PATH JOB_LIST_ID CONF_FILE [R_MIN R_MAX VOID_RAN_DIR] OVERWRITE\n'%os.path.basename(sys.argv[0]))
+	sys.stderr.write('ERROR:\tUnexpected number of arguments.\nUSAGE:\tpython %s INPUT_PATH OUTPUT_PATH JOB_LIST_ID CONF_FILE [R_MIN R_MAX] [SUBSAMPLE_SIZE] OVERWRITE\n'%os.path.basename(sys.argv[0]))
 	sys.exit(1)
 this_dir = os.path.dirname(sys.argv[0])
 inPath = sys.argv[1]
@@ -44,19 +59,28 @@ joblist_dir = os.path.join(this_dir, 'joblist')
 if not os.path.isdir(joblist_dir):
 	os.mkdir(joblist_dir)
 bash_script_name = os.path.join(joblist_dir,'fcfc_%s_%s.sh'%(cat_type,joblist_id))
+if cat_type == 'void': bash_script_name = bash_script_name.replace('.sh', '_R-%s-%s.sh'%(r_min, r_max))
 job_sub_name = os.path.join(joblist_dir, 'fcfcJob.sbatch')
-bash_script = open(bash_script_name, 'w')
 fdat = [fn for fn in f if '.dat.' in fn]
+if subsample_size != None:
+	fdat_sub = [fn for fn in fdat if 'NGC' in fn]
+	fdat_sub = fdat_sub[:subsample_size]
+	[fdat_sub.append(fdat_sub[i].replace('NGC', 'SGC')) for i in range(subsample_size)]
+	sys.stdout.write('Writing %i commands for a subsample of %i mocks.\n'%(len(fdat_sub), subsample_size))
+	fdat = fdat_sub
+	bash_script_name = bash_script_name.replace('.sh', '_sub-%i.sh'%subsample_size)
+bash_script = open(bash_script_name, 'w')
 for fileno, fileName in enumerate(fdat):
+	dat_cat_file = os.path.join(inPath,fileName)
+	if cat_type == 'void': fileName = fileName.replace('VOID', 'VOID.R-%s-%s'%(r_min, r_max))
 	out_file = os.path.join(outPath,'TwoPCF_'+fileName)
 	if os.path.isfile(out_file) and not overwrite:
 		continue
 	reg = get_region(fileName)
-	dat_cat_file = os.path.join(inPath,fileName)
 	dd_file = os.path.join(outPath,'DD_files/DD_'+fileName)
 	dr_file = os.path.join(outPath,'DR_files/DR_'+fileName)
 	if cat_type=='void':
-		ran_cat_file = os.path.join(WORKDIR,'results/%s/void_ran/EZ_ELG_RDZ_void_ran_%s.ascii'%(joblist_id, reg))
+		ran_cat_file = os.path.join(WORKDIR,'results/%s/void_ran/EZ_ELG_RDZ_void_ran_%s_R-%s-%s.ascii'%(joblist_id, reg, r_min, r_max))
 		if not os.path.exists(ran_cat_file):
 			sys.stdout.write('ERROR:\tRandom void catalog not found.\n')
 			sys.exit(1)
@@ -65,7 +89,7 @@ for fileno, fileName in enumerate(fdat):
 			count_mode = 7
 		else:
 			count_mode = 3
-		rr_file = os.path.join(outPath,'RR_files/RR_%s'%reg)
+		rr_file = os.path.join(outPath,'RR_files/RR_%s_R-%s-%s'%(reg, r_min, r_max))
 	else:
 		ran_cat_file = dat_cat_file.replace('.dat.', '.ran.')
 		rr_file = os.path.join(outPath,'RR_files/RR_'+fileName)

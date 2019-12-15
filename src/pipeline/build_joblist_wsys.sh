@@ -63,10 +63,10 @@ fi
 echo Writing $joblist_name
 echo Overwriting = $overwrite
 for filename in $raw_dir/*NGC*.dat.*; do
-	echo "bash /global/cscratch1/sd/dforero/baosystematics/src/pipeline/pipeline_file.sh $filename $results_dir $overwrite $sys_effect_1 $sys_effect_2 $sys_effect_3" >> $joblist_name
+	echo "bash /global/cscratch1/sd/dforero/baosystematics/src/pipeline/pipeline_file_wsys.sh $filename $results_dir $overwrite $sys_effect_1 $sys_effect_2 $sys_effect_3" >> $joblist_name
 done
 for filename in $raw_dir/*SGC*.dat.*; do
-	echo "bash /global/cscratch1/sd/dforero/baosystematics/src/pipeline/pipeline_file.sh $filename $results_dir $overwrite $sys_effect_1 $sys_effect_2 $sys_effect_3" >> $joblist_name
+	echo "bash /global/cscratch1/sd/dforero/baosystematics/src/pipeline/pipeline_file_wsys.sh $filename $results_dir $overwrite $sys_effect_1 $sys_effect_2 $sys_effect_3" >> $joblist_name
 done
 
 if [[ $n_files != '' ]]; then

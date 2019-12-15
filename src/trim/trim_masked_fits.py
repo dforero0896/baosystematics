@@ -31,7 +31,7 @@ fits_df = Table.read(os.path.join(inPath,'superCatalog.%s%i.fits'%(supercat_name
 fits_df['KEY'] = fits_df['KEY'].str.decode('utf-8')
 sys.stdout.write('DONE\n')
 fits_df = fits_df[fits_df[mskcol]==1]
-for filename, key in dictionary:
+for filename, key in dictionary: # Modify this if to use group_by() and it should be faster.
 	outFile = os.path.join(outPath,filename.replace('VOID', 'VOID.MASKED'))
 	if os.path.isfile(outFile) and not overwrite:
 		continue
