@@ -1,11 +1,11 @@
 # You want latexmk to *always* run, because make does not have all the info.
 # Also, include non-file targets in .PHONY so they are run regardless of any
 # file of the given name existing.
-.PHONY: main.pdf all clean
+.PHONY: baosystematics_pres.pdf all clean
 
 # The first rule in a Makefile is the one executed by default ("make"). It
 # should always be the "all" rule, so that "make" and "make all" are identical.
-all: main.pdf
+all: baosystematics_pres.pdf
 
 # CUSTOM BUILD RULES
 
@@ -29,8 +29,8 @@ all: main.pdf
 # -interaction=nonstopmode keeps the pdflatex backend from stopping at a
 # missing file reference and interactively asking you for an alternative.
 
-main.pdf: main.tex
-	latexmk -pdf -pdflatex="lualatex -interaction=nonstopmode" -use-make main.tex
+baosystematics_pres.pdf: baosystematics_pres.tex
+	latexmk -pdf -pdflatex="lualatex -interaction=nonstopmode" -use-make baosystematics_pres.tex
 
 clean:
 	latexmk -CA
