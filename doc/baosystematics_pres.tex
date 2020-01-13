@@ -19,7 +19,7 @@
 \usepackage{tikz}
 \usepackage{multicol}
 \usepackage{subfig}
-\usepackage[backend=biber,natbib ,style=apa]{biblatex}
+\usepackage[backend=biber,natbib, maxcitenames=1,style=apa]{biblatex}
 \DeclareLanguageMapping{english}{english-apa}
 \addbibresource{refs.bib} 
 \usetheme{CambridgeUS} %Roja nice
@@ -129,21 +129,14 @@
 
 
 \begin{frame}[allowframebreaks]{Introduction}
-	\begin{columns}
-		\begin{column}{0.55\linewidth}
+
 				\begin{itemize}
 					\item The use of voids + matter ones $\Rightarrow$ $\sim10\%$ improvement of error \& 20\% survey size increase.
 					\item Voids could be less sensitive to systematic effects than matter.
+					\item We want to use mocks to check if there is a difference in the BAO peak shift due to systematical effects between matter tracers and voids.
+					\item Systematics can greatly affect the measurement of the 2PCF in real data
 				\end{itemize}
-				%\begin{figure}
-				%	\centering
-				%	\includegraphics[width=0.5\linewidth]{../../Bibliography/doc_pics/borexinoview}
-				%	\caption{\small Borexino. Taken from \parencite{Ludhova2013}.}
-				%	\label{fig:borexinoview}
-				%\end{figure}
 
-		\end{column}
-		\end{columns}
 \end{frame}
 \section{Voids}
 \begin{frame}[allowframebreaks]{Voids}
@@ -190,12 +183,13 @@
 	\end{column}
 \end{columns}
 \end{frame}
+\section{Data}
 \begin{frame}[allowframebreaks]{Data}
 	We use 1000 \textbf{EZ mocks} \citet{Zhao2020}.
 	\begin{itemize}
-		\item<1-> Displacement field from Zel'dovich
-		\item<2-> PDF extraction from n-body simulation
-		\item<3-> Halo position assignment
+		\item Displacement field from Zel'dovich
+		\item PDF extraction from n-body simulation
+		\item Halo position assignment
 	\end{itemize}
 \begin{table}
 	\centering
@@ -214,6 +208,7 @@
 	\end{tabular}	
 \end{table}
 \end{frame}
+\section{Systematics}
 \begin{frame}[allowframebreaks]{Systematics: Fiber collisions}
 	\begin{itemize}
 		\item Objects too close in the sky ($r_{cp}<62''$) can't be seen at the same time due o width of the fiber.
@@ -257,12 +252,12 @@
 		\item We then normalize the completeness weights in each chunk by the corresponding $n_{eff}/n'_{eff}$ to keep the original effective number of tracers.
 	\end{itemize}
 \end{frame}
-
+\section{Catalog generation}
 \begin{frame}[allowframebreaks]{Catalog generation}
 
 	\begin{itemize}
 	\item Export catalogs with $$\mathrm{RA},\ \mathrm{DEC},\ z,\ w_{cp}w_{\mathrm{FKP}},\ w_{cp},\ w_{\mathrm{FKP}},\ n(z)$$
-	\item Use \textsc{Dive} to extract void catalogs with 
+	\item Use \textsc{Dive} to extract void catalogs with (we use $\Omega_m=0.31$)
 	$$\mathrm{RA},\ \mathrm{DEC},\ z,\ R$$
 	\begin{multicols}{2}
 	\item Mask void catalogs
@@ -284,7 +279,7 @@
 
 
 \end{frame}
-
+\section{Radius cut}
 \begin{frame}[allowframebreaks]{Radius cut}
 	\begin{columns}
 		\begin{column}{0.49\linewidth}
@@ -314,6 +309,7 @@
 	\label{fig:snr}
 \end{figure}
 \end{frame}
+\section{Model}
 \begin{frame}[allowframebreaks]{The BAO model}
 	We use the model in \citet{Zhao2019}:
 	\begin{align}
@@ -332,10 +328,10 @@
 \begin{frame}[allowframebreaks]{Parameter fitting}
 \begin{columns}
 	\begin{column}{0.49\linewidth}
-		Bayesian inference: 
+		Bayesian inference for parameter $\Theta$: 
 		\begin{equation}
 		\begin{split}
-		p(\Theta|X) &= \frac{p(X|\Theta)p(\Theta)}{p(X)} \\&= \frac{\mathcal{L}(\Theta)p(\Theta)}{\mathcal{Z}},
+		p(\Theta|X) &= \frac{p(X|\Theta)p(\Theta)}{p(X)} \\&= \frac{\mathcal{L}(X|\Theta)p(\Theta)}{\mathcal{Z}},
 		\end{split}
 		\label{eq:bayes}
 		\end{equation}
@@ -371,23 +367,63 @@
 	\end{column}
 \end{columns}
 \end{frame}
-\begin{frame}[allowframebreaks]{Results: Mean 2PCF}
+\begin{frame}[allowframebreaks]{Results: Mean 2PCF Galaxies}
+\begin{multicols}{2}
+\textbf{No systematics}
 \begin{figure}
 	\centering
-	\includegraphics[width=0.4\linewidth]{plots/TwoPCF_mockavg_nosyst_v7_gal_cbz_triplot}
-	\includegraphics[width=0.4\linewidth]{plots/TwoPCF_mockavg_allsyst_v7_gal_cbz_triplot}
-	\caption{Posterior distributions for the model parameters in the galaxy BAO fit. Left panel shows the case in which no systematical effects were applied. Right panel shows the results for mocks with all systematics applied.}
-	\label{fig:galtriplot}
+	\includegraphics[width=0.9\linewidth]{plots/TwoPCF_mockavg_nosyst_v7_gal_cbz_triplot}
 \end{figure}
-\pagebreak
+\textbf{All systematics}
 \begin{figure}
 	\centering
-	\includegraphics[width=0.4\linewidth]{plots/{{TwoPCF_mockavg_nosyst_v7_void_R-15.5-50_cbz_triplot}}}
-	\includegraphics[width=0.4\linewidth]{plots/{{TwoPCF_mockavg_allsyst_v7_void_R-15.5-50_cbz_triplot}}}
-	\caption{Posterior distributions for the model parameters in the void BAO fit. Left panel shows the case in which no systematical effects were applied. Right panel shows the results for mocks with all systematics applied.}
-	\label{fig:voidtriplot}
+	\includegraphics[width=0.9\linewidth]{plots/TwoPCF_mockavg_allsyst_v7_gal_cbz_triplot}
 \end{figure}
+\end{multicols}
 \pagebreak
+\begin{multicols}{2}
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{plots/{{bestfit_ELG_ALL_bin8_mean_xi0_nosyst.gal}}}
+	\caption{$\chi^2_{\mathrm{best}}/$dof$=0.04$ }
+\end{figure}
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{plots/{{bestfit_ELG_ALL_bin8_mean_xi0_allsyst.gal}}}
+	\caption{$\chi^2_{\mathrm{best}}/$dof $=0.06 $}
+\end{figure}
+
+\end{multicols}
+\end{frame}
+\section{Results}
+\begin{frame}[allowframebreaks]{Results: Mean 2PCF Voids}
+\begin{multicols}{2}
+	\textbf{No systematics}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.9\linewidth]{plots/{{TwoPCF_mockavg_nosyst_v7_void_R-15.5-50_cbz_triplot}}}
+	\end{figure}
+	\textbf{All systematics}
+	\begin{figure}
+		\centering
+	\includegraphics[width=0.9\linewidth]{plots/{{TwoPCF_mockavg_allsyst_v7_void_R-15.5-50_cbz_triplot}}}
+	\end{figure}
+\end{multicols}
+\pagebreak
+\begin{multicols}{2}
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{plots/{{bestfit_TwoPCF_mockavg_nosyst_v7_void_R-15.5-50_cbz_nosyst.void}}}
+	\caption{$\chi^2_{\mathrm{best}}/$dof$=0.36$}
+\end{figure}
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{plots/{{bestfit_TwoPCF_mockavg_allsyst_v7_void_R-15.5-50_cbz_allsyst.void}}}
+	\caption{$\chi^2_{\mathrm{best}}/$dof$=0.42$ }
+\end{figure}
+\end{multicols}
+\end{frame}
+\begin{frame}[allowframebreaks]{Results: Mean2PCF Comparison}
 \begin{table}
 	\begin{tabular}{ccc}
 	&Galaxies&Voids\\
@@ -401,21 +437,7 @@ $\alpha_{\mathrm{all}} - \alpha_{\mathrm{none}}$&$\num[scientific-notation=true]
 	\caption{Fit results for the dilation parameter $\alpha$ when using the mean of the mocks.}
 	\label{fig:alphameancomparisonallvsno}
 \end{figure}
-\pagebreak
-\begin{figure}
-	\centering
-	\includegraphics[width=0.49\linewidth]{plots/{{bestfit_ELG_ALL_bin8_mean_xi0_nosyst.gal}}}
-	\includegraphics[width=0.49\linewidth]{plots/{{bestfit_ELG_ALL_bin8_mean_xi0_allsyst.gal}}}
-	\caption{Best fit curves for galaxy tracers with (right) and without (left) systematics. Shaded region shows the $1\sigma$ band obtained from the mock sample.}
-	\label{fig:bestfitgal}
-\end{figure}
-\begin{figure}
-	\centering
-	\includegraphics[width=0.49\linewidth]{plots/{{bestfit_TwoPCF_mockavg_nosyst_v7_void_R-15.5-50_cbz_nosyst.void}}}
-	\includegraphics[width=0.49\linewidth]{plots/{{bestfit_TwoPCF_mockavg_allsyst_v7_void_R-15.5-50_cbz_allsyst.void}}}
-	\caption{Best fit curves for void tracers with (right) and without (left) systematics. The model fits the mean curve well within the $1\sigma$ band (shaded region). We observe, however, that the model does not follow the mean curve as close as for the galaxy case, specially at larger scales.}
-	\label{fig:bestfitvoid}
-\end{figure}
+
 \end{frame}
 \begin{frame}[allowframebreaks]{Results: Individual 2PCF}
 	\begin{table}
@@ -433,6 +455,17 @@ $\alpha_{\mathrm{all}} - \alpha_{\mathrm{none}}$&$\num[scientific-notation=true]
 \end{figure}
 
 	\end{multicols}
+\end{frame}
+\section{Conclusions}
+\begin{frame}[allowframebreaks]{Conclusions}
+\begin{itemize}
+	\item The fit to the mean 2PCF shows a smaller shift due to systematics in the void case.
+	\item The posteriors $p(\alpha|X)$ in the void case have large widths that make it difficult to be confident in the conslusion above.
+	\item The individual fits show smaller uncertainty in the void measurement and still show the difference in the peak shift.
+	\item Priors can be tweaked to get a better $p(\alpha|X)$ for voids but reduced $\chi^2$ is already close to 1.
+	\item Dataset is noisy as shown by the low SNR
+	\item The analysis should be repeated with other tracers with better SNR (e.g. LRG)
+\end{itemize}
 \end{frame}
 \appendix
 \section<presentation>*{\appendixname}
