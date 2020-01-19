@@ -133,9 +133,9 @@
 \begin{itemize}
 	\item The use of voids + matter ones $\Rightarrow$ $\sim10\%$ improvement of error \& 20\% survey size increase.
 	\item Voids could be less sensitive to systematic effects than matter.
-	\item We want to use mocks to check if there is a difference in the BAO peak shift due to systematical effects between matter tracers and voids.
+	\item We want to use mocks to check if there is a \textbf{difference in the BAO peak shift due to systematical effects} between matter tracers and voids.
 	\item Systematics can greatly affect the measurement of the 2PCF in real data.
-	\item Sign of the quadrupole in large-scales.
+	\item Sign of the 2PCF \textbf{quadrupole is expected to be negative}. Current Galaxy measurements show otherwise.
 \end{itemize}
 \pagebreak
 \begin{multicols}{2}
@@ -155,6 +155,23 @@
 
 
 \end{frame}
+\section{eBOSS Survey}
+\begin{frame}[allowframebreaks]{eBOSS}
+	The \textbf{Extended Baryon Oscillation Spectroscopic Survey} $\rightarrow$ 2014-2019\\
+	Measuring BAO different tracers
+	\begin{itemize}
+		\item LRG $z\in(0.6, 1)$
+		\item ELG  $z\in(0.6, 1.1)$ 
+		\item QSO $z\in(0.8, 2.2)$
+	\end{itemize}
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{plots/ebossfootp}
+	\caption{eBOSS footprint \small Cred. A. Raichoor \normalsize}
+	\label{fig:ebossfootp}
+\end{figure}
+
+\end{frame}
 \section{Voids}
 \begin{frame}[allowframebreaks]{Voids}
 	Definition is controversial, we use a \textbf{geometrical} one.\\
@@ -162,10 +179,10 @@
 	\vspace{1cm}
 	\begin{columns}
 		\begin{column}{0.45\linewidth}
-			\textbf{Small voids}
+			\textbf{Small ``voids''}
 			\begin{itemize}
 				\item Radius cut: $R_c < \SI{8}{\h^{-1} \mega\parsec}$
-				\item Located in regions with high $\delta_{dm}$
+				\item Located in regions with high $\delta_{m}$
 				\item Correlated with galaxy sample
 				\item Are actually Dark Matter
 			\end{itemize}
@@ -174,9 +191,9 @@
 			\textbf{Big voids}
 			\begin{itemize}
 				\item Radius cut: $R_c > \SI{15.5}{\h^{-1} \mega\parsec}$
-				\item Located in regions with low $\delta_{dm}$
+				\item Located in regions with low $\delta_{m}$
 				\item Anticorrelated with galaxy sample
-				\item Are actually empty
+				\item Are actually ``empty'' (low density $\delta_m$)
 			\end{itemize}
 		\end{column}
 	\end{columns}
@@ -230,13 +247,13 @@
 	\begin{itemize}
 		\item Objects too close in the sky ($r_{cp}<62''$) can't be seen at the same time due o width of the fiber.
 		\item One is measured by the plate. The other one(s) could still be measured by other plate.
-		\item Define $\mathrm{TSR} = \frac{\mathrm{measured\ targets}}{\mathrm{total\ number\ of\ targets}},$ per sector.
+		\item Define \textbf{Tiling Success Rate}: $\mathrm{TSR} = \frac{\mathrm{measured\ targets}}{\mathrm{total\ number\ of\ targets}},$ per sector.
 		\item Compensate this effect with $w_{cp} \approx \mathrm{TSR}^{-1}$\\ Actually $w_{cp} = \frac{\mathrm{total\ number\ of\ targets}}{\mathrm{measured\ targets}}$ but defined per \textbf{collision group}.
 	\end{itemize}
 \end{frame}
 \begin{frame}[allowframebreaks]{Systematics: Redshift Failures}
 	\begin{itemize}
-		\item Errors in the spectroscopic pipeline $\Rightarrow\ \mathrm{SSR}<1$. 
+		\item Errors in the spectroscopic pipeline $\Rightarrow\ \mathrm{SSR}<1$ (\textbf{Spectroscopic Success Rate}). 
 		\item Two sources of error: Observational conditions \& Position of fiber
 		\item This is corrected by the weight
 		$$w_{noz}\equiv \qty(\mathrm{SSR}_{\mathrm{obs}}\mathrm{SSR}_{\mathrm{pos}})^{-1}.$$
@@ -245,9 +262,9 @@
 \begin{frame}[allowframebreaks]{Systematics: Angular Photometric}
 	\begin{itemize}
 		\item Represented as \textsc{Healpix} maps containing different photometric parameters, $p_i$.
-			\item Parameters are combined as $$y^k = \epsilon + \sum_i c_ip_i^k$$ where the model weights, $c_i$ are optimized (per chunk) such that $n_{\mathrm{dat},k} \approx n_{\mathrm{ran},k}y^k$, where $k$ indicates the pixels.
+			\item Parameters are combined as $$y^k = \epsilon + \sum_i c_ip_i^k$$ where the model weights, $c_i$ are optimized (per chunk) to \textbf{emulate angular inhomogeneities in the target selection}.
 			%$$c_i = \arg\min_{c_j}\sum_{k\in\mathrm{chunk}}\frac{n_{\mathrm{dat},k} - n_{\mathrm{ran},k}y^k(c_j)}{\sqrt{n_{\mathrm{ran}, k}}}$$
-		\item The photometric weights designed to partially correct for these effects are defined as $$w_{\mathrm{systot}} = \qty(y^k)^{-1}.$$
+		\item The photometric weights designed to partially correct for these effects (so we end with a ``homogeneous'' sky) are defined as $$w_{\mathrm{systot}} = \qty(y^k)^{-1}.$$
 	\end{itemize}
 \end{frame}
 \begin{frame}[allowframebreaks]{Systematics: Normalization}
@@ -256,19 +273,20 @@
 	$$w_{\mathrm{comp}} = w_{\mathrm{systot}}w_{cp}w_{noz}.$$
 	\item Some normalization is done (on $w_{\mathrm{systot}}$ before $w_{\mathrm{comp}}$ and on $w_{noz}$ after).
 	\item Invalid objects are set $w_{cp}, w_{noz} = 0$.
-	\item Only elements with $\mathrm{SSR}\geq0$, $z\in(0.6, 1.1)$ and completeness $> 50\%$ are selected.
-	\item The dependence on $n(z)$ is corrected by $$w_{\mathrm{FKP}} \equiv \frac{1}{1 + n(z) P_0};\quad P_0 = \SI{4000}{\h^{-3}\mega\parsec\cubic}.$$
+	\item Only elements with $\mathrm{SSR}\geq0.5$, $z\in(0.6, 1.1)$ and completeness $> 50\%$ are selected.
+	\item The dependence on $n(z)$ is taken into account by $$w_{\mathrm{FKP}} \equiv \frac{1}{1 + n(z) P_0};\quad P_0 = \SI{4000}{\h^{-3}\mega\parsec\cubic}.$$
 \end{itemize}
 \end{frame}
-
+\iffalse
 \begin{frame}[allowframebreaks]{Systematics: Application}
 	\begin{itemize}
 		\item We compute $w_{\mathrm{comp}}^{\textsc{allsyst}} =w_{\mathrm{systot}}w_{cp}w_{noz}w_{\mathrm{FKP}}$ and the effective number of tracers in each chunk $$n_{eff} = \sum_{i=1}^{N_{chunk}}w_{\mathrm{comp},i}^{\textsc{allsyst}},$$ where $N_{chunk}$ is the number of tracers in the chunk considered.
 		\item We then compute $$w_{\mathrm{comp}}^{\textsc{partial}}=w_{\mathrm{FKP}}\prod_{s\in \mathcal{S}'}w_s,$$ where $\mathcal{S}' \subseteq \mathcal{S}$ is the subset of systematic effects to be considered and $\mathcal{S} =\qty{\mathrm{systot},\ noz,\ cp}$. In this case we compute the new effective number of tracers $$n'_{eff} = \sum_{i=1}^{N_{chunk}}w_{\mathrm{comp},i}^{\textsc{partial}}.$$
 		\item Objects in the catalog with $w_{\mathrm{comp}}^{\textsc{partial}}=0$ or $\mathtt{veto}=0$ (such as objects outside the survey area or masked by bright stars) are removed.
-		\item We then normalize the completeness weights in each chunk by the corresponding $n_{eff}/n'_{eff}$ to keep the original effective number of tracers.
+		\item Normalize $w_{\mathrm{comp},i}^{\textsc{partial}}$ in each chunk, $i$, by the corresponding $n_{eff}/n'_{eff}$ to \textbf{keep the original effective number of tracers thus the same $n(z)$}.
 	\end{itemize}
 \end{frame}
+\fi
 \section{Catalog generation}
 \begin{frame}[allowframebreaks]{Catalog generation}
 
@@ -298,17 +316,13 @@
 \end{frame}
 \section{Radius cut}
 \begin{frame}[allowframebreaks]{Radius cut}
+	\begin{equation}
+	\begin{split}
+	&S = \xi_0(s^{\mathrm{BAO}}) -\frac{\xi_0(s_1^{\mathrm{dl}}) + \xi_0(s_2^{\mathrm{dl}}) + \xi_0(s_1^{\mathrm{dr}}) +  \xi_0(s_2^{\mathrm{dr}})}{4}
+	\end{split}
+	\end{equation}
+	\vspace{-1cm}
 	\begin{columns}
-		\begin{column}{0.49\linewidth}
-	Analyze signal-to-noise ratio ($\mathrm{SNR}\equiv\frac{\langle S \rangle}{\sigma_S}$) for 100 void mocks with different $R_c$. Use definition of signal, $S$, as in \citet{Liang2016}.
-\begin{equation}
-\begin{split}
-&S = \xi_0(s^{\mathrm{BAO}}) -\\ 
-&\frac{\xi_0(s_1^{\mathrm{dl}}) + \xi_0(s_2^{\mathrm{dl}}) + \xi_0(s_1^{\mathrm{dr}}) +  \xi_0(s_2^{\mathrm{dr}})}{4}
-\end{split}
-\end{equation}
-		\end{column}
-
 \begin{column}{0.49\linewidth}
 	\begin{figure}
 	\centering
@@ -316,6 +330,9 @@
 	\caption{$s_1^{\mathrm{dl}} = 82.5$, $s_2^{\mathrm{dl}}=87.5$, $s_1^{\mathrm{BAO}} = 102.5$, $s_1^{\mathrm{dr}} = 117.5$ and $s_2^{\mathrm{dr}}=\SI{122.5}{\h^{-1}\mega\parsec}$ respectively from left to right.}
 	\label{fig:snrpoints}
 \end{figure}
+\end{column}
+		\begin{column}{0.49\linewidth}
+	Analyze signal-to-noise ratio ($\mathrm{SNR}\equiv\frac{\langle S \rangle}{\sigma_S}$) for 100 void mocks with different $R_c$. Use definition of signal, $S$, as in \citet{Liang2016}.
 \end{column}
 \end{columns}
 \pagebreak
@@ -402,12 +419,12 @@
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{plots/{{bestfit_ELG_ALL_bin8_mean_xi0_nosyst.gal}}}
-	\caption{$\chi^2_{\mathrm{best}}/$dof$=0.04$ }
+	\caption{$\chi^2_{\mathrm{best}}/$dof$=1.38$ }
 \end{figure}
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{plots/{{bestfit_ELG_ALL_bin8_mean_xi0_allsyst.gal}}}
-	\caption{$\chi^2_{\mathrm{best}}/$dof $=0.06 $}
+	\caption{$\chi^2_{\mathrm{best}}/$dof $=2.02 $}
 \end{figure}
 
 \end{multicols}
@@ -431,12 +448,12 @@
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{plots/{{bestfit_TwoPCF_mockavg_nosyst_v7_void_R-15.5-50_cbz_nosyst.void}}}
-	\caption{$\chi^2_{\mathrm{best}}/$dof$=0.36$}
+	\caption{$\chi^2_{\mathrm{best}}/$dof$=11.29$}
 \end{figure}
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{plots/{{bestfit_TwoPCF_mockavg_allsyst_v7_void_R-15.5-50_cbz_allsyst.void}}}
-	\caption{$\chi^2_{\mathrm{best}}/$dof$=0.42$ }
+	\caption{$\chi^2_{\mathrm{best}}/$dof$=13.25$ }
 \end{figure}
 \end{multicols}
 \end{frame}
@@ -478,8 +495,9 @@ $\alpha_{\mathrm{all}} - \alpha_{\mathrm{none}}$&$\num[scientific-notation=true]
 \begin{itemize}
 	\item The fit to the mean 2PCF shows a smaller shift due to systematics in the void case.
 	\item The posteriors $p(\alpha|X)$ in the void case have large widths that make it difficult to be confident in the conslusion above.
-	\item The individual fits show smaller uncertainty in the void measurement and still show the difference in the peak shift.
-	\item Priors can be tweaked to get a better $p(\alpha|X)$ for voids but reduced $\chi^2$ is already close to 1.
+	\item The individual fits show smaller uncertainty in the void measurement and still show the difference in the peak shift. Seems to be a more robust analysis.
+	\item Priors can be tweaked to get a better $p(\alpha|X)$ for voids. But it is difficult and time consuming.
+	\item Decrease number of parameters in void fit. Use template $P_{\mathrm{void, nw}}(k)$.
 	\item Dataset is noisy as shown by the low SNR
 	\item The analysis should be repeated with other tracers with better SNR (e.g. LRG)
 \end{itemize}
