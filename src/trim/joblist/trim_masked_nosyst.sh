@@ -1,0 +1,5 @@
+python ../trim_masked_fits.py /global/cscratch1/sd/dforero/baosystematics/results/nosyst_v7/mocks_void_rdz_addmask/ /global/cscratch1/sd/dforero/baosystematics/results/nosyst_v7/mocks_void_rdz_finalmask 10 5 0
+python ../trim_masked_fits.py /global/cscratch1/sd/dforero/baosystematics/results/nosyst_v7/mocks_void_rdz_addmask/ /global/cscratch1/sd/dforero/baosystematics/results/nosyst_v7/mocks_void_rdz_finalmask 10 6 0
+python ../trim_masked_fits.py /global/cscratch1/sd/dforero/baosystematics/results/nosyst_v7/mocks_void_rdz_addmask/ /global/cscratch1/sd/dforero/baosystematics/results/nosyst_v7/mocks_void_rdz_finalmask 10 7 0
+python ../trim_masked_fits.py /global/cscratch1/sd/dforero/baosystematics/results/nosyst_v7/mocks_void_rdz_addmask/ /global/cscratch1/sd/dforero/baosystematics/results/nosyst_v7/mocks_void_rdz_finalmask 10 8 0
+python ../trim_masked_fits.py /global/cscratch1/sd/dforero/baosystematics/results/nosyst_v7/mocks_void_rdz_addmask/ /global/cscratch1/sd/dforero/baosystematics/results/nosyst_v7/mocks_void_rdz_finalmask 10 9 0
