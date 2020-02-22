@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import sys
 import os
+WORKDIR = "/hpcstorage/dforero/projects/baosystematics"
 if len(sys.argv) != 5:
 	sys.stdout.write('ERROR:\tUnexpected number of arguments.\nUSAGE:\tpython %s INPUT_PATH OUTPUT_PATH JOB_LIST_ID OVERWRITE(int)\n'%sys.argv[0])
 	sys.exit(1)
@@ -23,7 +24,7 @@ for i, fileName in enumerate(f):
 		infile = os.path.join(inPath, fileName)
 		if os.path.isfile(outfile) and not overwrite:
 			continue
-		bash_script.write('srun /home/epfl/dforero/zhao/void/baosystematics/bin/DIVE %s %s\n'%(infile, outfile))
+		bash_script.write(os.path.join(WORKDIR,'bin/DIVE/DIVE %s %s\n'%(infile, outfile)))
 	sys.stdout.write("Done %i/%i\r"%(i,len(f)))
 	sys.stdout.flush()
 bash_script.close()

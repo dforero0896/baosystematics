@@ -2,6 +2,7 @@
 import numpy as np
 import sys
 import os
+WORKDIR="/hpcstorage/dforero/projects/baosystematics"
 if len(sys.argv) != 6:
 	sys.stdout.write('ERROR:\tUnexpected number of arguments.\nUSAGE:\tpython %s INPUT_PATH OUTPUT_PATH CONFIG_FILE JOB_LIST_ID OVERWRITE(int)\n'%sys.argv[0])
 	sys.exit(1)
@@ -32,10 +33,10 @@ if not config_ok:
 bash_script = open(os.path.join(this_dir,'%sJobList_%s.sh'%(exe, joblist_out)), 'w')
 for fileName in f:
 	in_file = os.path.join(inPath,fileName)
-	out_file = os.path.join(outPath,fileName.replace('ELG', 'ELG_%s'%exe[-3:].upper()))
+	out_file = os.path.join(outPath,fileName.replace('LRG', 'LRG_%s'%exe[-3:].upper()))
 	if os.path.isfile(out_file) and not overwrite:
 		continue
-	bash_script.write('/home/epfl/dforero/zhao/void/baosystematics/bin/%s -c %s -i %s -o %s\n'%(exe, config_file, in_file, out_file))
+	bash_script.write(os.path.join(WORKDIR, 'bin/%s -c %s -i %s -o %s\n'%(exe, config_file, in_file, out_file)))
 
 
 

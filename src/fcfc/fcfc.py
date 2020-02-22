@@ -9,7 +9,7 @@ if len(sys.argv) == 6:
 	r_max = r_min
 	subsample_size = None
 	sys.stdout.write('Looking for gal catalogs\n')
-if len(sys.argv) == 7:
+elif len(sys.argv) == 7:
 	cat_type = 'gal'
 	subsample_size = int(sys.argv[5])
 	overwrite = bool(int(sys.argv[6]))
@@ -34,11 +34,11 @@ else:
 	sys.stderr.write('ERROR:\tUnexpected number of arguments.\nUSAGE:\tpython %s INPUT_PATH OUTPUT_PATH JOB_LIST_ID CONF_FILE [R_MIN R_MAX] [SUBSAMPLE_SIZE] OVERWRITE\n'%os.path.basename(sys.argv[0]))
 	sys.exit(1)
 this_dir = os.path.dirname(sys.argv[0])
-inPath = sys.argv[1]
-outPath = sys.argv[2]
+inPath = os.path.abspath(sys.argv[1])
+outPath = os.path.abspath(sys.argv[2])
 joblist_id = sys.argv[3]
-conf_file = sys.argv[4]
-WORKDIR="/global/cscratch1/sd/dforero/baosystematics"
+conf_file = os.path.realpath(sys.argv[4])
+WORKDIR="/hpcstorage/dforero/projects/baosystematics"
 RUN=os.path.join(WORKDIR, 'bin/2pcf')
 try:
 	(_, _, f) = next(os.walk(inPath))
@@ -53,6 +53,13 @@ def get_region(fn):
 		if r in fn.upper():
 			return r;break
 	sys.stderr.write('ERROR: Could not identify region.\n')
+	sys.exit(1)
+tracers = ['LRG', 'ELG', 'QSO']
+def get_tracer(fn):
+	for t in tracers:
+		if t in fn.upper():
+			return t
+	sys.stderr.write('ERROR: Could not identify tracer.\n')
 	sys.exit(1)
 regfirst = {r:True for r in regions}
 joblist_dir = os.path.join(this_dir, 'joblist')
@@ -77,26 +84,32 @@ for fileno, fileName in enumerate(fdat):
 	if os.path.isfile(out_file) and not overwrite:
 		continue
 	reg = get_region(fileName)
+	tracer = get_tracer(fileName)
 	dd_file = os.path.join(outPath,'DD_files/DD_'+fileName)
 	dr_file = os.path.join(outPath,'DR_files/DR_'+fileName)
 	if cat_type=='void':
-		ran_cat_file = os.path.join(WORKDIR,'results/%s/void_ran/EZ_ELG_RDZ_void_ran_%s_R-%s-%s.ascii'%(joblist_id, reg, r_min, r_max))
-		if not os.path.exists(ran_cat_file):
-			sys.stdout.write('ERROR:\tRandom void catalog not found.\n')
-			sys.exit(1)
-		if regfirst[reg]:
+		ran_cat_dir = os.path.join(inPath,'../')
+		ran_cat_file = os.path.join(ran_cat_dir,'void_ran/EZ_%s_RDZ_void_ran_%s_R-%s-%s.ascii'%(tracer, reg, r_min, r_max))
+		rr_file = os.path.join(outPath,'RR_files/RR_%s_R-%s-%s'%(reg, r_min, r_max))
+		if not os.path.exists(ran_cat_file): 
+			ran_cat_file_bkp=os.path.exists(ran_cat_file.replace('_R-%s-%s'%(r_min, r_max), ''))
+			if os.path.exists(ran_cat_file_bkp): 
+				ran_cat_file = ran_cat_file_bkp
+			else:
+				sys.stdout.write('ERROR:\tRandom void catalog not found.\n')
+				sys.exit(1)
+		if regfirst[reg] and not os.path.exists(rr_file):
 			regfirst[reg]=False
 			count_mode = 7
 		else:
 			count_mode = 3
-		rr_file = os.path.join(outPath,'RR_files/RR_%s_R-%s-%s'%(reg, r_min, r_max))
 	else:
 		ran_cat_file = dat_cat_file.replace('.dat.', '.ran.')
 		rr_file = os.path.join(outPath,'RR_files/RR_'+fileName)
 		count_mode = 7
 	if not os.path.isfile(ran_cat_file):
 		continue
-	bash_script.write('srun -n 1 -c 64 %s --conf=%s --data=%s --rand=%s --rand-convert=1 --data-convert=1 --count-mode=%s --dd=%s --dr=%s --rr=%s --output=%s --data-aux-min=%s --data-aux-max=%s --rand-aux-min=%s --rand-aux-max=%s\n'%(RUN, conf_file, dat_cat_file, ran_cat_file, count_mode, dd_file, dr_file, rr_file, out_file, r_min, r_max, r_min, r_max))
+	bash_script.write('srun -n 1 -c 16 %s --conf=%s --data=%s --rand=%s --rand-convert=1 --data-convert=1 --count-mode=%s --dd=%s --dr=%s --rr=%s --output=%s --data-aux-min=%s --data-aux-max=%s --rand-aux-min=%s --rand-aux-max=%s\n'%(RUN, conf_file, dat_cat_file, ran_cat_file, count_mode, dd_file, dr_file, rr_file, out_file, r_min, r_max, r_min, r_max))
 bash_script.close()
 dd_dir = os.path.join(outPath, 'DD_files')
 dr_dir = os.path.join(outPath, 'DR_files')

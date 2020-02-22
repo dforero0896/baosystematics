@@ -2,7 +2,7 @@
 import numpy as np
 import sys
 import os
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 if len(sys.argv)!=2:
 	sys.exit('ERROR: Unexpecte number of arguments.\nUSAGE: %s INPUT_DIR\n'%sys.argv[0])
 idir = sys.argv[1]
@@ -26,4 +26,4 @@ for ifile in ilist:
 	xi_vals = xi[s_vals_id]
 	signal_arr.append(xi_vals[0] - np.mean(xi_vals[1:]))
 SNR = np.mean(signal_arr)/np.std(signal_arr)
-print(SNR)
+print('SNR=%.5f'%SNR)

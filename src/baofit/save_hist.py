@@ -4,15 +4,21 @@ from scipy import stats
 import sys
 import os
 from getdist import plots, MCSamples
+import re
 if len(sys.argv) != 2:
 	sys.exit('ERROR:\tUnexpected number of arguments.\nUSAGE:\t%s BAOFIT_PATH\n'%sys.argv[0])
 path = sys.argv[1]
 files_all = os.listdir(path)
 files = [f for f in files_all if 'mystats' in f]
+def get_file_id(filename, delimiters = '_|\.'):
+    id_ = [int(s) for s in re.split(delimiters, filename) if s.isdigit()][0]
+    return id_
 def save_hist(cap = 'ngc'):
 	results = []
 	files_cap = [f for f in files if cap.upper() in f]
-	for f in files_cap:
+	files_ids = [get_file_id(f) for f in files_cap]
+	sorted_files_cap = [f for _, f in sorted(zip(files_ids, files_cap))]
+	for f in sorted_files_cap:
 		results.append(np.loadtxt(os.path.join(path, f)))
 	results = np.array(results)
 	np.savetxt(os.path.join(path, 'alpha_samples_%s.dat'%cap), results)

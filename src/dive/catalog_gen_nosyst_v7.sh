@@ -1,22 +1,3 @@
-#!/bin/bash
-#SBATCH --ntasks=1 #tasks are mpi ranks
-#SBATCH --ntasks-per-node=1           # Number of tasks
-#SBATCH -J diveMock         # Name of the job
-#SBATCH --output=/home/epfl/dforero/zhao/void/baosystematics/results/full_v4/diveJob/dive_%j_%x.out 
-#SBATCH --error=/home/epfl/dforero/zhao/void/baosystematics/results/full_v4/diveJob/dive_%j_%x.err
-####SBATCH --array=0-4
-#SBATCH -p p4           # Partition
-#SBATCH --mail-user=daniel.forerosanchez@epfl.ch
-#SBATCH --mail-type=BEGIN,END,FAIL,ARRAY_TASKS
-#SBATCH --cpus-per-task=16
-#SBATCH --mem=2G
-export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
-module use /astro/soft/modulefiles/
-module unuse /etc/modulefiles
-module add astro
-module add python/3.7.1
-module load spack/default  gcc/5.4.0 boost
-
 /hpcstorage/dforero/projects/baosystematics/bin/DIVE/DIVE ../../lrg_results/nosyst_v7/mocks_gal_xyz/EZmock_eBOSS_LRG_XYZ_NGC_v7_0010.dat ../../lrg_results/nosyst_v7/mocks_void_xyz/EZmock_eBOSS_LRG_XYZ_NGC_v7_0010.VOID.dat
 /hpcstorage/dforero/projects/baosystematics/bin/DIVE/DIVE ../../lrg_results/nosyst_v7/mocks_gal_xyz/EZmock_eBOSS_LRG_XYZ_NGC_v7_0002.dat ../../lrg_results/nosyst_v7/mocks_void_xyz/EZmock_eBOSS_LRG_XYZ_NGC_v7_0002.VOID.dat
 /hpcstorage/dforero/projects/baosystematics/bin/DIVE/DIVE ../../lrg_results/nosyst_v7/mocks_gal_xyz/EZmock_eBOSS_LRG_XYZ_NGC_v7_0006.dat ../../lrg_results/nosyst_v7/mocks_void_xyz/EZmock_eBOSS_LRG_XYZ_NGC_v7_0006.VOID.dat

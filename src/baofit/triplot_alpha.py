@@ -13,7 +13,7 @@ def mcsamples_alpha(cap, systkey='nosyst'):
     labels = [r'\alpha_{\mathrm{gal, w}}', r'\alpha_{\mathrm{gal, now}}', r'\alpha_{\mathrm{void}}']
     cases_files = [os.path.join(systresults[systkey], s) for s in ['baofit/individual_combined_gal/alpha_samples_%s.dat'%cap, 'baofit/individual_combined_gal_nowt/alpha_samples_%s.dat'%cap, 'baofit/individual_combined_void/alpha_samples_%s.dat'%cap]]
     print([np.loadtxt(f, usecols=0).shape for f in cases_files])
-    cases_data = np.stack([np.loadtxt(f, usecols=0) for f in cases_files], axis = 1)
+    cases_data = np.stack([np.loadtxt(f, usecols=0)[:999] for f in cases_files], axis = 1)
     samples = MCSamples(samples = cases_data, names = cases, labels = labels) 
     return samples, cases_data
 def plot_triplot(samples_list, label_list, **kwargs):
@@ -43,3 +43,4 @@ if __name__=='__main__':
     plot_hist(g, data_all, bins=20, color='r', lw=2)
     [ax.axvline(1, ls = ':', lw = 1.5, c='k') for ax in g.subplots.ravel() if ax != None]
     g.export(os.path.join(ALL_RESULTS, 'baofit/triplot_alpha_comparison.pdf'))
+    print('Plot saved in %s'%os.path.join(ALL_RESULTS, 'baofit/triplot_alpha_comparison.pdf'))

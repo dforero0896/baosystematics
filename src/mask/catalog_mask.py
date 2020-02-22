@@ -33,7 +33,8 @@ for i, fileName in enumerate(f):
 		fmt = 1
 	# Create job list for the additional masks
 	additional_outpath = outPath.replace('vetomask', 'addmask')
-	add_bash_script.write('/global/cscratch1/sd/dforero/baosystematics/src/mask/additional_mask.py %s %s\n'%(outfile, additional_outpath))
+	if not os.path.isfile(additional_outpath):
+		add_bash_script.write('/global/cscratch1/sd/dforero/baosystematics/src/mask/additional_mask.py %s %s\n'%(outfile, additional_outpath))
 	if os.path.isfile(outfile) and not overwrite:
 		continue 
 	bash_script.write('/global/cscratch1/sd/dforero/baosystematics/bin/vetomask --input=%s --output=%s --format=%i --conf=%s\n'%(infile, outfile, fmt, config_file))
