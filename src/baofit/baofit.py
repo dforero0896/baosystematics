@@ -18,7 +18,7 @@ except StopIteration:
 	sys.stderr.write('ERROR: Empty input directory.\n')
 	sys.exit(1)  
 if not os.path.isdir(outPath):
-	os.mkdir(outPath)
+	os.makedirs(outPath)
 mockFile = tempfile.NamedTemporaryFile(mode='w+t')
 mockFile_name = mockFile.name
 r = os.path.join(outPath, 'cov.dat')

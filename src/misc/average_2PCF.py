@@ -14,7 +14,7 @@ if len(sys.argv)== 4:
 	path = sys.argv[1]
 	name = sys.argv[3]
 	l = read_input(path)
-	gen = (np.loadtxt(os.path.join(p,f), dtype=float) for f in l)
+	gen = (np.loadtxt(os.path.join(path,f), dtype=float) for f in l)
 	outname = name
 elif len(sys.argv)==6:
 	path = sys.argv[1]
@@ -30,7 +30,7 @@ else:
 this_dir = os.path.dirname(sys.argv[0])
 out = sys.argv[2]
 if not os.path.isdir(out):
-	os.mkdir(out)
+	os.makedirs(out)
 data = np.array(list(gen))
 if len(data) == 0:
 	sys.exit('ERROR: No files found.')

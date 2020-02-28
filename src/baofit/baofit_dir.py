@@ -18,12 +18,16 @@ cap = sys.argv[4]
 WORKDIR='/hpcstorage/dforero/projects/baosystematics/'
 try:
 	(_, _, in2pcfall) = next(os.walk(input2PCF))
-	in2pcf = [f for f in in2pcfall if cap.lower() in f.lower()]
+	if cap != 'none':
+		in2pcf = [f for f in in2pcfall if cap.lower() in f.lower()]
+	else:
+		in2pcf = in2pcfall
+		cap='\b'
 except StopIteration:
 	sys.stderr.write('ERROR: Empty input directory.\n')
 	sys.exit(1)  
 if not os.path.isdir(outPath):
-	os.mkdir(outPath)
+	os.makedirs(outPath)
 mockFile = tempfile.NamedTemporaryFile(mode='w+t')
 mockFile_name = mockFile.name
 r = os.path.join(outPath, 'cov_%s.dat'%cap)
@@ -55,7 +59,6 @@ for idx, tpcf in enumerate(files[iproc]):
 	# Check if the output of stats_center exists.
 	if not os.path.isfile(b.replace('bestfit', 'mystats')):
 		os.system('%s -c %s -i %s -m %s -o %s -b %s -r %s'%(run, c, i, m, o, b, r))
-		#os.system('python %s %s %s'%(os.path.join(WORKDIR, 'src/baofit/stats_center.py'), o, cat_type))
 		stats_center.stats_center(o, cat_type, plot=False)
 	if not os.path.isfile(b):
 		os.system('%s -c %s -i %s -m %s -o %s -b %s -r %s'%(run_bestfit, c_bestfit, i, m, o, b, r))
