@@ -22,7 +22,7 @@ try:
 		in2pcf = [f for f in in2pcfall if cap.lower() in f.lower()]
 	else:
 		in2pcf = in2pcfall
-		cap='\b'
+		cap=''
 except StopIteration:
 	sys.stderr.write('ERROR: Empty input directory.\n')
 	sys.exit(1)  

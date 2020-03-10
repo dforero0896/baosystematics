@@ -1,7 +1,7 @@
 #!/bin/bash
-list=/hpcstorage/dforero/projects/baosystematics/data/patchy_boxes/extra_used_patchy.dat
-mockdir=/hpcstorage/dforero/projects/baosystematics/data/patchy_boxes/PATCHY_CMASS/box1
-subsetdir=/hpcstorage/dforero/projects/baosystematics/data/patchy_boxes/patchy_cmass_subset/box1/realextra
+list=/hpcstorage/dforero/projects/baosystematics/data/patchy_boxes/used_patchy.dat
+mockdir=/hpcstorage/dforero/projects/baosystematics/data/patchy_boxes/PATCHY_CMASS/box5
+subsetdir=/hpcstorage/dforero/projects/baosystematics/data/patchy_boxes/patchy_cmass_subset/box5/real
 mkdir -p -v $subsetdir
 echo "Found $(wc -l $list)"
 for ran in $(cat $list)

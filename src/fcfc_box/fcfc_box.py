@@ -68,12 +68,14 @@ if subsample_size != None:
 else: fdat=f
 bash_script = open(bash_script_name, 'w')
 first=True
+counter=0
 for fileno, fileName in enumerate(fdat):
 	dat_cat_file = os.path.join(inPath,fileName)
 	if cat_type == 'void': fileName = fileName.replace('VOID', 'VOID.R-%s-%s'%(r_min, r_max))
 	out_file = os.path.join(outPath,'TwoPCF_'+fileName)
 	if os.path.isfile(out_file) and not overwrite:
 		continue
+	counter+=1
 	dd_file = os.path.join(outPath,'DD_files/DD_'+fileName)
 	dr_file = os.path.join(outPath,'DR_files/DR_'+fileName)
 	rr_file = os.path.join(WORKDIR,'patchy_results/randoms/RR_%s'%os.path.basename(ran_cat_file))
@@ -86,9 +88,9 @@ for fileno, fileName in enumerate(fdat):
 		count_mode = 7
 	else:
 		count_mode = 3
-	bash_script.write('srun -n 1 -c 32 %s --conf=%s --data=%s --rand=%s --count-mode=%s --dd=%s --dr=%s --rr=%s --output=%s --data-aux-min=%s --data-aux-max=%s --rand-aux-min=%s --rand-aux-max=%s\n'%(RUN, conf_file, dat_cat_file, ran_cat_file, count_mode, dd_file, dr_file, rr_file, out_file, r_min, r_max, r_min, r_max))
+	bash_script.write('srun -n 1 -c 16 %s --conf=%s --data=%s --rand=%s --count-mode=%s --dd=%s --dr=%s --rr=%s --output=%s --data-aux-min=%s --data-aux-max=%s --rand-aux-min=%s --rand-aux-max=%s\n'%(RUN, conf_file, dat_cat_file, ran_cat_file, count_mode, dd_file, dr_file, rr_file, out_file, r_min, r_max, r_min, r_max))
 bash_script.close()
-print("Wrote job list: %s"%bash_script_name)
+print("Wrote %s commands in job list: %s"%(counter, bash_script_name))
 dd_dir = os.path.join(outPath, 'DD_files')
 dr_dir = os.path.join(outPath, 'DR_files')
 rr_dir = os.path.join(outPath, 'RR_files')
