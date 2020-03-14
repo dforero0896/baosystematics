@@ -4,19 +4,8 @@ import os
 import pandas as pd
 import numpy as np
 from mask_comp_func import mask_with_function
-import glob
-WORKDIR = "/home/epfl/dforero/scratch/projects/baosystematics"
-RESULTS = WORKDIR+"/patchy_results/simulated_systematics"
-COMP = RESULTS+"/completeness"
-BOX = "1"
-SPACE = "redshift"
-DATA = WORKDIR+"/patchy_results/box%s/%s/nosyst/mocks_gal_xyz/CATALPTCICz0.466G960S1005638091_zspace.dat"%(BOX, SPACE)
-RANDIR = WORKDIR+"/patchy_results/randoms"
-RANDOM = RANDIR+"/box_uniform_random_seed1_0-2500_SMALL.dat"
-# Define a masking function
-box_size=2500
+from params import *
 N_grid = 2500
-sigma_noise = 0.5
 def xplane(y, x, N_grid, Cmin):
   return ( (1-Cmin) / N_grid ) * x + Cmin
 ran_comp_mins = [1, 0.1, 0.1]
@@ -32,7 +21,7 @@ RUN=os.path.join(WORKDIR, 'bin/FCFC_box/2pcf')
 
 bash_script=open('joblist_fit.sh', 'w')
 function = xplane
-mask_dat_fn_list = [f for f in os.listdir(COMP) if f.startswith(os.path.basename(DATA).replace('.dat', '')) and function.__name__ in f]
+mask_dat_fn_list = [f for f in os.listdir(COMP) if f.startswith(os.path.basename(DATA).replace('.dat', '')) and function.__name__ in f and not 'VOID' in f]
 for mask_dat_base in mask_dat_fn_list:
   # Load data catalog with mask
   masked_dat_fn = os.path.join(COMP, mask_dat_base)
@@ -48,7 +37,7 @@ for mask_dat_base in mask_dat_fn_list:
   if not os.path.exists(masked_ran_fn):
     print("Creating %s"%masked_ran_fn)
     ran = pd.read_csv(RANDOM, delim_whitespace=True, usecols=(0, 1, 2), names = names)
-    masked_ran = mask_with_function(ran, lambda y, x: xplane_fit(y, x, weight_vector[1], weight_vector[0]), noise=False, box_size=2500, N_grid=N_grid, sigma_noise=sigma_noise)
+    masked_ran = mask_with_function(ran, lambda y, x: xplane_fit(y, x, weight_vector[1], weight_vector[0]), noise=False, box_size=2500, N_grid=N_grid)
     masked_ran.to_csv(masked_ran_fn, sep = ' ', header=False, index=False)
   # Define files for fcfc
   for weight in [0,1]:
@@ -66,5 +55,5 @@ for mask_dat_base in mask_dat_fn_list:
     elif weight == 1:
       rand_wt_col=4
       data_wt_col=4
-    bash_script.write('srun -n 1 -c 16 %s --conf=%s --data=%s --rand=%s --count-mode=%s --dd=%s --dr=%s --rr=%s --output=%s --rand-wt-col=%s --data-wt-col=%s\n'%(RUN, conf_file, masked_dat_fn, masked_ran_fn, count_mode, dd_file, dr_file, rr_file, out_file, rand_wt_col, data_wt_col))
+    bash_script.write('srun -n 1 -c %s %s --conf=%s --data=%s --rand=%s --count-mode=%s --dd=%s --dr=%s --rr=%s --output=%s --rand-wt-col=%s --data-wt-col=%s\n'%(NCORES, RUN, conf_file, masked_dat_fn, masked_ran_fn, count_mode, dd_file, dr_file, rr_file, out_file, rand_wt_col, data_wt_col))
 bash_script.close()
