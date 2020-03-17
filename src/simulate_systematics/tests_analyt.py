@@ -5,20 +5,13 @@ import pandas as pd
 import numpy as np
 from mask_comp_func import mask_with_function
 from params import *
-# Define a masking function
+
+
 if len(sys.argv) != 3:
   sys.exit("USAGE: %s NOISE NGRID"%sys.argv[0])
 N_grid = int(sys.argv[2]) #2500
 sigma_noise = float(sys.argv[1]) #0.4
 print("Grid size: %s\tNoise level: %s"%(N_grid, sigma_noise))
-def parabola(y, x, N_grid, Cmin):
-  return -(2 * (1-Cmin) / N_grid**2 ) * ((x- 0.5 * N_grid)**2 + (y- 0.5 * N_grid)**2) + 1
-def xplane(y, x, N_grid, Cmin):
-  return ( (1-Cmin) / N_grid ) * x + Cmin
-def flat(y, x, N_grid, Cmin):
-  return Cmin
-def parabola_off(y, x, N_grid, Cmin):
-  return -((1-Cmin)/(2*N_grid**2)) * (x**2 + y**2) + 1
 functions = [flat, parabola, xplane, parabola_off]
 ran_comp_mins = [1, cmin_map, cmin_map, cmin_map]
 dat_comp_mins = [0.8, cmin_map, cmin_map, cmin_map]
@@ -31,8 +24,9 @@ data_wt_col = 4
 # Setup fcfc run
 conf_file = WORKDIR+"/src/fcfc_box/fcfc_box_count_%s.conf"%SPACE
 RUN=os.path.join(WORKDIR, 'bin/FCFC_box/2pcf')
-nsampler = lambda size: noise_sampler(sigma_noise, size)
-#nsampler=None
+if noise_sampler:
+  nsampler = lambda size: noise_sampler(sigma_noise, size)
+else: nsampler=None
 
 
 bash_script=open('joblist_analyt.sh', 'w')

@@ -11,6 +11,7 @@ def mask_with_function(data, comp_mesh, seed=2, noise=True, box_size=2500, N_gri
   comp = comp_mesh(iy, ix)
   data['w']=1/np.clip(comp, cmin, 1) #save weights as inverse smooth completeness
   rand = np.random.random(len(data))
+  print(f"Noise = {noise}")
   if noise:
     if noise_sampler is not None:
       print("Using non-default noise sampler.")
