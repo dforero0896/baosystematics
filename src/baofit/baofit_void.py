@@ -25,7 +25,9 @@ r = os.path.join(outPath, 'cov.dat')
 if cat_type=='void':
 	run = os.path.join(WORKDIR,'src/baofit/BAOfit_void_new/baofit.py')
 	run_bestfit = os.path.join(WORKDIR,'bin/BAOfit_void/bestfit')
+	stats_run = os.path.join(WORKDIR, 'src/baofit/stats_center.py')
 elif cat_type=='gal':
+	raise(ValueError("This code works with voids!"))
 	run = os.path.join(WORKDIR,'bin/BAOfit_galaxy/BAOfit')
 	run_bestfit = os.path.join(WORKDIR,'bin/BAOfit_galaxy/bestfit')
 else:
@@ -44,11 +46,12 @@ else:
 i = tpcf_fn
 m = mockFile_name
 o = os.path.join(outPath, 'BAOfit_'+tpcf)
-b = o+'bestfit.txt' 
+b = o+'mystats.txt' 
 # Check if the output of stats_center exists.
-if not os.path.isfile(b.replace('bestfit', 'mystats')):
-	os.system('%s %s %s %s %s %s'%(run, i, m, outPath, r, compute_cov))
-	stats_center.stats_center(o, cat_type='gal', plot=True)
+if not os.path.isfile(o+'.txt' ): #Check if chain file exists
+	os.system(f"{run} {i} {m} {outPath} {r} {compute_cov} && python {stats_run} {o} 3\n")
+elif not os.path.isfile(b): #Check if mystats file has been created
+	stats_center.stats_center(o, nparams=3, plot=True)
 mockFile.close()
 
 

@@ -59,7 +59,7 @@ for idx, tpcf in enumerate(files[iproc]):
 	# Check if the output of stats_center exists.
 	if not os.path.isfile(b.replace('bestfit', 'mystats')):
 		os.system('%s -c %s -i %s -m %s -o %s -b %s -r %s'%(run, c, i, m, o, b, r))
-		stats_center.stats_center(o, cat_type, plot=False)
+		stats_center.stats_center(o, cat_type=cat_type, plot=False)
 	if not os.path.isfile(b):
 		os.system('%s -c %s -i %s -m %s -o %s -b %s -r %s'%(run_bestfit, c_bestfit, i, m, o, b, r))
 mockFile.close()

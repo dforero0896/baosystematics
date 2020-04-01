@@ -22,4 +22,6 @@ if __name__ == '__main__':
   [a.set_xlabel(r'$X$ [Mpc]') for a in ax]
   [a.set_aspect('equal', 'box') for a in ax]
   ax[0].set_ylabel(r'$Y$ [Mpc]')
+  ax[0].set_title("Masked")
+  ax[1].set_title("Weighted")
   plt.show()

@@ -1,0 +1,1010 @@
+allobsjobs.sh: line 1: ==: command not found
+allobsjobs.sh: line 2: ==: command not found
+allobsjobs.sh: line 3: ==: command not found
+2500 -10 1009
+Reading file: /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/smooth/parabola_0.8/obss_gal_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.0.dat
+Number of records: 5799750
+
+Duplicating boundaries for periodic condition
+Number of records: 6926259
+
+Building Delaunay Triangulation.
+Number of vertices: 6926259
+Number of cells: 46343563
+
+Writing to file /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/smooth/parabola_0.8/{cat_type}s_void_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.0.VOID.dat
+Writing voids with radius in (-10,1009).
+Finished successfully!
+/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_real.conf
+Loading configuration ... 
+  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/smooth/parabola_0.8/obss_gal_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.0.dat
+  DATA_HEADER     = 0
+  DIST_BIN_DIM    = 1
+  DIST_BIN_TYPE   = 1
+  DIST_BIN_RMIN   = 0
+  DIST_BIN_RMAX   = 200
+  DIST_BIN_RNUM   = 40
+  DIST_BIN_PREC   = 0
+  COUNT_MODE      = 1
+  MOMENT          = 1
+  CF_MODE         = 3
+  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/smooth/parabola_0.8/tpcf_gal_obs_nowt/TwoPCF_Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.0.dat
+  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/smooth/parabola_0.8/tpcf_gal_obs_nowt/DD_files/DD_Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.0.dat
+  FORCE           = 1
+  VERBOSE         = 1
+[70C[[32;1mDONE[0m]
+Create bins for distances and counts ... [70C[[32;1mDONE[0m]
+Reading data catalog ... 
+  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/smooth/parabola_0.8/obss_gal_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.0.dat'.
+  Counting lines ...   Number of records: 5799750.
+  Allocating memory ...   ~ 88.5 Mb memory allocated for the tracers.
+  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  5799750 objects recorded.
+[70C[[32;1mDONE[0m]
+Construct the tree for data ... [70C[[32;1mDONE[0m]
+Counting DD pairs ... 
+  DD counts are saved to file or stdout.
+[70C[[32;1mDONE[0m]
+Releasing memory for data ... [70C[[32;1mDONE[0m]
+Computing the correlation function ... 
+  The correlation function is saved.
+[70C[[32;1mDONE[0m]
+Releasing memory ... [70C[[32;1mDONE[0m]
+/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_real.conf
+Loading configuration ... 
+  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/smooth/parabola_0.8/{cat_type}s_void_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.0.VOID.dat
+  DATA_HEADER     = 0
+  DATA_AUX_XOL    = 4
+  DATA_SEL_MODE   = 23
+  DATA_X_MIN      = 0
+  DATA_X_MAX      = 2500
+  DATA_Y_MIN      = 0
+  DATA_Y_MAX      = 2500
+  DATA_Z_MIN      = 0
+  DATA_Z_MAX      = 2500
+  DATA_AUX_MIN    = 16
+  DATA_AUX_MAX    = 50
+  DIST_BIN_DIM    = 1
+  DIST_BIN_TYPE   = 1
+  DIST_BIN_RMIN   = 0
+  DIST_BIN_RMAX   = 200
+  DIST_BIN_RNUM   = 40
+  DIST_BIN_PREC   = 0
+  COUNT_MODE      = 1
+  MOMENT          = 1
+  CF_MODE         = 3
+  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/smooth/parabola_0.8/tpcf_void_obs_nowt_R-16-50/TwoPCF_Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.0.VOID.R-16-50.dat
+  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/smooth/parabola_0.8/tpcf_void_obs_nowt_R-16-50/DD_files/DD_Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.0.VOID.R-16-50.dat
+  FORCE           = 1
+  VERBOSE         = 1
+[70C[[32;1mDONE[0m]
+Create bins for distances and counts ... [70C[[32;1mDONE[0m]
+Reading data catalog ... 
+  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/smooth/parabola_0.8/{cat_type}s_void_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.0.VOID.dat'.
+  Counting lines ...   Number of records: 38856852.
+  Allocating memory ...   ~ 593 Mb memory allocated for the tracers.
+  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  29635914 objects removed.
+  9220938 objects recorded.
+[70C[[32;1mDONE[0m]
+Construct the tree for data ... [70C[[32;1mDONE[0m]
+Counting DD pairs ... 
+  DD counts are saved to file or stdout.
+[70C[[32;1mDONE[0m]
+Releasing memory for data ... [70C[[32;1mDONE[0m]
+Computing the correlation function ... 
+  The correlation function is saved.
+[70C[[32;1mDONE[0m]
+Releasing memory ... [70C[[32;1mDONE[0m]
+/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_real.conf
+Loading configuration ... 
+  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/smooth/parabola_0.8/{cat_type}s_void_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.0.VOID.dat
+  DATA_HEADER     = 0
+  DATA_AUX_XOL    = 4
+  DATA_SEL_MODE   = 23
+  DATA_X_MIN      = 0
+  DATA_X_MAX      = 2500
+  DATA_Y_MIN      = 0
+  DATA_Y_MAX      = 2500
+  DATA_Z_MIN      = 0
+  DATA_Z_MAX      = 2500
+  DATA_AUX_MIN    = 16
+  DATA_AUX_MAX    = 50
+  RAND_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/smooth/parabola_0.8/obss_gal_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.0.dat
+  RAND_HEADER     = 0
+  RAND_SEL_MODE   = 7
+  RAND_X_MIN      = 0
+  RAND_X_MAX      = 2500
+  RAND_Y_MIN      = 0
+  RAND_Y_MAX      = 2500
+  RAND_Z_MIN      = 0
+  RAND_Z_MAX      = 2500
+  DIST_BIN_DIM    = 1
+  DIST_BIN_TYPE   = 1
+  DIST_BIN_RMIN   = 0
+  DIST_BIN_RMAX   = 200
+  DIST_BIN_RNUM   = 40
+  DIST_BIN_PREC   = 0
+  COUNT_MODE      = 2
+  MOMENT          = 1
+  DR_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/smooth/parabola_0.8/tpcf_xgv_obs_vnw_gnw_R-16-50/DD_files/DD_Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.0.CROSS.R_16-50.dat
+  FORCE           = 1
+  VERBOSE         = 1
+[70C[[32;1mDONE[0m]
+Create bins for distances and counts ... [70C[[32;1mDONE[0m]
+Reading data catalog ... 
+  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/smooth/parabola_0.8/{cat_type}s_void_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.0.VOID.dat'.
+  Counting lines ...   Number of records: 38856852.
+  Allocating memory ...   ~ 593 Mb memory allocated for the tracers.
+  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  29635914 objects removed.
+  9220938 objects recorded.
+[70C[[32;1mDONE[0m]
+Construct the tree for data ... [70C[[32;1mDONE[0m]
+Reading random catalog ... 
+  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/smooth/parabola_0.8/obss_gal_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.0.dat'.
+  Counting lines ...   Number of records: 5799750.
+  Allocating memory ...   ~ 88.5 Mb memory allocated for the tracers.
+  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  5799750 objects recorded.
+[70C[[32;1mDONE[0m]
+Construct the tree for random ... [70C[[32;1mDONE[0m]
+Counting DR pairs ... 
+  DR counts are saved to file or stdout.
+[70C[[32;1mDONE[0m]
+Releasing memory for data ... [70C[[32;1mDONE[0m]
+Releasing memory for random ... [70C[[32;1mDONE[0m]
+Releasing memory ... [70C[[32;1mDONE[0m]
+==> Saved correlation function in /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/smooth/parabola_0.8/tpcf_xgv_obs_vnw_gnw_R-16-50/TwoPCF_Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.0.CROSS.R_16-50.dat.
+/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_real.conf
+Loading configuration ... 
+  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/smooth/parabola_0.8/{cat_type}s_void_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.0.VOID.dat
+  DATA_HEADER     = 0
+  DATA_AUX_XOL    = 4
+  DATA_SEL_MODE   = 23
+  DATA_X_MIN      = 0
+  DATA_X_MAX      = 2500
+  DATA_Y_MIN      = 0
+  DATA_Y_MAX      = 2500
+  DATA_Z_MIN      = 0
+  DATA_Z_MAX      = 2500
+  DATA_AUX_MIN    = 16
+  DATA_AUX_MAX    = 50
+  RAND_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/smooth/parabola_0.8/obss_gal_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.0.dat
+  RAND_HEADER     = 0
+  RAND_WT_COL     = 4
+  RAND_SEL_MODE   = 7
+  RAND_X_MIN      = 0
+  RAND_X_MAX      = 2500
+  RAND_Y_MIN      = 0
+  RAND_Y_MAX      = 2500
+  RAND_Z_MIN      = 0
+  RAND_Z_MAX      = 2500
+  DIST_BIN_DIM    = 1
+  DIST_BIN_TYPE   = 1
+  DIST_BIN_RMIN   = 0
+  DIST_BIN_RMAX   = 200
+  DIST_BIN_RNUM   = 40
+  DIST_BIN_PREC   = 0
+  COUNT_MODE      = 2
+  MOMENT          = 1
+  DR_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/smooth/parabola_0.8/tpcf_xgv_obs_vnw_gw_R-16-50/DD_files/DD_Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.0.CROSS.R_16-50.dat
+  FORCE           = 1
+  VERBOSE         = 1
+[70C[[32;1mDONE[0m]
+Create bins for distances and counts ... [70C[[32;1mDONE[0m]
+Reading data catalog ... 
+  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/smooth/parabola_0.8/{cat_type}s_void_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.0.VOID.dat'.
+  Counting lines ...   Number of records: 38856852.
+  Allocating memory ...   ~ 593 Mb memory allocated for the tracers.
+  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  29635914 objects removed.
+  9220938 objects recorded.
+[70C[[32;1mDONE[0m]
+Construct the tree for data ... 
+  Computing weights ...   Done with computing weights.
+[70C[[32;1mDONE[0m]
+Reading random catalog ... 
+  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/smooth/parabola_0.8/obss_gal_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.0.dat'.
+  Counting lines ...   Number of records: 5799750.
+  Allocating memory ...   ~ 88.5 Mb memory allocated for the tracers.
+  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  5799750 objects recorded.
+[70C[[32;1mDONE[0m]
+Construct the tree for random ... 
+  Computing weights ...   Done with computing weights.
+[70C[[32;1mDONE[0m]
+Counting DR pairs ... 
+  DR counts are saved to file or stdout.
+[70C[[32;1mDONE[0m]
+Releasing memory for data ... [70C[[32;1mDONE[0m]
+Releasing memory for random ... [70C[[32;1mDONE[0m]
+Releasing memory ... [70C[[32;1mDONE[0m]
+==> Saved correlation function in /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/smooth/parabola_0.8/tpcf_xgv_obs_vnw_gw_R-16-50/TwoPCF_Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.0.CROSS.R_16-50.dat.
+/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_real.conf
+Loading configuration ... 
+  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/smooth/parabola_0.8/obss_gal_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.0.dat
+  DATA_HEADER     = 0
+  DATA_WT_COL     = 4
+  DIST_BIN_DIM    = 1
+  DIST_BIN_TYPE   = 1
+  DIST_BIN_RMIN   = 0
+  DIST_BIN_RMAX   = 200
+  DIST_BIN_RNUM   = 40
+  DIST_BIN_PREC   = 0
+  COUNT_MODE      = 1
+  MOMENT          = 1
+  CF_MODE         = 3
+  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/smooth/parabola_0.8/tpcf_gal_obs/TwoPCF_Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.0.dat
+  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/smooth/parabola_0.8/tpcf_gal_obs/DD_files/DD_Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.0.dat
+  FORCE           = 1
+  VERBOSE         = 1
+[70C[[32;1mDONE[0m]
+Create bins for distances and counts ... [70C[[32;1mDONE[0m]
+Reading data catalog ... 
+  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/smooth/parabola_0.8/obss_gal_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.0.dat'.
+  Counting lines ...   Number of records: 5799750.
+  Allocating memory ...   ~ 88.5 Mb memory allocated for the tracers.
+  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  5799750 objects recorded.
+[70C[[32;1mDONE[0m]
+Construct the tree for data ... 
+  Computing weights ...   Done with computing weights.
+[70C[[32;1mDONE[0m]
+Counting DD pairs ... 
+  DD counts are saved to file or stdout.
+[70C[[32;1mDONE[0m]
+Releasing memory for data ... [70C[[32;1mDONE[0m]
+Computing the correlation function ... 
+  The correlation function is saved.
+[70C[[32;1mDONE[0m]
+Releasing memory ... [70C[[32;1mDONE[0m]
+2500 -10 1009
+Reading file: /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/noise/parabola_0.8/obss_gal_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.2.dat
+Number of records: 4808659
+
+Duplicating boundaries for periodic condition
+Number of records: 5734093
+
+Building Delaunay Triangulation.
+Number of vertices: 5734093
+Number of cells: 38416439
+
+Writing to file /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/noise/parabola_0.8/{cat_type}s_void_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.2.VOID.dat
+Writing voids with radius in (-10,1009).
+Finished successfully!
+/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_real.conf
+Loading configuration ... 
+  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/noise/parabola_0.8/obss_gal_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.2.dat
+  DATA_HEADER     = 0
+  DIST_BIN_DIM    = 1
+  DIST_BIN_TYPE   = 1
+  DIST_BIN_RMIN   = 0
+  DIST_BIN_RMAX   = 200
+  DIST_BIN_RNUM   = 40
+  DIST_BIN_PREC   = 0
+  COUNT_MODE      = 1
+  MOMENT          = 1
+  CF_MODE         = 3
+  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/noise/parabola_0.8/tpcf_gal_obs_nowt/TwoPCF_Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.2.dat
+  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/noise/parabola_0.8/tpcf_gal_obs_nowt/DD_files/DD_Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.2.dat
+  FORCE           = 1
+  VERBOSE         = 1
+[70C[[32;1mDONE[0m]
+Create bins for distances and counts ... [70C[[32;1mDONE[0m]
+Reading data catalog ... 
+  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/noise/parabola_0.8/obss_gal_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.2.dat'.
+  Counting lines ...   Number of records: 4808659.
+  Allocating memory ...   ~ 73.4 Mb memory allocated for the tracers.
+  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  4808659 objects recorded.
+[70C[[32;1mDONE[0m]
+Construct the tree for data ... [70C[[32;1mDONE[0m]
+Counting DD pairs ... 
+  DD counts are saved to file or stdout.
+[70C[[32;1mDONE[0m]
+Releasing memory for data ... [70C[[32;1mDONE[0m]
+Computing the correlation function ... 
+  The correlation function is saved.
+[70C[[32;1mDONE[0m]
+Releasing memory ... [70C[[32;1mDONE[0m]
+/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_real.conf
+Loading configuration ... 
+  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/noise/parabola_0.8/{cat_type}s_void_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.2.VOID.dat
+  DATA_HEADER     = 0
+  DATA_AUX_XOL    = 4
+  DATA_SEL_MODE   = 23
+  DATA_X_MIN      = 0
+  DATA_X_MAX      = 2500
+  DATA_Y_MIN      = 0
+  DATA_Y_MAX      = 2500
+  DATA_Z_MIN      = 0
+  DATA_Z_MAX      = 2500
+  DATA_AUX_MIN    = 16
+  DATA_AUX_MAX    = 50
+  DIST_BIN_DIM    = 1
+  DIST_BIN_TYPE   = 1
+  DIST_BIN_RMIN   = 0
+  DIST_BIN_RMAX   = 200
+  DIST_BIN_RNUM   = 40
+  DIST_BIN_PREC   = 0
+  COUNT_MODE      = 1
+  MOMENT          = 1
+  CF_MODE         = 3
+  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/noise/parabola_0.8/tpcf_void_obs_nowt_R-16-50/TwoPCF_Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.2.VOID.R-16-50.dat
+  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/noise/parabola_0.8/tpcf_void_obs_nowt_R-16-50/DD_files/DD_Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.2.VOID.R-16-50.dat
+  FORCE           = 1
+  VERBOSE         = 1
+[70C[[32;1mDONE[0m]
+Create bins for distances and counts ... [70C[[32;1mDONE[0m]
+Reading data catalog ... 
+  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/noise/parabola_0.8/{cat_type}s_void_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.2.VOID.dat'.
+  Counting lines ...   Number of records: 32262500.
+  Allocating memory ...   ~ 492 Mb memory allocated for the tracers.
+  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  22750390 objects removed.
+  9512110 objects recorded.
+[70C[[32;1mDONE[0m]
+Construct the tree for data ... [70C[[32;1mDONE[0m]
+Counting DD pairs ... 
+  DD counts are saved to file or stdout.
+[70C[[32;1mDONE[0m]
+Releasing memory for data ... [70C[[32;1mDONE[0m]
+Computing the correlation function ... 
+  The correlation function is saved.
+[70C[[32;1mDONE[0m]
+Releasing memory ... [70C[[32;1mDONE[0m]
+/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_real.conf
+Loading configuration ... 
+  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/noise/parabola_0.8/{cat_type}s_void_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.2.VOID.dat
+  DATA_HEADER     = 0
+  DATA_AUX_XOL    = 4
+  DATA_SEL_MODE   = 23
+  DATA_X_MIN      = 0
+  DATA_X_MAX      = 2500
+  DATA_Y_MIN      = 0
+  DATA_Y_MAX      = 2500
+  DATA_Z_MIN      = 0
+  DATA_Z_MAX      = 2500
+  DATA_AUX_MIN    = 16
+  DATA_AUX_MAX    = 50
+  RAND_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/noise/parabola_0.8/obss_gal_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.2.dat
+  RAND_HEADER     = 0
+  RAND_SEL_MODE   = 7
+  RAND_X_MIN      = 0
+  RAND_X_MAX      = 2500
+  RAND_Y_MIN      = 0
+  RAND_Y_MAX      = 2500
+  RAND_Z_MIN      = 0
+  RAND_Z_MAX      = 2500
+  DIST_BIN_DIM    = 1
+  DIST_BIN_TYPE   = 1
+  DIST_BIN_RMIN   = 0
+  DIST_BIN_RMAX   = 200
+  DIST_BIN_RNUM   = 40
+  DIST_BIN_PREC   = 0
+  COUNT_MODE      = 2
+  MOMENT          = 1
+  DR_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/noise/parabola_0.8/tpcf_xgv_obs_vnw_gnw_R-16-50/DD_files/DD_Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.2.CROSS.R_16-50.dat
+  FORCE           = 1
+  VERBOSE         = 1
+[70C[[32;1mDONE[0m]
+Create bins for distances and counts ... [70C[[32;1mDONE[0m]
+Reading data catalog ... 
+  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/noise/parabola_0.8/{cat_type}s_void_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.2.VOID.dat'.
+  Counting lines ...   Number of records: 32262500.
+  Allocating memory ...   ~ 492 Mb memory allocated for the tracers.
+  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  22750390 objects removed.
+  9512110 objects recorded.
+[70C[[32;1mDONE[0m]
+Construct the tree for data ... [70C[[32;1mDONE[0m]
+Reading random catalog ... 
+  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/noise/parabola_0.8/obss_gal_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.2.dat'.
+  Counting lines ...   Number of records: 4808659.
+  Allocating memory ...   ~ 73.4 Mb memory allocated for the tracers.
+  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  4808659 objects recorded.
+[70C[[32;1mDONE[0m]
+Construct the tree for random ... [70C[[32;1mDONE[0m]
+Counting DR pairs ... 
+  DR counts are saved to file or stdout.
+[70C[[32;1mDONE[0m]
+Releasing memory for data ... [70C[[32;1mDONE[0m]
+Releasing memory for random ... [70C[[32;1mDONE[0m]
+Releasing memory ... [70C[[32;1mDONE[0m]
+==> Saved correlation function in /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/noise/parabola_0.8/tpcf_xgv_obs_vnw_gnw_R-16-50/TwoPCF_Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.2.CROSS.R_16-50.dat.
+/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_real.conf
+Loading configuration ... 
+  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/noise/parabola_0.8/{cat_type}s_void_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.2.VOID.dat
+  DATA_HEADER     = 0
+  DATA_AUX_XOL    = 4
+  DATA_SEL_MODE   = 23
+  DATA_X_MIN      = 0
+  DATA_X_MAX      = 2500
+  DATA_Y_MIN      = 0
+  DATA_Y_MAX      = 2500
+  DATA_Z_MIN      = 0
+  DATA_Z_MAX      = 2500
+  DATA_AUX_MIN    = 16
+  DATA_AUX_MAX    = 50
+  RAND_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/noise/parabola_0.8/obss_gal_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.2.dat
+  RAND_HEADER     = 0
+  RAND_WT_COL     = 4
+  RAND_SEL_MODE   = 7
+  RAND_X_MIN      = 0
+  RAND_X_MAX      = 2500
+  RAND_Y_MIN      = 0
+  RAND_Y_MAX      = 2500
+  RAND_Z_MIN      = 0
+  RAND_Z_MAX      = 2500
+  DIST_BIN_DIM    = 1
+  DIST_BIN_TYPE   = 1
+  DIST_BIN_RMIN   = 0
+  DIST_BIN_RMAX   = 200
+  DIST_BIN_RNUM   = 40
+  DIST_BIN_PREC   = 0
+  COUNT_MODE      = 2
+  MOMENT          = 1
+  DR_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/noise/parabola_0.8/tpcf_xgv_obs_vnw_gw_R-16-50/DD_files/DD_Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.2.CROSS.R_16-50.dat
+  FORCE           = 1
+  VERBOSE         = 1
+[70C[[32;1mDONE[0m]
+Create bins for distances and counts ... [70C[[32;1mDONE[0m]
+Reading data catalog ... 
+  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/noise/parabola_0.8/{cat_type}s_void_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.2.VOID.dat'.
+  Counting lines ...   Number of records: 32262500.
+  Allocating memory ...   ~ 492 Mb memory allocated for the tracers.
+  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  22750390 objects removed.
+  9512110 objects recorded.
+[70C[[32;1mDONE[0m]
+Construct the tree for data ... 
+  Computing weights ...   Done with computing weights.
+[70C[[32;1mDONE[0m]
+Reading random catalog ... 
+  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/noise/parabola_0.8/obss_gal_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.2.dat'.
+  Counting lines ...   Number of records: 4808659.
+  Allocating memory ...   ~ 73.4 Mb memory allocated for the tracers.
+  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  4808659 objects recorded.
+[70C[[32;1mDONE[0m]
+Construct the tree for random ... 
+  Computing weights ...   Done with computing weights.
+[70C[[32;1mDONE[0m]
+Counting DR pairs ... 
+  DR counts are saved to file or stdout.
+[70C[[32;1mDONE[0m]
+Releasing memory for data ... [70C[[32;1mDONE[0m]
+Releasing memory for random ... [70C[[32;1mDONE[0m]
+Releasing memory ... [70C[[32;1mDONE[0m]
+==> Saved correlation function in /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/noise/parabola_0.8/tpcf_xgv_obs_vnw_gw_R-16-50/TwoPCF_Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.2.CROSS.R_16-50.dat.
+/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_real.conf
+Loading configuration ... 
+  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/noise/parabola_0.8/obss_gal_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.2.dat
+  DATA_HEADER     = 0
+  DATA_WT_COL     = 4
+  DIST_BIN_DIM    = 1
+  DIST_BIN_TYPE   = 1
+  DIST_BIN_RMIN   = 0
+  DIST_BIN_RMAX   = 200
+  DIST_BIN_RNUM   = 40
+  DIST_BIN_PREC   = 0
+  COUNT_MODE      = 1
+  MOMENT          = 1
+  CF_MODE         = 3
+  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/noise/parabola_0.8/tpcf_gal_obs/TwoPCF_Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.2.dat
+  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/noise/parabola_0.8/tpcf_gal_obs/DD_files/DD_Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.2.dat
+  FORCE           = 1
+  VERBOSE         = 1
+[70C[[32;1mDONE[0m]
+Create bins for distances and counts ... [70C[[32;1mDONE[0m]
+Reading data catalog ... 
+  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/noise/parabola_0.8/obss_gal_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384.parabola.sigma0.2.dat'.
+  Counting lines ...   Number of records: 4808659.
+  Allocating memory ...   ~ 73.4 Mb memory allocated for the tracers.
+  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  4808659 objects recorded.
+[70C[[32;1mDONE[0m]
+Construct the tree for data ... 
+  Computing weights ...   Done with computing weights.
+[70C[[32;1mDONE[0m]
+Counting DD pairs ... 
+  DD counts are saved to file or stdout.
+[70C[[32;1mDONE[0m]
+Releasing memory for data ... [70C[[32;1mDONE[0m]
+Computing the correlation function ... 
+  The correlation function is saved.
+[70C[[32;1mDONE[0m]
+Releasing memory ... [70C[[32;1mDONE[0m]
+allobsjobs.sh: line 18: ==: command not found
+allobsjobs.sh: line 19: ==: command not found
+allobsjobs.sh: line 20: ==: command not found
+2500 -10 1009
+Reading file: /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/smooth/parabola_0.8/obss_gal_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.0.dat
+Number of records: 5799750
+
+Duplicating boundaries for periodic condition
+Number of records: 6926081
+
+Building Delaunay Triangulation.
+Number of vertices: 6926081
+Number of cells: 46028125
+
+Writing to file /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/smooth/parabola_0.8/{cat_type}s_void_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.0.VOID.dat
+Writing voids with radius in (-10,1009).
+Finished successfully!
+/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_real.conf
+Loading configuration ... 
+  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/smooth/parabola_0.8/obss_gal_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.0.dat
+  DATA_HEADER     = 0
+  DIST_BIN_DIM    = 1
+  DIST_BIN_TYPE   = 1
+  DIST_BIN_RMIN   = 0
+  DIST_BIN_RMAX   = 200
+  DIST_BIN_RNUM   = 40
+  DIST_BIN_PREC   = 0
+  COUNT_MODE      = 1
+  MOMENT          = 1
+  CF_MODE         = 3
+  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/smooth/parabola_0.8/tpcf_gal_obs_nowt/TwoPCF_Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.0.dat
+  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/smooth/parabola_0.8/tpcf_gal_obs_nowt/DD_files/DD_Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.0.dat
+  FORCE           = 1
+  VERBOSE         = 1
+[70C[[32;1mDONE[0m]
+Create bins for distances and counts ... [70C[[32;1mDONE[0m]
+Reading data catalog ... 
+  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/smooth/parabola_0.8/obss_gal_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.0.dat'.
+  Counting lines ...   Number of records: 5799750.
+  Allocating memory ...   ~ 88.5 Mb memory allocated for the tracers.
+  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  5799750 objects recorded.
+[70C[[32;1mDONE[0m]
+Construct the tree for data ... [70C[[32;1mDONE[0m]
+Counting DD pairs ... 
+  DD counts are saved to file or stdout.
+[70C[[32;1mDONE[0m]
+Releasing memory for data ... [70C[[32;1mDONE[0m]
+Computing the correlation function ... 
+  The correlation function is saved.
+[70C[[32;1mDONE[0m]
+Releasing memory ... [70C[[32;1mDONE[0m]
+/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_real.conf
+Loading configuration ... 
+  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/smooth/parabola_0.8/{cat_type}s_void_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.0.VOID.dat
+  DATA_HEADER     = 0
+  DATA_AUX_XOL    = 4
+  DATA_SEL_MODE   = 23
+  DATA_X_MIN      = 0
+  DATA_X_MAX      = 2500
+  DATA_Y_MIN      = 0
+  DATA_Y_MAX      = 2500
+  DATA_Z_MIN      = 0
+  DATA_Z_MAX      = 2500
+  DATA_AUX_MIN    = 16
+  DATA_AUX_MAX    = 50
+  DIST_BIN_DIM    = 1
+  DIST_BIN_TYPE   = 1
+  DIST_BIN_RMIN   = 0
+  DIST_BIN_RMAX   = 200
+  DIST_BIN_RNUM   = 40
+  DIST_BIN_PREC   = 0
+  COUNT_MODE      = 1
+  MOMENT          = 1
+  CF_MODE         = 3
+  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/smooth/parabola_0.8/tpcf_void_obs_nowt_R-16-50/TwoPCF_Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.0.VOID.R-16-50.dat
+  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/smooth/parabola_0.8/tpcf_void_obs_nowt_R-16-50/DD_files/DD_Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.0.VOID.R-16-50.dat
+  FORCE           = 1
+  VERBOSE         = 1
+[70C[[32;1mDONE[0m]
+Create bins for distances and counts ... [70C[[32;1mDONE[0m]
+Reading data catalog ... 
+  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/smooth/parabola_0.8/{cat_type}s_void_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.0.VOID.dat'.
+  Counting lines ...   Number of records: 38588445.
+  Allocating memory ...   ~ 589 Mb memory allocated for the tracers.
+  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  29152366 objects removed.
+  9436079 objects recorded.
+[70C[[32;1mDONE[0m]
+Construct the tree for data ... [70C[[32;1mDONE[0m]
+Counting DD pairs ... 
+  DD counts are saved to file or stdout.
+[70C[[32;1mDONE[0m]
+Releasing memory for data ... [70C[[32;1mDONE[0m]
+Computing the correlation function ... 
+  The correlation function is saved.
+[70C[[32;1mDONE[0m]
+Releasing memory ... [70C[[32;1mDONE[0m]
+/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_real.conf
+Loading configuration ... 
+  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/smooth/parabola_0.8/{cat_type}s_void_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.0.VOID.dat
+  DATA_HEADER     = 0
+  DATA_AUX_XOL    = 4
+  DATA_SEL_MODE   = 23
+  DATA_X_MIN      = 0
+  DATA_X_MAX      = 2500
+  DATA_Y_MIN      = 0
+  DATA_Y_MAX      = 2500
+  DATA_Z_MIN      = 0
+  DATA_Z_MAX      = 2500
+  DATA_AUX_MIN    = 16
+  DATA_AUX_MAX    = 50
+  RAND_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/smooth/parabola_0.8/obss_gal_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.0.dat
+  RAND_HEADER     = 0
+  RAND_SEL_MODE   = 7
+  RAND_X_MIN      = 0
+  RAND_X_MAX      = 2500
+  RAND_Y_MIN      = 0
+  RAND_Y_MAX      = 2500
+  RAND_Z_MIN      = 0
+  RAND_Z_MAX      = 2500
+  DIST_BIN_DIM    = 1
+  DIST_BIN_TYPE   = 1
+  DIST_BIN_RMIN   = 0
+  DIST_BIN_RMAX   = 200
+  DIST_BIN_RNUM   = 40
+  DIST_BIN_PREC   = 0
+  COUNT_MODE      = 2
+  MOMENT          = 1
+  DR_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/smooth/parabola_0.8/tpcf_xgv_obs_vnw_gnw_R-16-50/DD_files/DD_Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.0.CROSS.R_16-50.dat
+  FORCE           = 1
+  VERBOSE         = 1
+[70C[[32;1mDONE[0m]
+Create bins for distances and counts ... [70C[[32;1mDONE[0m]
+Reading data catalog ... 
+  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/smooth/parabola_0.8/{cat_type}s_void_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.0.VOID.dat'.
+  Counting lines ...   Number of records: 38588445.
+  Allocating memory ...   ~ 589 Mb memory allocated for the tracers.
+  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  29152366 objects removed.
+  9436079 objects recorded.
+[70C[[32;1mDONE[0m]
+Construct the tree for data ... [70C[[32;1mDONE[0m]
+Reading random catalog ... 
+  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/smooth/parabola_0.8/obss_gal_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.0.dat'.
+  Counting lines ...   Number of records: 5799750.
+  Allocating memory ...   ~ 88.5 Mb memory allocated for the tracers.
+  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  5799750 objects recorded.
+[70C[[32;1mDONE[0m]
+Construct the tree for random ... [70C[[32;1mDONE[0m]
+Counting DR pairs ... 
+  DR counts are saved to file or stdout.
+[70C[[32;1mDONE[0m]
+Releasing memory for data ... [70C[[32;1mDONE[0m]
+Releasing memory for random ... [70C[[32;1mDONE[0m]
+Releasing memory ... [70C[[32;1mDONE[0m]
+==> Saved correlation function in /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/smooth/parabola_0.8/tpcf_xgv_obs_vnw_gnw_R-16-50/TwoPCF_Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.0.CROSS.R_16-50.dat.
+/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_real.conf
+Loading configuration ... 
+  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/smooth/parabola_0.8/{cat_type}s_void_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.0.VOID.dat
+  DATA_HEADER     = 0
+  DATA_AUX_XOL    = 4
+  DATA_SEL_MODE   = 23
+  DATA_X_MIN      = 0
+  DATA_X_MAX      = 2500
+  DATA_Y_MIN      = 0
+  DATA_Y_MAX      = 2500
+  DATA_Z_MIN      = 0
+  DATA_Z_MAX      = 2500
+  DATA_AUX_MIN    = 16
+  DATA_AUX_MAX    = 50
+  RAND_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/smooth/parabola_0.8/obss_gal_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.0.dat
+  RAND_HEADER     = 0
+  RAND_WT_COL     = 4
+  RAND_SEL_MODE   = 7
+  RAND_X_MIN      = 0
+  RAND_X_MAX      = 2500
+  RAND_Y_MIN      = 0
+  RAND_Y_MAX      = 2500
+  RAND_Z_MIN      = 0
+  RAND_Z_MAX      = 2500
+  DIST_BIN_DIM    = 1
+  DIST_BIN_TYPE   = 1
+  DIST_BIN_RMIN   = 0
+  DIST_BIN_RMAX   = 200
+  DIST_BIN_RNUM   = 40
+  DIST_BIN_PREC   = 0
+  COUNT_MODE      = 2
+  MOMENT          = 1
+  DR_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/smooth/parabola_0.8/tpcf_xgv_obs_vnw_gw_R-16-50/DD_files/DD_Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.0.CROSS.R_16-50.dat
+  FORCE           = 1
+  VERBOSE         = 1
+[70C[[32;1mDONE[0m]
+Create bins for distances and counts ... [70C[[32;1mDONE[0m]
+Reading data catalog ... 
+  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/smooth/parabola_0.8/{cat_type}s_void_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.0.VOID.dat'.
+  Counting lines ...   Number of records: 38588445.
+  Allocating memory ...   ~ 589 Mb memory allocated for the tracers.
+  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  29152366 objects removed.
+  9436079 objects recorded.
+[70C[[32;1mDONE[0m]
+Construct the tree for data ... 
+  Computing weights ...   Done with computing weights.
+[70C[[32;1mDONE[0m]
+Reading random catalog ... 
+  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/smooth/parabola_0.8/obss_gal_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.0.dat'.
+  Counting lines ...   Number of records: 5799750.
+  Allocating memory ...   ~ 88.5 Mb memory allocated for the tracers.
+  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  5799750 objects recorded.
+[70C[[32;1mDONE[0m]
+Construct the tree for random ... 
+  Computing weights ...   Done with computing weights.
+[70C[[32;1mDONE[0m]
+Counting DR pairs ... 
+  DR counts are saved to file or stdout.
+[70C[[32;1mDONE[0m]
+Releasing memory for data ... [70C[[32;1mDONE[0m]
+Releasing memory for random ... [70C[[32;1mDONE[0m]
+Releasing memory ... [70C[[32;1mDONE[0m]
+==> Saved correlation function in /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/smooth/parabola_0.8/tpcf_xgv_obs_vnw_gw_R-16-50/TwoPCF_Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.0.CROSS.R_16-50.dat.
+/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_real.conf
+Loading configuration ... 
+  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/smooth/parabola_0.8/obss_gal_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.0.dat
+  DATA_HEADER     = 0
+  DATA_WT_COL     = 4
+  DIST_BIN_DIM    = 1
+  DIST_BIN_TYPE   = 1
+  DIST_BIN_RMIN   = 0
+  DIST_BIN_RMAX   = 200
+  DIST_BIN_RNUM   = 40
+  DIST_BIN_PREC   = 0
+  COUNT_MODE      = 1
+  MOMENT          = 1
+  CF_MODE         = 3
+  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/smooth/parabola_0.8/tpcf_gal_obs/TwoPCF_Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.0.dat
+  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/smooth/parabola_0.8/tpcf_gal_obs/DD_files/DD_Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.0.dat
+  FORCE           = 1
+  VERBOSE         = 1
+[70C[[32;1mDONE[0m]
+Create bins for distances and counts ... [70C[[32;1mDONE[0m]
+Reading data catalog ... 
+  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/smooth/parabola_0.8/obss_gal_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.0.dat'.
+  Counting lines ...   Number of records: 5799750.
+  Allocating memory ...   ~ 88.5 Mb memory allocated for the tracers.
+  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  5799750 objects recorded.
+[70C[[32;1mDONE[0m]
+Construct the tree for data ... 
+  Computing weights ...   Done with computing weights.
+[70C[[32;1mDONE[0m]
+Counting DD pairs ... 
+  DD counts are saved to file or stdout.
+[70C[[32;1mDONE[0m]
+Releasing memory for data ... [70C[[32;1mDONE[0m]
+Computing the correlation function ... 
+  The correlation function is saved.
+[70C[[32;1mDONE[0m]
+Releasing memory ... [70C[[32;1mDONE[0m]
+2500 -10 1009
+Reading file: /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/noise/parabola_0.8/obss_gal_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.2.dat
+Number of records: 4808659
+
+Duplicating boundaries for periodic condition
+Number of records: 5733952
+
+Building Delaunay Triangulation.
+Number of vertices: 5733952
+Number of cells: 38164201
+
+Writing to file /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/noise/parabola_0.8/{cat_type}s_void_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.2.VOID.dat
+Writing voids with radius in (-10,1009).
+Finished successfully!
+/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_real.conf
+Loading configuration ... 
+  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/noise/parabola_0.8/obss_gal_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.2.dat
+  DATA_HEADER     = 0
+  DIST_BIN_DIM    = 1
+  DIST_BIN_TYPE   = 1
+  DIST_BIN_RMIN   = 0
+  DIST_BIN_RMAX   = 200
+  DIST_BIN_RNUM   = 40
+  DIST_BIN_PREC   = 0
+  COUNT_MODE      = 1
+  MOMENT          = 1
+  CF_MODE         = 3
+  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/noise/parabola_0.8/tpcf_gal_obs_nowt/TwoPCF_Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.2.dat
+  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/noise/parabola_0.8/tpcf_gal_obs_nowt/DD_files/DD_Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.2.dat
+  FORCE           = 1
+  VERBOSE         = 1
+[70C[[32;1mDONE[0m]
+Create bins for distances and counts ... [70C[[32;1mDONE[0m]
+Reading data catalog ... 
+  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/noise/parabola_0.8/obss_gal_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.2.dat'.
+  Counting lines ...   Number of records: 4808659.
+  Allocating memory ...   ~ 73.4 Mb memory allocated for the tracers.
+  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  4808659 objects recorded.
+[70C[[32;1mDONE[0m]
+Construct the tree for data ... [70C[[32;1mDONE[0m]
+Counting DD pairs ... 
+  DD counts are saved to file or stdout.
+[70C[[32;1mDONE[0m]
+Releasing memory for data ... [70C[[32;1mDONE[0m]
+Computing the correlation function ... 
+  The correlation function is saved.
+[70C[[32;1mDONE[0m]
+Releasing memory ... [70C[[32;1mDONE[0m]
+/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_real.conf
+Loading configuration ... 
+  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/noise/parabola_0.8/{cat_type}s_void_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.2.VOID.dat
+  DATA_HEADER     = 0
+  DATA_AUX_XOL    = 4
+  DATA_SEL_MODE   = 23
+  DATA_X_MIN      = 0
+  DATA_X_MAX      = 2500
+  DATA_Y_MIN      = 0
+  DATA_Y_MAX      = 2500
+  DATA_Z_MIN      = 0
+  DATA_Z_MAX      = 2500
+  DATA_AUX_MIN    = 16
+  DATA_AUX_MAX    = 50
+  DIST_BIN_DIM    = 1
+  DIST_BIN_TYPE   = 1
+  DIST_BIN_RMIN   = 0
+  DIST_BIN_RMAX   = 200
+  DIST_BIN_RNUM   = 40
+  DIST_BIN_PREC   = 0
+  COUNT_MODE      = 1
+  MOMENT          = 1
+  CF_MODE         = 3
+  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/noise/parabola_0.8/tpcf_void_obs_nowt_R-16-50/TwoPCF_Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.2.VOID.R-16-50.dat
+  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/noise/parabola_0.8/tpcf_void_obs_nowt_R-16-50/DD_files/DD_Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.2.VOID.R-16-50.dat
+  FORCE           = 1
+  VERBOSE         = 1
+[70C[[32;1mDONE[0m]
+Create bins for distances and counts ... [70C[[32;1mDONE[0m]
+Reading data catalog ... 
+  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/noise/parabola_0.8/{cat_type}s_void_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.2.VOID.dat'.
+  Counting lines ...   Number of records: 32047293.
+  Allocating memory ...   ~ 489 Mb memory allocated for the tracers.
+  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  22442155 objects removed.
+  9605138 objects recorded.
+[70C[[32;1mDONE[0m]
+Construct the tree for data ... [70C[[32;1mDONE[0m]
+Counting DD pairs ... 
+  DD counts are saved to file or stdout.
+[70C[[32;1mDONE[0m]
+Releasing memory for data ... [70C[[32;1mDONE[0m]
+Computing the correlation function ... 
+  The correlation function is saved.
+[70C[[32;1mDONE[0m]
+Releasing memory ... [70C[[32;1mDONE[0m]
+/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_real.conf
+Loading configuration ... 
+  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/noise/parabola_0.8/{cat_type}s_void_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.2.VOID.dat
+  DATA_HEADER     = 0
+  DATA_AUX_XOL    = 4
+  DATA_SEL_MODE   = 23
+  DATA_X_MIN      = 0
+  DATA_X_MAX      = 2500
+  DATA_Y_MIN      = 0
+  DATA_Y_MAX      = 2500
+  DATA_Z_MIN      = 0
+  DATA_Z_MAX      = 2500
+  DATA_AUX_MIN    = 16
+  DATA_AUX_MAX    = 50
+  RAND_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/noise/parabola_0.8/obss_gal_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.2.dat
+  RAND_HEADER     = 0
+  RAND_SEL_MODE   = 7
+  RAND_X_MIN      = 0
+  RAND_X_MAX      = 2500
+  RAND_Y_MIN      = 0
+  RAND_Y_MAX      = 2500
+  RAND_Z_MIN      = 0
+  RAND_Z_MAX      = 2500
+  DIST_BIN_DIM    = 1
+  DIST_BIN_TYPE   = 1
+  DIST_BIN_RMIN   = 0
+  DIST_BIN_RMAX   = 200
+  DIST_BIN_RNUM   = 40
+  DIST_BIN_PREC   = 0
+  COUNT_MODE      = 2
+  MOMENT          = 1
+  DR_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/noise/parabola_0.8/tpcf_xgv_obs_vnw_gnw_R-16-50/DD_files/DD_Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.2.CROSS.R_16-50.dat
+  FORCE           = 1
+  VERBOSE         = 1
+[70C[[32;1mDONE[0m]
+Create bins for distances and counts ... [70C[[32;1mDONE[0m]
+Reading data catalog ... 
+  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/noise/parabola_0.8/{cat_type}s_void_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.2.VOID.dat'.
+  Counting lines ...   Number of records: 32047293.
+  Allocating memory ...   ~ 489 Mb memory allocated for the tracers.
+  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  22442155 objects removed.
+  9605138 objects recorded.
+[70C[[32;1mDONE[0m]
+Construct the tree for data ... [70C[[32;1mDONE[0m]
+Reading random catalog ... 
+  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/noise/parabola_0.8/obss_gal_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.2.dat'.
+  Counting lines ...   Number of records: 4808659.
+  Allocating memory ...   ~ 73.4 Mb memory allocated for the tracers.
+  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  4808659 objects recorded.
+[70C[[32;1mDONE[0m]
+Construct the tree for random ... [70C[[32;1mDONE[0m]
+Counting DR pairs ... 
+  DR counts are saved to file or stdout.
+[70C[[32;1mDONE[0m]
+Releasing memory for data ... [70C[[32;1mDONE[0m]
+Releasing memory for random ... [70C[[32;1mDONE[0m]
+Releasing memory ... [70C[[32;1mDONE[0m]
+==> Saved correlation function in /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/noise/parabola_0.8/tpcf_xgv_obs_vnw_gnw_R-16-50/TwoPCF_Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.2.CROSS.R_16-50.dat.
+/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_real.conf
+Loading configuration ... 
+  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/noise/parabola_0.8/{cat_type}s_void_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.2.VOID.dat
+  DATA_HEADER     = 0
+  DATA_AUX_XOL    = 4
+  DATA_SEL_MODE   = 23
+  DATA_X_MIN      = 0
+  DATA_X_MAX      = 2500
+  DATA_Y_MIN      = 0
+  DATA_Y_MAX      = 2500
+  DATA_Z_MIN      = 0
+  DATA_Z_MAX      = 2500
+  DATA_AUX_MIN    = 16
+  DATA_AUX_MAX    = 50
+  RAND_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/noise/parabola_0.8/obss_gal_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.2.dat
+  RAND_HEADER     = 0
+  RAND_WT_COL     = 4
+  RAND_SEL_MODE   = 7
+  RAND_X_MIN      = 0
+  RAND_X_MAX      = 2500
+  RAND_Y_MIN      = 0
+  RAND_Y_MAX      = 2500
+  RAND_Z_MIN      = 0
+  RAND_Z_MAX      = 2500
+  DIST_BIN_DIM    = 1
+  DIST_BIN_TYPE   = 1
+  DIST_BIN_RMIN   = 0
+  DIST_BIN_RMAX   = 200
+  DIST_BIN_RNUM   = 40
+  DIST_BIN_PREC   = 0
+  COUNT_MODE      = 2
+  MOMENT          = 1
+  DR_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/noise/parabola_0.8/tpcf_xgv_obs_vnw_gw_R-16-50/DD_files/DD_Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.2.CROSS.R_16-50.dat
+  FORCE           = 1
+  VERBOSE         = 1
+[70C[[32;1mDONE[0m]
+Create bins for distances and counts ... [70C[[32;1mDONE[0m]
+Reading data catalog ... 
+  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/noise/parabola_0.8/{cat_type}s_void_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.2.VOID.dat'.
+  Counting lines ...   Number of records: 32047293.
+  Allocating memory ...   ~ 489 Mb memory allocated for the tracers.
+  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  22442155 objects removed.
+  9605138 objects recorded.
+[70C[[32;1mDONE[0m]
+Construct the tree for data ... 
+  Computing weights ...   Done with computing weights.
+[70C[[32;1mDONE[0m]
+Reading random catalog ... 
+  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/noise/parabola_0.8/obss_gal_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.2.dat'.
+  Counting lines ...   Number of records: 4808659.
+  Allocating memory ...   ~ 73.4 Mb memory allocated for the tracers.
+  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  4808659 objects recorded.
+[70C[[32;1mDONE[0m]
+Construct the tree for random ... 
+  Computing weights ...   Done with computing weights.
+[70C[[32;1mDONE[0m]
+Counting DR pairs ... 
+  DR counts are saved to file or stdout.
+[70C[[32;1mDONE[0m]
+Releasing memory for data ... [70C[[32;1mDONE[0m]
+Releasing memory for random ... [70C[[32;1mDONE[0m]
+Releasing memory ... [70C[[32;1mDONE[0m]
+==> Saved correlation function in /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/noise/parabola_0.8/tpcf_xgv_obs_vnw_gw_R-16-50/TwoPCF_Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.2.CROSS.R_16-50.dat.
+/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_real.conf
+Loading configuration ... 
+  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/noise/parabola_0.8/obss_gal_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.2.dat
+  DATA_HEADER     = 0
+  DATA_WT_COL     = 4
+  DIST_BIN_DIM    = 1
+  DIST_BIN_TYPE   = 1
+  DIST_BIN_RMIN   = 0
+  DIST_BIN_RMAX   = 200
+  DIST_BIN_RNUM   = 40
+  DIST_BIN_PREC   = 0
+  COUNT_MODE      = 1
+  MOMENT          = 1
+  CF_MODE         = 3
+  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/noise/parabola_0.8/tpcf_gal_obs/TwoPCF_Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.2.dat
+  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/noise/parabola_0.8/tpcf_gal_obs/DD_files/DD_Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.2.dat
+  FORCE           = 1
+  VERBOSE         = 1
+[70C[[32;1mDONE[0m]
+Create bins for distances and counts ... [70C[[32;1mDONE[0m]
+Reading data catalog ... 
+  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/noise/parabola_0.8/obss_gal_xyz/Box_HAM_z0.465600_nbar3.976980e-04_scat0.2384_zspace.parabola.sigma0.2.dat'.
+  Counting lines ...   Number of records: 4808659.
+  Allocating memory ...   ~ 73.4 Mb memory allocated for the tracers.
+  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  4808659 objects recorded.
+[70C[[32;1mDONE[0m]
+Construct the tree for data ... 
+  Computing weights ...   Done with computing weights.
+[70C[[32;1mDONE[0m]
+Counting DD pairs ... 
+  DD counts are saved to file or stdout.
+[70C[[32;1mDONE[0m]
+Releasing memory for data ... [70C[[32;1mDONE[0m]
+Computing the correlation function ... 
+  The correlation function is saved.
+[70C[[32;1mDONE[0m]
+Releasing memory ... [70C[[32;1mDONE[0m]

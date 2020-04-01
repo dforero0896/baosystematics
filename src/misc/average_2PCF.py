@@ -39,5 +39,13 @@ mocks_std = data.std(axis=0)
 mean_data_0, mean_data_1 = mocks_mean[:,1], mocks_mean[:,2]
 std_data_0, std_data_1 = mocks_std[:,1], mocks_std[:,2]
 xdata = data[0, :, 0]
-all_mocks = pd.DataFrame.from_dict(dict(zip([0,1,2,3,4],[xdata, mean_data_0, std_data_0, mean_data_1, std_data_1])))
+if mocks_mean.shape[1]>3:
+	mean_data_2 = mocks_mean[:,3]
+	std_data_2 = mocks_std[:,3]
+else:
+	mean_data_2 = np.zeros_like(mean_data_1)
+	std_data_2 = np.zeros_like(std_data_1)
+out_dict = dict(zip([0,1,2,3,4, 5, 6],[xdata, mean_data_0, std_data_0, mean_data_1, std_data_1, mean_data_2, std_data_2]))
+
+all_mocks = pd.DataFrame.from_dict(out_dict)
 all_mocks.to_csv(os.path.join(out,'TwoPCF_mockavg_%s.ascii'%outname), sep='\t', index=False, header = False)

@@ -52,9 +52,10 @@ except StopIteration:
 	sys.exit(1)
 if not os.path.isdir(outPath):
 	os.mkdir(outPath)
-if not os.path.exists(ran_cat_file): 
+if not 'none' in ran_cat_file and not os.path.exists(ran_cat_file): 
 	sys.stdout.write('ERROR:\tRandom void catalog not found.\n')
 	sys.exit(1)
+	
 joblist_dir = os.path.join(this_dir, 'joblist')
 if not os.path.isdir(joblist_dir):
 	os.mkdir(joblist_dir)
@@ -88,7 +89,8 @@ for fileno, fileName in enumerate(fdat):
 		count_mode = 7
 	else:
 		count_mode = 3
-	bash_script.write('srun -n 1 -c 16 %s --conf=%s --data=%s --rand=%s --count-mode=%s --dd=%s --dr=%s --rr=%s --output=%s --data-aux-min=%s --data-aux-max=%s --rand-aux-min=%s --rand-aux-max=%s\n'%(RUN, conf_file, dat_cat_file, ran_cat_file, count_mode, dd_file, dr_file, rr_file, out_file, r_min, r_max, r_min, r_max))
+	if 'none' in ran_cat_file: count_mode=1
+	bash_script.write('srun -n 1 -c 32 %s --conf=%s --data=%s --rand=%s --count-mode=%s --dd=%s --dr=%s --rr=%s --output=%s --data-aux-min=%s --data-aux-max=%s --rand-aux-min=%s --rand-aux-max=%s \n'%(RUN, conf_file, dat_cat_file, ran_cat_file, count_mode, dd_file, dr_file, rr_file, out_file, r_min, r_max, r_min, r_max))
 bash_script.close()
 print("Wrote %s commands in job list: %s"%(counter, bash_script_name))
 dd_dir = os.path.join(outPath, 'DD_files')

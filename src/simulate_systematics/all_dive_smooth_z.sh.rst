@@ -1,0 +1,2 @@
+# Unfinished jobs
+/home/epfl/dforero/scratch/projects/baosystematics/bin/DIVE_box/DIVE_box /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/smooth/flat_0.95/mocks_gal_xyz/CATALPTCICz0.466G960S2078493117_zspace.flat.sigma0.0.dat /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/smooth/flat_0.95/mocks_void_xyz/CATALPTCICz0.466G960S2078493117_zspace.flat.sigma0.0.VOID.dat 2500 0 999
