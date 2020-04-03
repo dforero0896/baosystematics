@@ -9,9 +9,10 @@ import sys
 import os
 from params import *
 names = ['x', 'y', 'z', 'r']
-def get_histogram(cat, rmin, rmax, bins=20, weights = None):
+def get_histogram(cat, rmin, rmax, bins=20, weights = False):
   cat_bin = cat[(cat['r'] > rmin ) & (cat['r'] < rmax)]
-  H, xedges, yedges = np.histogram2d(cat_bin['x'].values, cat_bin['y'].values, density=False, bins=(bins, bins), range = [[0, box_size], [0, box_size]], weights = weights)
+  if weights: weights = cat_bin['w']
+  H, xedges, yedges = np.histogram2d(cat_bin['x'].values, cat_bin['y'].values, density=False, bins=bins, range = [[0, box_size], [0, box_size]], weights = weights)
   return H, xedges, yedges
 if __name__ == '__main__':
   if len(sys.argv) < 2:
@@ -27,8 +28,6 @@ if __name__ == '__main__':
   except:
     odir = '.'
   out_fn = f"{odir}/void_density_map.npy"
-  radius_bins = np.append(np.linspace(0, 21, 22), [25, 30, 50])
-  xy_bins = 256
 
   # Set values for subplot
   side_x = int(np.sqrt(len(radius_bins)-1))
@@ -61,13 +60,17 @@ if __name__ == '__main__':
   # Create send buffers
   cat_arrays = np.empty((len(radius_bins)-1, xy_bins, xy_bins, len(catalogs_split[iproc])), dtype=np.float32)
   # Bottleneck
-  if not os.path.exists(out_fn):
+  if True:#not os.path.exists(out_fn):
     if iproc==0: print(f"==> Computing histogram with {nproc} processes.")
     for nmock, cat_fn in enumerate(catalogs_split[iproc]):
       print(f"==> MPI process {iproc}: {cat_fn}")
-      cat = pd.read_csv(cat_fn, delim_whitespace=True, names=['x', 'y', 'r'], usecols=(0,1,3), dtype=np.float32)
+      labels = radius_bins[:-1] + 0.5 * radius_bin_widths
+      cat = pd.read_csv(cat_fn, delim_whitespace=True, names=['x', 'y', 'r', 'w'], usecols=(0,1,3,4), dtype=np.float32)
+      weights = cat['w']
+      if weights.isna().any(): weights=None
+      cat.set_index('r')
       for i, lbound in enumerate(radius_bins[:-1]):
-        hist, xedges, yedges = get_histogram(cat, radius_bins[i], radius_bins[i+1], bins = xy_bins)
+        hist, xedges, yedges = get_histogram(cat, radius_bins[i], radius_bins[i+1], bins = [xedges, yedges], weights=not None)
         cat_arrays[i, :, :, nmock] = hist
     pmean = cat_arrays.mean(axis=3)
     print(f"==> MPI process {iproc} waiting for the others.")
@@ -78,11 +81,13 @@ if __name__ == '__main__':
     if iproc==0:
       histograms = np.average(cat_array_all, axis=0, weights = hist_weights)
       print(f"==> MPI process 0 saving file.")
+      if weights is not None: out_fn = out_fn.replace('.npy', '_wt.npy')
       np.save(out_fn, histograms)    
   else:
     if iproc==0:
       print(f"==> Loading data from {out_fn}.")
       histograms = np.load(out_fn)
+      weights=None
       print(f"==> Done")
   if iproc==0:
     xedges = np.linspace(0, box_size, xy_bins+1)
@@ -107,6 +112,9 @@ if __name__ == '__main__':
     plt.setp([a.get_yticklabels() for a in ax.ravel()], visible=False)
     plt.setp([a.get_xticklabels() for a in ax.ravel()], visible=False)
   #  plt.show()
-    fig.savefig(f"{odir}/all_void_density_maps.pdf", dpi=300)
-    print(f"Saved plot in {odir}.")
+    oname = f"{odir}/all_void_density_maps.pdf"
+    if weights is not None: oname = oname.replace('.pdf', '_wt.pdf')
+   
+    fig.savefig(oname, dpi=300)
+    print(f"Saved plot in {oname}")
   MPI.Finalize()

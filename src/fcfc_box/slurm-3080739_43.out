@@ -1,0 +1,590 @@
+/hpcstorage/dforero/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_real.conf
+Loading configuration ... 
+  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/nosyst/mocks_void_xyz/CATALPTCICz0.466G960S695677361.VOID.dat
+  DATA_HEADER     = 0
+  DATA_AUX_XOL    = 4
+  DATA_SEL_MODE   = 23
+  DATA_X_MIN      = 0
+  DATA_X_MAX      = 2500
+  DATA_Y_MIN      = 0
+  DATA_Y_MAX      = 2500
+  DATA_Z_MIN      = 0
+  DATA_Z_MAX      = 2500
+  DATA_AUX_MIN    = 16
+  DATA_AUX_MAX    = 50
+  RAND_CATALOG    = /hpcstorage/dforero/projects/baosystematics/data/patchy_boxes/patchy_cmass_subset/box1/real/CATALPTCICz0.466G960S695677361.dat
+  RAND_HEADER     = 0
+  RAND_SEL_MODE   = 7
+  RAND_X_MIN      = 0
+  RAND_X_MAX      = 2500
+  RAND_Y_MIN      = 0
+  RAND_Y_MAX      = 2500
+  RAND_Z_MIN      = 0
+  RAND_Z_MAX      = 2500
+  DIST_BIN_DIM    = 1
+  DIST_BIN_TYPE   = 1
+  DIST_BIN_RMIN   = 0
+  DIST_BIN_RMAX   = 200
+  DIST_BIN_RNUM   = 40
+  DIST_BIN_PREC   = 0
+  COUNT_MODE      = 2
+  MOMENT          = 1
+  DR_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/nosyst/mocks_void_xyz/tpcf_xgv_R_16-50/DD_files/DD_CATALPTCICz0.466G960S695677361.CROSS.R_16-50.dat
+  FORCE           = 1
+  VERBOSE         = 1
+[70C[[32;1mDONE[0m]
+Create bins for distances and counts ... [70C[[32;1mDONE[0m]
+Reading data catalog ... 
+  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/nosyst/mocks_void_xyz/CATALPTCICz0.466G960S695677361.VOID.dat'.
+  Counting lines ...   Number of records: 41441401.
+  Allocating memory ...   ~ 632 Mb memory allocated for the tracers.
+  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  32404715 objects removed.
+  9036686 objects recorded.
+[70C[[32;1mDONE[0m]
+Construct the tree for data ... [70C[[32;1mDONE[0m]
+Reading random catalog ... 
+  Filename: `/hpcstorage/dforero/projects/baosystematics/data/patchy_boxes/patchy_cmass_subset/box1/real/CATALPTCICz0.466G960S695677361.dat'.
+  Counting lines ...   Number of records: 6209507.
+  Allocating memory ...   ~ 94.7 Mb memory allocated for the tracers.
+  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  28 objects removed.
+  6209479 objects recorded.
+[70C[[32;1mDONE[0m]
+Construct the tree for random ... [70C[[32;1mDONE[0m]
+Counting DR pairs ... 
+  DR counts are saved to file or stdout.
+[70C[[32;1mDONE[0m]
+Releasing memory for data ... [70C[[32;1mDONE[0m]
+Releasing memory for random ... [70C[[32;1mDONE[0m]
+Releasing memory ... [70C[[32;1mDONE[0m]
+==> Saved correlation function in /home/epfl/dforero/scratch/projects/baosystematics/patchy_results/box1/real/nosyst/mocks_void_xyz/tpcf_xgv_R_16-50/TwoPCF_CATALPTCICz0.466G960S695677361.CROSS.R_16-50.dat.
+/hpcstorage/dforero/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_real.conf
+Loading configuration ... 
+  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/nosyst/mocks_void_xyz/CATALPTCICz0.466G960S697291398.VOID.dat
+  DATA_HEADER     = 0
+  DATA_AUX_XOL    = 4
+  DATA_SEL_MODE   = 23
+  DATA_X_MIN      = 0
+  DATA_X_MAX      = 2500
+  DATA_Y_MIN      = 0
+  DATA_Y_MAX      = 2500
+  DATA_Z_MIN      = 0
+  DATA_Z_MAX      = 2500
+  DATA_AUX_MIN    = 16
+  DATA_AUX_MAX    = 50
+  RAND_CATALOG    = /hpcstorage/dforero/projects/baosystematics/data/patchy_boxes/patchy_cmass_subset/box1/real/CATALPTCICz0.466G960S697291398.dat
+  RAND_HEADER     = 0
+  RAND_SEL_MODE   = 7
+  RAND_X_MIN      = 0
+  RAND_X_MAX      = 2500
+  RAND_Y_MIN      = 0
+  RAND_Y_MAX      = 2500
+  RAND_Z_MIN      = 0
+  RAND_Z_MAX      = 2500
+  DIST_BIN_DIM    = 1
+  DIST_BIN_TYPE   = 1
+  DIST_BIN_RMIN   = 0
+  DIST_BIN_RMAX   = 200
+  DIST_BIN_RNUM   = 40
+  DIST_BIN_PREC   = 0
+  COUNT_MODE      = 2
+  MOMENT          = 1
+  DR_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/nosyst/mocks_void_xyz/tpcf_xgv_R_16-50/DD_files/DD_CATALPTCICz0.466G960S697291398.CROSS.R_16-50.dat
+  FORCE           = 1
+  VERBOSE         = 1
+[70C[[32;1mDONE[0m]
+Create bins for distances and counts ... [70C[[32;1mDONE[0m]
+Reading data catalog ... 
+  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/nosyst/mocks_void_xyz/CATALPTCICz0.466G960S697291398.VOID.dat'.
+  Counting lines ...   Number of records: 49265644.
+  Allocating memory ...   ~ 752 Mb memory allocated for the tracers.
+  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  40230894 objects removed.
+  9034750 objects recorded.
+[70C[[32;1mDONE[0m]
+Construct the tree for data ... [70C[[32;1mDONE[0m]
+Reading random catalog ... 
+  Filename: `/hpcstorage/dforero/projects/baosystematics/data/patchy_boxes/patchy_cmass_subset/box1/real/CATALPTCICz0.466G960S697291398.dat'.
+  Counting lines ...   Number of records: 6209206.
+  Allocating memory ...   ~ 94.7 Mb memory allocated for the tracers.
+  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  36 objects removed.
+  6209170 objects recorded.
+[70C[[32;1mDONE[0m]
+Construct the tree for random ... [70C[[32;1mDONE[0m]
+Counting DR pairs ... 
+  DR counts are saved to file or stdout.
+[70C[[32;1mDONE[0m]
+Releasing memory for data ... [70C[[32;1mDONE[0m]
+Releasing memory for random ... [70C[[32;1mDONE[0m]
+Releasing memory ... [70C[[32;1mDONE[0m]
+==> Saved correlation function in /home/epfl/dforero/scratch/projects/baosystematics/patchy_results/box1/real/nosyst/mocks_void_xyz/tpcf_xgv_R_16-50/TwoPCF_CATALPTCICz0.466G960S697291398.CROSS.R_16-50.dat.
+/hpcstorage/dforero/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_real.conf
+Loading configuration ... 
+  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/nosyst/mocks_void_xyz/CATALPTCICz0.466G960S699877526.VOID.dat
+  DATA_HEADER     = 0
+  DATA_AUX_XOL    = 4
+  DATA_SEL_MODE   = 23
+  DATA_X_MIN      = 0
+  DATA_X_MAX      = 2500
+  DATA_Y_MIN      = 0
+  DATA_Y_MAX      = 2500
+  DATA_Z_MIN      = 0
+  DATA_Z_MAX      = 2500
+  DATA_AUX_MIN    = 16
+  DATA_AUX_MAX    = 50
+  RAND_CATALOG    = /hpcstorage/dforero/projects/baosystematics/data/patchy_boxes/patchy_cmass_subset/box1/real/CATALPTCICz0.466G960S699877526.dat
+  RAND_HEADER     = 0
+  RAND_SEL_MODE   = 7
+  RAND_X_MIN      = 0
+  RAND_X_MAX      = 2500
+  RAND_Y_MIN      = 0
+  RAND_Y_MAX      = 2500
+  RAND_Z_MIN      = 0
+  RAND_Z_MAX      = 2500
+  DIST_BIN_DIM    = 1
+  DIST_BIN_TYPE   = 1
+  DIST_BIN_RMIN   = 0
+  DIST_BIN_RMAX   = 200
+  DIST_BIN_RNUM   = 40
+  DIST_BIN_PREC   = 0
+  COUNT_MODE      = 2
+  MOMENT          = 1
+  DR_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/nosyst/mocks_void_xyz/tpcf_xgv_R_16-50/DD_files/DD_CATALPTCICz0.466G960S699877526.CROSS.R_16-50.dat
+  FORCE           = 1
+  VERBOSE         = 1
+[70C[[32;1mDONE[0m]
+Create bins for distances and counts ... [70C[[32;1mDONE[0m]
+Reading data catalog ... 
+  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/nosyst/mocks_void_xyz/CATALPTCICz0.466G960S699877526.VOID.dat'.
+  Counting lines ...   Number of records: 41466900.
+  Allocating memory ...   ~ 633 Mb memory allocated for the tracers.
+  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  32430574 objects removed.
+  9036326 objects recorded.
+[70C[[32;1mDONE[0m]
+Construct the tree for data ... [70C[[32;1mDONE[0m]
+Reading random catalog ... 
+  Filename: `/hpcstorage/dforero/projects/baosystematics/data/patchy_boxes/patchy_cmass_subset/box1/real/CATALPTCICz0.466G960S699877526.dat'.
+  Counting lines ...   Number of records: 6214031.
+  Allocating memory ...   ~ 94.8 Mb memory allocated for the tracers.
+  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  36 objects removed.
+  6213995 objects recorded.
+[70C[[32;1mDONE[0m]
+Construct the tree for random ... [70C[[32;1mDONE[0m]
+Counting DR pairs ... 
+  DR counts are saved to file or stdout.
+[70C[[32;1mDONE[0m]
+Releasing memory for data ... [70C[[32;1mDONE[0m]
+Releasing memory for random ... [70C[[32;1mDONE[0m]
+Releasing memory ... [70C[[32;1mDONE[0m]
+==> Saved correlation function in /home/epfl/dforero/scratch/projects/baosystematics/patchy_results/box1/real/nosyst/mocks_void_xyz/tpcf_xgv_R_16-50/TwoPCF_CATALPTCICz0.466G960S699877526.CROSS.R_16-50.dat.
+/hpcstorage/dforero/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_real.conf
+Loading configuration ... 
+  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/nosyst/mocks_void_xyz/CATALPTCICz0.466G960S706358248.VOID.dat
+  DATA_HEADER     = 0
+  DATA_AUX_XOL    = 4
+  DATA_SEL_MODE   = 23
+  DATA_X_MIN      = 0
+  DATA_X_MAX      = 2500
+  DATA_Y_MIN      = 0
+  DATA_Y_MAX      = 2500
+  DATA_Z_MIN      = 0
+  DATA_Z_MAX      = 2500
+  DATA_AUX_MIN    = 16
+  DATA_AUX_MAX    = 50
+  RAND_CATALOG    = /hpcstorage/dforero/projects/baosystematics/data/patchy_boxes/patchy_cmass_subset/box1/real/CATALPTCICz0.466G960S706358248.dat
+  RAND_HEADER     = 0
+  RAND_SEL_MODE   = 7
+  RAND_X_MIN      = 0
+  RAND_X_MAX      = 2500
+  RAND_Y_MIN      = 0
+  RAND_Y_MAX      = 2500
+  RAND_Z_MIN      = 0
+  RAND_Z_MAX      = 2500
+  DIST_BIN_DIM    = 1
+  DIST_BIN_TYPE   = 1
+  DIST_BIN_RMIN   = 0
+  DIST_BIN_RMAX   = 200
+  DIST_BIN_RNUM   = 40
+  DIST_BIN_PREC   = 0
+  COUNT_MODE      = 2
+  MOMENT          = 1
+  DR_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/nosyst/mocks_void_xyz/tpcf_xgv_R_16-50/DD_files/DD_CATALPTCICz0.466G960S706358248.CROSS.R_16-50.dat
+  FORCE           = 1
+  VERBOSE         = 1
+[70C[[32;1mDONE[0m]
+Create bins for distances and counts ... [70C[[32;1mDONE[0m]
+Reading data catalog ... 
+  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/nosyst/mocks_void_xyz/CATALPTCICz0.466G960S706358248.VOID.dat'.
+  Counting lines ...   Number of records: 41410085.
+  Allocating memory ...   ~ 632 Mb memory allocated for the tracers.
+  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  32369502 objects removed.
+  9040583 objects recorded.
+[70C[[32;1mDONE[0m]
+Construct the tree for data ... [70C[[32;1mDONE[0m]
+Reading random catalog ... 
+  Filename: `/hpcstorage/dforero/projects/baosystematics/data/patchy_boxes/patchy_cmass_subset/box1/real/CATALPTCICz0.466G960S706358248.dat'.
+  Counting lines ...   Number of records: 6206067.
+  Allocating memory ...   ~ 94.7 Mb memory allocated for the tracers.
+  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  30 objects removed.
+  6206037 objects recorded.
+[70C[[32;1mDONE[0m]
+Construct the tree for random ... [70C[[32;1mDONE[0m]
+Counting DR pairs ... 
+  DR counts are saved to file or stdout.
+[70C[[32;1mDONE[0m]
+Releasing memory for data ... [70C[[32;1mDONE[0m]
+Releasing memory for random ... [70C[[32;1mDONE[0m]
+Releasing memory ... [70C[[32;1mDONE[0m]
+==> Saved correlation function in /home/epfl/dforero/scratch/projects/baosystematics/patchy_results/box1/real/nosyst/mocks_void_xyz/tpcf_xgv_R_16-50/TwoPCF_CATALPTCICz0.466G960S706358248.CROSS.R_16-50.dat.
+/hpcstorage/dforero/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_real.conf
+Loading configuration ... 
+  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/nosyst/mocks_void_xyz/CATALPTCICz0.466G960S712845302.VOID.dat
+  DATA_HEADER     = 0
+  DATA_AUX_XOL    = 4
+  DATA_SEL_MODE   = 23
+  DATA_X_MIN      = 0
+  DATA_X_MAX      = 2500
+  DATA_Y_MIN      = 0
+  DATA_Y_MAX      = 2500
+  DATA_Z_MIN      = 0
+  DATA_Z_MAX      = 2500
+  DATA_AUX_MIN    = 16
+  DATA_AUX_MAX    = 50
+  RAND_CATALOG    = /hpcstorage/dforero/projects/baosystematics/data/patchy_boxes/patchy_cmass_subset/box1/real/CATALPTCICz0.466G960S712845302.dat
+  RAND_HEADER     = 0
+  RAND_SEL_MODE   = 7
+  RAND_X_MIN      = 0
+  RAND_X_MAX      = 2500
+  RAND_Y_MIN      = 0
+  RAND_Y_MAX      = 2500
+  RAND_Z_MIN      = 0
+  RAND_Z_MAX      = 2500
+  DIST_BIN_DIM    = 1
+  DIST_BIN_TYPE   = 1
+  DIST_BIN_RMIN   = 0
+  DIST_BIN_RMAX   = 200
+  DIST_BIN_RNUM   = 40
+  DIST_BIN_PREC   = 0
+  COUNT_MODE      = 2
+  MOMENT          = 1
+  DR_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/nosyst/mocks_void_xyz/tpcf_xgv_R_16-50/DD_files/DD_CATALPTCICz0.466G960S712845302.CROSS.R_16-50.dat
+  FORCE           = 1
+  VERBOSE         = 1
+[70C[[32;1mDONE[0m]
+Create bins for distances and counts ... [70C[[32;1mDONE[0m]
+Reading data catalog ... 
+  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/nosyst/mocks_void_xyz/CATALPTCICz0.466G960S712845302.VOID.dat'.
+  Counting lines ...   Number of records: 49320796.
+  Allocating memory ...   ~ 753 Mb memory allocated for the tracers.
+  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  40286996 objects removed.
+  9033800 objects recorded.
+[70C[[32;1mDONE[0m]
+Construct the tree for data ... [70C[[32;1mDONE[0m]
+Reading random catalog ... 
+  Filename: `/hpcstorage/dforero/projects/baosystematics/data/patchy_boxes/patchy_cmass_subset/box1/real/CATALPTCICz0.466G960S712845302.dat'.
+  Counting lines ...   Number of records: 6211372.
+  Allocating memory ...   ~ 94.8 Mb memory allocated for the tracers.
+  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  34 objects removed.
+  6211338 objects recorded.
+[70C[[32;1mDONE[0m]
+Construct the tree for random ... [70C[[32;1mDONE[0m]
+Counting DR pairs ... 
+  DR counts are saved to file or stdout.
+[70C[[32;1mDONE[0m]
+Releasing memory for data ... [70C[[32;1mDONE[0m]
+Releasing memory for random ... [70C[[32;1mDONE[0m]
+Releasing memory ... [70C[[32;1mDONE[0m]
+==> Saved correlation function in /home/epfl/dforero/scratch/projects/baosystematics/patchy_results/box1/real/nosyst/mocks_void_xyz/tpcf_xgv_R_16-50/TwoPCF_CATALPTCICz0.466G960S712845302.CROSS.R_16-50.dat.
+/hpcstorage/dforero/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_real.conf
+Loading configuration ... 
+  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/nosyst/mocks_void_xyz/CATALPTCICz0.466G960S714498039.VOID.dat
+  DATA_HEADER     = 0
+  DATA_AUX_XOL    = 4
+  DATA_SEL_MODE   = 23
+  DATA_X_MIN      = 0
+  DATA_X_MAX      = 2500
+  DATA_Y_MIN      = 0
+  DATA_Y_MAX      = 2500
+  DATA_Z_MIN      = 0
+  DATA_Z_MAX      = 2500
+  DATA_AUX_MIN    = 16
+  DATA_AUX_MAX    = 50
+  RAND_CATALOG    = /hpcstorage/dforero/projects/baosystematics/data/patchy_boxes/patchy_cmass_subset/box1/real/CATALPTCICz0.466G960S714498039.dat
+  RAND_HEADER     = 0
+  RAND_SEL_MODE   = 7
+  RAND_X_MIN      = 0
+  RAND_X_MAX      = 2500
+  RAND_Y_MIN      = 0
+  RAND_Y_MAX      = 2500
+  RAND_Z_MIN      = 0
+  RAND_Z_MAX      = 2500
+  DIST_BIN_DIM    = 1
+  DIST_BIN_TYPE   = 1
+  DIST_BIN_RMIN   = 0
+  DIST_BIN_RMAX   = 200
+  DIST_BIN_RNUM   = 40
+  DIST_BIN_PREC   = 0
+  COUNT_MODE      = 2
+  MOMENT          = 1
+  DR_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/nosyst/mocks_void_xyz/tpcf_xgv_R_16-50/DD_files/DD_CATALPTCICz0.466G960S714498039.CROSS.R_16-50.dat
+  FORCE           = 1
+  VERBOSE         = 1
+[70C[[32;1mDONE[0m]
+Create bins for distances and counts ... [70C[[32;1mDONE[0m]
+Reading data catalog ... 
+  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/nosyst/mocks_void_xyz/CATALPTCICz0.466G960S714498039.VOID.dat'.
+  Counting lines ...   Number of records: 49283877.
+  Allocating memory ...   ~ 752 Mb memory allocated for the tracers.
+  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  40251029 objects removed.
+  9032848 objects recorded.
+[70C[[32;1mDONE[0m]
+Construct the tree for data ... [70C[[32;1mDONE[0m]
+Reading random catalog ... 
+  Filename: `/hpcstorage/dforero/projects/baosystematics/data/patchy_boxes/patchy_cmass_subset/box1/real/CATALPTCICz0.466G960S714498039.dat'.
+  Counting lines ...   Number of records: 6214031.
+  Allocating memory ...   ~ 94.8 Mb memory allocated for the tracers.
+  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  23 objects removed.
+  6214008 objects recorded.
+[70C[[32;1mDONE[0m]
+Construct the tree for random ... [70C[[32;1mDONE[0m]
+Counting DR pairs ... 
+  DR counts are saved to file or stdout.
+[70C[[32;1mDONE[0m]
+Releasing memory for data ... [70C[[32;1mDONE[0m]
+Releasing memory for random ... [70C[[32;1mDONE[0m]
+Releasing memory ... [70C[[32;1mDONE[0m]
+==> Saved correlation function in /home/epfl/dforero/scratch/projects/baosystematics/patchy_results/box1/real/nosyst/mocks_void_xyz/tpcf_xgv_R_16-50/TwoPCF_CATALPTCICz0.466G960S714498039.CROSS.R_16-50.dat.
+/hpcstorage/dforero/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_real.conf
+Loading configuration ... 
+  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/nosyst/mocks_void_xyz/CATALPTCICz0.466G960S71650295.VOID.dat
+  DATA_HEADER     = 0
+  DATA_AUX_XOL    = 4
+  DATA_SEL_MODE   = 23
+  DATA_X_MIN      = 0
+  DATA_X_MAX      = 2500
+  DATA_Y_MIN      = 0
+  DATA_Y_MAX      = 2500
+  DATA_Z_MIN      = 0
+  DATA_Z_MAX      = 2500
+  DATA_AUX_MIN    = 16
+  DATA_AUX_MAX    = 50
+  RAND_CATALOG    = /hpcstorage/dforero/projects/baosystematics/data/patchy_boxes/patchy_cmass_subset/box1/real/CATALPTCICz0.466G960S71650295.dat
+  RAND_HEADER     = 0
+  RAND_SEL_MODE   = 7
+  RAND_X_MIN      = 0
+  RAND_X_MAX      = 2500
+  RAND_Y_MIN      = 0
+  RAND_Y_MAX      = 2500
+  RAND_Z_MIN      = 0
+  RAND_Z_MAX      = 2500
+  DIST_BIN_DIM    = 1
+  DIST_BIN_TYPE   = 1
+  DIST_BIN_RMIN   = 0
+  DIST_BIN_RMAX   = 200
+  DIST_BIN_RNUM   = 40
+  DIST_BIN_PREC   = 0
+  COUNT_MODE      = 2
+  MOMENT          = 1
+  DR_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/nosyst/mocks_void_xyz/tpcf_xgv_R_16-50/DD_files/DD_CATALPTCICz0.466G960S71650295.CROSS.R_16-50.dat
+  FORCE           = 1
+  VERBOSE         = 1
+[70C[[32;1mDONE[0m]
+Create bins for distances and counts ... [70C[[32;1mDONE[0m]
+Reading data catalog ... 
+  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/nosyst/mocks_void_xyz/CATALPTCICz0.466G960S71650295.VOID.dat'.
+  Counting lines ...   Number of records: 41468069.
+  Allocating memory ...   ~ 633 Mb memory allocated for the tracers.
+  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  32428817 objects removed.
+  9039252 objects recorded.
+[70C[[32;1mDONE[0m]
+Construct the tree for data ... [70C[[32;1mDONE[0m]
+Reading random catalog ... 
+  Filename: `/hpcstorage/dforero/projects/baosystematics/data/patchy_boxes/patchy_cmass_subset/box1/real/CATALPTCICz0.466G960S71650295.dat'.
+  Counting lines ...   Number of records: 6214031.
+  Allocating memory ...   ~ 94.8 Mb memory allocated for the tracers.
+  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  37 objects removed.
+  6213994 objects recorded.
+[70C[[32;1mDONE[0m]
+Construct the tree for random ... [70C[[32;1mDONE[0m]
+Counting DR pairs ... 
+  DR counts are saved to file or stdout.
+[70C[[32;1mDONE[0m]
+Releasing memory for data ... [70C[[32;1mDONE[0m]
+Releasing memory for random ... [70C[[32;1mDONE[0m]
+Releasing memory ... [70C[[32;1mDONE[0m]
+==> Saved correlation function in /home/epfl/dforero/scratch/projects/baosystematics/patchy_results/box1/real/nosyst/mocks_void_xyz/tpcf_xgv_R_16-50/TwoPCF_CATALPTCICz0.466G960S71650295.CROSS.R_16-50.dat.
+/hpcstorage/dforero/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_real.conf
+Loading configuration ... 
+  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/nosyst/mocks_void_xyz/CATALPTCICz0.466G960S722630307.VOID.dat
+  DATA_HEADER     = 0
+  DATA_AUX_XOL    = 4
+  DATA_SEL_MODE   = 23
+  DATA_X_MIN      = 0
+  DATA_X_MAX      = 2500
+  DATA_Y_MIN      = 0
+  DATA_Y_MAX      = 2500
+  DATA_Z_MIN      = 0
+  DATA_Z_MAX      = 2500
+  DATA_AUX_MIN    = 16
+  DATA_AUX_MAX    = 50
+  RAND_CATALOG    = /hpcstorage/dforero/projects/baosystematics/data/patchy_boxes/patchy_cmass_subset/box1/real/CATALPTCICz0.466G960S722630307.dat
+  RAND_HEADER     = 0
+  RAND_SEL_MODE   = 7
+  RAND_X_MIN      = 0
+  RAND_X_MAX      = 2500
+  RAND_Y_MIN      = 0
+  RAND_Y_MAX      = 2500
+  RAND_Z_MIN      = 0
+  RAND_Z_MAX      = 2500
+  DIST_BIN_DIM    = 1
+  DIST_BIN_TYPE   = 1
+  DIST_BIN_RMIN   = 0
+  DIST_BIN_RMAX   = 200
+  DIST_BIN_RNUM   = 40
+  DIST_BIN_PREC   = 0
+  COUNT_MODE      = 2
+  MOMENT          = 1
+  DR_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/nosyst/mocks_void_xyz/tpcf_xgv_R_16-50/DD_files/DD_CATALPTCICz0.466G960S722630307.CROSS.R_16-50.dat
+  FORCE           = 1
+  VERBOSE         = 1
+[70C[[32;1mDONE[0m]
+Create bins for distances and counts ... [70C[[32;1mDONE[0m]
+Reading data catalog ... 
+  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/nosyst/mocks_void_xyz/CATALPTCICz0.466G960S722630307.VOID.dat'.
+  Counting lines ...   Number of records: 49290999.
+  Allocating memory ...   ~ 752 Mb memory allocated for the tracers.
+  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  40260625 objects removed.
+  9030374 objects recorded.
+[70C[[32;1mDONE[0m]
+Construct the tree for data ... [70C[[32;1mDONE[0m]
+Reading random catalog ... 
+  Filename: `/hpcstorage/dforero/projects/baosystematics/data/patchy_boxes/patchy_cmass_subset/box1/real/CATALPTCICz0.466G960S722630307.dat'.
+  Counting lines ...   Number of records: 6214031.
+  Allocating memory ...   ~ 94.8 Mb memory allocated for the tracers.
+  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  24 objects removed.
+  6214007 objects recorded.
+[70C[[32;1mDONE[0m]
+Construct the tree for random ... [70C[[32;1mDONE[0m]
+Counting DR pairs ... 
+  DR counts are saved to file or stdout.
+[70C[[32;1mDONE[0m]
+Releasing memory for data ... [70C[[32;1mDONE[0m]
+Releasing memory for random ... [70C[[32;1mDONE[0m]
+Releasing memory ... [70C[[32;1mDONE[0m]
+==> Saved correlation function in /home/epfl/dforero/scratch/projects/baosystematics/patchy_results/box1/real/nosyst/mocks_void_xyz/tpcf_xgv_R_16-50/TwoPCF_CATALPTCICz0.466G960S722630307.CROSS.R_16-50.dat.
+/hpcstorage/dforero/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_real.conf
+Loading configuration ... 
+  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/nosyst/mocks_void_xyz/CATALPTCICz0.466G960S729161718.VOID.dat
+  DATA_HEADER     = 0
+  DATA_AUX_XOL    = 4
+  DATA_SEL_MODE   = 23
+  DATA_X_MIN      = 0
+  DATA_X_MAX      = 2500
+  DATA_Y_MIN      = 0
+  DATA_Y_MAX      = 2500
+  DATA_Z_MIN      = 0
+  DATA_Z_MAX      = 2500
+  DATA_AUX_MIN    = 16
+  DATA_AUX_MAX    = 50
+  RAND_CATALOG    = /hpcstorage/dforero/projects/baosystematics/data/patchy_boxes/patchy_cmass_subset/box1/real/CATALPTCICz0.466G960S729161718.dat
+  RAND_HEADER     = 0
+  RAND_SEL_MODE   = 7
+  RAND_X_MIN      = 0
+  RAND_X_MAX      = 2500
+  RAND_Y_MIN      = 0
+  RAND_Y_MAX      = 2500
+  RAND_Z_MIN      = 0
+  RAND_Z_MAX      = 2500
+  DIST_BIN_DIM    = 1
+  DIST_BIN_TYPE   = 1
+  DIST_BIN_RMIN   = 0
+  DIST_BIN_RMAX   = 200
+  DIST_BIN_RNUM   = 40
+  DIST_BIN_PREC   = 0
+  COUNT_MODE      = 2
+  MOMENT          = 1
+  DR_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/nosyst/mocks_void_xyz/tpcf_xgv_R_16-50/DD_files/DD_CATALPTCICz0.466G960S729161718.CROSS.R_16-50.dat
+  FORCE           = 1
+  VERBOSE         = 1
+[70C[[32;1mDONE[0m]
+Create bins for distances and counts ... [70C[[32;1mDONE[0m]
+Reading data catalog ... 
+  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/nosyst/mocks_void_xyz/CATALPTCICz0.466G960S729161718.VOID.dat'.
+  Counting lines ...   Number of records: 41438128.
+  Allocating memory ...   ~ 632 Mb memory allocated for the tracers.
+  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  32407143 objects removed.
+  9030985 objects recorded.
+[70C[[32;1mDONE[0m]
+Construct the tree for data ... [70C[[32;1mDONE[0m]
+Reading random catalog ... 
+  Filename: `/hpcstorage/dforero/projects/baosystematics/data/patchy_boxes/patchy_cmass_subset/box1/real/CATALPTCICz0.466G960S729161718.dat'.
+  Counting lines ...   Number of records: 6210302.
+  Allocating memory ...   ~ 94.8 Mb memory allocated for the tracers.
+  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  28 objects removed.
+  6210274 objects recorded.
+[70C[[32;1mDONE[0m]
+Construct the tree for random ... [70C[[32;1mDONE[0m]
+Counting DR pairs ... 
+  DR counts are saved to file or stdout.
+[70C[[32;1mDONE[0m]
+Releasing memory for data ... [70C[[32;1mDONE[0m]
+Releasing memory for random ... [70C[[32;1mDONE[0m]
+Releasing memory ... [70C[[32;1mDONE[0m]
+==> Saved correlation function in /home/epfl/dforero/scratch/projects/baosystematics/patchy_results/box1/real/nosyst/mocks_void_xyz/tpcf_xgv_R_16-50/TwoPCF_CATALPTCICz0.466G960S729161718.CROSS.R_16-50.dat.
+/hpcstorage/dforero/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_real.conf
+Loading configuration ... 
+  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/nosyst/mocks_void_xyz/CATALPTCICz0.466G960S731535461.VOID.dat
+  DATA_HEADER     = 0
+  DATA_AUX_XOL    = 4
+  DATA_SEL_MODE   = 23
+  DATA_X_MIN      = 0
+  DATA_X_MAX      = 2500
+  DATA_Y_MIN      = 0
+  DATA_Y_MAX      = 2500
+  DATA_Z_MIN      = 0
+  DATA_Z_MAX      = 2500
+  DATA_AUX_MIN    = 16
+  DATA_AUX_MAX    = 50
+  RAND_CATALOG    = /hpcstorage/dforero/projects/baosystematics/data/patchy_boxes/patchy_cmass_subset/box1/real/CATALPTCICz0.466G960S731535461.dat
+  RAND_HEADER     = 0
+  RAND_SEL_MODE   = 7
+  RAND_X_MIN      = 0
+  RAND_X_MAX      = 2500
+  RAND_Y_MIN      = 0
+  RAND_Y_MAX      = 2500
+  RAND_Z_MIN      = 0
+  RAND_Z_MAX      = 2500
+  DIST_BIN_DIM    = 1
+  DIST_BIN_TYPE   = 1
+  DIST_BIN_RMIN   = 0
+  DIST_BIN_RMAX   = 200
+  DIST_BIN_RNUM   = 40
+  DIST_BIN_PREC   = 0
+  COUNT_MODE      = 2
+  MOMENT          = 1
+  DR_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/nosyst/mocks_void_xyz/tpcf_xgv_R_16-50/DD_files/DD_CATALPTCICz0.466G960S731535461.CROSS.R_16-50.dat
+  FORCE           = 1
+  VERBOSE         = 1
+[70C[[32;1mDONE[0m]
+Create bins for distances and counts ... [70C[[32;1mDONE[0m]
+Reading data catalog ... 
+  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/nosyst/mocks_void_xyz/CATALPTCICz0.466G960S731535461.VOID.dat'.
+  Counting lines ...   Number of records: 41469442.
+  Allocating memory ...   ~ 633 Mb memory allocated for the tracers.
+  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  32435808 objects removed.
+  9033634 objects recorded.
+[70C[[32;1mDONE[0m]
+Construct the tree for data ... [70C[[32;1mDONE[0m]
+Reading random catalog ... 
+  Filename: `/hpcstorage/dforero/projects/baosystematics/data/patchy_boxes/patchy_cmass_subset/box1/real/CATALPTCICz0.466G960S731535461.dat'.
+  Counting lines ...   Number of records: 6214031.
+  Allocating memory ...   ~ 94.8 Mb memory allocated for the tracers.
+  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  34 objects removed.
+  6213997 objects recorded.
+[70C[[32;1mDONE[0m]
+Construct the tree for random ... [70C[[32;1mDONE[0m]
+Counting DR pairs ... 
+  DR counts are saved to file or stdout.
+[70C[[32;1mDONE[0m]
+Releasing memory for data ... [70C[[32;1mDONE[0m]
+Releasing memory for random ... [70C[[32;1mDONE[0m]
+Releasing memory ... [70C[[32;1mDONE[0m]
+==> Saved correlation function in /home/epfl/dforero/scratch/projects/baosystematics/patchy_results/box1/real/nosyst/mocks_void_xyz/tpcf_xgv_R_16-50/TwoPCF_CATALPTCICz0.466G960S731535461.CROSS.R_16-50.dat.

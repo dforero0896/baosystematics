@@ -1,2790 +1,0 @@
-/home/epfl/dforero/scratch/projects/baosystematics/bin/DIVE_box/DIVE_box: error while loading shared libraries: libboost_thread.so.1.68.0: cannot open shared object file: No such file or directory
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S938529308_zspace.parabola.sigma0.0.dat
-  DATA_HEADER     = 0
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock_nowt/TwoPCF_CATALPTCICz0.638G960S938529308_zspace.parabola.sigma0.0.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock_nowt/DD_files/DD_CATALPTCICz0.638G960S938529308_zspace.parabola.sigma0.0.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S938529308_zspace.parabola.sigma0.0.dat'.
-  Counting lines ...   Number of records: 2879543.
-  Allocating memory ...   ~ 43.9 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2879543 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... [70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S938529308_zspace.parabola.sigma0.0.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S938529308_zspace.parabola.sigma0.0.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S938529308_zspace.parabola.sigma0.0.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-srun: error: node229: task 0: Exited with exit code 254
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S938529308_zspace.parabola.sigma0.0.dat
-  DATA_HEADER     = 0
-  DATA_WT_COL     = 4
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock/TwoPCF_CATALPTCICz0.638G960S938529308_zspace.parabola.sigma0.0.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock/DD_files/DD_CATALPTCICz0.638G960S938529308_zspace.parabola.sigma0.0.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S938529308_zspace.parabola.sigma0.0.dat'.
-  Counting lines ...   Number of records: 2879543.
-  Allocating memory ...   ~ 43.9 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2879543 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... 
-  Computing weights ...   Done with computing weights.
-[70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/bin/DIVE_box/DIVE_box: error while loading shared libraries: libboost_thread.so.1.68.0: cannot open shared object file: No such file or directory
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S938529308_zspace.parabola.sigma0.2.dat
-  DATA_HEADER     = 0
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock_nowt/TwoPCF_CATALPTCICz0.638G960S938529308_zspace.parabola.sigma0.2.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock_nowt/DD_files/DD_CATALPTCICz0.638G960S938529308_zspace.parabola.sigma0.2.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S938529308_zspace.parabola.sigma0.2.dat'.
-  Counting lines ...   Number of records: 2387397.
-  Allocating memory ...   ~ 36.4 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2387397 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... [70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S938529308_zspace.parabola.sigma0.2.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S938529308_zspace.parabola.sigma0.2.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-srun: error: node229: task 0: Exited with exit code 254
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S938529308_zspace.parabola.sigma0.2.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S938529308_zspace.parabola.sigma0.2.dat
-  DATA_HEADER     = 0
-  DATA_WT_COL     = 4
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock/TwoPCF_CATALPTCICz0.638G960S938529308_zspace.parabola.sigma0.2.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock/DD_files/DD_CATALPTCICz0.638G960S938529308_zspace.parabola.sigma0.2.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S938529308_zspace.parabola.sigma0.2.dat'.
-  Counting lines ...   Number of records: 2387397.
-  Allocating memory ...   ~ 36.4 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2387397 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... 
-  Computing weights ...   Done with computing weights.
-[70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/bin/DIVE_box/DIVE_box: error while loading shared libraries: libboost_thread.so.1.68.0: cannot open shared object file: No such file or directory
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S706358248_zspace.parabola.sigma0.0.dat
-  DATA_HEADER     = 0
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock_nowt/TwoPCF_CATALPTCICz0.638G960S706358248_zspace.parabola.sigma0.0.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock_nowt/DD_files/DD_CATALPTCICz0.638G960S706358248_zspace.parabola.sigma0.0.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S706358248_zspace.parabola.sigma0.0.dat'.
-  Counting lines ...   Number of records: 2879874.
-  Allocating memory ...   ~ 43.9 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2879874 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... [70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S706358248_zspace.parabola.sigma0.0.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S706358248_zspace.parabola.sigma0.0.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S706358248_zspace.parabola.sigma0.0.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S706358248_zspace.parabola.sigma0.0.dat
-  DATA_HEADER     = 0
-  DATA_WT_COL     = 4
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock/TwoPCF_CATALPTCICz0.638G960S706358248_zspace.parabola.sigma0.0.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock/DD_files/DD_CATALPTCICz0.638G960S706358248_zspace.parabola.sigma0.0.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S706358248_zspace.parabola.sigma0.0.dat'.
-  Counting lines ...   Number of records: 2879874.
-  Allocating memory ...   ~ 43.9 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2879874 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... 
-  Computing weights ...   Done with computing weights.
-[70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/bin/DIVE_box/DIVE_box: error while loading shared libraries: libboost_thread.so.1.68.0: cannot open shared object file: No such file or directory
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S706358248_zspace.parabola.sigma0.2.dat
-  DATA_HEADER     = 0
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock_nowt/TwoPCF_CATALPTCICz0.638G960S706358248_zspace.parabola.sigma0.2.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock_nowt/DD_files/DD_CATALPTCICz0.638G960S706358248_zspace.parabola.sigma0.2.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S706358248_zspace.parabola.sigma0.2.dat'.
-  Counting lines ...   Number of records: 2387454.
-  Allocating memory ...   ~ 36.4 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2387454 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... [70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S706358248_zspace.parabola.sigma0.2.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S706358248_zspace.parabola.sigma0.2.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S706358248_zspace.parabola.sigma0.2.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S706358248_zspace.parabola.sigma0.2.dat
-  DATA_HEADER     = 0
-  DATA_WT_COL     = 4
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock/TwoPCF_CATALPTCICz0.638G960S706358248_zspace.parabola.sigma0.2.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock/DD_files/DD_CATALPTCICz0.638G960S706358248_zspace.parabola.sigma0.2.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S706358248_zspace.parabola.sigma0.2.dat'.
-  Counting lines ...   Number of records: 2387454.
-  Allocating memory ...   ~ 36.4 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2387454 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... 
-  Computing weights ...   Done with computing weights.
-[70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/bin/DIVE_box/DIVE_box: error while loading shared libraries: libboost_thread.so.1.68.0: cannot open shared object file: No such file or directory
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1500256497_zspace.parabola.sigma0.0.dat
-  DATA_HEADER     = 0
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock_nowt/TwoPCF_CATALPTCICz0.638G960S1500256497_zspace.parabola.sigma0.0.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock_nowt/DD_files/DD_CATALPTCICz0.638G960S1500256497_zspace.parabola.sigma0.0.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1500256497_zspace.parabola.sigma0.0.dat'.
-  Counting lines ...   Number of records: 2879336.
-  Allocating memory ...   ~ 43.9 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2879336 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... [70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S1500256497_zspace.parabola.sigma0.0.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S1500256497_zspace.parabola.sigma0.0.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S1500256497_zspace.parabola.sigma0.0.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1500256497_zspace.parabola.sigma0.0.dat
-  DATA_HEADER     = 0
-  DATA_WT_COL     = 4
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock/TwoPCF_CATALPTCICz0.638G960S1500256497_zspace.parabola.sigma0.0.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock/DD_files/DD_CATALPTCICz0.638G960S1500256497_zspace.parabola.sigma0.0.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1500256497_zspace.parabola.sigma0.0.dat'.
-  Counting lines ...   Number of records: 2879336.
-  Allocating memory ...   ~ 43.9 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2879336 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... 
-  Computing weights ...   Done with computing weights.
-[70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/bin/DIVE_box/DIVE_box: error while loading shared libraries: libboost_thread.so.1.68.0: cannot open shared object file: No such file or directory
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1500256497_zspace.parabola.sigma0.2.dat
-  DATA_HEADER     = 0
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock_nowt/TwoPCF_CATALPTCICz0.638G960S1500256497_zspace.parabola.sigma0.2.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock_nowt/DD_files/DD_CATALPTCICz0.638G960S1500256497_zspace.parabola.sigma0.2.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1500256497_zspace.parabola.sigma0.2.dat'.
-  Counting lines ...   Number of records: 2386622.
-  Allocating memory ...   ~ 36.4 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2386622 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... [70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S1500256497_zspace.parabola.sigma0.2.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S1500256497_zspace.parabola.sigma0.2.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S1500256497_zspace.parabola.sigma0.2.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1500256497_zspace.parabola.sigma0.2.dat
-  DATA_HEADER     = 0
-  DATA_WT_COL     = 4
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock/TwoPCF_CATALPTCICz0.638G960S1500256497_zspace.parabola.sigma0.2.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock/DD_files/DD_CATALPTCICz0.638G960S1500256497_zspace.parabola.sigma0.2.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1500256497_zspace.parabola.sigma0.2.dat'.
-  Counting lines ...   Number of records: 2386622.
-  Allocating memory ...   ~ 36.4 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2386622 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... 
-  Computing weights ...   Done with computing weights.
-[70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/bin/DIVE_box/DIVE_box: error while loading shared libraries: libboost_thread.so.1.68.0: cannot open shared object file: No such file or directory
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S131638539_zspace.parabola.sigma0.0.dat
-  DATA_HEADER     = 0
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock_nowt/TwoPCF_CATALPTCICz0.638G960S131638539_zspace.parabola.sigma0.0.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock_nowt/DD_files/DD_CATALPTCICz0.638G960S131638539_zspace.parabola.sigma0.0.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S131638539_zspace.parabola.sigma0.0.dat'.
-  Counting lines ...   Number of records: 2879450.
-  Allocating memory ...   ~ 43.9 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2879450 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... [70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S131638539_zspace.parabola.sigma0.0.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-srun: error: node229: task 0: Exited with exit code 254
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S131638539_zspace.parabola.sigma0.0.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-srun: error: node229: task 0: Exited with exit code 254
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S131638539_zspace.parabola.sigma0.0.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-srun: error: node229: task 0: Exited with exit code 254
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S131638539_zspace.parabola.sigma0.0.dat
-  DATA_HEADER     = 0
-  DATA_WT_COL     = 4
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock/TwoPCF_CATALPTCICz0.638G960S131638539_zspace.parabola.sigma0.0.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock/DD_files/DD_CATALPTCICz0.638G960S131638539_zspace.parabola.sigma0.0.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S131638539_zspace.parabola.sigma0.0.dat'.
-  Counting lines ...   Number of records: 2879450.
-  Allocating memory ...   ~ 43.9 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2879450 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... 
-  Computing weights ...   Done with computing weights.
-[70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/bin/DIVE_box/DIVE_box: error while loading shared libraries: libboost_thread.so.1.68.0: cannot open shared object file: No such file or directory
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S131638539_zspace.parabola.sigma0.2.dat
-  DATA_HEADER     = 0
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock_nowt/TwoPCF_CATALPTCICz0.638G960S131638539_zspace.parabola.sigma0.2.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock_nowt/DD_files/DD_CATALPTCICz0.638G960S131638539_zspace.parabola.sigma0.2.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S131638539_zspace.parabola.sigma0.2.dat'.
-  Counting lines ...   Number of records: 2386478.
-  Allocating memory ...   ~ 36.4 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2386478 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... [70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S131638539_zspace.parabola.sigma0.2.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-srun: error: node229: task 0: Exited with exit code 254
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S131638539_zspace.parabola.sigma0.2.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S131638539_zspace.parabola.sigma0.2.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S131638539_zspace.parabola.sigma0.2.dat
-  DATA_HEADER     = 0
-  DATA_WT_COL     = 4
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock/TwoPCF_CATALPTCICz0.638G960S131638539_zspace.parabola.sigma0.2.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock/DD_files/DD_CATALPTCICz0.638G960S131638539_zspace.parabola.sigma0.2.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S131638539_zspace.parabola.sigma0.2.dat'.
-  Counting lines ...   Number of records: 2386478.
-  Allocating memory ...   ~ 36.4 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2386478 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... 
-  Computing weights ...   Done with computing weights.
-[70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/bin/DIVE_box/DIVE_box: error while loading shared libraries: libboost_thread.so.1.68.0: cannot open shared object file: No such file or directory
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1711891480_zspace.parabola.sigma0.0.dat
-  DATA_HEADER     = 0
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock_nowt/TwoPCF_CATALPTCICz0.638G960S1711891480_zspace.parabola.sigma0.0.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock_nowt/DD_files/DD_CATALPTCICz0.638G960S1711891480_zspace.parabola.sigma0.0.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1711891480_zspace.parabola.sigma0.0.dat'.
-  Counting lines ...   Number of records: 2881335.
-  Allocating memory ...   ~ 44 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2881335 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... [70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S1711891480_zspace.parabola.sigma0.0.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S1711891480_zspace.parabola.sigma0.0.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-srun: error: node229: task 0: Exited with exit code 254
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S1711891480_zspace.parabola.sigma0.0.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-srun: error: node229: task 0: Exited with exit code 254
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1711891480_zspace.parabola.sigma0.0.dat
-  DATA_HEADER     = 0
-  DATA_WT_COL     = 4
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock/TwoPCF_CATALPTCICz0.638G960S1711891480_zspace.parabola.sigma0.0.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock/DD_files/DD_CATALPTCICz0.638G960S1711891480_zspace.parabola.sigma0.0.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1711891480_zspace.parabola.sigma0.0.dat'.
-  Counting lines ...   Number of records: 2881335.
-  Allocating memory ...   ~ 44 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2881335 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... 
-  Computing weights ...   Done with computing weights.
-[70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/bin/DIVE_box/DIVE_box: error while loading shared libraries: libboost_thread.so.1.68.0: cannot open shared object file: No such file or directory
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1711891480_zspace.parabola.sigma0.2.dat
-  DATA_HEADER     = 0
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock_nowt/TwoPCF_CATALPTCICz0.638G960S1711891480_zspace.parabola.sigma0.2.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock_nowt/DD_files/DD_CATALPTCICz0.638G960S1711891480_zspace.parabola.sigma0.2.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1711891480_zspace.parabola.sigma0.2.dat'.
-  Counting lines ...   Number of records: 2389594.
-  Allocating memory ...   ~ 36.5 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2389594 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... [70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S1711891480_zspace.parabola.sigma0.2.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S1711891480_zspace.parabola.sigma0.2.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S1711891480_zspace.parabola.sigma0.2.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1711891480_zspace.parabola.sigma0.2.dat
-  DATA_HEADER     = 0
-  DATA_WT_COL     = 4
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock/TwoPCF_CATALPTCICz0.638G960S1711891480_zspace.parabola.sigma0.2.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock/DD_files/DD_CATALPTCICz0.638G960S1711891480_zspace.parabola.sigma0.2.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1711891480_zspace.parabola.sigma0.2.dat'.
-  Counting lines ...   Number of records: 2389594.
-  Allocating memory ...   ~ 36.5 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2389594 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... 
-  Computing weights ...   Done with computing weights.
-[70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/bin/DIVE_box/DIVE_box: error while loading shared libraries: libboost_thread.so.1.68.0: cannot open shared object file: No such file or directory
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1137451315_zspace.parabola.sigma0.0.dat
-  DATA_HEADER     = 0
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock_nowt/TwoPCF_CATALPTCICz0.638G960S1137451315_zspace.parabola.sigma0.0.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock_nowt/DD_files/DD_CATALPTCICz0.638G960S1137451315_zspace.parabola.sigma0.0.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1137451315_zspace.parabola.sigma0.0.dat'.
-  Counting lines ...   Number of records: 2881055.
-  Allocating memory ...   ~ 44 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2881055 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... [70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S1137451315_zspace.parabola.sigma0.0.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-srun: error: node229: task 0: Exited with exit code 254
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S1137451315_zspace.parabola.sigma0.0.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-srun: error: node229: task 0: Exited with exit code 254
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S1137451315_zspace.parabola.sigma0.0.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-srun: error: node229: task 0: Exited with exit code 254
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1137451315_zspace.parabola.sigma0.0.dat
-  DATA_HEADER     = 0
-  DATA_WT_COL     = 4
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock/TwoPCF_CATALPTCICz0.638G960S1137451315_zspace.parabola.sigma0.0.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock/DD_files/DD_CATALPTCICz0.638G960S1137451315_zspace.parabola.sigma0.0.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1137451315_zspace.parabola.sigma0.0.dat'.
-  Counting lines ...   Number of records: 2881055.
-  Allocating memory ...   ~ 44 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2881055 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... 
-  Computing weights ...   Done with computing weights.
-[70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/bin/DIVE_box/DIVE_box: error while loading shared libraries: libboost_thread.so.1.68.0: cannot open shared object file: No such file or directory
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1137451315_zspace.parabola.sigma0.2.dat
-  DATA_HEADER     = 0
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock_nowt/TwoPCF_CATALPTCICz0.638G960S1137451315_zspace.parabola.sigma0.2.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock_nowt/DD_files/DD_CATALPTCICz0.638G960S1137451315_zspace.parabola.sigma0.2.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1137451315_zspace.parabola.sigma0.2.dat'.
-  Counting lines ...   Number of records: 2388704.
-  Allocating memory ...   ~ 36.4 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2388704 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... [70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S1137451315_zspace.parabola.sigma0.2.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-srun: error: node229: task 0: Exited with exit code 254
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S1137451315_zspace.parabola.sigma0.2.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S1137451315_zspace.parabola.sigma0.2.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1137451315_zspace.parabola.sigma0.2.dat
-  DATA_HEADER     = 0
-  DATA_WT_COL     = 4
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock/TwoPCF_CATALPTCICz0.638G960S1137451315_zspace.parabola.sigma0.2.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock/DD_files/DD_CATALPTCICz0.638G960S1137451315_zspace.parabola.sigma0.2.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1137451315_zspace.parabola.sigma0.2.dat'.
-  Counting lines ...   Number of records: 2388704.
-  Allocating memory ...   ~ 36.4 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2388704 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... 
-  Computing weights ...   Done with computing weights.
-[70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/bin/DIVE_box/DIVE_box: error while loading shared libraries: libboost_thread.so.1.68.0: cannot open shared object file: No such file or directory
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1885563258_zspace.parabola.sigma0.0.dat
-  DATA_HEADER     = 0
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock_nowt/TwoPCF_CATALPTCICz0.638G960S1885563258_zspace.parabola.sigma0.0.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock_nowt/DD_files/DD_CATALPTCICz0.638G960S1885563258_zspace.parabola.sigma0.0.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1885563258_zspace.parabola.sigma0.0.dat'.
-  Counting lines ...   Number of records: 2877581.
-  Allocating memory ...   ~ 43.9 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2877581 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... [70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S1885563258_zspace.parabola.sigma0.0.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-srun: error: node229: task 0: Exited with exit code 254
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S1885563258_zspace.parabola.sigma0.0.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-srun: error: node229: task 0: Exited with exit code 254
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S1885563258_zspace.parabola.sigma0.0.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-srun: error: node229: task 0: Exited with exit code 254
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1885563258_zspace.parabola.sigma0.0.dat
-  DATA_HEADER     = 0
-  DATA_WT_COL     = 4
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock/TwoPCF_CATALPTCICz0.638G960S1885563258_zspace.parabola.sigma0.0.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock/DD_files/DD_CATALPTCICz0.638G960S1885563258_zspace.parabola.sigma0.0.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1885563258_zspace.parabola.sigma0.0.dat'.
-  Counting lines ...   Number of records: 2877581.
-  Allocating memory ...   ~ 43.9 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2877581 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... 
-  Computing weights ...   Done with computing weights.
-[70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/bin/DIVE_box/DIVE_box: error while loading shared libraries: libboost_thread.so.1.68.0: cannot open shared object file: No such file or directory
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1885563258_zspace.parabola.sigma0.2.dat
-  DATA_HEADER     = 0
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock_nowt/TwoPCF_CATALPTCICz0.638G960S1885563258_zspace.parabola.sigma0.2.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock_nowt/DD_files/DD_CATALPTCICz0.638G960S1885563258_zspace.parabola.sigma0.2.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1885563258_zspace.parabola.sigma0.2.dat'.
-  Counting lines ...   Number of records: 2386057.
-  Allocating memory ...   ~ 36.4 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2386057 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... [70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S1885563258_zspace.parabola.sigma0.2.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S1885563258_zspace.parabola.sigma0.2.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S1885563258_zspace.parabola.sigma0.2.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1885563258_zspace.parabola.sigma0.2.dat
-  DATA_HEADER     = 0
-  DATA_WT_COL     = 4
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock/TwoPCF_CATALPTCICz0.638G960S1885563258_zspace.parabola.sigma0.2.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock/DD_files/DD_CATALPTCICz0.638G960S1885563258_zspace.parabola.sigma0.2.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1885563258_zspace.parabola.sigma0.2.dat'.
-  Counting lines ...   Number of records: 2386057.
-  Allocating memory ...   ~ 36.4 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2386057 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... 
-  Computing weights ...   Done with computing weights.
-[70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/bin/DIVE_box/DIVE_box: error while loading shared libraries: libboost_thread.so.1.68.0: cannot open shared object file: No such file or directory
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S526205821_zspace.parabola.sigma0.0.dat
-  DATA_HEADER     = 0
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock_nowt/TwoPCF_CATALPTCICz0.638G960S526205821_zspace.parabola.sigma0.0.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock_nowt/DD_files/DD_CATALPTCICz0.638G960S526205821_zspace.parabola.sigma0.0.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S526205821_zspace.parabola.sigma0.0.dat'.
-  Counting lines ...   Number of records: 2880923.
-  Allocating memory ...   ~ 44 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2880923 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... [70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S526205821_zspace.parabola.sigma0.0.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S526205821_zspace.parabola.sigma0.0.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-srun: error: node229: task 0: Exited with exit code 254
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S526205821_zspace.parabola.sigma0.0.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S526205821_zspace.parabola.sigma0.0.dat
-  DATA_HEADER     = 0
-  DATA_WT_COL     = 4
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock/TwoPCF_CATALPTCICz0.638G960S526205821_zspace.parabola.sigma0.0.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock/DD_files/DD_CATALPTCICz0.638G960S526205821_zspace.parabola.sigma0.0.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S526205821_zspace.parabola.sigma0.0.dat'.
-  Counting lines ...   Number of records: 2880923.
-  Allocating memory ...   ~ 44 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2880923 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... 
-  Computing weights ...   Done with computing weights.
-[70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/bin/DIVE_box/DIVE_box: error while loading shared libraries: libboost_thread.so.1.68.0: cannot open shared object file: No such file or directory
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S526205821_zspace.parabola.sigma0.2.dat
-  DATA_HEADER     = 0
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock_nowt/TwoPCF_CATALPTCICz0.638G960S526205821_zspace.parabola.sigma0.2.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock_nowt/DD_files/DD_CATALPTCICz0.638G960S526205821_zspace.parabola.sigma0.2.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S526205821_zspace.parabola.sigma0.2.dat'.
-  Counting lines ...   Number of records: 2388835.
-  Allocating memory ...   ~ 36.5 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2388835 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... [70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S526205821_zspace.parabola.sigma0.2.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-srun: error: node229: task 0: Exited with exit code 254
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S526205821_zspace.parabola.sigma0.2.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S526205821_zspace.parabola.sigma0.2.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S526205821_zspace.parabola.sigma0.2.dat
-  DATA_HEADER     = 0
-  DATA_WT_COL     = 4
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock/TwoPCF_CATALPTCICz0.638G960S526205821_zspace.parabola.sigma0.2.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock/DD_files/DD_CATALPTCICz0.638G960S526205821_zspace.parabola.sigma0.2.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S526205821_zspace.parabola.sigma0.2.dat'.
-  Counting lines ...   Number of records: 2388835.
-  Allocating memory ...   ~ 36.5 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2388835 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... 
-  Computing weights ...   Done with computing weights.
-[70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/bin/DIVE_box/DIVE_box: error while loading shared libraries: libboost_thread.so.1.68.0: cannot open shared object file: No such file or directory
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S2080767391_zspace.parabola.sigma0.0.dat
-  DATA_HEADER     = 0
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock_nowt/TwoPCF_CATALPTCICz0.638G960S2080767391_zspace.parabola.sigma0.0.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock_nowt/DD_files/DD_CATALPTCICz0.638G960S2080767391_zspace.parabola.sigma0.0.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S2080767391_zspace.parabola.sigma0.0.dat'.
-  Counting lines ...   Number of records: 2881072.
-  Allocating memory ...   ~ 44 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2881072 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... [70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S2080767391_zspace.parabola.sigma0.0.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S2080767391_zspace.parabola.sigma0.0.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S2080767391_zspace.parabola.sigma0.0.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S2080767391_zspace.parabola.sigma0.0.dat
-  DATA_HEADER     = 0
-  DATA_WT_COL     = 4
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock/TwoPCF_CATALPTCICz0.638G960S2080767391_zspace.parabola.sigma0.0.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock/DD_files/DD_CATALPTCICz0.638G960S2080767391_zspace.parabola.sigma0.0.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S2080767391_zspace.parabola.sigma0.0.dat'.
-  Counting lines ...   Number of records: 2881072.
-  Allocating memory ...   ~ 44 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2881072 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... 
-  Computing weights ...   Done with computing weights.
-[70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/bin/DIVE_box/DIVE_box: error while loading shared libraries: libboost_thread.so.1.68.0: cannot open shared object file: No such file or directory
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S2080767391_zspace.parabola.sigma0.2.dat
-  DATA_HEADER     = 0
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock_nowt/TwoPCF_CATALPTCICz0.638G960S2080767391_zspace.parabola.sigma0.2.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock_nowt/DD_files/DD_CATALPTCICz0.638G960S2080767391_zspace.parabola.sigma0.2.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S2080767391_zspace.parabola.sigma0.2.dat'.
-  Counting lines ...   Number of records: 2389028.
-  Allocating memory ...   ~ 36.5 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2389028 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... [70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S2080767391_zspace.parabola.sigma0.2.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S2080767391_zspace.parabola.sigma0.2.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-srun: error: node229: task 0: Exited with exit code 254
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S2080767391_zspace.parabola.sigma0.2.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-srun: error: node229: task 0: Exited with exit code 254
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S2080767391_zspace.parabola.sigma0.2.dat
-  DATA_HEADER     = 0
-  DATA_WT_COL     = 4
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock/TwoPCF_CATALPTCICz0.638G960S2080767391_zspace.parabola.sigma0.2.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock/DD_files/DD_CATALPTCICz0.638G960S2080767391_zspace.parabola.sigma0.2.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S2080767391_zspace.parabola.sigma0.2.dat'.
-  Counting lines ...   Number of records: 2389028.
-  Allocating memory ...   ~ 36.5 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2389028 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... 
-  Computing weights ...   Done with computing weights.
-[70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/bin/DIVE_box/DIVE_box: error while loading shared libraries: libboost_thread.so.1.68.0: cannot open shared object file: No such file or directory
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1520182503_zspace.parabola.sigma0.0.dat
-  DATA_HEADER     = 0
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock_nowt/TwoPCF_CATALPTCICz0.638G960S1520182503_zspace.parabola.sigma0.0.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock_nowt/DD_files/DD_CATALPTCICz0.638G960S1520182503_zspace.parabola.sigma0.0.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1520182503_zspace.parabola.sigma0.0.dat'.
-  Counting lines ...   Number of records: 2881346.
-  Allocating memory ...   ~ 44 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2881346 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... [70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S1520182503_zspace.parabola.sigma0.0.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S1520182503_zspace.parabola.sigma0.0.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-srun: error: node229: task 0: Exited with exit code 254
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S1520182503_zspace.parabola.sigma0.0.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1520182503_zspace.parabola.sigma0.0.dat
-  DATA_HEADER     = 0
-  DATA_WT_COL     = 4
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock/TwoPCF_CATALPTCICz0.638G960S1520182503_zspace.parabola.sigma0.0.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock/DD_files/DD_CATALPTCICz0.638G960S1520182503_zspace.parabola.sigma0.0.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1520182503_zspace.parabola.sigma0.0.dat'.
-  Counting lines ...   Number of records: 2881346.
-  Allocating memory ...   ~ 44 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2881346 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... 
-  Computing weights ...   Done with computing weights.
-[70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/bin/DIVE_box/DIVE_box: error while loading shared libraries: libboost_thread.so.1.68.0: cannot open shared object file: No such file or directory
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1520182503_zspace.parabola.sigma0.2.dat
-  DATA_HEADER     = 0
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock_nowt/TwoPCF_CATALPTCICz0.638G960S1520182503_zspace.parabola.sigma0.2.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock_nowt/DD_files/DD_CATALPTCICz0.638G960S1520182503_zspace.parabola.sigma0.2.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1520182503_zspace.parabola.sigma0.2.dat'.
-  Counting lines ...   Number of records: 2388744.
-  Allocating memory ...   ~ 36.4 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2388744 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... [70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S1520182503_zspace.parabola.sigma0.2.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-srun: error: node229: task 0: Exited with exit code 254
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S1520182503_zspace.parabola.sigma0.2.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S1520182503_zspace.parabola.sigma0.2.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1520182503_zspace.parabola.sigma0.2.dat
-  DATA_HEADER     = 0
-  DATA_WT_COL     = 4
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock/TwoPCF_CATALPTCICz0.638G960S1520182503_zspace.parabola.sigma0.2.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock/DD_files/DD_CATALPTCICz0.638G960S1520182503_zspace.parabola.sigma0.2.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1520182503_zspace.parabola.sigma0.2.dat'.
-  Counting lines ...   Number of records: 2388744.
-  Allocating memory ...   ~ 36.4 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2388744 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... 
-  Computing weights ...   Done with computing weights.
-[70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/bin/DIVE_box/DIVE_box: error while loading shared libraries: libboost_thread.so.1.68.0: cannot open shared object file: No such file or directory
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S71650295_zspace.parabola.sigma0.0.dat
-  DATA_HEADER     = 0
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock_nowt/TwoPCF_CATALPTCICz0.638G960S71650295_zspace.parabola.sigma0.0.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock_nowt/DD_files/DD_CATALPTCICz0.638G960S71650295_zspace.parabola.sigma0.0.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S71650295_zspace.parabola.sigma0.0.dat'.
-  Counting lines ...   Number of records: 2880930.
-  Allocating memory ...   ~ 44 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2880930 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... [70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S71650295_zspace.parabola.sigma0.0.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S71650295_zspace.parabola.sigma0.0.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S71650295_zspace.parabola.sigma0.0.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S71650295_zspace.parabola.sigma0.0.dat
-  DATA_HEADER     = 0
-  DATA_WT_COL     = 4
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock/TwoPCF_CATALPTCICz0.638G960S71650295_zspace.parabola.sigma0.0.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock/DD_files/DD_CATALPTCICz0.638G960S71650295_zspace.parabola.sigma0.0.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S71650295_zspace.parabola.sigma0.0.dat'.
-  Counting lines ...   Number of records: 2880930.
-  Allocating memory ...   ~ 44 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2880930 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... 
-  Computing weights ...   Done with computing weights.
-[70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/bin/DIVE_box/DIVE_box: error while loading shared libraries: libboost_thread.so.1.68.0: cannot open shared object file: No such file or directory
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S71650295_zspace.parabola.sigma0.2.dat
-  DATA_HEADER     = 0
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock_nowt/TwoPCF_CATALPTCICz0.638G960S71650295_zspace.parabola.sigma0.2.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock_nowt/DD_files/DD_CATALPTCICz0.638G960S71650295_zspace.parabola.sigma0.2.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S71650295_zspace.parabola.sigma0.2.dat'.
-  Counting lines ...   Number of records: 2388594.
-  Allocating memory ...   ~ 36.4 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2388594 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... [70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S71650295_zspace.parabola.sigma0.2.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S71650295_zspace.parabola.sigma0.2.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S71650295_zspace.parabola.sigma0.2.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S71650295_zspace.parabola.sigma0.2.dat
-  DATA_HEADER     = 0
-  DATA_WT_COL     = 4
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock/TwoPCF_CATALPTCICz0.638G960S71650295_zspace.parabola.sigma0.2.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock/DD_files/DD_CATALPTCICz0.638G960S71650295_zspace.parabola.sigma0.2.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S71650295_zspace.parabola.sigma0.2.dat'.
-  Counting lines ...   Number of records: 2388594.
-  Allocating memory ...   ~ 36.4 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2388594 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... 
-  Computing weights ...   Done with computing weights.
-[70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/bin/DIVE_box/DIVE_box: error while loading shared libraries: libboost_thread.so.1.68.0: cannot open shared object file: No such file or directory
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S943243328_zspace.parabola.sigma0.0.dat
-  DATA_HEADER     = 0
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock_nowt/TwoPCF_CATALPTCICz0.638G960S943243328_zspace.parabola.sigma0.0.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock_nowt/DD_files/DD_CATALPTCICz0.638G960S943243328_zspace.parabola.sigma0.0.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S943243328_zspace.parabola.sigma0.0.dat'.
-  Counting lines ...   Number of records: 2881168.
-  Allocating memory ...   ~ 44 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2881168 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... [70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S943243328_zspace.parabola.sigma0.0.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-srun: error: node229: task 0: Exited with exit code 254
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S943243328_zspace.parabola.sigma0.0.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-srun: error: node229: task 0: Exited with exit code 254
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S943243328_zspace.parabola.sigma0.0.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-srun: error: node229: task 0: Exited with exit code 254
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S943243328_zspace.parabola.sigma0.0.dat
-  DATA_HEADER     = 0
-  DATA_WT_COL     = 4
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock/TwoPCF_CATALPTCICz0.638G960S943243328_zspace.parabola.sigma0.0.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock/DD_files/DD_CATALPTCICz0.638G960S943243328_zspace.parabola.sigma0.0.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S943243328_zspace.parabola.sigma0.0.dat'.
-  Counting lines ...   Number of records: 2881168.
-  Allocating memory ...   ~ 44 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2881168 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... 
-  Computing weights ...   Done with computing weights.
-[70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/bin/DIVE_box/DIVE_box: error while loading shared libraries: libboost_thread.so.1.68.0: cannot open shared object file: No such file or directory
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S943243328_zspace.parabola.sigma0.2.dat
-  DATA_HEADER     = 0
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock_nowt/TwoPCF_CATALPTCICz0.638G960S943243328_zspace.parabola.sigma0.2.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock_nowt/DD_files/DD_CATALPTCICz0.638G960S943243328_zspace.parabola.sigma0.2.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S943243328_zspace.parabola.sigma0.2.dat'.
-  Counting lines ...   Number of records: 2388690.
-  Allocating memory ...   ~ 36.4 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2388690 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... [70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S943243328_zspace.parabola.sigma0.2.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S943243328_zspace.parabola.sigma0.2.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S943243328_zspace.parabola.sigma0.2.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S943243328_zspace.parabola.sigma0.2.dat
-  DATA_HEADER     = 0
-  DATA_WT_COL     = 4
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock/TwoPCF_CATALPTCICz0.638G960S943243328_zspace.parabola.sigma0.2.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock/DD_files/DD_CATALPTCICz0.638G960S943243328_zspace.parabola.sigma0.2.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S943243328_zspace.parabola.sigma0.2.dat'.
-  Counting lines ...   Number of records: 2388690.
-  Allocating memory ...   ~ 36.4 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2388690 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... 
-  Computing weights ...   Done with computing weights.
-[70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/bin/DIVE_box/DIVE_box: error while loading shared libraries: libboost_thread.so.1.68.0: cannot open shared object file: No such file or directory
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S290410571_zspace.parabola.sigma0.0.dat
-  DATA_HEADER     = 0
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock_nowt/TwoPCF_CATALPTCICz0.638G960S290410571_zspace.parabola.sigma0.0.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock_nowt/DD_files/DD_CATALPTCICz0.638G960S290410571_zspace.parabola.sigma0.0.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S290410571_zspace.parabola.sigma0.0.dat'.
-  Counting lines ...   Number of records: 2880735.
-  Allocating memory ...   ~ 44 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2880735 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... [70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S290410571_zspace.parabola.sigma0.0.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S290410571_zspace.parabola.sigma0.0.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-srun: error: node229: task 0: Exited with exit code 254
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S290410571_zspace.parabola.sigma0.0.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-srun: error: node229: task 0: Exited with exit code 254
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S290410571_zspace.parabola.sigma0.0.dat
-  DATA_HEADER     = 0
-  DATA_WT_COL     = 4
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock/TwoPCF_CATALPTCICz0.638G960S290410571_zspace.parabola.sigma0.0.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock/DD_files/DD_CATALPTCICz0.638G960S290410571_zspace.parabola.sigma0.0.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S290410571_zspace.parabola.sigma0.0.dat'.
-  Counting lines ...   Number of records: 2880735.
-  Allocating memory ...   ~ 44 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2880735 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... 
-  Computing weights ...   Done with computing weights.
-[70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/bin/DIVE_box/DIVE_box: error while loading shared libraries: libboost_thread.so.1.68.0: cannot open shared object file: No such file or directory
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S290410571_zspace.parabola.sigma0.2.dat
-  DATA_HEADER     = 0
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock_nowt/TwoPCF_CATALPTCICz0.638G960S290410571_zspace.parabola.sigma0.2.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock_nowt/DD_files/DD_CATALPTCICz0.638G960S290410571_zspace.parabola.sigma0.2.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S290410571_zspace.parabola.sigma0.2.dat'.
-  Counting lines ...   Number of records: 2387685.
-  Allocating memory ...   ~ 36.4 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2387685 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... [70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S290410571_zspace.parabola.sigma0.2.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-srun: error: node229: task 0: Exited with exit code 254
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S290410571_zspace.parabola.sigma0.2.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-srun: error: node229: task 0: Exited with exit code 254
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S290410571_zspace.parabola.sigma0.2.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-srun: error: node229: task 0: Exited with exit code 254
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S290410571_zspace.parabola.sigma0.2.dat
-  DATA_HEADER     = 0
-  DATA_WT_COL     = 4
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock/TwoPCF_CATALPTCICz0.638G960S290410571_zspace.parabola.sigma0.2.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock/DD_files/DD_CATALPTCICz0.638G960S290410571_zspace.parabola.sigma0.2.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S290410571_zspace.parabola.sigma0.2.dat'.
-  Counting lines ...   Number of records: 2387685.
-  Allocating memory ...   ~ 36.4 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2387685 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... 
-  Computing weights ...   Done with computing weights.
-[70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/bin/DIVE_box/DIVE_box: error while loading shared libraries: libboost_thread.so.1.68.0: cannot open shared object file: No such file or directory
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1319224709_zspace.parabola.sigma0.0.dat
-  DATA_HEADER     = 0
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock_nowt/TwoPCF_CATALPTCICz0.638G960S1319224709_zspace.parabola.sigma0.0.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock_nowt/DD_files/DD_CATALPTCICz0.638G960S1319224709_zspace.parabola.sigma0.0.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1319224709_zspace.parabola.sigma0.0.dat'.
-  Counting lines ...   Number of records: 2881064.
-  Allocating memory ...   ~ 44 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2881064 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... [70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S1319224709_zspace.parabola.sigma0.0.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S1319224709_zspace.parabola.sigma0.0.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S1319224709_zspace.parabola.sigma0.0.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1319224709_zspace.parabola.sigma0.0.dat
-  DATA_HEADER     = 0
-  DATA_WT_COL     = 4
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock/TwoPCF_CATALPTCICz0.638G960S1319224709_zspace.parabola.sigma0.0.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock/DD_files/DD_CATALPTCICz0.638G960S1319224709_zspace.parabola.sigma0.0.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1319224709_zspace.parabola.sigma0.0.dat'.
-  Counting lines ...   Number of records: 2881064.
-  Allocating memory ...   ~ 44 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2881064 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... 
-  Computing weights ...   Done with computing weights.
-[70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/bin/DIVE_box/DIVE_box: error while loading shared libraries: libboost_thread.so.1.68.0: cannot open shared object file: No such file or directory
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1319224709_zspace.parabola.sigma0.2.dat
-  DATA_HEADER     = 0
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock_nowt/TwoPCF_CATALPTCICz0.638G960S1319224709_zspace.parabola.sigma0.2.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock_nowt/DD_files/DD_CATALPTCICz0.638G960S1319224709_zspace.parabola.sigma0.2.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1319224709_zspace.parabola.sigma0.2.dat'.
-  Counting lines ...   Number of records: 2389193.
-  Allocating memory ...   ~ 36.5 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2389193 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... [70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S1319224709_zspace.parabola.sigma0.2.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S1319224709_zspace.parabola.sigma0.2.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S1319224709_zspace.parabola.sigma0.2.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1319224709_zspace.parabola.sigma0.2.dat
-  DATA_HEADER     = 0
-  DATA_WT_COL     = 4
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock/TwoPCF_CATALPTCICz0.638G960S1319224709_zspace.parabola.sigma0.2.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock/DD_files/DD_CATALPTCICz0.638G960S1319224709_zspace.parabola.sigma0.2.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1319224709_zspace.parabola.sigma0.2.dat'.
-  Counting lines ...   Number of records: 2389193.
-  Allocating memory ...   ~ 36.5 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2389193 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... 
-  Computing weights ...   Done with computing weights.
-[70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/bin/DIVE_box/DIVE_box: error while loading shared libraries: libboost_thread.so.1.68.0: cannot open shared object file: No such file or directory
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1715693657_zspace.parabola.sigma0.0.dat
-  DATA_HEADER     = 0
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock_nowt/TwoPCF_CATALPTCICz0.638G960S1715693657_zspace.parabola.sigma0.0.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock_nowt/DD_files/DD_CATALPTCICz0.638G960S1715693657_zspace.parabola.sigma0.0.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1715693657_zspace.parabola.sigma0.0.dat'.
-  Counting lines ...   Number of records: 2881352.
-  Allocating memory ...   ~ 44 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2881352 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... [70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S1715693657_zspace.parabola.sigma0.0.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S1715693657_zspace.parabola.sigma0.0.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S1715693657_zspace.parabola.sigma0.0.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1715693657_zspace.parabola.sigma0.0.dat
-  DATA_HEADER     = 0
-  DATA_WT_COL     = 4
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock/TwoPCF_CATALPTCICz0.638G960S1715693657_zspace.parabola.sigma0.0.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/tpcf_gal_mock/DD_files/DD_CATALPTCICz0.638G960S1715693657_zspace.parabola.sigma0.0.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/smooth/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1715693657_zspace.parabola.sigma0.0.dat'.
-  Counting lines ...   Number of records: 2881352.
-  Allocating memory ...   ~ 44 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2881352 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... 
-  Computing weights ...   Done with computing weights.
-[70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/bin/DIVE_box/DIVE_box: error while loading shared libraries: libboost_thread.so.1.68.0: cannot open shared object file: No such file or directory
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1715693657_zspace.parabola.sigma0.2.dat
-  DATA_HEADER     = 0
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock_nowt/TwoPCF_CATALPTCICz0.638G960S1715693657_zspace.parabola.sigma0.2.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock_nowt/DD_files/DD_CATALPTCICz0.638G960S1715693657_zspace.parabola.sigma0.2.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1715693657_zspace.parabola.sigma0.2.dat'.
-  Counting lines ...   Number of records: 2389257.
-  Allocating memory ...   ~ 36.5 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2389257 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... [70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S1715693657_zspace.parabola.sigma0.2.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-srun: error: node229: task 0: Exited with exit code 254
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S1715693657_zspace.parabola.sigma0.2.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-srun: error: node229: task 0: Exited with exit code 254
-
-[31;1mError:[0m cannot open the `DATA_CATALOG`: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_void_xyz/CATALPTCICz0.638G960S1715693657_zspace.parabola.sigma0.2.VOID.dat'.
-[31;1mExit:[0m please check your configuration.
-Try the -h option for more information.
-Loading configuration ... [70C[[31;1mFAIL[0m]
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1715693657_zspace.parabola.sigma0.2.dat
-  DATA_HEADER     = 0
-  DATA_WT_COL     = 4
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 1
-  MOMENT          = 2
-  CF_MODE         = 3
-  OUTPUT          = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock/TwoPCF_CATALPTCICz0.638G960S1715693657_zspace.parabola.sigma0.2.dat
-  DD_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/tpcf_gal_mock/DD_files/DD_CATALPTCICz0.638G960S1715693657_zspace.parabola.sigma0.2.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box5/redshift/noise/parabola_0.8/mocks_gal_xyz/CATALPTCICz0.638G960S1715693657_zspace.parabola.sigma0.2.dat'.
-  Counting lines ...   Number of records: 2389257.
-  Allocating memory ...   ~ 36.5 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  2389257 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... 
-  Computing weights ...   Done with computing weights.
-[70C[[32;1mDONE[0m]
-Counting DD pairs ... 
-  DD counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Computing the correlation function ... 
-  The correlation function is saved.
-[70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]

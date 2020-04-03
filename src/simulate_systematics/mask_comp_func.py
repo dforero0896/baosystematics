@@ -17,7 +17,7 @@ def mask_with_function(data, comp_mesh, seed=2, noise=True, box_size=2500, N_gri
       print("Using non-default noise sampler.")
       comp += noise_sampler(len(data)) # noise sampler must accept number of samples to graw as parameter.
     else:
-      comp += np.random.normal(0, sigma_noise, len(data)) #add noise to completeness
+      comp -= np.abs(np.random.normal(0, sigma_noise, len(data))) #add noise to completeness
   data['comp']=np.clip(comp, cmin, 1)
   data_ret = data[data['comp'] > rand]
   return data_ret
