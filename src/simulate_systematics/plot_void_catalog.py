@@ -11,8 +11,9 @@ from params import *
 names = ['x', 'y', 'z', 'r']
 def get_histogram(cat, rmin, rmax, bins=20, weights = False):
   cat_bin = cat[(cat['r'] > rmin ) & (cat['r'] < rmax)]
-  if weights: weights = cat_bin['w']
-  H, xedges, yedges = np.histogram2d(cat_bin['x'].values, cat_bin['y'].values, density=False, bins=bins, range = [[0, box_size], [0, box_size]], weights = weights)
+  if weights: wt = cat_bin['w'].values
+  else: wt=None
+  H, xedges, yedges = np.histogram2d(cat_bin['x'].values, cat_bin['y'].values, density=False, bins=bins, range = [[0, box_size], [0, box_size]], weights = wt)
   return H, xedges, yedges
 if __name__ == '__main__':
   if len(sys.argv) < 2:
@@ -66,11 +67,12 @@ if __name__ == '__main__':
       print(f"==> MPI process {iproc}: {cat_fn}")
       labels = radius_bins[:-1] + 0.5 * radius_bin_widths
       cat = pd.read_csv(cat_fn, delim_whitespace=True, names=['x', 'y', 'r', 'w'], usecols=(0,1,3,4), dtype=np.float32)
-      weights = cat['w']
-      if weights.isna().any(): weights=None
+      weights = True
+      if cat['w'].isna().any(): weights=False
+      print(f"Found weights: {weights}")
       cat.set_index('r')
       for i, lbound in enumerate(radius_bins[:-1]):
-        hist, xedges, yedges = get_histogram(cat, radius_bins[i], radius_bins[i+1], bins = [xedges, yedges], weights=not None)
+        hist, xedges, yedges = get_histogram(cat, radius_bins[i], radius_bins[i+1], bins = [xedges, yedges], weights=weights)
         cat_arrays[i, :, :, nmock] = hist
     pmean = cat_arrays.mean(axis=3)
     print(f"==> MPI process {iproc} waiting for the others.")
@@ -81,13 +83,13 @@ if __name__ == '__main__':
     if iproc==0:
       histograms = np.average(cat_array_all, axis=0, weights = hist_weights)
       print(f"==> MPI process 0 saving file.")
-      if weights is not None: out_fn = out_fn.replace('.npy', '_wt.npy')
+      if weights: out_fn = out_fn.replace('.npy', '_wt.npy')
       np.save(out_fn, histograms)    
   else:
     if iproc==0:
       print(f"==> Loading data from {out_fn}.")
       histograms = np.load(out_fn)
-      weights=None
+      weights=False
       print(f"==> Done")
   if iproc==0:
     xedges = np.linspace(0, box_size, xy_bins+1)
@@ -113,7 +115,7 @@ if __name__ == '__main__':
     plt.setp([a.get_xticklabels() for a in ax.ravel()], visible=False)
   #  plt.show()
     oname = f"{odir}/all_void_density_maps.pdf"
-    if weights is not None: oname = oname.replace('.pdf', '_wt.pdf')
+    if weights: oname = oname.replace('.pdf', '_wt.pdf')
    
     fig.savefig(oname, dpi=300)
     print(f"Saved plot in {oname}")

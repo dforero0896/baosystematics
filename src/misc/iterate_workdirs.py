@@ -10,7 +10,7 @@ if __name__ == '__main__':
     except IndexError:
         command = ''
     placeholder='PATH'
-    boxes = ['box1']
+    boxes = ['box5']
     #functions = ['parabola_0.8']
     functions = ['flat_0.5', 'flat_0.55', 'flat_0.6', 'flat_0.65', 'flat_0.7', 'flat_0.75','flat_0.8', 'flat_0.85', 'flat_0.9', 'flat_0.95']#,'parabola']
     spaces = ['real', 'redshift']

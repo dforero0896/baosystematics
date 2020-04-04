@@ -142,10 +142,11 @@ if __name__ == '__main__':
     xc, xw = edges_to_centers(xedges)
     yc, yw = edges_to_centers(yedges)
     #batch_add_void_weights(void_cat_fn_list, get_weights_func=get_known_void_weight_matrix, void_weight_matrix=void_weight_matrix, rcenters=rc, xcenters=xc, ycenters=yc)
-    #batch_add_void_weights(void_cat_fn_list, void_weight_nearest,
-    #			 out_dir_suffix='_wt_nearest')
+    batch_add_void_weights(void_cat_fn_list, void_weight_nearest,
+    			 out_dir_suffix='_wt_nearest')
 
-    batch_add_void_weights(void_cat_fn_list, get_void_weights_interp, 
-			coeffs=void_wt_coeff, 
-			comp_function = lambda y, x: FUNCTION(y, x, N_grid=2500, Cmin = 0.8))
+#    batch_add_void_weights(void_cat_fn_list, get_void_weights_interp, 
+#			coeffs=void_wt_coeff, 
+#			comp_function = lambda y, x: FUNCTION(y, x, N_grid=2500,
+#			Cmin = 0.8))
 

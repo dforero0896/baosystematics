@@ -64,6 +64,7 @@ if __name__ == '__main__':
     completeness = np.array(completeness)[sorted_comp_ids]
     galaxy_weights = 1 / np.array(completeness)
     galaxy_weights_linsp = np.linspace(min(galaxy_weights), max(galaxy_weights), 100)
+    print(f"==> WARNING: The program assumes the first argument passed was the raw (no systematics) void distribution")
     fit_params_container = []
     used_R = []
     for i,R in enumerate(Rbins):
