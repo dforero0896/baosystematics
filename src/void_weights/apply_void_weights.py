@@ -9,6 +9,7 @@ from params import *
 from plot_void_catalog import get_histogram
 import matplotlib.pyplot as plt
 from scipy.interpolate import NearestNDInterpolator, RegularGridInterpolator
+import xarray as xr
 
 def add_void_weights_interp(void_cat_fn, void_wt_coeff_fn, comp_function, 
 			out_cat_fn = None,
@@ -112,10 +113,47 @@ def get_known_void_weight_matrix(raw_void_dist_fn, void_dist_fn,
     void_weight_matrix = raw_void_dist / void_dist
     # Nearest interpolation returns closest value.
     void_weight_interpolator = NearestNDInterpolator((R, X, Y),
-					 void_weight_matrix.ravel())
-
+					 void_weight_matrix.ravel(),
+					 rescale=False)
+    '''
+    pad_void_weight_matrix = np.pad(void_weight_matrix,
+					pad_width=((1,1), (1,1), (1,1)), 
+					mode='edge')
+    pad_r = np.pad(rcenters, pad_width=1, mode='constant', 
+					constant_values = ((radius_bins[0], 
+							radius_bins[-1])))
+    pad_x = np.pad(xcenters, pad_width=1, mode='constant', 
+					constant_values = ((xedges[0], 
+							xedges[-1])))
+    pad_y = np.pad(ycenters, pad_width=1, mode='constant', 
+					constant_values = ((yedges[0], 
+							yedges[-1])))
+    void_weight_interpolator = RegularGridInterpolator((pad_r, pad_x, pad_y), 
+							pad_void_weight_matrix,
+							method='nearest') 
+    '''
     return lambda r, x, y: void_weight_interpolator((r, x, y)), void_weight_matrix
 
+def get_known_void_weight_matrix_digitize(r, x, y, void_weight_matrix, 
+				radius_bins = radius_bins,
+				xedges = xedges, yedges=yedges):
+    """Get void weight matrix from R-binned arrays of void number 
+	density/void completeness
+
+    """
+    rcenters,_ = edges_to_centers(radius_bins)
+    xcenters,_ = edges_to_centers(xedges)
+    ycenters,_ = edges_to_centers(yedges)
+    side='left'
+    radius_bins[0]-=1e-5; radius_bins[-1]+=1e-5
+    xedges[0]-=1e-5; xedges[-1]+=1e-5
+    yedges[0]-=1e-5; yedges[-1]+=1e-5
+    rindex = np.searchsorted(radius_bins, r, side=side) -1
+    xindex = np.searchsorted(xedges, x, side=side)  -1
+    yindex = np.searchsorted(yedges, y, side=side) -1
+    print(radius_bins.shape, xedges.shape, yedges.shape)
+    print(rindex, xindex, yindex) 
+    return void_weight_matrix[rindex, xindex, yindex]
 def get_known_void_weight(r, x, y, void_weight_matrix, rcenters, xcenters, ycenters):
     """Get void weights from matrix and void position.
 
