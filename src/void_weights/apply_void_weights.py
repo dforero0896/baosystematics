@@ -89,100 +89,90 @@ def get_void_weights_interp(r, x, y, coeffs, comp_function):
     return c0 + c1 * gal_wt + c2 * gal_wt**2
 
 def edges_to_centers(edges):
+    """Convert bin edges to centers.
+
+    params: edges (1d array, dim N): Bin edges
+   
+    returns: centers (1d array, dim N-1): Bin centers
+    returns: widths (1d array, dim N-1): Bin widths"""
+
+
     widths = edges[1:] - edges[:-1]
     centers = edges[:-1] + 0.5 * widths
     return centers, widths
 def get_known_void_weight_matrix(raw_void_dist_fn, void_dist_fn, 
 				radius_bins = radius_bins,
 				xedges = xedges, yedges=yedges):
-    """Get void weight matrix from R-binned arrays of void number 
-	density/void completeness
+    """Get void weight matrix from 3D (R, X, Y) arrays of void density.
+
+    param: raw_void_dist_fn (str): Path to the (R, X, Y) void distribution of voids
+	without systematics applied.
+    param: void_dist_fn (str): Path to the (R, X, Y) void distribution of voids
+	with systematics applied.
+    param: radius_bins (1d array, optional): Radius bin-edges used when creating the 
+	matrices (R, X, Y).
+    param: xedges (1d array, optional): X-coordinate bin-edges used when creating the 
+	matrices (R, X, Y).
+    param: yedges (1d array, optional): Y-coordinate bin-edges used when creating the 
+	matrices (R, X, Y).
+
+    returns: void_weight_matrix (3d array): The void weight matrix constructed as
+	raw_void_dist/void_dist (inverse void completeness). Coordinates are (R,X,Y).
 
     """
     raw_void_dist = np.load(raw_void_dist_fn)
     void_dist = np.load(void_dist_fn)
-    rcenters,_ = edges_to_centers(radius_bins)
-    xcenters,_ = edges_to_centers(xedges)
-    ycenters,_ = edges_to_centers(yedges)
-    R, X, Y = np.meshgrid(rcenters, xcenters, ycenters)
-    R = R.ravel(); X = X.ravel(); Y = Y.ravel()
-    
-    assert void_dist.shape[0] == rcenters.shape[0]    
-    assert raw_void_dist.shape[0] == rcenters.shape[0]    
-    
     void_weight_matrix = raw_void_dist / void_dist
-    # Nearest interpolation returns closest value.
-    void_weight_interpolator = NearestNDInterpolator((R, X, Y),
-					 void_weight_matrix.ravel(),
-					 rescale=False)
-    '''
-    pad_void_weight_matrix = np.pad(void_weight_matrix,
-					pad_width=((1,1), (1,1), (1,1)), 
-					mode='edge')
-    pad_r = np.pad(rcenters, pad_width=1, mode='constant', 
-					constant_values = ((radius_bins[0], 
-							radius_bins[-1])))
-    pad_x = np.pad(xcenters, pad_width=1, mode='constant', 
-					constant_values = ((xedges[0], 
-							xedges[-1])))
-    pad_y = np.pad(ycenters, pad_width=1, mode='constant', 
-					constant_values = ((yedges[0], 
-							yedges[-1])))
-    void_weight_interpolator = RegularGridInterpolator((pad_r, pad_x, pad_y), 
-							pad_void_weight_matrix,
-							method='nearest') 
-    '''
-    return lambda r, x, y: void_weight_interpolator((r, x, y)), void_weight_matrix
+    return void_weight_matrix
 
-def get_known_void_weight_matrix_digitize(r, x, y, void_weight_matrix, 
+def get_known_void_weight(r, x, y, void_weight_matrix, 
 				radius_bins = radius_bins,
 				xedges = xedges, yedges=yedges):
-    """Get void weight matrix from R-binned arrays of void number 
-	density/void completeness
+    """Get void weight by sampling the matrix of known weights (see function: 
+	get_known_void_weight_matrix).
 
+    param: r (array_like): Radius of void to be weighted.
+    param: x (array_like): X-coordinate of void to be weighted.
+    param: y (array_like): Y-coordinate of void to be weighted.
+    param: radius_bins (1d array, optional): Radius bin-edges used when creating the 
+	matrices (R, X, Y).
+    param: xedges (1d array, optional): X-coordinate bin-edges used when creating the 
+	matrices (R, X, Y).
+    param: yedges (1d array, optional): Y-coordinate bin-edges used when creating the 
+	matrices (R, X, Y).
+
+    returns: void_weight (array_like): The weight to be applied to the void at position
+	(x,y) and radius r.
     """
-    rcenters,_ = edges_to_centers(radius_bins)
-    xcenters,_ = edges_to_centers(xedges)
-    ycenters,_ = edges_to_centers(yedges)
     side='left'
+    # Extend leftmost bin edge for the (very unlikely) case that some void has
+    # any([r, x, y] == [0, 0, 0]). The rightmost edge is also extended with no effect.
     radius_bins[0]-=1e-5; radius_bins[-1]+=1e-5
     xedges[0]-=1e-5; xedges[-1]+=1e-5
     yedges[0]-=1e-5; yedges[-1]+=1e-5
+    # Search indices that define which bin a coordinate corresponds to.
     rindex = np.searchsorted(radius_bins, r, side=side) -1
     xindex = np.searchsorted(xedges, x, side=side)  -1
     yindex = np.searchsorted(yedges, y, side=side) -1
-    print(radius_bins.shape, xedges.shape, yedges.shape)
-    print(rindex, xindex, yindex) 
     return void_weight_matrix[rindex, xindex, yindex]
-def get_known_void_weight(r, x, y, void_weight_matrix, rcenters, xcenters, ycenters):
-    """Get void weights from matrix and void position.
 
-    """
-    N_grid_r, N_grid_x, N_grid_y = void_weight_matrix.shape
-    iy = np.abs(y[:,None].astype(np.float32) -\
-		ycenters[None,:].astype(np.float32)).argmin(axis=-1)
-    ix = np.abs(x[:,None].astype(np.float32) -\
-		xcenters[None,:].astype(np.float32)).argmin(axis=-1)
-    ir = np.abs(r[:, None].astype(np.float32) -\
-		rcenters[None,:].astype(np.float32)).argmin(axis=-1)
-    return void_weight_matrix[ir, ix, iy]
 if __name__ == '__main__':
     if len(sys.argv) < 4:
         sys.exit(f"ERROR: Unexpected number of arguments.\nUSAGE: {sys.argv[0]} RAW_VOID_DENS VOID_DENS VOID_CAT(S)")
     raw_void_dens_fn = sys.argv[1]
     void_dens_fn = sys.argv[2]
     void_cat_fn_list = sys.argv[3:]
-    void_weight_nearest, void_weight_matrix =\
+    void_weight_matrix =\
 		 get_known_void_weight_matrix(raw_void_dens_fn, void_dens_fn)
     void_wt_coeff_fn = 'void_weights_c_of_r_real.dat' 
     void_wt_coeff = np.loadtxt(void_wt_coeff_fn, dtype = np.float32)
     rc, rw = edges_to_centers(radius_bins)
     xc, xw = edges_to_centers(xedges)
     yc, yw = edges_to_centers(yedges)
-    #batch_add_void_weights(void_cat_fn_list, get_weights_func=get_known_void_weight_matrix, void_weight_matrix=void_weight_matrix, rcenters=rc, xcenters=xc, ycenters=yc)
-    batch_add_void_weights(void_cat_fn_list, void_weight_nearest,
-    			 out_dir_suffix='_wt_nearest')
-
+    # Use weights directly from weight matrix
+    batch_add_void_weights(void_cat_fn_list, get_weights_func=get_known_void_weight,
+				 void_weight_matrix=void_weight_matrix)
+    # Use interpolation for coefficients and anytical galaxy completeness
 #    batch_add_void_weights(void_cat_fn_list, get_void_weights_interp, 
 #			coeffs=void_wt_coeff, 
 #			comp_function = lambda y, x: FUNCTION(y, x, N_grid=2500,

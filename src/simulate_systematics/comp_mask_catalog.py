@@ -47,12 +47,12 @@ def comp_mask_catalog(fn, odir, sigma_noise=0.2, function=parabola,\
 					 cmin=0, noise_sampler=nsampler)
             masked_dat.to_csv(on, sep = ' ', header=False, index=False)
 
-        print(f"==> WARNING: Saving voids in 'nearest' directory")
+        #print(f"==> WARNING: Saving voids in 'nearest' directory")
         oname_void = [os.path.join(obases[i],\
 			 f"{cat_type}s_void_xyz",\
 			 os.path.basename(on).replace('.dat', f".VOID.dat")), \
 			 os.path.join(obases[i], 
-			 f"{cat_type}s_void_xyz_wt_nearest",\
+			 f"{cat_type}s_void_xyz_wt",\
 			 os.path.basename(on).replace('.dat', f".VOID.dat"))]
         [os.makedirs(os.path.dirname(oname_void[i]), exist_ok=True) for i in range(2)]
         dive_command = f"{RUN_DIVE} {on} {oname_void[0]} {box_size} 0 999\n"
