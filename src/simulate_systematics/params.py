@@ -5,7 +5,7 @@ from mask_comp_func import mask_with_function
 NCORES = 16
 BOX = "1"
 NMOCKS = 500
-SPACE = "real"
+SPACE = "redshift"
 # Define relevant paths
 WORKDIR = "/home/epfl/dforero/scratch/projects/baosystematics"
 RESULTS = WORKDIR+"/patchy_results"
