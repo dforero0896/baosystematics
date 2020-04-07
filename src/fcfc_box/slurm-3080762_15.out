@@ -1,590 +1,0 @@
-/hpcstorage/dforero/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/nosyst/mocks_void_xyz/CATALPTCICz0.466G960S1579594552_zspace.VOID.dat
-  DATA_HEADER     = 0
-  DATA_AUX_XOL    = 4
-  DATA_SEL_MODE   = 23
-  DATA_X_MIN      = 0
-  DATA_X_MAX      = 2500
-  DATA_Y_MIN      = 0
-  DATA_Y_MAX      = 2500
-  DATA_Z_MIN      = 0
-  DATA_Z_MAX      = 2500
-  DATA_AUX_MIN    = 16
-  DATA_AUX_MAX    = 50
-  RAND_CATALOG    = /hpcstorage/dforero/projects/baosystematics/data/patchy_boxes/patchy_cmass_subset/box1/redshift/CATALPTCICz0.466G960S1579594552_zspace.dat
-  RAND_HEADER     = 0
-  RAND_SEL_MODE   = 7
-  RAND_X_MIN      = 0
-  RAND_X_MAX      = 2500
-  RAND_Y_MIN      = 0
-  RAND_Y_MAX      = 2500
-  RAND_Z_MIN      = 0
-  RAND_Z_MAX      = 2500
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 2
-  MOMENT          = 2
-  DR_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/nosyst/tpcf_xgv_R_16-50/DD_files/DD_CATALPTCICz0.466G960S1579594552_zspace.CROSS.R_16-50.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/nosyst/mocks_void_xyz/CATALPTCICz0.466G960S1579594552_zspace.VOID.dat'.
-  Counting lines ...   Number of records: 41312420.
-  Allocating memory ...   ~ 630 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  31861185 objects removed.
-  9451235 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... [70C[[32;1mDONE[0m]
-Reading random catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/data/patchy_boxes/patchy_cmass_subset/box1/redshift/CATALPTCICz0.466G960S1579594552_zspace.dat'.
-  Counting lines ...   Number of records: 6214031.
-  Allocating memory ...   ~ 94.8 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  13 objects removed.
-  6214018 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for random ... [70C[[32;1mDONE[0m]
-Counting DR pairs ... 
-  DR counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Releasing memory for random ... [70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-==> Saved correlation function in /home/epfl/dforero/scratch/projects/baosystematics/patchy_results/box1/redshift/nosyst/mocks_void_xyz/../tpcf_xgv_R_16-50/TwoPCF_CATALPTCICz0.466G960S1579594552_zspace.CROSS.R_16-50.dat.
-/hpcstorage/dforero/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/nosyst/mocks_void_xyz/CATALPTCICz0.466G960S1586223277_zspace.VOID.dat
-  DATA_HEADER     = 0
-  DATA_AUX_XOL    = 4
-  DATA_SEL_MODE   = 23
-  DATA_X_MIN      = 0
-  DATA_X_MAX      = 2500
-  DATA_Y_MIN      = 0
-  DATA_Y_MAX      = 2500
-  DATA_Z_MIN      = 0
-  DATA_Z_MAX      = 2500
-  DATA_AUX_MIN    = 16
-  DATA_AUX_MAX    = 50
-  RAND_CATALOG    = /hpcstorage/dforero/projects/baosystematics/data/patchy_boxes/patchy_cmass_subset/box1/redshift/CATALPTCICz0.466G960S1586223277_zspace.dat
-  RAND_HEADER     = 0
-  RAND_SEL_MODE   = 7
-  RAND_X_MIN      = 0
-  RAND_X_MAX      = 2500
-  RAND_Y_MIN      = 0
-  RAND_Y_MAX      = 2500
-  RAND_Z_MIN      = 0
-  RAND_Z_MAX      = 2500
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 2
-  MOMENT          = 2
-  DR_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/nosyst/tpcf_xgv_R_16-50/DD_files/DD_CATALPTCICz0.466G960S1586223277_zspace.CROSS.R_16-50.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/nosyst/mocks_void_xyz/CATALPTCICz0.466G960S1586223277_zspace.VOID.dat'.
-  Counting lines ...   Number of records: 41302412.
-  Allocating memory ...   ~ 630 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  31858937 objects removed.
-  9443475 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... [70C[[32;1mDONE[0m]
-Reading random catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/data/patchy_boxes/patchy_cmass_subset/box1/redshift/CATALPTCICz0.466G960S1586223277_zspace.dat'.
-  Counting lines ...   Number of records: 6214031.
-  Allocating memory ...   ~ 94.8 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  20 objects removed.
-  6214011 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for random ... [70C[[32;1mDONE[0m]
-Counting DR pairs ... 
-  DR counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Releasing memory for random ... [70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-==> Saved correlation function in /home/epfl/dforero/scratch/projects/baosystematics/patchy_results/box1/redshift/nosyst/mocks_void_xyz/../tpcf_xgv_R_16-50/TwoPCF_CATALPTCICz0.466G960S1586223277_zspace.CROSS.R_16-50.dat.
-/hpcstorage/dforero/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/nosyst/mocks_void_xyz/CATALPTCICz0.466G960S1594480644_zspace.VOID.dat
-  DATA_HEADER     = 0
-  DATA_AUX_XOL    = 4
-  DATA_SEL_MODE   = 23
-  DATA_X_MIN      = 0
-  DATA_X_MAX      = 2500
-  DATA_Y_MIN      = 0
-  DATA_Y_MAX      = 2500
-  DATA_Z_MIN      = 0
-  DATA_Z_MAX      = 2500
-  DATA_AUX_MIN    = 16
-  DATA_AUX_MAX    = 50
-  RAND_CATALOG    = /hpcstorage/dforero/projects/baosystematics/data/patchy_boxes/patchy_cmass_subset/box1/redshift/CATALPTCICz0.466G960S1594480644_zspace.dat
-  RAND_HEADER     = 0
-  RAND_SEL_MODE   = 7
-  RAND_X_MIN      = 0
-  RAND_X_MAX      = 2500
-  RAND_Y_MIN      = 0
-  RAND_Y_MAX      = 2500
-  RAND_Z_MIN      = 0
-  RAND_Z_MAX      = 2500
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 2
-  MOMENT          = 2
-  DR_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/nosyst/tpcf_xgv_R_16-50/DD_files/DD_CATALPTCICz0.466G960S1594480644_zspace.CROSS.R_16-50.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/nosyst/mocks_void_xyz/CATALPTCICz0.466G960S1594480644_zspace.VOID.dat'.
-  Counting lines ...   Number of records: 41313732.
-  Allocating memory ...   ~ 630 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  31863203 objects removed.
-  9450529 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... [70C[[32;1mDONE[0m]
-Reading random catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/data/patchy_boxes/patchy_cmass_subset/box1/redshift/CATALPTCICz0.466G960S1594480644_zspace.dat'.
-  Counting lines ...   Number of records: 6214031.
-  Allocating memory ...   ~ 94.8 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  21 objects removed.
-  6214010 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for random ... [70C[[32;1mDONE[0m]
-Counting DR pairs ... 
-  DR counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Releasing memory for random ... [70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-==> Saved correlation function in /home/epfl/dforero/scratch/projects/baosystematics/patchy_results/box1/redshift/nosyst/mocks_void_xyz/../tpcf_xgv_R_16-50/TwoPCF_CATALPTCICz0.466G960S1594480644_zspace.CROSS.R_16-50.dat.
-/hpcstorage/dforero/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/nosyst/mocks_void_xyz/CATALPTCICz0.466G960S1601254869_zspace.VOID.dat
-  DATA_HEADER     = 0
-  DATA_AUX_XOL    = 4
-  DATA_SEL_MODE   = 23
-  DATA_X_MIN      = 0
-  DATA_X_MAX      = 2500
-  DATA_Y_MIN      = 0
-  DATA_Y_MAX      = 2500
-  DATA_Z_MIN      = 0
-  DATA_Z_MAX      = 2500
-  DATA_AUX_MIN    = 16
-  DATA_AUX_MAX    = 50
-  RAND_CATALOG    = /hpcstorage/dforero/projects/baosystematics/data/patchy_boxes/patchy_cmass_subset/box1/redshift/CATALPTCICz0.466G960S1601254869_zspace.dat
-  RAND_HEADER     = 0
-  RAND_SEL_MODE   = 7
-  RAND_X_MIN      = 0
-  RAND_X_MAX      = 2500
-  RAND_Y_MIN      = 0
-  RAND_Y_MAX      = 2500
-  RAND_Z_MIN      = 0
-  RAND_Z_MAX      = 2500
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 2
-  MOMENT          = 2
-  DR_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/nosyst/tpcf_xgv_R_16-50/DD_files/DD_CATALPTCICz0.466G960S1601254869_zspace.CROSS.R_16-50.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/nosyst/mocks_void_xyz/CATALPTCICz0.466G960S1601254869_zspace.VOID.dat'.
-  Counting lines ...   Number of records: 41298809.
-  Allocating memory ...   ~ 630 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  31850359 objects removed.
-  9448450 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... [70C[[32;1mDONE[0m]
-Reading random catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/data/patchy_boxes/patchy_cmass_subset/box1/redshift/CATALPTCICz0.466G960S1601254869_zspace.dat'.
-  Counting lines ...   Number of records: 6212672.
-  Allocating memory ...   ~ 94.8 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  17 objects removed.
-  6212655 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for random ... [70C[[32;1mDONE[0m]
-Counting DR pairs ... 
-  DR counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Releasing memory for random ... [70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-==> Saved correlation function in /home/epfl/dforero/scratch/projects/baosystematics/patchy_results/box1/redshift/nosyst/mocks_void_xyz/../tpcf_xgv_R_16-50/TwoPCF_CATALPTCICz0.466G960S1601254869_zspace.CROSS.R_16-50.dat.
-/hpcstorage/dforero/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/nosyst/mocks_void_xyz/CATALPTCICz0.466G960S1602453706_zspace.VOID.dat
-  DATA_HEADER     = 0
-  DATA_AUX_XOL    = 4
-  DATA_SEL_MODE   = 23
-  DATA_X_MIN      = 0
-  DATA_X_MAX      = 2500
-  DATA_Y_MIN      = 0
-  DATA_Y_MAX      = 2500
-  DATA_Z_MIN      = 0
-  DATA_Z_MAX      = 2500
-  DATA_AUX_MIN    = 16
-  DATA_AUX_MAX    = 50
-  RAND_CATALOG    = /hpcstorage/dforero/projects/baosystematics/data/patchy_boxes/patchy_cmass_subset/box1/redshift/CATALPTCICz0.466G960S1602453706_zspace.dat
-  RAND_HEADER     = 0
-  RAND_SEL_MODE   = 7
-  RAND_X_MIN      = 0
-  RAND_X_MAX      = 2500
-  RAND_Y_MIN      = 0
-  RAND_Y_MAX      = 2500
-  RAND_Z_MIN      = 0
-  RAND_Z_MAX      = 2500
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 2
-  MOMENT          = 2
-  DR_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/nosyst/tpcf_xgv_R_16-50/DD_files/DD_CATALPTCICz0.466G960S1602453706_zspace.CROSS.R_16-50.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/nosyst/mocks_void_xyz/CATALPTCICz0.466G960S1602453706_zspace.VOID.dat'.
-  Counting lines ...   Number of records: 41302294.
-  Allocating memory ...   ~ 630 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  31857385 objects removed.
-  9444909 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... [70C[[32;1mDONE[0m]
-Reading random catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/data/patchy_boxes/patchy_cmass_subset/box1/redshift/CATALPTCICz0.466G960S1602453706_zspace.dat'.
-  Counting lines ...   Number of records: 6213712.
-  Allocating memory ...   ~ 94.8 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  17 objects removed.
-  6213695 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for random ... [70C[[32;1mDONE[0m]
-Counting DR pairs ... 
-  DR counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Releasing memory for random ... [70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-==> Saved correlation function in /home/epfl/dforero/scratch/projects/baosystematics/patchy_results/box1/redshift/nosyst/mocks_void_xyz/../tpcf_xgv_R_16-50/TwoPCF_CATALPTCICz0.466G960S1602453706_zspace.CROSS.R_16-50.dat.
-/hpcstorage/dforero/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/nosyst/mocks_void_xyz/CATALPTCICz0.466G960S1606030092_zspace.VOID.dat
-  DATA_HEADER     = 0
-  DATA_AUX_XOL    = 4
-  DATA_SEL_MODE   = 23
-  DATA_X_MIN      = 0
-  DATA_X_MAX      = 2500
-  DATA_Y_MIN      = 0
-  DATA_Y_MAX      = 2500
-  DATA_Z_MIN      = 0
-  DATA_Z_MAX      = 2500
-  DATA_AUX_MIN    = 16
-  DATA_AUX_MAX    = 50
-  RAND_CATALOG    = /hpcstorage/dforero/projects/baosystematics/data/patchy_boxes/patchy_cmass_subset/box1/redshift/CATALPTCICz0.466G960S1606030092_zspace.dat
-  RAND_HEADER     = 0
-  RAND_SEL_MODE   = 7
-  RAND_X_MIN      = 0
-  RAND_X_MAX      = 2500
-  RAND_Y_MIN      = 0
-  RAND_Y_MAX      = 2500
-  RAND_Z_MIN      = 0
-  RAND_Z_MAX      = 2500
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 2
-  MOMENT          = 2
-  DR_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/nosyst/tpcf_xgv_R_16-50/DD_files/DD_CATALPTCICz0.466G960S1606030092_zspace.CROSS.R_16-50.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/nosyst/mocks_void_xyz/CATALPTCICz0.466G960S1606030092_zspace.VOID.dat'.
-  Counting lines ...   Number of records: 41290751.
-  Allocating memory ...   ~ 630 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  31836995 objects removed.
-  9453756 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... [70C[[32;1mDONE[0m]
-Reading random catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/data/patchy_boxes/patchy_cmass_subset/box1/redshift/CATALPTCICz0.466G960S1606030092_zspace.dat'.
-  Counting lines ...   Number of records: 6211453.
-  Allocating memory ...   ~ 94.8 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  24 objects removed.
-  6211429 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for random ... [70C[[32;1mDONE[0m]
-Counting DR pairs ... 
-  DR counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Releasing memory for random ... [70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-==> Saved correlation function in /home/epfl/dforero/scratch/projects/baosystematics/patchy_results/box1/redshift/nosyst/mocks_void_xyz/../tpcf_xgv_R_16-50/TwoPCF_CATALPTCICz0.466G960S1606030092_zspace.CROSS.R_16-50.dat.
-/hpcstorage/dforero/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/nosyst/mocks_void_xyz/CATALPTCICz0.466G960S1612241734_zspace.VOID.dat
-  DATA_HEADER     = 0
-  DATA_AUX_XOL    = 4
-  DATA_SEL_MODE   = 23
-  DATA_X_MIN      = 0
-  DATA_X_MAX      = 2500
-  DATA_Y_MIN      = 0
-  DATA_Y_MAX      = 2500
-  DATA_Z_MIN      = 0
-  DATA_Z_MAX      = 2500
-  DATA_AUX_MIN    = 16
-  DATA_AUX_MAX    = 50
-  RAND_CATALOG    = /hpcstorage/dforero/projects/baosystematics/data/patchy_boxes/patchy_cmass_subset/box1/redshift/CATALPTCICz0.466G960S1612241734_zspace.dat
-  RAND_HEADER     = 0
-  RAND_SEL_MODE   = 7
-  RAND_X_MIN      = 0
-  RAND_X_MAX      = 2500
-  RAND_Y_MIN      = 0
-  RAND_Y_MAX      = 2500
-  RAND_Z_MIN      = 0
-  RAND_Z_MAX      = 2500
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 2
-  MOMENT          = 2
-  DR_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/nosyst/tpcf_xgv_R_16-50/DD_files/DD_CATALPTCICz0.466G960S1612241734_zspace.CROSS.R_16-50.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/nosyst/mocks_void_xyz/CATALPTCICz0.466G960S1612241734_zspace.VOID.dat'.
-  Counting lines ...   Number of records: 41313161.
-  Allocating memory ...   ~ 630 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  31859162 objects removed.
-  9453999 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... [70C[[32;1mDONE[0m]
-Reading random catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/data/patchy_boxes/patchy_cmass_subset/box1/redshift/CATALPTCICz0.466G960S1612241734_zspace.dat'.
-  Counting lines ...   Number of records: 6214031.
-  Allocating memory ...   ~ 94.8 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  25 objects removed.
-  6214006 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for random ... [70C[[32;1mDONE[0m]
-Counting DR pairs ... 
-  DR counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Releasing memory for random ... [70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-==> Saved correlation function in /home/epfl/dforero/scratch/projects/baosystematics/patchy_results/box1/redshift/nosyst/mocks_void_xyz/../tpcf_xgv_R_16-50/TwoPCF_CATALPTCICz0.466G960S1612241734_zspace.CROSS.R_16-50.dat.
-/hpcstorage/dforero/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/nosyst/mocks_void_xyz/CATALPTCICz0.466G960S1618016355_zspace.VOID.dat
-  DATA_HEADER     = 0
-  DATA_AUX_XOL    = 4
-  DATA_SEL_MODE   = 23
-  DATA_X_MIN      = 0
-  DATA_X_MAX      = 2500
-  DATA_Y_MIN      = 0
-  DATA_Y_MAX      = 2500
-  DATA_Z_MIN      = 0
-  DATA_Z_MAX      = 2500
-  DATA_AUX_MIN    = 16
-  DATA_AUX_MAX    = 50
-  RAND_CATALOG    = /hpcstorage/dforero/projects/baosystematics/data/patchy_boxes/patchy_cmass_subset/box1/redshift/CATALPTCICz0.466G960S1618016355_zspace.dat
-  RAND_HEADER     = 0
-  RAND_SEL_MODE   = 7
-  RAND_X_MIN      = 0
-  RAND_X_MAX      = 2500
-  RAND_Y_MIN      = 0
-  RAND_Y_MAX      = 2500
-  RAND_Z_MIN      = 0
-  RAND_Z_MAX      = 2500
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 2
-  MOMENT          = 2
-  DR_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/nosyst/tpcf_xgv_R_16-50/DD_files/DD_CATALPTCICz0.466G960S1618016355_zspace.CROSS.R_16-50.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/nosyst/mocks_void_xyz/CATALPTCICz0.466G960S1618016355_zspace.VOID.dat'.
-  Counting lines ...   Number of records: 41305649.
-  Allocating memory ...   ~ 630 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  31858089 objects removed.
-  9447560 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... [70C[[32;1mDONE[0m]
-Reading random catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/data/patchy_boxes/patchy_cmass_subset/box1/redshift/CATALPTCICz0.466G960S1618016355_zspace.dat'.
-  Counting lines ...   Number of records: 6214031.
-  Allocating memory ...   ~ 94.8 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  15 objects removed.
-  6214016 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for random ... [70C[[32;1mDONE[0m]
-Counting DR pairs ... 
-  DR counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Releasing memory for random ... [70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-==> Saved correlation function in /home/epfl/dforero/scratch/projects/baosystematics/patchy_results/box1/redshift/nosyst/mocks_void_xyz/../tpcf_xgv_R_16-50/TwoPCF_CATALPTCICz0.466G960S1618016355_zspace.CROSS.R_16-50.dat.
-/hpcstorage/dforero/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/nosyst/mocks_void_xyz/CATALPTCICz0.466G960S1618325649_zspace.VOID.dat
-  DATA_HEADER     = 0
-  DATA_AUX_XOL    = 4
-  DATA_SEL_MODE   = 23
-  DATA_X_MIN      = 0
-  DATA_X_MAX      = 2500
-  DATA_Y_MIN      = 0
-  DATA_Y_MAX      = 2500
-  DATA_Z_MIN      = 0
-  DATA_Z_MAX      = 2500
-  DATA_AUX_MIN    = 16
-  DATA_AUX_MAX    = 50
-  RAND_CATALOG    = /hpcstorage/dforero/projects/baosystematics/data/patchy_boxes/patchy_cmass_subset/box1/redshift/CATALPTCICz0.466G960S1618325649_zspace.dat
-  RAND_HEADER     = 0
-  RAND_SEL_MODE   = 7
-  RAND_X_MIN      = 0
-  RAND_X_MAX      = 2500
-  RAND_Y_MIN      = 0
-  RAND_Y_MAX      = 2500
-  RAND_Z_MIN      = 0
-  RAND_Z_MAX      = 2500
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 2
-  MOMENT          = 2
-  DR_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/nosyst/tpcf_xgv_R_16-50/DD_files/DD_CATALPTCICz0.466G960S1618325649_zspace.CROSS.R_16-50.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/nosyst/mocks_void_xyz/CATALPTCICz0.466G960S1618325649_zspace.VOID.dat'.
-  Counting lines ...   Number of records: 41316022.
-  Allocating memory ...   ~ 630 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  31861659 objects removed.
-  9454363 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... [70C[[32;1mDONE[0m]
-Reading random catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/data/patchy_boxes/patchy_cmass_subset/box1/redshift/CATALPTCICz0.466G960S1618325649_zspace.dat'.
-  Counting lines ...   Number of records: 6214031.
-  Allocating memory ...   ~ 94.8 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  18 objects removed.
-  6214013 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for random ... [70C[[32;1mDONE[0m]
-Counting DR pairs ... 
-  DR counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Releasing memory for random ... [70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-==> Saved correlation function in /home/epfl/dforero/scratch/projects/baosystematics/patchy_results/box1/redshift/nosyst/mocks_void_xyz/../tpcf_xgv_R_16-50/TwoPCF_CATALPTCICz0.466G960S1618325649_zspace.CROSS.R_16-50.dat.
-/hpcstorage/dforero/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_redshift.conf
-Loading configuration ... 
-  DATA_CATALOG    = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/nosyst/mocks_void_xyz/CATALPTCICz0.466G960S162548710_zspace.VOID.dat
-  DATA_HEADER     = 0
-  DATA_AUX_XOL    = 4
-  DATA_SEL_MODE   = 23
-  DATA_X_MIN      = 0
-  DATA_X_MAX      = 2500
-  DATA_Y_MIN      = 0
-  DATA_Y_MAX      = 2500
-  DATA_Z_MIN      = 0
-  DATA_Z_MAX      = 2500
-  DATA_AUX_MIN    = 16
-  DATA_AUX_MAX    = 50
-  RAND_CATALOG    = /hpcstorage/dforero/projects/baosystematics/data/patchy_boxes/patchy_cmass_subset/box1/redshift/CATALPTCICz0.466G960S162548710_zspace.dat
-  RAND_HEADER     = 0
-  RAND_SEL_MODE   = 7
-  RAND_X_MIN      = 0
-  RAND_X_MAX      = 2500
-  RAND_Y_MIN      = 0
-  RAND_Y_MAX      = 2500
-  RAND_Z_MIN      = 0
-  RAND_Z_MAX      = 2500
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 2
-  MOMENT          = 2
-  DR_FILE (OUT)   = /hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/nosyst/tpcf_xgv_R_16-50/DD_files/DD_CATALPTCICz0.466G960S162548710_zspace.CROSS.R_16-50.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/patchy_results/box1/redshift/nosyst/mocks_void_xyz/CATALPTCICz0.466G960S162548710_zspace.VOID.dat'.
-  Counting lines ...   Number of records: 41307657.
-  Allocating memory ...   ~ 630 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  31863411 objects removed.
-  9444246 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... [70C[[32;1mDONE[0m]
-Reading random catalog ... 
-  Filename: `/hpcstorage/dforero/projects/baosystematics/data/patchy_boxes/patchy_cmass_subset/box1/redshift/CATALPTCICz0.466G960S162548710_zspace.dat'.
-  Counting lines ...   Number of records: 6213239.
-  Allocating memory ...   ~ 94.8 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  21 objects removed.
-  6213218 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for random ... [70C[[32;1mDONE[0m]
-Counting DR pairs ... 
-  DR counts are saved to file or stdout.
-[70C[[32;1mDONE[0m]
-Releasing memory for data ... [70C[[32;1mDONE[0m]
-Releasing memory for random ... [70C[[32;1mDONE[0m]
-Releasing memory ... [70C[[32;1mDONE[0m]
-==> Saved correlation function in /home/epfl/dforero/scratch/projects/baosystematics/patchy_results/box1/redshift/nosyst/mocks_void_xyz/../tpcf_xgv_R_16-50/TwoPCF_CATALPTCICz0.466G960S162548710_zspace.CROSS.R_16-50.dat.

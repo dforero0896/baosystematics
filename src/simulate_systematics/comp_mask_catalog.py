@@ -9,10 +9,11 @@ from params import *
 
 def comp_mask_catalog(fn, odir, sigma_noise=0.2, function=parabola,\
 			cmin=0.8, names = ['x', 'y', 'z'], N_grid=2500, \
-			noise_sampler=noise_sampler, rmin=16, rmax=50, \
+			noise_sampler=noise_sampler, rmin=RMIN, rmax=RMAX, \
 			cat_type='mock'):
     print(f"==> Using function {function.__name__}")
     print(f"==> Using min. completeness {cmin}")
+    print(f"==> Using radius range [{rmin}, {rmax}]")
     complete_command='module load spack/default  gcc/5.4.0 boost\n'
     # Create data catalog with mask
     fn_base = os.path.basename(fn)
@@ -56,6 +57,7 @@ def comp_mask_catalog(fn, odir, sigma_noise=0.2, function=parabola,\
 			 os.path.basename(on).replace('.dat', f".VOID.dat"))]
         [os.makedirs(os.path.dirname(oname_void[i]), exist_ok=True) for i in range(2)]
         dive_command = f"{RUN_DIVE} {on} {oname_void[0]} {box_size} 0 999\n"
+        # Write command to create void catalog
         if not os.path.exists(oname_void[0]) or write_void:
             joblist.write(dive_command)
             complete_command+=dive_command
@@ -156,7 +158,7 @@ if __name__ == '__main__':
         odir = os.path.abspath(os.path.dirname(f)+'/../..')
         command=comp_mask_catalog(f, odir, noise_sampler=noise_sampler, \
 				function = FUNCTION, cmin = cmin_map, \
-				N_grid = 2500, rmin = 16, rmax = 50, \
+				N_grid = 2500, rmin = RMIN, rmax = RMAX, \
 				sigma_noise=0.2)
         joblist.write(command)
     joblist.close()
