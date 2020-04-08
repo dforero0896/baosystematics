@@ -6,7 +6,11 @@ mpl.use('Agg')
 from scipy import interpolate, optimize
 import sys
 import os
-
+from dotenv import load_dotenv
+load_dotenv()
+SRC=os.environ.get('SRC')
+sys.path.append(f"{SRC}/simulate_systematics")
+from params import *
 def load_binaries(filenames, ax = None):
    
     store_means=np.empty((len(filenames), 100))
@@ -64,7 +68,7 @@ if __name__ == '__main__':
     completeness = np.array(completeness)[sorted_comp_ids]
     galaxy_weights = 1 / np.array(completeness)
     galaxy_weights_linsp = np.linspace(min(galaxy_weights), max(galaxy_weights), 100)
-    print(f"==> WARNING: The program assumes the first argument passed was the raw (no systematics) void distribution")
+    print(f"==> WARNING: The program assumes the first argument passed was the raw (no systematics) void distribution npy")
     fit_params_container = []
     used_R = []
     for i,R in enumerate(Rbins):
@@ -72,6 +76,7 @@ if __name__ == '__main__':
         std = store_stds[1:, i] #delta n'
         data = data[sorted_comp_ids]
         std = std[sorted_comp_ids]
+        # Discard "empty" bins
         if any(data<1e-8) or data_complete[i] < 1e-10: continue
         void_comp = data/data_complete[i] # Void completeness assumes first argument is void distribution w/o systematics.
         void_comp_error = np.sqrt((std/data_complete[i])**2 + (data * std_complete[i] / (data_complete[i]**2))**2)
@@ -80,6 +85,7 @@ if __name__ == '__main__':
         fit_poly = np.polynomial.polynomial.Polynomial.fit(galaxy_weights, void_weights, deg = 2)
         fit_params_container.append(fit_poly.coef) #[x0, x1, x2]
         used_R.append(R)
+        # Plot some of the fits.
         if i%10==0:
             ax[0].errorbar(completeness, void_comp, yerr=void_comp_error, label = '$R \in (%.1f, %.1f)$'%(R-0.5 * Rbin_width, R + 0.5 * Rbin_width), marker = 'o')
             points = ax[1].errorbar(galaxy_weights, void_weights, yerr=void_comp_error/void_comp**2, label = '$R \in (%.0f, %.0f)$'%(R-Rbin_width, R + Rbin_width), marker = 'o', lw = 0)
@@ -98,15 +104,33 @@ if __name__ == '__main__':
     fitfig.suptitle('Model: $w_v(R) = c_0(R) + c_1(R)w_g + c_2(R)w_g^2$', fontsize=15)
     fit_params_container = np.array(fit_params_container)
     used_R = np.array(used_R)
-    
+    # Change env variables:
+    RMIN, RMAX =16, 50
+    R_mask = (used_R > RMIN) & (used_R < RMAX)
+    R_linsp = np.linspace(0.1, 50, 100)
+    # Iterate over coefficients to fit to c_i(R)
+    axins = ax.inset_axes([0.5, 0.5, 0.5, 0.5])
     for i in range(3):
-        ax.plot(used_R, fit_params_container[:,i], marker = 'o', label = '$c_%i$'%i)
+        fit_coeff = np.polynomial.polynomial.Polynomial.fit(used_R[R_mask], fit_params_container[R_mask,i], deg = 1)
+        fit_coeff_coeff = fit_coeff.coef
+        pts, = ax.plot(used_R, fit_params_container[:,i], marker = 'o', label = '$c_%i = %.2f  %+.2fR$'%(i, *fit_coeff.coef))
+        ax.plot(R_linsp, fit_coeff(R_linsp), color=pts.get_color())
+        axins.plot(used_R, fit_params_container[:,i], marker = 'o', label = '$c_%i = %.2f  %+.2fR$'%(i, *fit_coeff.coef))
+        axins.plot(R_linsp, fit_coeff(R_linsp), color=pts.get_color())
+        axins.set_xlim(RMIN, RMAX)
+        axins.set_ylim(-0.5, 1.5)
+ 
         ax.set_ylabel('$c_i$', fontsize=15)
+    
     ax.set_xlabel(r'$R$ [$h^{-1}$ Mpc]', fontsize=15)
     ax.legend()
     #fitfig.tight_layout()
     oname = f"{odir}/void_weight_fits.pdf"
+    print(f"==> Saved coefficients plot to {odir}/void_weight_fits.pdf")
     fitfig.savefig(oname, dpi=200)
     fit_params_out = np.concatenate((used_R[:,None], fit_params_container), axis=1)
     np.savetxt(f"{odir}/void_weight_c_of_r.dat", fit_params_out, fmt = "%.3f %.3f %.3f %.3f")
     print(f"==> Saved fit coefficients to {odir}/void_weight_c_of_r.dat")
+
+
+
