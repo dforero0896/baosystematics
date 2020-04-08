@@ -11,7 +11,7 @@ load_dotenv()
 SRC=os.environ.get('SRC')
 sys.path.append(f"{SRC}/simulate_systematics")
 from params import *
-def load_binaries(filenames, ax = None):
+def load_binaries(filenames, ax = None, ngal=None, **kwargs):
    
     store_means=np.empty((len(filenames), 100))
     store_stds = np.copy(store_means)
@@ -27,9 +27,15 @@ def load_binaries(filenames, ax = None):
         data_std = data[:,:,0].std(axis=0)
         store_stds[i,:] = data_std
         Rbins = data[0,:,0]
+        try:
+            add_label=kwargs.pop('label')
+        except:
+            add_label=''
         if ax is not None:
-            ax.plot(Rbins, data_mean, label = label)
-            ax.fill_between(Rbins, data_mean-data_std, data_mean+data_std, alpha=0.2)
+            if ngal is not None: r_scaling = ngal**(1./3)
+            else: r_scaling=1
+            ax.plot(r_scaling * Rbins, data_mean, label = label+add_label, **kwargs)
+            ax.fill_between(r_scaling * Rbins, data_mean-data_std, data_mean+data_std, alpha=0.2)
     
     return Rbins, store_means, store_stds, completeness
 
