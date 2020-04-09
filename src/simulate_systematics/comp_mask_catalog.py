@@ -154,6 +154,7 @@ if __name__ == '__main__':
     filenames = [os.path.join(indir, f) for f in os.listdir(indir)][:NMOCKS]
     filenames_split = np.array_split(filenames, nproc)
     joblist = open(f"joblists/jobs_{SPACE}_{FUNCTION.__name__}_{cmin_map}_{iproc}.sh", 'w')
+
     for f in filenames_split[iproc]:
         odir = os.path.abspath(os.path.dirname(f)+'/../..')
         command=comp_mask_catalog(f, odir, noise_sampler=noise_sampler, \

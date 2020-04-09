@@ -6,6 +6,8 @@ NCORES = 32
 BOX = "1"
 NMOCKS = 500
 SPACE = "redshift"
+NGAL = {'1':3.976980e-4, '5':1.976125e-4}
+ZBOXES = {'1':0.2384, '5':0.6383}
 # Define relevant paths
 WORKDIR = "/home/epfl/dforero/scratch/projects/baosystematics"
 RESULTS = WORKDIR+"/patchy_results"
@@ -44,8 +46,8 @@ funclist = [parabola, xplane, flat, parabola_off]
 FUNCTION = parabola
 
 # Define radius and distance bins to sample denstities
-RMIN = 18
-RMAX = 20
+RMIN = 16
+RMAX = 50
 radius_bins = np.append(np.linspace(0, 21, 22), [25, 30, 50])
 radius_bin_widths = radius_bins[1:] - radius_bins[:-1]
 xy_bins = 256
