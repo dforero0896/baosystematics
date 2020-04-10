@@ -28,10 +28,10 @@ elif len(sys.argv) == 9:
 	sys.stdout.write('Looking for void catalogs\n')
 elif len(sys.argv) == 10:
 	cat_type = 'void'
-	r_min = sys.argv[5]
-	r_max = sys.argv[6]
-	subsample_size = int(sys.argv[7])
-	ran_cat_file=sys.argv[8]
+	r_min = sys.argv[6]
+	r_max = sys.argv[7]
+	subsample_size = int(sys.argv[8])
+	ran_cat_file=sys.argv[5]
 	overwrite = bool(int(sys.argv[9]))
 	sys.stdout.write('Looking for void catalogs\n')
 else:
@@ -90,7 +90,7 @@ for fileno, fileName in enumerate(fdat):
 	else:
 		count_mode = 3
 	if 'none' in ran_cat_file: count_mode=1
-	bash_script.write('srun -n 1 -c 16 %s --conf=%s --data=%s --rand=%s --count-mode=%s --dd=%s --dr=%s --rr=%s --output=%s --data-aux-min=%s --data-aux-max=%s --rand-aux-min=%s --rand-aux-max=%s \n'%(RUN, conf_file, dat_cat_file, ran_cat_file, count_mode, dd_file, dr_file, rr_file, out_file, r_min, r_max, r_min, r_max))
+	bash_script.write('srun -n 1 -c 32 %s --conf=%s --data=%s --rand=%s --count-mode=%s --dd=%s --dr=%s --rr=%s --output=%s --data-aux-min=%s --data-aux-max=%s --rand-aux-min=%s --rand-aux-max=%s \n'%(RUN, conf_file, dat_cat_file, ran_cat_file, count_mode, dd_file, dr_file, rr_file, out_file, r_min, r_max, r_min, r_max))
 bash_script.close()
 print("Wrote %s commands in job list: %s"%(counter, bash_script_name))
 dd_dir = os.path.join(outPath, 'DD_files')
