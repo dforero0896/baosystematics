@@ -46,8 +46,12 @@ funclist = [parabola, xplane, flat, parabola_off]
 FUNCTION = parabola
 
 # Define radius and distance bins to sample denstities
-RMIN = 16
+USE_SCALED_R=True
+SCALED_RMIN=1.13
+RMIN_DICT = {'1':15.4, '5': 19.4} # Corresponding to scaled R = 1.13
+RMIN = RMIN_DICT[BOX]
 RMAX = 50
+#if USE_SCALED_R: RMIN=SCALED_RMIN / NGAL[BOX]**(1./3)
 radius_bins = np.append(np.linspace(0, 21, 22), [25, 30, 50])
 radius_bin_widths = radius_bins[1:] - radius_bins[:-1]
 xy_bins = 256
