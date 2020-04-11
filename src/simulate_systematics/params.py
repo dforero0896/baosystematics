@@ -2,8 +2,8 @@ import os
 import pandas as pd
 import numpy as np
 from mask_comp_func import mask_with_function
-NCORES = 32
-BOX = "1"
+NCORES = 16
+BOX = "5"
 NMOCKS = 500
 SPACE = "redshift"
 NGAL = {'1':3.976980e-4, '5':1.976125e-4}

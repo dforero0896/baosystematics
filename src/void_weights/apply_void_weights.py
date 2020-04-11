@@ -36,12 +36,15 @@ def add_void_weights_interp(void_cat_fn, void_wt_coeff_fn, comp_function,
     return void_cat
 
 def add_void_weights(void_cat_fn, get_weights_func, out_cat_fn = None,
-			 out_dir_suffix='_wt', save=True, **kwargs):
+			 out_dir_suffix='_wt', save=True, overwrite=False, **kwargs):
     """Apply void weights as a function of galaxy weights.
    """ 
     
     if out_cat_fn is None: out_cat_fn = os.path.dirname(void_cat_fn)+\
 				out_dir_suffix+"/"+os.path.basename(void_cat_fn)
+    if os.path.isfile(out_cat_fn) and not overwrite:
+        print(f"==> File {out_cat_fn} already exists")
+        return 0
     # Import data
     print(f"==> Reading {void_cat_fn}")
     void_cat = pd.read_csv(void_cat_fn, delim_whitespace = True,\
@@ -60,7 +63,7 @@ def add_void_weights(void_cat_fn, get_weights_func, out_cat_fn = None,
     return void_cat
 
 def batch_add_void_weights(void_cat_fn_list, get_weights_func, 
-				out_dir_suffix = '_wt', **kwargs):
+				out_dir_suffix = '_wt', overwrite=True, **kwargs):
     
 
     from mpi4py import MPI
@@ -73,7 +76,7 @@ def batch_add_void_weights(void_cat_fn_list, get_weights_func,
     for void_cat_fn in void_cat_chunk_fn:
         add_void_weights(void_cat_fn, get_weights_func, 
 			out_dir_suffix = out_dir_suffix,
-			out_cat_fn = None, save=True, **kwargs)
+			out_cat_fn = None, save=True, overwrite=overwrite, **kwargs)
     print(f"==> MPI process {rank} finished.")
     MPI.Finalize()
 
@@ -121,8 +124,11 @@ def get_known_void_weight_matrix(raw_void_dist_fn, void_dist_fn,
 
     """
     raw_void_dist = np.load(raw_void_dist_fn)
+    print(f"Loaded raw void distribution from {raw_void_dist_fn}")
     void_dist = np.load(void_dist_fn)
+    print(f"Loaded new void distribution from {void_dist_fn}")
     void_weight_matrix = raw_void_dist / void_dist
+    np.nan_to_num(void_weight_matrix, copy=False, nan=0., posinf=0, neginf=0)
     return void_weight_matrix
 
 def get_known_void_weight(r, x, y, void_weight_matrix, 
@@ -144,9 +150,13 @@ def get_known_void_weight(r, x, y, void_weight_matrix,
     returns: void_weight (array_like): The weight to be applied to the void at position
 	(x,y) and radius r.
     """
+
+    # Clip arrays to bin edges for (dimension-wise) "nearest" extrapolation.
+    r=np.clip(r, radius_bins[0], radius_bins[-1])
     side='left'
     # Extend leftmost bin edge for the (very unlikely) case that some void has
-    # any([r, x, y] == [0, 0, 0]). The rightmost edge is also extended with no effect.
+    # any([r, x, y] == [0, 0, 0]). The rightmost edge is also extended to make
+    # sure clipped values are included.
     radius_bins[0]-=1e-5; radius_bins[-1]+=1e-5
     xedges[0]-=1e-5; xedges[-1]+=1e-5
     yedges[0]-=1e-5; yedges[-1]+=1e-5
@@ -171,7 +181,7 @@ if __name__ == '__main__':
     yc, yw = edges_to_centers(yedges)
     # Use weights directly from weight matrix
     batch_add_void_weights(void_cat_fn_list, get_weights_func=get_known_void_weight,
-				 void_weight_matrix=void_weight_matrix)
+				 void_weight_matrix=void_weight_matrix, overwrite=False)
     # Use interpolation for coefficients and anytical galaxy completeness
 #    batch_add_void_weights(void_cat_fn_list, get_void_weights_interp, 
 #			coeffs=void_wt_coeff, 
