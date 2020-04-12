@@ -8,7 +8,7 @@ def read_input(path):
 		(_, _, l) = next(os.walk(path))
 		return l
 	except StopIteration:
-		sys.stdout.write('ERROR: Empty input directory.')
+		sys.stdout.write('ERROR: Empty input directory.\n')
 		sys.exit(1)
 if len(sys.argv)== 4:
 	path = sys.argv[1]
@@ -16,16 +16,14 @@ if len(sys.argv)== 4:
 	l = read_input(path)
 	gen = (np.loadtxt(os.path.join(path,f), dtype=float) for f in l)
 	outname = name
-elif len(sys.argv)==6:
+elif len(sys.argv) == 3:
 	path = sys.argv[1]
-	cat_type = sys.argv[3]
-	reg = sys.argv[4].lower()
-	joblist_id = sys.argv[5]
 	l = read_input(path)
-	gen = (np.loadtxt(os.path.join(path,f), dtype=float) for f in l if reg in f.lower())
-	outname = '%s_%s_%s'%(joblist_id, cat_type, reg)
+	gen = (np.loadtxt(os.path.join(path,f), dtype=float) for f in l)
+	outname = path.replace('/', '_')
+	
 else:
-	sys.stdout.write('ERROR:\tUnexpected number of arguments.\nUsage {0} IN_PATH OUT_PATH NAME\nor\nUsage {0} IN_PATH OUT_PATH CAT_TYPE ZONE ID\n'.format(sys.argv[0]))
+	sys.stdout.write('ERROR:\tUnexpected number of arguments.\nUsage {0} IN_PATH OUT_PATH [NAME]\n'.format(sys.argv[0]))
 	sys.exit(1)
 this_dir = os.path.dirname(sys.argv[0])
 out = sys.argv[2]
