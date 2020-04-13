@@ -5,7 +5,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 #import modin.pandas as pd
 import pandas as pd
-from plot_void_catalog import get_histogram
 from params import *
 def plot_all_histograms(histograms, bin_edges, ax, color='k', xlabel='', ylabel='', fontsize=15, function=parabola):
     delta_x = bin_edges[1] - bin_edges[0]
@@ -42,23 +41,30 @@ if __name__ == '__main__':
 #       else:
 #           sys.exit("ERROR: Function not recognized, use %s"%funclist)
     catalogs = sys.argv[2:]
-    xybins= 100
-    rbins = xybins 
+    xedges = np.linspace(0, box_size, box_size+1)
+    yedges = xedges
+    xcenters = xedges[:-1] + 0.5 * (xedges[1:] - xedges[:-1])
+    ycenters = yedges[:-1] + 0.5 * (yedges[1:] - yedges[:-1])
+    xybins= box_size
+    rbins = 100
+    rbin_edges = np.linspace(0, rbins, rbins+1)
+    rbin_centers = rbin_edges[:-1] + 0.5 * (rbin_edges[1:] - rbin_edges[:-1])
     cat_arrays = np.empty((xybins, xybins, len(catalogs)))
     odir = os.path.abspath(f"{os.path.dirname(catalogs[0])}/../plots")
     os.makedirs(odir, exist_ok=True)
     oname = f"{odir}/galaxy_spherical_distribution.dat"
-    if not os.path.exists(oname):
+    if True:#:not os.path.exists(oname):
         r_hist = np.empty((rbins, len(catalogs)))
         for i, catalog in enumerate(catalogs):
             cat = pd.read_csv(catalog, delim_whitespace=True, names = ['x', 'y', 'w'], usecols=(0,1,3))
-            hist, xedges, yedges = np.histogram2d(cat['x'].values, cat['y'].values, bins = xybins, range=[[0, box_size], [0, box_size]]) 
+            hist, xedges, yedges = np.histogram2d(cat['x'].values, cat['y'].values, bins = (xedges, yedges)) 
             cat_arrays[:, :, i] = hist
+            # Compute raw density
             # Compute raw density
             raw_density = cat['w'].sum() / box_size**2 # 2D density
             # Compute the r coordinate for each object on the angular plane.
             cat['r'] = np.sqrt((cat['x'] - 0.5 * box_size)**2 + (cat['y'] - 0.5 * box_size)**2)
-            r_hist[:,i], bin_edges = np.histogram(cat['r'].values, bins=rbins, density = False, range=(0, box_size))#/np.sqrt(2)))
+            r_hist[:,i], bin_edges = np.histogram(cat['r'].values, bins=rbin_edges, density = False)
             # Compute expected number of objects per bin
             c_analytical= function(box_size/2 * np.ones(len(bin_edges[:-1])), box_size/2 + bin_edges[:-1], box_size, cmin_map) # Completeness
             expected_histogram = raw_density * 4*np.pi*(bin_edges[1:]**2 - bin_edges[:-1]**2)# * c_analytical 
@@ -67,21 +73,15 @@ if __name__ == '__main__':
         np.save(f"{odir}/ngal.npy", cat_arrays)
     else:
         cat_arrays = np.load(f"{odir}/ngal.npy")
-        xedges = np.linspace(0, box_size, xybins+1)
-        yedges = xedges
         r_hist = np.loadtxt(oname)
-        bin_edges = np.linspace(0, box_size, rbins+1)#/np.sqrt(2), rbins+1)
+        bin_edges = rbin_edges
     rfig, rax = plt.subplots(1,1)
     plot_all_histograms(r_hist, bin_edges, ax=rax, xlabel=r'Distance from center [$h^{-1}$ Mpc]', ylabel='Number density')
     c_analytical= function(box_size/2 * np.ones(len(bin_edges[:-1])), box_size/2 + bin_edges[:-1], box_size, cmin_map)
     rax.plot(bin_edges[:-1],c_analytical, c = 'r', ls = '--')
     rfig.tight_layout()
     rfig.savefig(f"{odir}/galaxy_spherical_distribution.pdf", dpi=200)
-    delta_x = xedges[1] - xedges[0]
-    delta_y = yedges[1] - yedges[0]
-    x = (xedges + 0.5 * delta_x)[:-1]
-    y = (yedges + 0.5 * delta_y)[:-1]
-    X, Y  = np.meshgrid(x, y)
+    X, Y  = np.meshgrid(xcenters, ycenters)
     hist = cat_arrays.mean(axis=2)
     hist/=np.max(hist)
     comp_func = function(Y, X, box_size, cmin_map)
