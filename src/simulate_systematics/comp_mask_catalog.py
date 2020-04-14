@@ -10,7 +10,8 @@ from params import *
 def comp_mask_catalog(fn, odir, sigma_noise=0.2, function=parabola,\
 			cmin=0.8, names = ['x', 'y', 'z'], N_grid=2500, \
 			noise_sampler=noise_sampler, rmin=RMIN, rmax=RMAX, \
-			cat_type='mock', use_scaled_rmin=False, scaled_rmin=None):
+			cat_type='mock', use_scaled_r=0, scaled_rmin=None,\
+			scaled_rmax=None):
     print(f"==> Using function {function.__name__}")
     print(f"==> Using min. completeness {cmin}")
     complete_command='module load spack/default  gcc/5.4.0 boost\n'
@@ -46,14 +47,12 @@ def comp_mask_catalog(fn, odir, sigma_noise=0.2, function=parabola,\
 					 N_grid=N_grid, sigma_noise=sigma_noise,\
 					 cmin=0, noise_sampler=nsampler)
             masked_dat.to_csv(on, sep = ' ', header=False, index=False)
-        N_gal_incomp = line_count(on)
-        n_gal_incomp = get_average_galaxy_density(N_gal_incomp)
         #print(f"==> WARNING: Saving voids in 'nearest' directory")
         oname_void = [os.path.join(obases[i],\
 			 f"{cat_type}s_void_xyz",\
 			 os.path.basename(on).replace('.dat', f".VOID.dat")), \
 			 os.path.join(obases[i], 
-			 f"{cat_type}s_void_xyz_wt",\
+			 f"{cat_type}s_void_xyz_wt_scaledR",\
 			 os.path.basename(on).replace('.dat', f".VOID.dat"))]
         [os.makedirs(os.path.dirname(oname_void[i]), exist_ok=True) for i in range(2)]
         dive_command = f"{RUN_DIVE} {on} {oname_void[0]} {box_size} 0 999\n"
@@ -61,24 +60,47 @@ def comp_mask_catalog(fn, odir, sigma_noise=0.2, function=parabola,\
         if not os.path.exists(oname_void[0]) or write_void:
             joblist.write(dive_command)
             complete_command+=dive_command
-        rmin_fid = rmin 
-        if use_scaled_rmin:
+        if use_scaled_r == 0 :
+            rmin_fid = rmin 
+            rmax_fid = rmax 
+            void_aux_col=4
+        elif use_scaled_r==1 :
+            N_gal_incomp = line_count(on)
+            n_gal_incomp = get_average_galaxy_density(N_gal_incomp)
             print(f"==> Using scaled R min = {scaled_rmin}")
             print(f"==> rmin param. is ignored")
             rmin = np.round(scaled_rmin / (n_gal_incomp)**(1./3), 2)
             rmin_fid = f"scaled{scaled_rmin}"
+            rmax_fid = rmax 
+            void_aux_col=4
+        elif use_scaled_r==2:
+            print(f"==> Using scaled R in ({scaled_rmin}, {scaled_rmax})")
+            print(f"==> rmin, rmax params are ignored")
+            rmin = scaled_rmin
+            rmax = scaled_rmax
+            rmin_fid = f"loc_scaled{scaled_rmin}"
+            rmax_fid = f"loc_scaled{scaled_rmax}" 
+            void_aux_col=6
+        else: 
+            raise(NotImplementedError(f"Value {use_scaled_r} not understood."))
         print(f"==> Using radius range [{rmin}, {rmax}]")
         # Define files for fcfc
-        tpcf_gal_dirs = [obases[i]+f"/tpcf_gal_{cat_type}_nowt", \
-			obases[i]+f"/tpcf_gal_{cat_type}"]
-        tpcf_void_dirs = [obases[i]+f"/tpcf_void_{cat_type}_nowt_R-{rmin_fid}-{rmax}", \
-			obases[i]+f"/tpcf_void_{cat_type}_R-{rmin_fid}-{rmax}"]
-        tpcf_xgv_dirs = [obases[i]+f"/tpcf_xgv_{cat_type}_vnw_gnw_R-{rmin_fid}-{rmax}", \
-			obases[i]+f"/tpcf_xgv_{cat_type}_vnw_gw_R-{rmin_fid}-{rmax}", \
-			obases[i]+f"/tpcf_xgv_{cat_type}_vw_gnw_R-{rmin_fid}-{rmax}", \
-			obases[i]+f"/tpcf_xgv_{cat_type}_vw_gw_R-{rmin_fid}-{rmax}"]
         data_wt_cols_gal= [0, 4]
         data_wt_cols_void= [0, 5]
+        tpcf_gal_dirs = [obases[i]+f"/tpcf_gal_{cat_type}_nowt", \
+		obases[i]+f"/tpcf_gal_{cat_type}"]
+        tpcf_void_dirs = [obases[i]+\
+			f"/tpcf_void_{cat_type}_nowt_R-{rmin_fid}-{rmax_fid}", \
+			obases[i]+\
+			f"/tpcf_void_{cat_type}_R-{rmin_fid}-{rmax_fid}"]
+        tpcf_xgv_dirs = [obases[i]+\
+			f"/tpcf_xgv_{cat_type}_vnw_gnw_R-{rmin_fid}-{rmax_fid}", \
+			obases[i]+\
+			f"/tpcf_xgv_{cat_type}_vnw_gw_R-{rmin_fid}-{rmax_fid}", \
+			obases[i]+\
+			f"/tpcf_xgv_{cat_type}_vw_gnw_R-{rmin_fid}-{rmax_fid}", \
+			obases[i]+\
+			f"/tpcf_xgv_{cat_type}_vw_gw_R-{rmin_fid}-{rmax_fid}"]
         for weight in [0,1]:
             os.makedirs(tpcf_gal_dirs[weight]+"/DD_files", exist_ok=True)
             dd_file_gal = os.path.join(tpcf_gal_dirs[weight],"DD_files",\
@@ -105,15 +127,15 @@ def comp_mask_catalog(fn, odir, sigma_noise=0.2, function=parabola,\
             os.makedirs(tpcf_void_dirs[weight]+"/DD_files", exist_ok=True)
             dd_file_void = os.path.join(tpcf_void_dirs[weight],"DD_files",\
 		"DD_"+os.path.basename(oname_void[weight]).replace('.dat',\
-							f".R-{rmin_fid}-{rmax}.dat"))
+						f".R-{rmin_fid}-{rmax_fid}.dat"))
             out_file_void = os.path.join(tpcf_void_dirs[weight],\
 		 "TwoPCF_"+os.path.basename(oname_void[weight]).replace('.dat',\
-							f".R-{rmin_fid}-{rmax}.dat"))
+						f".R-{rmin_fid}-{rmax_fid}.dat"))
             data_wt_col=data_wt_cols_void[weight]
             if not os.path.exists(dd_file_void):
                 count_mode=1
                 ncores = NCORES
-                fcfc_void_command = f"srun -n 1 -c {ncores} {RUN_FCFC} --conf={conf_file_void} --data={oname_void[weight]} --count-mode={count_mode} --dd={dd_file_void} --output={out_file_void} --data-wt-col={data_wt_col} --data-aux-col=4 --data-aux-min={rmin} --data-aux-max={rmax} --cf-mode=3\n"
+                fcfc_void_command = f"srun -n 1 -c {ncores} {RUN_FCFC} --conf={conf_file_void} --data={oname_void[weight]} --count-mode={count_mode} --dd={dd_file_void} --output={out_file_void} --data-wt-col={data_wt_col} --data-aux-col={void_aux_col} --data-aux-min={rmin} --data-aux-max={rmax} --cf-mode=3\n"
             else:
                 ncores=1
                 count_mode=0
@@ -126,14 +148,14 @@ def comp_mask_catalog(fn, odir, sigma_noise=0.2, function=parabola,\
                 os.makedirs(tpcf_xgv_dirs[id_]+"/DD_files", exist_ok=True)
                 dgdv_file = os.path.join(tpcf_xgv_dirs[id_], "DD_files", \
 			"DD_"+os.path.basename(on).replace('.dat', \
-						f".CROSS.R_{rmin_fid}-{rmax}.dat"))
+						f".CROSS.R_{rmin_fid}-{rmax_fid}.dat"))
                 out_file_xgv = os.path.join(tpcf_xgv_dirs[id_],\
 			"TwoPCF_"+os.path.basename(on).replace('.dat', \
-						f".CROSS.R_{rmin_fid}-{rmax}.dat"))
+						f".CROSS.R_{rmin_fid}-{rmax_fid}.dat"))
                 if not os.path.exists(dgdv_file):
                     count_mode=2
                     ncores = NCORES
-                    fcfc_cross_command = f"srun -n 1 -c {ncores} {RUN_FCFC} --conf={conf_file_void} --rand={on} --data={oname_void[weight]} --count-mode={count_mode} --dr={dgdv_file} --output={out_file_xgv} --data-wt-col={data_wt_cols_void[weight]} --rand-wt-col={data_wt_cols_gal[weight_gal]} --data-aux-col=4 --data-aux-min={rmin} --data-aux-max={rmax} --cf-mode=0 && {WORKDIR}/bin/2pcf.py {dgdv_file} {out_file_xgv}\n"
+                    fcfc_cross_command = f"srun -n 1 -c {ncores} {RUN_FCFC} --conf={conf_file_void} --rand={on} --data={oname_void[weight]} --count-mode={count_mode} --dr={dgdv_file} --output={out_file_xgv} --data-wt-col={data_wt_cols_void[weight]} --rand-wt-col={data_wt_cols_gal[weight_gal]} --data-aux-col={void_aux_col} --data-aux-min={rmin} --data-aux-max={rmax} --cf-mode=0 && {WORKDIR}/bin/2pcf.py {dgdv_file} {out_file_xgv}\n"
                 else:
                     ncores=1
                     fcfc_cross_command = f"{WORKDIR}/bin/2pcf.py {dgdv_file} {out_file_xgv}\n"
@@ -166,8 +188,8 @@ if __name__ == '__main__':
         command=comp_mask_catalog(f, odir, noise_sampler=noise_sampler, \
 				function = FUNCTION, cmin = cmin_map, \
 				N_grid = NGRID, rmin = RMIN, rmax = RMAX, \
-				sigma_noise=0.2, use_scaled_rmin=USE_SCALED_R,\
-				scaled_rmin=SCALED_RMIN)
+				sigma_noise=0.2, use_scaled_r=USE_SCALED_R,\
+				scaled_rmin=SCALED_RMIN, scaled_rmax=SCALED_RMAX)
         joblist.write(command)
     joblist.close()
     MPI.Finalize()

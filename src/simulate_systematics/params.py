@@ -3,9 +3,9 @@ import pandas as pd
 import numpy as np
 from mask_comp_func import mask_with_function
 NCORES = 16
-BOX = "1"
+BOX = "5"
 NMOCKS = 500
-SPACE = "redshift"
+SPACE = "real"
 NGAL = {'1':3.976980e-4, '5':1.976125e-4}
 ZBOXES = {'1':0.2384, '5':0.6383}
 NGRID=2500
@@ -24,13 +24,21 @@ RUN_FCFC=os.path.join(WORKDIR, 'bin/FCFC_box/2pcf')
 RUN_DIVE = os.path.join(WORKDIR, 'bin/DIVE_box/DIVE_box') 
 box_size=2500
 
-# Define radius and distance bins to sample void densities
-USE_SCALED_R=True
+USE_SCALED_R = 2	# Object selection mode for voids
+			# 0: Use provided dimensionful RMIN, RMAX to select objects
+			#	from corresponding aux column (4) (default)
+			# 1: Compute scaled R using average galaxy density
+			#	and select objects using dimensionfull R column (4)
+			#	by converting SCALED_RMIN
+			# 2: Use provided dimensionless (scaled) SCALED_RMIN, and 
+			#	dimensionless SCALED_RMAX to select objects from 
+			#	corresponding aux column (6)
 SCALED_RMIN=1.13
+SCALED_RMAX=5
 RMIN_DICT = {'1':15.4, '5': 19.4} # Corresponding to scaled R = 1.13
 RMIN = RMIN_DICT[BOX]
 RMAX = 50
-#if USE_SCALED_R: RMIN=SCALED_RMIN / NGAL[BOX]**(1./3)
+# Define radius and distance bins to sample void densities
 radius_bins = np.append(np.linspace(0, 21, 22), [25, 30, 50])
 radius_bin_widths = radius_bins[1:] - radius_bins[:-1]
 xy_bins = 256
