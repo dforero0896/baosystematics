@@ -11,7 +11,7 @@ def comp_mask_catalog(fn, odir, sigma_noise=0.2, function=parabola,\
 			cmin=0.8, names = ['x', 'y', 'z'], N_grid=2500, \
 			noise_sampler=noise_sampler, rmin=RMIN, rmax=RMAX, \
 			cat_type='mock', use_scaled_r=0, scaled_rmin=None,\
-			scaled_rmax=None):
+			scaled_rmax=None, space=SPACE):
     print(f"==> Using function {function.__name__}")
     print(f"==> Using min. completeness {cmin}")
     complete_command='module load spack/default  gcc/5.4.0 boost\n'
@@ -26,8 +26,8 @@ def comp_mask_catalog(fn, odir, sigma_noise=0.2, function=parabola,\
     onames = [oname_gal_smooth, oname_gal_noise]
     obases = [os.path.join(odir, \
 	 s,f"{function.__name__}_{cmin}") for s in ['smooth', 'noise']]
-    conf_file_gal = WORKDIR+"/src/fcfc_box/fcfc_box_count_%s.conf"%SPACE
-    conf_file_void = WORKDIR+"/src/fcfc_box/fcfc_box_void_count_%s.conf"%SPACE
+    conf_file_gal = WORKDIR+"/src/fcfc_box/fcfc_box_count_%s.conf"%space
+    conf_file_void = WORKDIR+"/src/fcfc_box/fcfc_box_void_count_%s.conf"%space
     joblist=open('joblist.sh', 'w')
     for i , on in enumerate(onames):
         write_void=False #So they are not recomputed in reruns
@@ -48,6 +48,34 @@ def comp_mask_catalog(fn, odir, sigma_noise=0.2, function=parabola,\
 					 cmin=0, noise_sampler=nsampler)
             masked_dat.to_csv(on, sep = ' ', header=False, index=False)
         #print(f"==> WARNING: Saving voids in 'nearest' directory")
+        #This line should be changed if we wish to have selection wrt rescaled radii
+        if use_scaled_r == 0 :
+            rmin_fid = rmin 
+            rmax_fid = rmax 
+            void_aux_col=4
+            void_dir_suffix=''
+        elif use_scaled_r==1 :
+            N_gal_incomp = line_count(on)
+            n_gal_incomp = get_average_galaxy_density(N_gal_incomp)
+            print(f"==> Using scaled R min = {scaled_rmin}")
+            print(f"==> rmin param. is ignored")
+            rmin = np.round(scaled_rmin / (n_gal_incomp)**(1./3), 2)
+            rmin_fid = f"scaled{scaled_rmin}"
+            rmax_fid = rmax 
+            void_aux_col=4
+            void_dir_suffix=''
+        elif use_scaled_r==2:
+            print(f"==> Using scaled R in ({scaled_rmin}, {scaled_rmax})")
+            print(f"==> rmin, rmax params are ignored")
+            rmin = scaled_rmin
+            rmax = scaled_rmax
+            rmin_fid = f"loc_scaled{scaled_rmin}"
+            rmax_fid = f"loc_scaled{scaled_rmax}" 
+            void_aux_col=6
+            void_dir_suffix='_wt_scaledR'
+        else: 
+            raise(NotImplementedError(f"Value {use_scaled_r} not understood."))
+
         oname_void = [os.path.join(obases[i],\
 			 f"{cat_type}s_void_xyz",\
 			 os.path.basename(on).replace('.dat', f".VOID.dat")), \
@@ -60,29 +88,6 @@ def comp_mask_catalog(fn, odir, sigma_noise=0.2, function=parabola,\
         if not os.path.exists(oname_void[0]) or write_void:
             joblist.write(dive_command)
             complete_command+=dive_command
-        if use_scaled_r == 0 :
-            rmin_fid = rmin 
-            rmax_fid = rmax 
-            void_aux_col=4
-        elif use_scaled_r==1 :
-            N_gal_incomp = line_count(on)
-            n_gal_incomp = get_average_galaxy_density(N_gal_incomp)
-            print(f"==> Using scaled R min = {scaled_rmin}")
-            print(f"==> rmin param. is ignored")
-            rmin = np.round(scaled_rmin / (n_gal_incomp)**(1./3), 2)
-            rmin_fid = f"scaled{scaled_rmin}"
-            rmax_fid = rmax 
-            void_aux_col=4
-        elif use_scaled_r==2:
-            print(f"==> Using scaled R in ({scaled_rmin}, {scaled_rmax})")
-            print(f"==> rmin, rmax params are ignored")
-            rmin = scaled_rmin
-            rmax = scaled_rmax
-            rmin_fid = f"loc_scaled{scaled_rmin}"
-            rmax_fid = f"loc_scaled{scaled_rmax}" 
-            void_aux_col=6
-        else: 
-            raise(NotImplementedError(f"Value {use_scaled_r} not understood."))
         print(f"==> Using radius range [{rmin}, {rmax}]")
         # Define files for fcfc
         data_wt_cols_gal= [0, 4]
@@ -122,8 +127,8 @@ def comp_mask_catalog(fn, odir, sigma_noise=0.2, function=parabola,\
             
             # For voids
 #            if weight==0: #Remove this condition to implement void weights
-            if not os.path.isfile(oname_void[weight]): 
-                continue; print(f"==> File {oname_void[weight]} does not exist.")
+        #    if not os.path.isfile(oname_void[weight]): 
+        #        continue; print(f"==> File {oname_void[weight]} does not exist.")
             os.makedirs(tpcf_void_dirs[weight]+"/DD_files", exist_ok=True)
             dd_file_void = os.path.join(tpcf_void_dirs[weight],"DD_files",\
 		"DD_"+os.path.basename(oname_void[weight]).replace('.dat',\
@@ -171,17 +176,23 @@ if __name__ == '__main__':
     nproc = MPI.COMM_WORLD.Get_size()   # Size of communicator
     iproc = MPI.COMM_WORLD.Get_rank()   # Ranks in communicator
     inode = MPI.Get_processor_name()    # Node where this MPI process runs
-    if len(sys.argv) > 3 or len(sys.argv)<2:
-        sys.exit(f"ERROR: Unexpected number of arguments\nUSAGE: {sys.argv[0]} INDIR MIN_COMP")
+    if len(sys.argv) > 5 or len(sys.argv)<2:
+        sys.exit(f"ERROR: Unexpected number of arguments\nUSAGE: {sys.argv[0]} INDIR [MIN_COMP BOX SPACE]")
     indir = sys.argv[1]
     try:
         cmin_map = float(sys.argv[2])
+        box = sys.argv[2]
+        space = sys,argv[3]
         print(f"==> Using completeness from command line = {cmin_map}.")
+        print(f"==> Using params from command line: box={box}, space={space}.") 
     except:
+        box=BOX 
+        space=SPACE
         print(f"==> Using completeness from params.py file.")
+        print(f"==> Using params from params.py file: box={box}, space={space}.")
     filenames = [os.path.join(indir, f) for f in os.listdir(indir)][:NMOCKS]
     filenames_split = np.array_split(filenames, nproc)
-    joblist = open(f"joblists/jobs_{SPACE}_{FUNCTION.__name__}_{cmin_map}_{iproc}_box{BOX}.sh", 'w')
+    joblist = open(f"joblists/jobs_{space}_{FUNCTION.__name__}_{cmin_map}_{iproc}_box{box}.sh", 'w')
 
     for f in filenames_split[iproc]:
         odir = os.path.abspath(os.path.dirname(f)+'/../..')
@@ -189,7 +200,13 @@ if __name__ == '__main__':
 				function = FUNCTION, cmin = cmin_map, \
 				N_grid = NGRID, rmin = RMIN, rmax = RMAX, \
 				sigma_noise=0.2, use_scaled_r=USE_SCALED_R,\
-				scaled_rmin=SCALED_RMIN, scaled_rmax=SCALED_RMAX)
+				scaled_rmin=SCALED_RMIN, scaled_rmax=SCALED_RMAX,\
+				space=space)
         joblist.write(command)
     joblist.close()
+    if iproc==0:
+        from save_spatial_densities import mp_save_ang_density
+        mp_save_ang_density(f"{odir}/noise/{FUNCTION.__name__}_{cmin_map}/mocks_gal_xyz")
+        mp_save_ang_density(f"{odir}/smooth/{FUNCTION.__name__}_{cmin_map}/mocks_gal_xyz")
     MPI.Finalize()
+    

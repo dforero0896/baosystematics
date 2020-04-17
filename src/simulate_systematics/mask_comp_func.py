@@ -21,6 +21,21 @@ def mask_with_function(data, comp_mesh, seed=2, noise=True, box_size=2500, N_gri
   data['comp']=np.clip(comp, cmin, 1)
   data_ret = data[data['comp'] > rand]
   return data_ret
+
+def mask_radial_gauss(data, seed=2, box_size=2500, N_grid=None, cmin=0, sigma=0.235, center=0.5):
+  np.random.seed(seed)
+  
+  if N_grid is None:
+    print("Using N_grid = box_size")
+    N_grid=box_size
+
+  iz = data['z'] #* N_grid // box_size
+  z_comp = np.exp(-(iz-center*N_grid)**2 / (2 * (sigma*N_grid)**2))
+  rand = np.random.random(len(data))
+  data['nz'] = z_comp
+  data_ret = data[data['nz']>rand]
+  return data_ret
+  
 if __name__ == '__main__':
   import sys
   if len(sys.argv)!=5:

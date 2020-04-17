@@ -1,4 +1,4 @@
-from apply_void_weights import batch_add_scaled_void_radii, get_numdens_from_matrix
+from apply_void_weights import batch_add_scaled_void_radii, get_numdens_from_matrix, get_numdens_radial
 import sys
 import os
 import numpy as np
@@ -12,6 +12,7 @@ if __name__ == '__main__':
     print(f"==> Loading galaxy number density from {ngal_fn}")
     ngal = np.load(ngal_fn)
     batch_add_scaled_void_radii(void_cat_fn_list,
-				get_dens_func=get_numdens_from_matrix,
+				get_dens_func=get_numdens_radial,
+#				get_dens_func=get_numdens_from_matrix,
 				n_matrix=ngal,
 				overwrite=True)

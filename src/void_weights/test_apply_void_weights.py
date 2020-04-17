@@ -36,12 +36,19 @@ import matplotlib.pyplot as plt
 n_matrix = np.load(n_matrix_fn)
 n_matrix = n_matrix.mean(axis=-1)
 
-x = np.linspace(0, 2500, 5000)
+x = np.linspace(0, 2500, 50)
 y = x
+z = x
 
-X, Y = np.meshgrid(x,y)
-result = get_numdens_from_matrix(X, Y, n_matrix)
+X, Y, Z = np.meshgrid(x,y,z, indexing='ij')
+result = get_numdens_from_matrix(X, Y, Z, n_matrix)
 print(result.mean())
 print(n_matrix.sum()/box_size**3)
-plt.imshow(result)
-plt.show()
+#plt.imshow(result)
+#plt.show()
+
+n_matrix = np.load('/home/epfl/dforero/scratch/projects/baosystematics/patchy_results/box1/real/radialgauss/plots/ngal_radial.npy')
+from apply_void_weights import get_numdens_radial
+result = get_numdens_radial(X,Y,Z, n_matrix)
+print(result.mean())
+print(n_matrix.sum()/box_size**3)

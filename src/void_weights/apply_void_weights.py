@@ -74,11 +74,11 @@ def add_scaled_void_radii(void_cat_fn, get_dens_func, out_cat_fn = None,
     # Import data
     print(f"==> Reading {void_cat_fn}")
     void_cat = pd.read_csv(void_cat_fn, delim_whitespace = True,\
-			 usecols=(0, 1, 2, 3,4), names = ['x', 'y', 'z', 'r','w'],\
+			 usecols=(0, 1, 2, 3), names = ['x', 'y', 'z', 'r'],\
 			 dtype=np.float32)
     void_cat.dropna(axis=1, inplace=True)
     print(f"==> Computing local halo density with {get_dens_func.__name__}")
-    ngal = get_dens_func(void_cat['x'], void_cat['y'], 
+    ngal = get_dens_func(void_cat['x'], void_cat['y'], void_cat['z'],
 				**kwargs)
     void_cat['scaledR'] = ngal**(1./3) * void_cat['r']
     
@@ -204,7 +204,7 @@ def get_known_void_weight(r, x, y, void_weight_matrix,
     yindex = np.searchsorted(yedges, y, side=side) -1
     return void_weight_matrix[rindex, xindex, yindex]
 
-def get_numdens_from_matrix(x, y, n_matrix, box_size=box_size, N_grid=NGRID):
+def get_numdens_from_matrix(x, y, z, n_matrix, box_size=box_size, N_grid=NGRID):
     """Get tracer number density  by sampling the matrix of number densities.
 
     param: x (array_like): X-coordinate of void to be weighted.
@@ -237,6 +237,17 @@ def get_numdens_from_matrix(x, y, n_matrix, box_size=box_size, N_grid=NGRID):
     nvals/=(box_size * x_width * y_width)
     return nvals 
 
+def get_numdens_radial(x, y, z, n_matrix, box_size = box_size, N_grid=NGRID):
+
+    zedges = np.linspace(0, box_size, N_grid + 1)
+    zedges[0]-=1e-5; zedges[-1]+=1e-5
+    side='left'
+    zindex = np.searchsorted(zedges, z, side=side)  -1
+    zcenters, zwidths = edges_to_centers(zedges)    
+    nvals = n_matrix[zindex]
+    nvals/=(box_size * box_size * zwidths[zindex])
+    return nvals 
+    
 if __name__ == '__main__':
     if len(sys.argv) < 4:
         sys.exit(f"ERROR: Unexpected number of arguments.\nUSAGE: {sys.argv[0]} RAW_VOID_DENS VOID_DENS VOID_CAT(S)")

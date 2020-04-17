@@ -11,8 +11,8 @@ if __name__ == '__main__':
         command = ''
     placeholder='PATH'
     boxes = ['box5', 'box1']
-    functions = ['parabola_0.8']
-    #functions = ['flat_0.5', 'flat_0.55', 'flat_0.6', 'flat_0.65', 'flat_0.7', 'flat_0.75','flat_0.8', 'flat_0.85', 'flat_0.9', 'flat_0.95']#,'parabola']
+    #functions = ['parabola_0.8']
+    functions = ['flat_0.1', 'flat_0.15', 'flat_0.2', 'flat_0.25', 'flat_0.3', 'flat_0.35', 'flat_0.4', 'flat_0.45']#, 'flat_0.5', 'flat_0.55', 'flat_0.6', 'flat_0.65', 'flat_0.7', 'flat_0.75','flat_0.8', 'flat_0.85', 'flat_0.9', 'flat_0.95']#,'parabola']
     spaces = ['real', 'redshift']
     systematics = ['nosyst']
     [systematics.append(f"{a}/{b}") for a in ['noise', 'smooth'] for b in functions]

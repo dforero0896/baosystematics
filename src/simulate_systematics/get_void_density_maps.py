@@ -61,7 +61,7 @@ if __name__ == '__main__':
   # Create send buffers
   cat_arrays = np.empty((len(radius_bins)-1, xy_bins, xy_bins, len(catalogs_split[iproc])), dtype=np.float32)
   # Bottleneck
-  if True:#not os.path.exists(out_fn):
+  if not os.path.exists(out_fn):
     if iproc==0: print(f"==> Computing histogram with {nproc} processes.")
     for nmock, cat_fn in enumerate(catalogs_split[iproc]):
       print(f"==> MPI process {iproc}: {cat_fn}")
