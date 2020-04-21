@@ -49,6 +49,7 @@ def find_intersection_arrays(x, y1, y2, **kwargs):
 if __name__ == '__main__':
     WORKDIR = '/home/epfl/dforero/scratch/projects/baosystematics'
     if len(sys.argv) < 3:
+        print(f"==> WARNING: The program assumes the first argument passed was the raw (no systematics) void distribution npy")
         sys.exit(f"ERROR: Unexpected number of arguments.\nUSAGE: {sys.argv[0]} BIN_HIST_1 [... BIN_HIST_N] ODIR")
     data_bins = sys.argv[1:-1]
     odir = sys.argv[-1]
@@ -104,6 +105,7 @@ if __name__ == '__main__':
     cfig.tight_layout()
     oname = f"{odir}/void_ndensity_vs_comp_vs_size.pdf"
     cfig.savefig(oname, dpi=200)
+    print(f"==> Saved {oname}")
 
 
     fitfig, ax = plt.subplots(1,1, figsize=(7, 5), constrained_layout=True)
@@ -111,15 +113,17 @@ if __name__ == '__main__':
     fit_params_container = np.array(fit_params_container)
     used_R = np.array(used_R)
     # Change env variables:
-    RMIN, RMAX =16, 50
+#    RMIN, RMAX =16, 50
+    print(f"==> Fitting to R in {RMIN}, {RMAX} Mpc/h")
     R_mask = (used_R > RMIN) & (used_R < RMAX)
     R_linsp = np.linspace(0.1, 50, 100)
     # Iterate over coefficients to fit to c_i(R)
-    axins = ax.inset_axes([0.5, 0.5, 0.5, 0.5])
+    axins = ax.inset_axes([0.49, 0.49, 0.49, 0.49])
     for i in range(3):
         fit_coeff = np.polynomial.polynomial.Polynomial.fit(used_R[R_mask], fit_params_container[R_mask,i], deg = 1)
         fit_coeff_coeff = fit_coeff.coef
         pts, = ax.plot(used_R, fit_params_container[:,i], marker = 'o', label = '$c_%i = %.2f  %+.2fR$'%(i, *fit_coeff.coef))
+        #ax.set_yscale('log')
         ax.plot(R_linsp, fit_coeff(R_linsp), color=pts.get_color())
         axins.plot(used_R, fit_params_container[:,i], marker = 'o', label = '$c_%i = %.2f  %+.2fR$'%(i, *fit_coeff.coef))
         axins.plot(R_linsp, fit_coeff(R_linsp), color=pts.get_color())
