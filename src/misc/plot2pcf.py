@@ -14,7 +14,7 @@ mpl.use("Agg")
 #mpl.rcParams['text.usetex'] = True
 #mpl.rcParams['text.latex.preamble'] = [r'\usepackage{amsmath}'] #for \text command
 
-if len(sys.argv) > 3:
+if len(sys.argv) >= 3:
 	mocks_in = sys.argv[1:-1]
 	out = sys.argv[-1]
 else:
@@ -40,6 +40,7 @@ for k, mock_in in enumerate(mocks_in):
 	p, name = os.path.split(mock_in)
 	name = os.path.splitext(name)[0]
 	title = name.replace('TwoPCF_mockavg_', '').replace('_', ' ').capitalize()
+	print(name)
 	mocks = np.loadtxt(mock_in, skiprows=7)
 	print(mock_in)
 	xdata = mocks[:,0]

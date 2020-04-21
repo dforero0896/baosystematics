@@ -29,7 +29,9 @@ this_dir = os.path.dirname(sys.argv[0])
 out = sys.argv[2]
 if not os.path.isdir(out):
 	os.makedirs(out)
+print(f"==> Reading dir {path}")
 data = np.array(list(gen))
+data[np.isnan(data)]=0
 if len(data) == 0:
 	sys.exit('ERROR: No files found.')
 mocks_mean = data.mean(axis=0)

@@ -44,8 +44,6 @@ if __name__ == '__main__':
   obase = sys.argv[2]
   suffix = sys.argv[3]
   noise = bool(int(sys.argv[4]))
-  data = pd.read_csv(data_fn, delim_whitespace=True, usecols=(0, 1, 2, 3), names=['x', 'y', 'z', 'r'])
-  parabola = (lambda y, x: -1.6e-7*((x-1250)**2 + (y-1250)**2) + 1)
-  egg_cart = (lambda y, x: -0.25*(np.sin(8*np.pi*x/2500) + np.sin(8*np.pi*y/2500))+0.75)
+  data = pd.read_csv(data_fn, delim_whitespace=True, usecols=(0, 1, 2), names=['x', 'y', 'z'])
   masked_data = mask_with_function(data, egg_cart, noise=noise)
   masked_data.to_csv(obase+".ANG.%s.dat"%suffix, sep = " ", header=False, index=False)

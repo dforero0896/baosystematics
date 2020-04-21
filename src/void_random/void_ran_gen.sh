@@ -1,5 +1,4 @@
 #!/usr/bin/bash
-module load python/2.7.15
 WORKDIR=/hpcstorage/dforero/projects/baosystematics
 results_dir=$1
 if [[ $# -ne 5 ]]; then

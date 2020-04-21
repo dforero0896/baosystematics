@@ -41,7 +41,7 @@ def ang_n_worker(fname, box_size=box_size, N_grid=NGRID):
 				bins =(xedges, yedges))
     #hist = hist/(box_size * (xedges[1:] - xedges[:-1]) * (yedges[1:] - yedges[:-1]))
     return hist
-def mp_save_radial_density(files, box_size=box_size, N_grid=NGRID):
+def mp_save_radial_density(files, box_size=box_size, N_grid=NGRID, out='ngal_radial.npy'):
 
     import multiprocessing as mp
     size = mp.cpu_count()
@@ -51,10 +51,10 @@ def mp_save_radial_density(files, box_size=box_size, N_grid=NGRID):
     histcomp = np.array(result).mean(axis=0)
     odir = os.path.abspath(f"{files}/../plots")
     os.makedirs(odir, exist_ok=True)
-    oname = f"{odir}/ngal_radial.npy"
+    oname = f"{odir}/{out}"
     np.save(oname, histcomp)    
     print(f"==> Saved {oname}")
-def mp_save_ang_density(files, box_size=box_size, N_grid=NGRID):
+def mp_save_ang_density(files, box_size=box_size, N_grid=NGRID, out="ngal_ang.npy"):
     import multiprocessing as mp
     size = mp.cpu_count()
     fnlist = [os.path.join(files, f) for f in os.listdir(files)]
@@ -63,7 +63,7 @@ def mp_save_ang_density(files, box_size=box_size, N_grid=NGRID):
     histcomp = np.array(result).mean(axis=0)
     odir = os.path.abspath(f"{files}/../plots")
     os.makedirs(odir, exist_ok=True)
-    oname = f"{odir}/ngal_ang.npy"
+    oname = f"{odir}/{out}"
     np.save(oname, histcomp)    
     print(f"==> Saved {oname}")
 
@@ -82,8 +82,9 @@ def iter_save_radial_density(files, box_size=box_size, N_grid=NGRID):
     print(f"==> Saved {oname}")
 
 if __name__ == '__main__':
-    if len(sys.argv) != 2:
-        sys.exit(f"ERROR: Unexpected number of arguments.\nUSAGE: {sys.argv[0]} CATALOG_DIR")
+    if len(sys.argv) != 3:
+        sys.exit(f"ERROR: Unexpected number of arguments.\nUSAGE: {sys.argv[0]} CATALOG_DIR OUT_BASE")
     filedir = sys.argv[1]
-    mp_save_radial_density(filedir)
-    mp_save_ang_density(filedir)
+    out = sys.argv[2]
+    mp_save_radial_density(filedir, out=out+'_radial.npy')
+    mp_save_ang_density(filedir, out=out+'_ang.npy')

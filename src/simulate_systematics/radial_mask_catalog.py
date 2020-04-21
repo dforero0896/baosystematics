@@ -12,7 +12,7 @@ def radial_mask_catalog(fn, odir, sigma=0.235, center=0.5,\
 			rmin=RMIN, rmax=RMAX, \
 			cat_type='mock', use_scaled_r=0, scaled_rmin=None,\
 			scaled_rmax=None, space=SPACE, crosscorr=False,\
-			weight2pcf=False):
+			weight2pcf=False, overwrite=False, isfirst=True):
     complete_command='module load spack/default  gcc/5.4.0 boost\n'
     # Create data catalog with mask
     fn_base = os.path.basename(fn)
@@ -24,6 +24,10 @@ def radial_mask_catalog(fn, odir, sigma=0.235, center=0.5,\
     obases = [os.path.join(odir, f"radialgauss")]
     conf_file_gal = WORKDIR+"/src/fcfc_box/fcfc_box_count_%s.conf"%space
     conf_file_void = WORKDIR+"/src/fcfc_box/fcfc_box_void_count_%s.conf"%space
+    random_mask=f"{WORKDIR}/patchy_results/randoms/box_uniform_random_seed1_0-2500.radialgauss.sigma0.235.dat"
+    rr_file_mask = os.path.join(os.path.dirname(random_mask), 'RR_'+os.path.basename(random_mask))
+    random_shuf=f"{obases[0]}/void_ran/void_ran.dat"
+    rr_file_shuf = os.path.join(os.path.dirname(random_shuf), 'RR_'+os.path.basename(random_shuf))
     joblist=open('joblist.sh', 'w')
     for i , on in enumerate(onames):
         write_void=False #So they are not recomputed in reruns
@@ -79,6 +83,7 @@ def radial_mask_catalog(fn, odir, sigma=0.235, center=0.5,\
             raise(NotImplementedError(f"Value {use_scaled_r} not understood."))
         print(f"==> Using radius range [{rmin}, {rmax}]")
         # Define files for fcfc
+        rr_file_shuf = rr_file_shuf.replace('.dat',f"R-{rmin_fid}-{rmax_fid}.dat") 
         data_wt_cols_gal= [0, 4]
         data_wt_cols_void= [0, 5]
         tpcf_gal_dirs = [obases[i]+f"/tpcf_gal_{cat_type}_nowt", \
@@ -98,21 +103,25 @@ def radial_mask_catalog(fn, odir, sigma=0.235, center=0.5,\
         for weight in [0,1]:
             if weight==1 and not weight2pcf: continue
             os.makedirs(tpcf_gal_dirs[weight]+"/DD_files", exist_ok=True)
+            os.makedirs(tpcf_gal_dirs[weight]+"/DR_files", exist_ok=True)
             dd_file_gal = os.path.join(tpcf_gal_dirs[weight],"DD_files",\
 					"DD_"+os.path.basename(on))
+            dr_file_gal = os.path.join(tpcf_gal_dirs[weight],"DR_files",\
+					"DR_"+os.path.basename(on))
             out_file_gal = os.path.join(tpcf_gal_dirs[weight],\
 					 "TwoPCF_"+os.path.basename(on))
             data_wt_col=data_wt_cols_gal[weight]
-            if not os.path.exists(dd_file_gal):
-                count_mode=1
+            if not os.path.exists(rr_file_mask) and isfirst:
+                count_mode=7
                 ncores = NCORES
-                fcfc_gal_command = f"srun -n 1 -c {ncores} {RUN_FCFC} --conf={conf_file_gal} --data={on} --count-mode={count_mode} --dd={dd_file_gal} --output={out_file_gal} --data-wt-col={data_wt_col} --cf-mode=3\n"
+                fcfc_gal_command = f"srun -n 1 -c {ncores} {RUN_FCFC} --conf={conf_file_gal} --data={on} --rand={random_mask} --count-mode={count_mode} --dd={dd_file_gal} --dr={dr_file_gal} --rr={rr_file_mask} --output={out_file_gal} --data-wt-col={data_wt_col} --cf-mode=1\n"
             else:
-                ncores=1
-                count_mode=0
-                fcfc_gal_command = f"{WORKDIR}/bin/2pcf.py {dd_file_gal} {out_file_gal}\n"
-            joblist.write(fcfc_gal_command)    
-            complete_command+=fcfc_gal_command
+                ncores=NCORES
+                count_mode=3
+                fcfc_gal_command = f"srun -n 1 -c {ncores} {RUN_FCFC} --conf={conf_file_gal} --data={on} --rand={random_mask} --count-mode={count_mode} --dd={dd_file_gal} --dr={dr_file_gal} --rr={rr_file_mask} --output={out_file_gal} --data-wt-col={data_wt_col} --cf-mode=1\n"
+            if not os.path.exists(out_file_gal) or overwrite:
+                joblist.write(fcfc_gal_command)    
+                complete_command+=fcfc_gal_command
             
             
             # For voids
@@ -120,23 +129,28 @@ def radial_mask_catalog(fn, odir, sigma=0.235, center=0.5,\
         #    if not os.path.isfile(oname_void[weight]): 
         #        continue; print(f"==> File {oname_void[weight]} does not exist.")
             os.makedirs(tpcf_void_dirs[weight]+"/DD_files", exist_ok=True)
+            os.makedirs(tpcf_void_dirs[weight]+"/DR_files", exist_ok=True)
             dd_file_void = os.path.join(tpcf_void_dirs[weight],"DD_files",\
 		"DD_"+os.path.basename(oname_void[weight]).replace('.dat',\
+						f".R-{rmin_fid}-{rmax_fid}.dat"))
+            dr_file_void = os.path.join(tpcf_void_dirs[weight],"DR_files",\
+		"DR_"+os.path.basename(oname_void[weight]).replace('.dat',\
 						f".R-{rmin_fid}-{rmax_fid}.dat"))
             out_file_void = os.path.join(tpcf_void_dirs[weight],\
 		 "TwoPCF_"+os.path.basename(oname_void[weight]).replace('.dat',\
 						f".R-{rmin_fid}-{rmax_fid}.dat"))
             data_wt_col=data_wt_cols_void[weight]
-            if not os.path.exists(dd_file_void):
-                count_mode=1
+            if  not os.path.exists(rr_file_shuf) and isfirst:
+                count_mode=7
                 ncores = NCORES
-                fcfc_void_command = f"srun -n 1 -c {ncores} {RUN_FCFC} --conf={conf_file_void} --data={oname_void[weight]} --count-mode={count_mode} --dd={dd_file_void} --output={out_file_void} --data-wt-col={data_wt_col} --data-aux-col={void_aux_col} --data-aux-min={rmin} --data-aux-max={rmax} --cf-mode=3\n"
+                fcfc_void_command = f"srun -n 1 -c {ncores} {RUN_FCFC} --conf={conf_file_void} --data={oname_void[weight]} --rand={random_shuf} --count-mode={count_mode} --dd={dd_file_void} --dr={dr_file_void} --rr={rr_file_shuf} --output={out_file_void} --data-wt-col={data_wt_col} --data-aux-col={void_aux_col} --data-aux-min={rmin} --data-aux-max={rmax} --rand-aux-col={void_aux_col} --rand-aux-min={rmin} --rand-aux-max={rmax} --rand-select=23 --cf-mode=1\n"
             else:
-                ncores=1
-                count_mode=0
-                fcfc_void_command = f"{WORKDIR}/bin/2pcf.py {dd_file_void} {out_file_void}\n"
-            joblist.write(fcfc_void_command)    
-            complete_command+=fcfc_void_command
+                ncores=NCORES
+                count_mode=3
+                fcfc_void_command = f"srun -n 1 -c {ncores} {RUN_FCFC} --conf={conf_file_void} --data={oname_void[weight]} --rand={random_shuf} --count-mode={count_mode} --dd={dd_file_void} --dr={dr_file_void} --rr={rr_file_shuf} --output={out_file_void} --data-wt-col={data_wt_col} --data-aux-col={void_aux_col} --data-aux-min={rmin} --data-aux-max={rmax} --rand-aux-col={void_aux_col} --rand-aux-min={rmin} --rand-aux-max={rmax} --rand-select=23 --cf-mode=1\n"
+            if not os.path.exists(out_file_void) or overwrite:
+                joblist.write(fcfc_void_command)    
+                complete_command+=fcfc_void_command
              # Compute cross-terms
             for weight_gal in [0,1]:
                 if weight_gal==1 and not weight2pcf: continue
@@ -151,7 +165,7 @@ def radial_mask_catalog(fn, odir, sigma=0.235, center=0.5,\
                 if not os.path.exists(dgdv_file):
                     count_mode=2
                     ncores = NCORES
-                    fcfc_cross_command = f"srun -n 1 -c {ncores} {RUN_FCFC} --conf={conf_file_void} --rand={on} --data={oname_void[weight]} --count-mode={count_mode} --dr={dgdv_file} --output={out_file_xgv} --data-wt-col={data_wt_cols_void[weight]} --rand-wt-col={data_wt_cols_gal[weight_gal]} --data-aux-col={void_aux_col} --data-aux-min={rmin} --data-aux-max={rmax} --cf-mode=0 && {WORKDIR}/bin/2pcf.py {dgdv_file} {out_file_xgv}\n"
+                    fcfc_cross_command = f"srun -n 1 -c {ncores} {RUN_FCFC} --conf={conf_file_void} --rand={on} --data={oname_void[weight]} --count-mode={count_mode} --dr={dgdv_file} --output={out_file_xgv} --data-wt-col={data_wt_cols_void[weight]} --rand-wt-col={data_wt_cols_gal[weight_gal]} --data-aux-col={void_aux_col} --data-aux-min={rmin} --data-aux-max={rmax} --cf-mode=0\n"
                 else:
                     ncores=1
                     fcfc_cross_command = f"{WORKDIR}/bin/2pcf.py {dgdv_file} {out_file_xgv}\n"
@@ -183,12 +197,12 @@ if __name__ == '__main__':
     filenames_split = np.array_split(filenames, nproc)
     joblist = open(f"joblists/jobs_{space}_radialgauss_{iproc}_box{box}.sh", 'w')
 
-    for f in filenames_split[iproc]:
+    for i, f in enumerate(filenames_split[iproc]):
         odir = os.path.abspath(os.path.dirname(f)+'/../..')
         command=radial_mask_catalog(f, odir, N_grid = NGRID, rmin = RMIN, rmax = RMAX, \
 				sigma=0.235, center = 0.5, use_scaled_r=USE_SCALED_R,\
 				scaled_rmin=SCALED_RMIN, scaled_rmax=SCALED_RMAX,\
-				space=space)
+				space=space, overwrite=False, isfirst=i==0)
         joblist.write(command)
     joblist.close()
     MPI.COMM_WORLD.Barrier()
