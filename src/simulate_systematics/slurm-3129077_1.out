@@ -1,62 +1,0 @@
-/home/epfl/dforero/scratch/projects/baosystematics/src/fcfc_box/fcfc_box_void_count_real.conf
-Loading configuration ... 
-  DATA_CATALOG    = /home/epfl/dforero/scratch/projects/baosystematics/patchy_results/box1/real/radialgauss/mocks_void_xyz_scaledR/CATALPTCICz0.466G960S114138117.radialgauss.sigma0.235.VOID.dat
-  DATA_HEADER     = 0
-  DATA_AUX_XOL    = 5
-  DATA_SEL_MODE   = 23
-  DATA_X_MIN      = 0
-  DATA_X_MAX      = 2500
-  DATA_Y_MIN      = 0
-  DATA_Y_MAX      = 2500
-  DATA_Z_MIN      = 0
-  DATA_Z_MAX      = 2500
-  DATA_AUX_MIN    = 1.13
-  DATA_AUX_MAX    = 5
-  RAND_CATALOG    = /home/epfl/dforero/scratch/projects/baosystematics/patchy_results/box1/real/radialgauss/void_ran/void_ran.dat
-  RAND_HEADER     = 0
-  RAND_AUX_XOL    = 5
-  RAND_SEL_MODE   = 23
-  RAND_X_MIN      = 0
-  RAND_X_MAX      = 2500
-  RAND_Y_MIN      = 0
-  RAND_Y_MAX      = 2500
-  RAND_Z_MIN      = 0
-  RAND_Z_MAX      = 2500
-  RAND_AUX_MIN    = 1.13
-  RAND_AUX_MAX    = 5
-  DIST_BIN_DIM    = 1
-  DIST_BIN_TYPE   = 1
-  DIST_BIN_RMIN   = 0
-  DIST_BIN_RMAX   = 200
-  DIST_BIN_RNUM   = 40
-  DIST_BIN_PREC   = 0
-  COUNT_MODE      = 3
-  MOMENT          = 1
-  CF_MODE         = 1
-  OUTPUT          = /home/epfl/dforero/scratch/projects/baosystematics/patchy_results/box1/real/radialgauss/tpcf_void_mock_nowt_R-loc_scaled1.13-loc_scaled5/TwoPCF_CATALPTCICz0.466G960S114138117.radialgauss.sigma0.235.VOID.R-loc_scaled1.13-loc_scaled5.dat
-  DD_FILE (OUT)   = /home/epfl/dforero/scratch/projects/baosystematics/patchy_results/box1/real/radialgauss/tpcf_void_mock_nowt_R-loc_scaled1.13-loc_scaled5/DD_files/DD_CATALPTCICz0.466G960S114138117.radialgauss.sigma0.235.VOID.R-loc_scaled1.13-loc_scaled5.dat
-  DR_FILE (OUT)   = /home/epfl/dforero/scratch/projects/baosystematics/patchy_results/box1/real/radialgauss/tpcf_void_mock_nowt_R-loc_scaled1.13-loc_scaled5/DR_files/DR_CATALPTCICz0.466G960S114138117.radialgauss.sigma0.235.VOID.R-loc_scaled1.13-loc_scaled5.dat
-  RR_FILE (IN)    = /home/epfl/dforero/scratch/projects/baosystematics/patchy_results/box1/real/radialgauss/void_ran/RR_void_ran.dat
-  FORCE           = 1
-  VERBOSE         = 1
-[70C[[32;1mDONE[0m]
-Create bins for distances and counts ... [70C[[32;1mDONE[0m]
-Reading data catalog ... 
-  Filename: `/home/epfl/dforero/scratch/projects/baosystematics/patchy_results/box1/real/radialgauss/mocks_void_xyz_scaledR/CATALPTCICz0.466G960S114138117.radialgauss.sigma0.235.VOID.dat'.
-  Counting lines ...   Number of records: 23681781.
-  Allocating memory ...   ~ 361 Mb memory allocated for the tracers.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95%  18117182 objects removed.
-  5564599 objects recorded.
-[70C[[32;1mDONE[0m]
-Construct the tree for data ... [70C[[32;1mDONE[0m]
-Reading random catalog ... 
-  Filename: `/home/epfl/dforero/scratch/projects/baosystematics/patchy_results/box1/real/radialgauss/void_ran/void_ran.dat'.
-  Counting lines ...   Number of records: 240000000.
-  Allocating memory ...   ~ 3.66e+03 Mb memory allocated for the tracers.
-srun: got SIGCONT
-slurmstepd: error: *** JOB 3129079 ON node250 CANCELLED AT 2020-04-20T22:49:51 ***
-srun: forcing job termination
-slurmstepd: error: *** STEP 3129079.0 ON node250 CANCELLED AT 2020-04-20T22:49:51 ***
-srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
-  Reading ...  0%  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90%srun: error: node250: task 0: Terminated
-srun: Force Terminated job step 3129079.0
