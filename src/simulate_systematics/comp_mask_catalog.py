@@ -181,11 +181,11 @@ if __name__ == '__main__':
     indir = sys.argv[1]
     try:
         cmin_map = float(sys.argv[2])
-        box = sys.argv[2]
-        space = sys,argv[3]
+        box = sys.argv[3]
+        space = sys.argv[4]
         print(f"==> Using completeness from command line = {cmin_map}.")
         print(f"==> Using params from command line: box={box}, space={space}.") 
-    except:
+    except ValueError:
         box=BOX 
         space=SPACE
         print(f"==> Using completeness from params.py file.")

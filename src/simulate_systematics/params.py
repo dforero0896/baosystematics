@@ -2,7 +2,7 @@ import os
 import pandas as pd
 import numpy as np
 from mask_comp_func import mask_with_function
-NCORES = 16
+NCORES = 32
 BOX = "1"
 SPACE = "real"
 NMOCKS = 100

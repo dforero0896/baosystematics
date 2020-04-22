@@ -1,7 +1,7 @@
 #!/bin/bash
 
 partition=${1:-p5}
-ncores=16
+ncores=32
 for box in 1 5
 do
 for space in real redshift
