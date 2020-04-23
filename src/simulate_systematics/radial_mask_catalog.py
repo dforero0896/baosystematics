@@ -189,6 +189,7 @@ if __name__ == '__main__':
     try:
         box = sys.argv[2]
         space = sys.argv[3]
+        RMIN=RMIN_DICT[box]
         print(f"==> Using params from command line: box={box}, space={space}.")
     except IndexError:
         box=BOX
