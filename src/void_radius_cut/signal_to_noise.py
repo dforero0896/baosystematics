@@ -32,4 +32,4 @@ if __name__ == '__main__':
             xi_vals = xi[s_vals_id]
             signal_arr.append(xi_vals[0] - np.mean(xi_vals[1:]))
         SNR = np.mean(signal_arr)/np.std(signal_arr)
-        print(f"{SNR}\t{os.path.dirname(ilist[0])}")
+        print(f"{SNR}\t{os.path.dirname(ilist[0])}\t{len(ilist)}")

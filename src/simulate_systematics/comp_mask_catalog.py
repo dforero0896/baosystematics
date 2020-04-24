@@ -171,36 +171,38 @@ def comp_mask_catalog(fn, odir, sigma_noise=0.2, function=parabola,\
     joblist.close()
     return complete_command
 if __name__ == '__main__':
+    import argparse
     from mpi4py import MPI
 
     nproc = MPI.COMM_WORLD.Get_size()   # Size of communicator
     iproc = MPI.COMM_WORLD.Get_rank()   # Ranks in communicator
     inode = MPI.Get_processor_name()    # Node where this MPI process runs
-    if len(sys.argv) > 5 or len(sys.argv)<2:
-        sys.exit(f"ERROR: Unexpected number of arguments\nUSAGE: {sys.argv[0]} INDIR [MIN_COMP BOX SPACE]")
-    indir = sys.argv[1]
-    try:
-        cmin_map = float(sys.argv[2])
-        box = sys.argv[3]
-        space = sys.argv[4]
-        print(f"==> Using completeness from command line = {cmin_map}.")
-        print(f"==> Using params from command line: box={box}, space={space}.") 
-    except ValueError:
-        box=BOX 
-        space=SPACE
-        print(f"==> Using completeness from params.py file.")
-        print(f"==> Using params from params.py file: box={box}, space={space}.")
+    parser = argparse.ArgumentParser()
+    parser.add_argument("INDIR")
+    parser.add_argument("-c", "--mincomp", required=False, help="Minimum completeness for the angular map.") 
+    parser.add_argument("-b", "--box", required=False, help="Box to use: 1 or 5.") 
+    parser.add_argument("-s", "--space", required=False, help="Space in which to compute: real or redshift.") 
+    parser.add_argument("-r", "--scaledrmin", required=False, help="Scaled rmin value to use.")
+    parsed = parser.parse_args()
+    args = vars(parsed)
+    indir = args['INDIR']
+    comp_min = float(args['mincomp']) or cmin_map
+    box = args['box'] or BOX
+    space = args['space'] or SPACE
+    scaled_rmin = float(args['scaledrmin']) or SCALED_RMIN
+    print(parsed)
+    print(f"==> Using params: box={box}, space={space} scaled_rmin={scaled_rmin}.") 
     filenames = [os.path.join(indir, f) for f in os.listdir(indir)][:NMOCKS]
     filenames_split = np.array_split(filenames, nproc)
-    joblist = open(f"joblists/jobs_{space}_{FUNCTION.__name__}_{cmin_map}_{iproc}_box{box}.sh", 'w')
+    joblist = open(f"joblists/jobs_{space}_{FUNCTION.__name__}_{comp_min}_{iproc}_box{box}_scaled_rmin{scaled_rmin}.sh", 'w')
 
     for f in filenames_split[iproc]:
         odir = os.path.abspath(os.path.dirname(f)+'/../..')
         command=comp_mask_catalog(f, odir, noise_sampler=noise_sampler, \
-				function = FUNCTION, cmin = cmin_map, \
+				function = FUNCTION, cmin = comp_min, \
 				N_grid = NGRID, rmin = RMIN, rmax = RMAX, \
 				sigma_noise=0.2, use_scaled_r=USE_SCALED_R,\
-				scaled_rmin=SCALED_RMIN, scaled_rmax=SCALED_RMAX,\
+				scaled_rmin=scaled_rmin, scaled_rmax=SCALED_RMAX,\
 				space=space)
         joblist.write(command)
     joblist.close()
