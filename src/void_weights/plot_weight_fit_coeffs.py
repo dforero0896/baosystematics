@@ -10,7 +10,7 @@ WORKDIR = os.environ.get('WORKDIR')
 SRC = os.environ.get('SRC')
 sys.path.append(f"{SRC}/simulate_systematics")
 from params import *
-from plot_all_radii_distributions import load_binaries
+from compute_fit_coeffs  import load_binaries
 
 def plot_weight_fit_coeffs(filename, ax, label='', ngal=None, **kwargs):
 
@@ -44,6 +44,7 @@ if __name__ == '__main__':
 				label='redshift box5', 
 				ls = '-.', ngal=NGAL['5'])
     [a.legend() for a in ax]
+    [a.set_yscale('symlog') for a in ax]
     odir = f"{WORKDIR}/patchy_results/box1/plots"
     oname = f"{odir}/r_vs_z_wtcoeffs.pdf"
     fitfig.savefig(oname, dpi=200)
@@ -69,6 +70,7 @@ if __name__ == '__main__':
 				label='redshift box5', 
 				ls = '-.', ngal=NGAL['5'])
     [a.legend() for a in ax]
+    [a.set_yscale('symlog') for a in ax]
     odir = f"{WORKDIR}/patchy_results/box1/plots"
     oname = f"{odir}/box1_vs_box2_wtcoeffs.pdf"
     fitfig.savefig(oname, dpi=200)

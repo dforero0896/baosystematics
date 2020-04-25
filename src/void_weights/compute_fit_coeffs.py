@@ -11,7 +11,7 @@ load_dotenv()
 SRC=os.environ.get('SRC')
 sys.path.append(f"{SRC}/simulate_systematics")
 from params import *
-def load_binaries(filenames, ax = None, ngal=None, **kwargs):
+def load_binaries(filenames, ax = None, ngal=None, threshold=0.5, **kwargs):
    
     store_means=np.empty((len(filenames), 100))
     store_stds = np.copy(store_means)
@@ -20,6 +20,7 @@ def load_binaries(filenames, ax = None, ngal=None, **kwargs):
         try:
             label = data_bin.split('/')[-3]
             completeness.append(float(label.replace('flat_', '')))
+    #        if completeness[-1] < threshold: continue
         except: label = '1'
         data = np.load(data_bin)
         data_mean = data[:,:,1].mean(axis=0)
@@ -58,8 +59,8 @@ if __name__ == '__main__':
     Rbins, store_means, store_stds, completeness = load_binaries(data_bins, ax=ax)
     Rbin_width =  (Rbins[1] - Rbins[0])
     # Get point where curves cross
-    Rstar, nstar = find_intersection_arrays(Rbins, store_means[0], store_means[1], x0 = 13)
-    ax.plot(Rstar, nstar, 'ro', label = r'$R^* = %.3f$ $h^{-1}$ Mpc'%Rstar)
+#    Rstar, nstar = find_intersection_arrays(Rbins, store_means[0], store_means[1], x0 = 13)
+#    ax.plot(Rstar, nstar, 'ro', label = r'$R^* = %.3f$ $h^{-1}$ Mpc'%Rstar)
     ax.set_xlabel(r'$R$ [$h^{-1}$ Mpc]', fontsize=15)
     ax.set_ylabel(r'Void number density', fontsize=15)
     ax.legend()
@@ -89,18 +90,21 @@ if __name__ == '__main__':
         void_comp_error = np.sqrt((std/data_complete[i])**2 + (data * std_complete[i] / (data_complete[i]**2))**2)
         void_weights = 1 / void_comp
         # Do polynomial fit to weight relations.
-        fit_poly = np.polynomial.polynomial.Polynomial.fit(galaxy_weights, void_weights, deg = 2)
-        fit_params_container.append(fit_poly.coef) #[x0, x1, x2]
+        fit_poly = np.polynomial.polynomial.polyfit(galaxy_weights, void_weights, deg = 2)
+        fit_params_container.append(fit_poly) #[x0, x1, x2]
         used_R.append(R)
         # Plot some of the fits.
         if i%10==0:
             ax[0].errorbar(completeness, void_comp, yerr=void_comp_error, label = '$R \in (%.1f, %.1f)$'%(R-0.5 * Rbin_width, R + 0.5 * Rbin_width), marker = 'o')
             points = ax[1].errorbar(galaxy_weights, void_weights, yerr=void_comp_error/void_comp**2, label = '$R \in (%.0f, %.0f)$'%(R-Rbin_width, R + Rbin_width), marker = 'o', lw = 0)
-            ax[1].plot(galaxy_weights_linsp, fit_poly(galaxy_weights_linsp), color = points[0].get_color())
+            ax[1].plot(galaxy_weights_linsp, np.sum(np.array([fit_poly[i]*galaxy_weights_linsp**i for i in range(len(fit_poly))]), axis=0), color = points[0].get_color())
     ax[0].set_xlabel('Galaxy completeness', fontsize=15)
     ax[0].set_ylabel('Void completeness', fontsize=15)
+    ax[0].set_yscale('log')
     ax[1].set_xlabel('Galaxy weights', fontsize=15)
     ax[1].set_ylabel('Void weights', fontsize=15)
+    ax[1].set_yscale('log')
+    #ax[1].set_ylim(-1,1)
     ax[0].legend()
     cfig.tight_layout()
     oname = f"{odir}/void_ndensity_vs_comp_vs_size.pdf"
@@ -118,17 +122,17 @@ if __name__ == '__main__':
     R_mask = (used_R > RMIN) & (used_R < RMAX)
     R_linsp = np.linspace(0.1, 50, 100)
     # Iterate over coefficients to fit to c_i(R)
-    axins = ax.inset_axes([0.49, 0.49, 0.49, 0.49])
+    #axins = ax.inset_axes([0.7, 0.7, 0.49, 0.49])
     for i in range(3):
-        fit_coeff = np.polynomial.polynomial.Polynomial.fit(used_R[R_mask], fit_params_container[R_mask,i], deg = 1)
-        fit_coeff_coeff = fit_coeff.coef
-        pts, = ax.plot(used_R, fit_params_container[:,i], marker = 'o', label = '$c_%i = %.2f  %+.2fR$'%(i, *fit_coeff.coef))
-        #ax.set_yscale('log')
-        ax.plot(R_linsp, fit_coeff(R_linsp), color=pts.get_color())
-        axins.plot(used_R, fit_params_container[:,i], marker = 'o', label = '$c_%i = %.2f  %+.2fR$'%(i, *fit_coeff.coef))
-        axins.plot(R_linsp, fit_coeff(R_linsp), color=pts.get_color())
-        axins.set_xlim(RMIN, RMAX)
-        axins.set_ylim(-0.5, 1.5)
+        fit_coeff = np.polynomial.polynomial.polyfit(used_R[R_mask], fit_params_container[R_mask,i], deg = 1)
+        fit_coeff_coeff = fit_coeff
+        pts, = ax.plot(used_R, fit_params_container[:,i], marker = 'o', label = '$c_%i = %.2f  %+.2fR$'%(i, *tuple(fit_coeff)))
+        ax.set_yscale('symlog')
+        ax.plot(R_linsp, np.sum(np.array([fit_coeff[i]*R_linsp**i for i in range(len(fit_coeff))]), axis=0), color=pts.get_color())
+        #axins.plot(used_R, fit_params_container[:,i], marker = 'o', label = '$c_%i = %.2f  %+.2fR$'%(i, *tuple(fit_coeff)))
+        #axins.plot(R_linsp, np.sum(np.array([fit_coeff[i]*R_linsp**i for i in range(len(fit_coeff))]), axis=0), color=pts.get_color())
+        #axins.set_xlim(RMIN, RMAX)
+        #axins.set_ylim(-0.5, 1.5)
  
         ax.set_ylabel('$c_i$', fontsize=15)
     
