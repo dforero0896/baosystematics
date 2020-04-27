@@ -1,4 +1,4 @@
-def set_size(width, fraction=1, subplots=(1, 1)):
+def set_size(width, fraction=1, subplots=(1, 1), height_ratio=None, width_ratio=None):
     """ Set figure dimensions to avoid scaling in LaTeX.
 
     Parameters
