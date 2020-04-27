@@ -27,11 +27,11 @@ if __name__ == '__main__':
 		s)[0].replace('R-','').replace('-50','') for s in dirnames],\
 									 dtype=float)
         
-        rvals = NGAL[box]**(1./3) * Rvals
+        rvals = NGAL[box]**(1./4) * Rvals
         line, = ax.plot(rvals, data, label=f"Box {box}", marker='o')
-        ax.axvline(NGAL[box]**(1./3) * 16, color = line.get_color(), ls = ':')
+        ax.axvline(NGAL[box]**(1./4) * 16, color = line.get_color(), ls = ':')
     ax.grid()
-    ax.set_xlabel(r'$\bar{n}_{\mathrm{gal}}^{1/3}~R$', fontsize=12)
+    ax.set_xlabel(r'$\bar{n}_{\mathrm{gal}}^{1/4}~R$ [(Mpc/$h$)^{1/4}]', fontsize=12)
     ax.set_ylabel(r'SNR', fontsize=12)
     ax.legend(loc=0)
     fig.tight_layout()

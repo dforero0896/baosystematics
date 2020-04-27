@@ -15,7 +15,7 @@ from compute_fit_coeffs  import load_binaries
 def plot_weight_fit_coeffs(filename, ax, label='', ngal=None, **kwargs):
 
     data = np.loadtxt(filename)
-    if ngal is not None: r_scaling = ngal**(1./3)
+    if ngal is not None: r_scaling = ngal**(1./4)
     else: r_scaling=1
     print(f"{filename}: {r_scaling}")
     for i in range(1,4):
@@ -27,7 +27,7 @@ if __name__ == '__main__':
     fitfig, ax = plt.subplots(1,2, figsize=(12, 5), 
 				constrained_layout=True, sharey=True)
     fitfig.suptitle('Model: $w_v(R) = c_0(R) + c_1(R)w_g + c_2(R)w_g^2$', fontsize=12)
-    [a.set_xlabel(r'$\bar{n}_{\mathrm{halo}}^{1/3}~R$ [$h^{-1}$ Mpc]', fontsize=12) for a in ax]
+    [a.set_xlabel(r'$\bar{n}_{\mathrm{halo}}^{1/4}~R$ [$h^{-1}$ Mpc]', fontsize=12) for a in ax]
     colorc = 'bgr'
     [a.set_prop_cycle(cycler(color=colorc)) for a in ax]
     ax[0].set_title('Real space', fontsize=12)
@@ -55,7 +55,7 @@ if __name__ == '__main__':
     ax[0].set_title(r'Box 1: $\bar{n}_{\mathrm{halo}}=%.5e$ $h^3~$Mpc$^{-3}$'%NGAL['1'])
     ax[1].set_title(r'Box 5: $\bar{n}_{\mathrm{halo}}=%.5e$ $h^3~$Mpc$^{-3}$'%NGAL['5'])
     
-    [a.set_xlabel(r'$\bar{n}_{\mathrm{halo}}^{1/3}~R$ [$h^{-1}$ Mpc]', fontsize=12) for a in ax]
+    [a.set_xlabel(r'$\bar{n}_{\mathrm{halo}}^{1/4}~R$ [$h^{-1}$ Mpc]', fontsize=12) for a in ax]
     colorc = 'bgr'
     [a.set_prop_cycle(cycler(color=colorc)) for a in ax]
     plot_weight_fit_coeffs('void_weights_c_of_r_real.dat', ax=ax[0], 
@@ -89,7 +89,7 @@ if __name__ == '__main__':
             Rbins, store_means, _, completeness = load_binaries([raw_nv_fns[-1]],								ax=ax, ngal=NGAL[box],
 							label=f" box{box} {space}")
             Rbin_width =  (Rbins[1] - Rbins[0])
-    ax.set_xlabel(r'$\bar{n}_{\mathrm{gal}}^{1/3}~R$', fontsize=12)
+    ax.set_xlabel(r'$\bar{n}_{\mathrm{gal}}^{1/4}~R$', fontsize=12)
     ax.set_ylabel(r'$n_{\mathrm{void}}$', fontsize=12)
     ax.legend(loc='best')
     fignv.tight_layout()

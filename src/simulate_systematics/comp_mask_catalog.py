@@ -59,7 +59,7 @@ def comp_mask_catalog(fn, odir, sigma_noise=0.2, function=parabola,\
             n_gal_incomp = get_average_galaxy_density(N_gal_incomp)
             print(f"==> Using scaled R min = {scaled_rmin}")
             print(f"==> rmin param. is ignored")
-            rmin = np.round(scaled_rmin / (n_gal_incomp)**(1./3), 2)
+            rmin = np.round(scaled_rmin / (n_gal_incomp)**(1./4), 2)
             rmin_fid = f"scaled{scaled_rmin}"
             rmax_fid = rmax 
             void_aux_col=4
@@ -77,7 +77,7 @@ def comp_mask_catalog(fn, odir, sigma_noise=0.2, function=parabola,\
             raise(NotImplementedError(f"Value {use_scaled_r} not understood."))
 
         oname_void = [os.path.join(obases[i],\
-			 f"{cat_type}s_void_xyz",\
+			 f"{cat_type}s_void_xyz_wt_scaledR",\
 			 os.path.basename(on).replace('.dat', f".VOID.dat")), \
 			 os.path.join(obases[i], 
 			 f"{cat_type}s_void_xyz_wt_scaledR",\
@@ -188,8 +188,10 @@ if __name__ == '__main__':
     indir = args['INDIR']
     comp_min = float(args['mincomp']) or cmin_map
     box = args['box'] or BOX
+    RMIN=RMIN_DICT[box]
     space = args['space'] or SPACE
-    scaled_rmin = float(args['scaledrmin']) or SCALED_RMIN
+    scaled_rmin = args['scaledrmin'] or SCALED_RMIN
+    scaled_rmin=float(scaled_rmin)
     print(parsed)
     print(f"==> Using params: box={box}, space={space} scaled_rmin={scaled_rmin}.") 
     filenames = [os.path.join(indir, f) for f in os.listdir(indir)][:NMOCKS]
@@ -208,7 +210,9 @@ if __name__ == '__main__':
     joblist.close()
     if iproc==0:
         from save_spatial_densities import mp_save_ang_density
-        mp_save_ang_density(f"{odir}/noise/{FUNCTION.__name__}_{cmin_map}/mocks_gal_xyz")
-        mp_save_ang_density(f"{odir}/smooth/{FUNCTION.__name__}_{cmin_map}/mocks_gal_xyz")
+        if not os.path.exists(f"{odir}/noise/{FUNCTION.__name__}_{cmin_map}/mocks_gal_xyz"):
+            mp_save_ang_density(f"{odir}/noise/{FUNCTION.__name__}_{cmin_map}/mocks_gal_xyz")
+        if not os.path.exists(f"{odir}/smooth/{FUNCTION.__name__}_{cmin_map}/mocks_gal_xyz"):
+            mp_save_ang_density(f"{odir}/smooth/{FUNCTION.__name__}_{cmin_map}/mocks_gal_xyz")
     MPI.Finalize()
     

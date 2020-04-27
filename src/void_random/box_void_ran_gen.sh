@@ -20,9 +20,9 @@ fi
 overwrite=$2
 nrandoms=240000000
 if [[ ! -e $results_dir/void_ran/BIG_RAN_VOID.dat ]] || [[ $overwrite -eq 1 ]];then
-srun -n 1 -c $NCORES python $WORKDIR/src/void_random/create_bins.py $results_dir/mocks_void_xyz_scaledR/ 0
+srun -n 1 -c $NCORES python $WORKDIR/src/void_random/create_bins.py $results_dir/mocks_void_xyz_scaledR/ 0 || exit 1
 echo Shuffling...
-bash $WORKDIR/src/void_random/box_shuffle_columns.sh $results_dir/void_ran/bins 0
+bash $WORKDIR/src/void_random/box_shuffle_columns.sh $results_dir/void_ran/bins 0 || exit 1
 fi
 echo Selecting ${nrandoms} objects
-shuf -n $nrandoms $results_dir/void_ran/BIG_RAN_VOID.dat> $results_dir/void_ran/void_ran.dat
+shuf -n $nrandoms $results_dir/void_ran/BIG_RAN_VOID.dat> $results_dir/void_ran/void_ran.dat || exit 1

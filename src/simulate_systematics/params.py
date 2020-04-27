@@ -5,7 +5,7 @@ from mask_comp_func import mask_with_function
 NCORES = 16
 BOX = "1"
 SPACE = "real"
-NMOCKS = 100
+NMOCKS = 500
 NGAL = {'1':3.976980e-4, '5':1.976125e-4}
 ZBOXES = {'1':0.2384, '5':0.6383}
 NGRID=2500
@@ -24,7 +24,7 @@ RUN_FCFC=os.path.join(WORKDIR, 'bin/FCFC_box/2pcf')
 RUN_DIVE = os.path.join(WORKDIR, 'bin/DIVE_box/DIVE_box') 
 box_size=2500
 
-USE_SCALED_R = 1	# Object selection mode for voids
+USE_SCALED_R = 0	# Object selection mode for voids
 			# 0: Use provided dimensionful RMIN, RMAX to select objects
 			#	from corresponding aux column (4) (default)
 			# 1: Compute scaled R using average galaxy density
@@ -33,9 +33,9 @@ USE_SCALED_R = 1	# Object selection mode for voids
 			# 2: Use provided dimensionless (scaled) SCALED_RMIN, and 
 			#	dimensionless SCALED_RMAX to select objects from 
 			#	corresponding aux column (6)
-SCALED_RMIN=1.13
+SCALED_RMIN=2.2
 SCALED_RMAX=5
-RMIN_DICT = {'1':15.4, '5': 19.4} # Corresponding to scaled R = 1.13
+RMIN_DICT = {'1':15.6, '5': 18.5} # Corresponding to scaled R = 2.2
 RMIN = RMIN_DICT[BOX]
 RMAX = 50
 # Define radius and distance bins to sample void densities
@@ -64,7 +64,7 @@ def parabola_off(y, x, N_grid, Cmin):
 funclist = [parabola, xplane, flat, parabola_off]
 
 # Define which function is actually being used
-FUNCTION = flat
+FUNCTION = parabola
 
 # Define function to compute average galaxy density
 def line_count(filename):

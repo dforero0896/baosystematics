@@ -74,13 +74,13 @@ def add_scaled_void_radii(void_cat_fn, get_dens_func, out_cat_fn = None,
     # Import data
     print(f"==> Reading {void_cat_fn}")
     void_cat = pd.read_csv(void_cat_fn, delim_whitespace = True,\
-			 usecols=(0, 1, 2, 3), names = ['x', 'y', 'z', 'r'],\
+			 names = ['x', 'y', 'z', 'r', 'w'],\
 			 dtype=np.float32)
     void_cat.dropna(axis=1, inplace=True)
     print(f"==> Computing local halo density with {get_dens_func.__name__}")
     ngal = get_dens_func(void_cat['x'], void_cat['y'], void_cat['z'],
 				**kwargs)
-    void_cat['scaledR'] = ngal**(1./3) * void_cat['r']
+    void_cat['scaledR'] = ngal**(1./4) * void_cat['r']
     
     if save:
         print(f"==> Saving catalog to {out_cat_fn}")

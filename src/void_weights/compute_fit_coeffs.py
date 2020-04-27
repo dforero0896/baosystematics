@@ -33,7 +33,7 @@ def load_binaries(filenames, ax = None, ngal=None, threshold=0.5, **kwargs):
         except:
             add_label=''
         if ax is not None:
-            if ngal is not None: r_scaling = ngal**(1./3)
+            if ngal is not None: r_scaling = ngal**(1./4)
             else: r_scaling=1
             ax.plot(r_scaling * Rbins, data_mean, label = label+add_label, **kwargs)
             ax.fill_between(r_scaling * Rbins, data_mean-data_std, data_mean+data_std, alpha=0.2)
@@ -69,13 +69,16 @@ if __name__ == '__main__':
     oname = f"{odir}/void_ndensity_vs_size_vs_comp.pdf"
     fig.savefig(oname, dpi=200)
     cfig, ax = plt.subplots(1,2, figsize=(9,4))
+    axins = ax[1].inset_axes(bounds=[0.1,0.1, 0.5, 0.3])
+    axins.set_xlim(1, 1.25)
     # Iterate over radius bins
     data_complete = store_means[0,:] #n
     std_complete = store_stds[0,:] #delta n
     sorted_comp_ids = np.argsort(completeness)
     completeness = np.array(completeness)[sorted_comp_ids]
     galaxy_weights = 1 / np.array(completeness)
-    galaxy_weights_linsp = np.linspace(min(galaxy_weights), max(galaxy_weights), 100)
+    fit_mask = (galaxy_weights >= 1 ) & (galaxy_weights <= 1.25)
+    galaxy_weights_linsp = np.linspace(1, 1.25, 100)
     print(f"==> WARNING: The program assumes the first argument passed was the raw (no systematics) void distribution npy")
     fit_params_container = []
     used_R = []
@@ -90,21 +93,23 @@ if __name__ == '__main__':
         void_comp_error = np.sqrt((std/data_complete[i])**2 + (data * std_complete[i] / (data_complete[i]**2))**2)
         void_weights = 1 / void_comp
         # Do polynomial fit to weight relations.
-        fit_poly = np.polynomial.polynomial.polyfit(galaxy_weights, void_weights, deg = 2)
+        fit_poly = np.polynomial.polynomial.polyfit(galaxy_weights[fit_mask], void_weights[fit_mask], deg = 2)
         fit_params_container.append(fit_poly) #[x0, x1, x2]
         used_R.append(R)
         # Plot some of the fits.
         if i%10==0:
             ax[0].errorbar(completeness, void_comp, yerr=void_comp_error, label = '$R \in (%.1f, %.1f)$'%(R-0.5 * Rbin_width, R + 0.5 * Rbin_width), marker = 'o')
             points = ax[1].errorbar(galaxy_weights, void_weights, yerr=void_comp_error/void_comp**2, label = '$R \in (%.0f, %.0f)$'%(R-Rbin_width, R + Rbin_width), marker = 'o', lw = 0)
+            axins.errorbar(galaxy_weights[fit_mask], void_weights[fit_mask], yerr=(void_comp_error/void_comp**2)[fit_mask], marker = 'o', lw = 0)
             ax[1].plot(galaxy_weights_linsp, np.sum(np.array([fit_poly[i]*galaxy_weights_linsp**i for i in range(len(fit_poly))]), axis=0), color = points[0].get_color())
+            axins.plot(galaxy_weights_linsp, np.sum(np.array([fit_poly[i]*galaxy_weights_linsp**i for i in range(len(fit_poly))]), axis=0), color = points[0].get_color())
     ax[0].set_xlabel('Galaxy completeness', fontsize=15)
     ax[0].set_ylabel('Void completeness', fontsize=15)
     ax[0].set_yscale('log')
     ax[1].set_xlabel('Galaxy weights', fontsize=15)
     ax[1].set_ylabel('Void weights', fontsize=15)
     ax[1].set_yscale('log')
-    #ax[1].set_ylim(-1,1)
+    #ax[1].set_ylim(0,10)
     ax[0].legend()
     cfig.tight_layout()
     oname = f"{odir}/void_ndensity_vs_comp_vs_size.pdf"
