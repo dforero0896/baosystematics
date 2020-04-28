@@ -2,7 +2,7 @@
 import numpy as np
 import pandas as pd
 import multiprocessing as mp
-#from mpi4py import MPI
+from mpi4py import MPI
 import os
 import sys
 from dotenv import load_dotenv
@@ -26,8 +26,10 @@ def worker(filename):
     for key, df in data.groupby(['zid', 'rid']):
         oname_left=f"{odir}/{id_:0>3}_zmax{key[0]}_rmax{key[1]}.left"
         oname_right=f"{odir}/{id_:0>3}_zmax{key[0]}_rmax{key[1]}.right"
-        df[names[:2]].to_csv(oname_left, header=False, index=False, sep=" ")
-        df[names[2:]].to_csv(oname_right, header=False, index=False, sep=" ")
+        if not os.path.exists(oname_left) or overwrite:
+            df[names[:2]].to_csv(oname_left, header=False, index=False, sep=" ")
+        if not os.path.exists(oname_right):
+            df[names[2:]].to_csv(oname_right, header=False, index=False, sep=" ")
         lens.append(len(df))
     print(f"==> Split {fn} saved {oname_left}") 
     return sum(lens)
@@ -43,15 +45,15 @@ if __name__ == '__main__':
     fnames = [os.path.join(indir,f) for f in os.listdir(indir)][:100]
     args = list(zip(range(len(fnames)), fnames, [odir]*len(fnames)))
     print(f"==> Saving binned chunks in {odir}")
-#    nproc = MPI.COMM_WORLD.Get_size()
-#    iproc = MPI.COMM_WORLD.Get_rank()
-#    inode = MPI.Get_processor_name()
-#    args_split = np.array_split(args, nproc)
-#    for arg in args_split[iproc]:
-#        worker(arg)
+    nproc = MPI.COMM_WORLD.Get_size()
+    iproc = MPI.COMM_WORLD.Get_rank()
+    inode = MPI.Get_processor_name()
+    args_split = np.array_split(args, nproc)
+    for arg in args_split[iproc]:
+        worker(arg)
  
-    size=mp.cpu_count()
-    with mp.Pool(processes=size) as pool:
-        result=pool.map(worker, args)
-    print(sum(result))
-#    MPI.Finalize()
+    #size=mp.cpu_count()
+    #with mp.Pool(processes=size) as pool:
+    #    result=pool.map(worker, args)
+    #print(sum(result))
+    MPI.Finalize()
