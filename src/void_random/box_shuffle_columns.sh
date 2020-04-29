@@ -13,7 +13,7 @@ OFILE=${ODIR}/BIG_RAN_VOID.dat
 mkdir -p -v $SHUFCOLSDIR
 
 zin=0
-zfin=$(( $BOX_SIZE / 100 ))
+zfin=$(( $BOX_SIZE ))
 zbin_width=1
 rin=0
 rfin=21
@@ -30,7 +30,7 @@ do
     for rid in $(seq 1 1 $(( ${#redges[@]})))
     do
     echo $zid, $rid
-    paste <(ls -p ${BINSDIR}/*_zmax${zid}_rmax${rid}.left 2>/dev/null | xargs -I '{}' cat {} | shuf) <(ls -p ${BINSDIR}/*_zmax${zid}_rmax${rid}.right 2>/dev/null  | xargs -I '{}' cat {}) | sed -e "s/\t/ /g" >> $OFILE
+    paste <(ls -p ${BINSDIR}/*_zmax${zid}_rmax${rid}.left 2>/dev/null | xargs -I '{}' cat {} | shuf) <(ls -p ${BINSDIR}/*_zmax${zid}_rmax${rid}.right 2>/dev/null  | xargs -I '{}' cat {}) | sed -e "s/\t/ /g" >> $OFILE || exit 1
     done
 
 done

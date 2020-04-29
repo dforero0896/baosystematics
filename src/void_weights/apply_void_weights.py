@@ -221,6 +221,8 @@ def get_numdens_from_matrix(x, y, z, n_matrix, box_size=box_size, N_grid=NGRID):
     yedges = np.linspace(0, box_size, N_grid+1)
     # Clip arrays to bin edges for (dimension-wise) "nearest" extrapolation.
     side='left'
+    x = np.clip(x, 0, box_size)
+    y = np.clip(y, 0, box_size)
     # Extend leftmost bin edge for the (very unlikely) case that some void has
     # any([x, y] == [0, 0]). The rightmost edge is also extended to make
     # sure clipped values are included.
