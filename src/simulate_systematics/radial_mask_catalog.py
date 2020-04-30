@@ -65,7 +65,7 @@ def radial_mask_catalog(fn, odir, sigma=0.235, center=0.5,\
             n_gal_incomp = get_average_galaxy_density(N_gal_incomp)
             print(f"==> Using scaled R min = {scaled_rmin}")
             print(f"==> rmin param. is ignored")
-            rmin = np.round(scaled_rmin / (n_gal_incomp)**(1./3), 2)
+            rmin = np.round(scaled_rmin / (n_gal_incomp)**(1./4), 2)
             rmin_fid = f"scaled{scaled_rmin}"
             rmax_fid = rmax 
             void_aux_col=4
