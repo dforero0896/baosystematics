@@ -9,7 +9,9 @@ load_dotenv()
 WORKDIR = os.environ.get('WORKDIR')
 SRC = os.environ.get('SRC')
 sys.path.append(f"{SRC}/simulate_systematics")
+sys.path.append(f"../misc")
 from params import *
+from style_plots import set_size
 from compute_fit_coeffs  import load_binaries
 
 def plot_weight_fit_coeffs(filename, ax, label='', ngal=None, **kwargs):
@@ -24,7 +26,7 @@ def plot_weight_fit_coeffs(filename, ax, label='', ngal=None, **kwargs):
 
 
 if __name__ == '__main__':
-    fitfig, ax = plt.subplots(1,2, figsize=(12, 5), 
+    fitfig, ax = plt.subplots(1,2, figsize=set_size('mnras_full'), 
 				constrained_layout=True, sharey=True)
     fitfig.suptitle('Model: $w_v(R) = c_0(R) + c_1(R)w_g + c_2(R)w_g^2$', fontsize=12)
     [a.set_xlabel(r'$\bar{n}_{\mathrm{halo}}^{1/4}~R$ [$h^{-1}$ Mpc]', fontsize=12) for a in ax]
