@@ -29,7 +29,7 @@ if __name__ == '__main__':
     fitfig, ax = plt.subplots(1,2, figsize=set_size('mnras_full'), 
 				constrained_layout=True, sharey=True)
     fitfig.suptitle('Model: $w_v(R) = c_0(R) + c_1(R)w_g + c_2(R)w_g^2$', fontsize=12)
-    [a.set_xlabel(r'$\bar{n}_{\mathrm{halo}}^{1/4}~R$ [$h^{-1}$ Mpc]', fontsize=12) for a in ax]
+    [a.set_xlabel(r'$\bar{n}_{\mathrm{gal}}^{1/4}~R$ [$h^{-1}$ Mpc]', fontsize=12) for a in ax]
     colorc = 'bgr'
     [a.set_prop_cycle(cycler(color=colorc)) for a in ax]
     ax[0].set_title('Real space', fontsize=12)
@@ -49,15 +49,15 @@ if __name__ == '__main__':
     [a.set_yscale('symlog') for a in ax]
     odir = f"{WORKDIR}/patchy_results/box1/plots"
     oname = f"{odir}/r_vs_z_wtcoeffs.pdf"
-    fitfig.savefig(oname, dpi=200)
+    fitfig.savefig(oname, dpi=200, bbox_inches='tight')
     print(f"==> Saved figure in {oname}")
     [a.clear() for a in ax] 
 
 
-    ax[0].set_title(r'Box 1: $\bar{n}_{\mathrm{halo}}=%.5e$ $h^3~$Mpc$^{-3}$'%NGAL['1'])
-    ax[1].set_title(r'Box 5: $\bar{n}_{\mathrm{halo}}=%.5e$ $h^3~$Mpc$^{-3}$'%NGAL['5'])
+    ax[0].set_title(r'Box 1: $\bar{n}_{\mathrm{gal}}=%.5e$ $h^3~$Mpc$^{-3}$'%NGAL['1'])
+    ax[1].set_title(r'Box 5: $\bar{n}_{\mathrm{gal}}=%.5e$ $h^3~$Mpc$^{-3}$'%NGAL['5'])
     
-    [a.set_xlabel(r'$\bar{n}_{\mathrm{halo}}^{1/4}~R$ [$h^{-1}$ Mpc]', fontsize=12) for a in ax]
+    [a.set_xlabel(r'$\bar{n}_{\mathrm{gal}}^{1/4}~R$ [$h^{-1}$ Mpc]', fontsize=12) for a in ax]
     colorc = 'bgr'
     [a.set_prop_cycle(cycler(color=colorc)) for a in ax]
     plot_weight_fit_coeffs('void_weights_c_of_r_real.dat', ax=ax[0], 
@@ -75,7 +75,7 @@ if __name__ == '__main__':
     [a.set_yscale('symlog') for a in ax]
     odir = f"{WORKDIR}/patchy_results/box1/plots"
     oname = f"{odir}/box1_vs_box2_wtcoeffs.pdf"
-    fitfig.savefig(oname, dpi=200)
+    fitfig.savefig(oname, dpi=200, bbox_inches='tight')
     print(f"==> Saved figure in {oname}")
 
 
@@ -96,7 +96,7 @@ if __name__ == '__main__':
     ax.legend(loc='best')
     fignv.tight_layout()
     oname=f"{odir}/nv_vs_scaledR.pdf"
-    fignv.savefig(oname, dpi=200)
+    fignv.savefig(oname, dpi=200, bbox_inches='tight')
     print(f"==> Saved figure in {oname}")
     
 
