@@ -1,5 +1,5 @@
 #!/bin/bash
-NCORES=1
+NCORES=16
 partition=${1:-p4}
 for box in 1 5
 do

@@ -8,6 +8,11 @@ import matplotlib.gridspec as gridspec
 import sys
 import os
 from params import *
+from dotenv import load_dotenv
+load_dotenv()
+SRC = os.environ.get('SRC')
+sys.path.append(f"{SRC}/misc")
+from style_plots import set_size
 names = ['x', 'y', 'z', 'r']
 def get_histogram(cat, rmin, rmax, bins=20, weights = False):
   cat_bin = cat[(cat['r'] > rmin ) & (cat['r'] < rmax)]
@@ -31,8 +36,8 @@ if __name__ == '__main__':
   out_fn = f"{odir}/void_density_map.npy"
 
   # Set values for subplot
-  side_x = int(np.sqrt(len(radius_bins)-1))
-  side_y = int((len(radius_bins)-1) / side_x)
+  side_y = int(np.sqrt(len(radius_bins)-1))
+  side_x = int((len(radius_bins)-1) / side_y)
   nrow = side_y
   ncol = side_x
   # List of input catalogs
@@ -46,7 +51,8 @@ if __name__ == '__main__':
   if iproc == 0:
     print(hist_weights)
     # Initialize Gridspec to familiar subplots sintaxis.
-    fig = plt.figure(figsize=(ncol+1+0.2*ncol, nrow+1)) 
+    fig = plt.figure(figsize=(ncol+2+0.2*ncol, nrow+1)) 
+    #fig = plt.figure(figsize=set_size(525)) 
     spec = gridspec.GridSpec(nrow, ncol,
            wspace=0.0, hspace=0.45, 
            top=1.-0.5/(nrow+1), bottom=0.5/(nrow+1), 
@@ -102,10 +108,16 @@ if __name__ == '__main__':
       vmin, vmax, mean = np.min(bin_hist), np.max(bin_hist), np.mean(bin_hist)
       h=a.pcolorfast(X, Y, bin_hist, vmin=abs_vmin, vmax=vmax, cmap = plt.get_cmap('hot'))
       h.set_rasterized(True)
-      a.set_title("(%.0f, %.0f)"%(radius_bins[i], radius_bins[i+1]), fontsize = 6)
-      a.set_ylabel("(%.1f, %.1f)"%(vmin/vmax, mean/vmax), fontsize=6)
+      a.set_title("(%.0f, %.0f)"%(radius_bins[i], radius_bins[i+1]), fontsize = 8)
+      a.set_ylabel("(%.1f, %.1f)"%(vmin/vmax, mean/vmax), fontsize=8)
       a.set_aspect('equal', 'box')
     cb=fig.colorbar(h, ax=ax.ravel().tolist())
+    cb.set_label('Normalized void density', rotation=270, x=5, labelpad=15)
+    cb.ax.tick_params(labelsize=8)
+    fig.add_subplot(111, frameon=False)
+    plt.tick_params(labelcolor='none', top=False, bottom=False, left=False, right=False)
+    plt.xlabel('$X$ [Mpc/$h$]', labelpad=15)
+    plt.ylabel('$Y$ [Mpc/$h$]', labelpad=15)
   #    cb.ax.tick_params(labelsize=6)
   #  [a.set_xlabel(r'$X$ [Mpc]') for a in ax[-1,:]]
   #  [a.set_ylabel(r'$Y$ [Mpc]') for a in ax[:,0]]
@@ -115,6 +127,6 @@ if __name__ == '__main__':
     oname = f"{odir}/all_void_density_maps.pdf"
     if weights: oname = oname.replace('.pdf', '_wt.pdf')
    
-    fig.savefig(oname, dpi=300)
+    fig.savefig(oname, dpi=300, bbox_inches='tight')
     print(f"Saved plot in {oname}")
   MPI.Finalize()

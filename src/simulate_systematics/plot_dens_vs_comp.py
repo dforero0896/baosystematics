@@ -2,6 +2,8 @@
 import sys
 import os
 import numpy as np
+import matplotlib as mpl
+mpl.use('Agg')
 import matplotlib.pyplot as plt
 #import modin.pandas as pd
 import pandas as pd
@@ -81,6 +83,7 @@ if __name__ == '__main__':
     rax.plot(bin_edges[:-1],c_analytical, c = 'r', ls = '--')
     rfig.tight_layout()
     rfig.savefig(f"{odir}/galaxy_spherical_distribution.pdf", dpi=200)
+    print(f"==> Saved {odir}/galaxy_spherical_distribution.pdf")
     X, Y  = np.meshgrid(xcenters, ycenters)
     hist = cat_arrays.mean(axis=2)
     hist/=np.max(hist)
@@ -90,4 +93,5 @@ if __name__ == '__main__':
     plot_map(X, Y, diff , ax=ax)
     fig.tight_layout()
     fig.savefig(f"{odir}/ngal-comp.pdf", dpi=200)
+    print(f"==> Saved {odir}/ngal-comp.pdf")
 

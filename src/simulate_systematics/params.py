@@ -64,7 +64,7 @@ def parabola_off(y, x, N_grid, Cmin):
 funclist = [parabola, xplane, flat, parabola_off]
 
 # Define which function is actually being used
-FUNCTION = parabola
+FUNCTION = flat
 
 # Define function to compute average galaxy density
 def line_count(filename):
