@@ -15,7 +15,7 @@ sys.path.append(f"{SRC}/misc")
 from style_plots import set_size
 names = ['x', 'y', 'z', 'r']
 def get_histogram(cat, rmin, rmax, bins=20, weights = False):
-  cat_bin = cat[(cat['r'] > rmin ) & (cat['r'] < rmax)]
+  cat_bin = cat[(cat['r'] >= rmin ) & (cat['r'] < rmax)]
   if weights: wt = cat_bin['w'].values
   else: wt=None
   H, xedges, yedges = np.histogram2d(cat_bin['x'].values, cat_bin['y'].values, density=False, bins=bins, range = [[0, box_size], [0, box_size]], weights = wt)
@@ -103,13 +103,14 @@ if __name__ == '__main__':
     abs_vmax = np.max(histograms)
     for i, a in enumerate(ax.ravel()):
       bin_hist =  histograms[i, :, :]
+      bin_stdev = np.std(bin_hist)
       bin_hist -= np.min(bin_hist)
-      bin_hist/=np.max(bin_hist)
+      bin_hist/=(np.max(bin_hist)-np.min(bin_hist))
       vmin, vmax, mean = np.min(bin_hist), np.max(bin_hist), np.mean(bin_hist)
-      h=a.pcolorfast(X, Y, bin_hist, vmin=abs_vmin, vmax=vmax, cmap = plt.get_cmap('hot'))
+      h=a.pcolorfast(X, Y, bin_hist, vmin=vmin, vmax=vmax, cmap = plt.get_cmap('hot'))
       h.set_rasterized(True)
       a.set_title("(%.0f, %.0f)"%(radius_bins[i], radius_bins[i+1]), fontsize = 8)
-      a.set_ylabel("(%.1f, %.1f)"%(vmin/vmax, mean/vmax), fontsize=8)
+      a.set_ylabel("$\sigma = %.1f$"%(bin_stdev), fontsize=8)
       a.set_aspect('equal', 'box')
     cb=fig.colorbar(h, ax=ax.ravel().tolist())
     cb.set_label('Normalized void density', rotation=270, x=5, labelpad=15)

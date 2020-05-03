@@ -10,12 +10,14 @@ load_dotenv()
 SRC = os.environ.get('SRC')
 sys.path.append(f"{SRC}/simulate_systematics")
 from params import *
+from tqdm import tqdm
 
 names = ['x', 'y', 'z', 'r', 'w', 'scaled_r']
-zedges = np.linspace(0, box_size, NGRID + 1)
+zedges = np.linspace(0, box_size, NGRID//100 + 1)
 def worker(filename):
     id_, fn, odir = filename
-    #print(f"==> Reading {fn}")
+    print(f"==> Reading {fn}")
+    sys.stdout.flush()
     data = pd.read_csv(fn, delim_whitespace=True, 
 			names=names,
 			dtype=np.float32)
@@ -23,11 +25,12 @@ def worker(filename):
     data['zid'] = np.searchsorted(zedges, data.z, side='right')
     data['rid'] = np.searchsorted(radius_bins, data.r, side='right')
     lens = []
-    for key, df in data.groupby(['zid', 'rid']):
+    for key, df in tqdm(data.groupby(['zid', 'rid'])):
+        #sys.stdout.flush()
         oname_left=f"{odir}/{id_:0>3}_zmax{key[0]}_rmax{key[1]}.left"
         oname_right=f"{odir}/{id_:0>3}_zmax{key[0]}_rmax{key[1]}.right"
         #if not os.path.exists(oname_left) or overwrite:
-        df[names[:2]].to_csv(oname_left, header=False, index=False, sep=" ")
+        df[names[:2]].sample().to_csv(oname_left, header=False, index=False, sep=" ")
         #if not os.path.exists(oname_right):
         df[names[2:]].to_csv(oname_right, header=False, index=False, sep=" ")
         lens.append(len(df))
@@ -45,15 +48,17 @@ if __name__ == '__main__':
     fnames = [os.path.join(indir,f) for f in os.listdir(indir)][:32]
     args = list(zip(range(len(fnames)), fnames, [odir]*len(fnames)))
     print(f"==> Saving binned chunks in {odir}")
-    #nproc = MPI.COMM_WORLD.Get_size()
-    #iproc = MPI.COMM_WORLD.Get_rank()
-    #inode = MPI.Get_processor_name()
-    #args_split = np.array_split(args, nproc)
-    #for arg in args_split[iproc]:
-    #    worker(arg)
+    nproc = MPI.COMM_WORLD.Get_size()
+    iproc = MPI.COMM_WORLD.Get_rank()
+    inode = MPI.Get_processor_name()
+    args_split = np.array_split(args, nproc)
+    for arg in args_split[iproc]:
+        worker(arg)
  
     size=mp.cpu_count()
-    with mp.Pool(processes=size) as pool:
+    #with mp.Pool(processes=size) as pool:
         result=pool.map(worker, args)
-    print(sum(result))
-    #MPI.Finalize()
+    #print(sum(result))
+    np.savetxt(f"{odir}/zedges.dat", zedges) 
+    np.savetxt(f"{odir}/redges.dat", radius_bins) 
+    MPI.Finalize()

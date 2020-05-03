@@ -49,13 +49,13 @@ if __name__ == '__main__':
     ycenters = yedges[:-1] + 0.5 * (yedges[1:] - yedges[:-1])
     xybins= box_size
     rbins = 100
-    rbin_edges = np.linspace(0, rbins, rbins+1)
+    rbin_edges = np.linspace(0, box_size, rbins+1)
     rbin_centers = rbin_edges[:-1] + 0.5 * (rbin_edges[1:] - rbin_edges[:-1])
     cat_arrays = np.empty((xybins, xybins, len(catalogs)))
     odir = os.path.abspath(f"{os.path.dirname(catalogs[0])}/../plots")
     os.makedirs(odir, exist_ok=True)
     oname = f"{odir}/galaxy_spherical_distribution.dat"
-    if True:#:not os.path.exists(oname):
+    if True:#not os.path.exists(oname):
         r_hist = np.empty((rbins, len(catalogs)))
         for i, catalog in enumerate(catalogs):
             cat = pd.read_csv(catalog, delim_whitespace=True, names = ['x', 'y', 'w'], usecols=(0,1,3))
@@ -68,15 +68,16 @@ if __name__ == '__main__':
             cat['r'] = np.sqrt((cat['x'] - 0.5 * box_size)**2 + (cat['y'] - 0.5 * box_size)**2)
             r_hist[:,i], bin_edges = np.histogram(cat['r'].values, bins=rbin_edges, density = False)
             # Compute expected number of objects per bin
-            c_analytical= function(box_size/2 * np.ones(len(bin_edges[:-1])), box_size/2 + bin_edges[:-1], box_size, cmin_map) # Completeness
-            expected_histogram = raw_density * 4*np.pi*(bin_edges[1:]**2 - bin_edges[:-1]**2)# * c_analytical 
-            r_hist[:,i]/=expected_histogram # Normalized by analytical estimate
+            #c_analytical= function(box_size/2 * np.ones(len(bin_edges[:-1])), box_size/2 + bin_edges[:-1], box_size, cmin_map) # Completeness
+            #expected_histogram = raw_density * 4*np.pi*(bin_edges[1:]**2 - bin_edges[:-1]**2)# * c_analytical 
+            #r_hist[:,i]/=expected_histogram # Normalized by analytical estimate
         np.savetxt(oname, r_hist)
         np.save(f"{odir}/ngal.npy", cat_arrays)
     else:
         cat_arrays = np.load(f"{odir}/ngal.npy")
         r_hist = np.loadtxt(oname)
         bin_edges = rbin_edges
+    print(rbin_edges)
     rfig, rax = plt.subplots(1,1)
     plot_all_histograms(r_hist, bin_edges, ax=rax, xlabel=r'Distance from center [$h^{-1}$ Mpc]', ylabel='Number density')
     c_analytical= function(box_size/2 * np.ones(len(bin_edges[:-1])), box_size/2 + bin_edges[:-1], box_size, cmin_map)
