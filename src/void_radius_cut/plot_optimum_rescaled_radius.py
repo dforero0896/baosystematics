@@ -39,8 +39,8 @@ if __name__ == '__main__':
 		s)[0].replace('flat_','').replace('/tpcf','') for s in dirnames],\
 									 dtype=float)
         ngals = Cvals * NGAL[box]
-        np.savetxt(f"{WORKDIR}/patchy_results/box{box}/{space}/plots/optimum_rescaled_radius_clean.dat", np.c_[Rvals, ngals], header='Roptimum ngal')
         Rvals/=ngals**(1./3)
+        np.savetxt(f"{WORKDIR}/patchy_results/box{box}/{space}/plots/optimum_rescaled_radius_clean.dat", np.c_[Rvals, ngals], header='Roptimum ngal')
         c, stats = P.polyfit(np.log(ngals * 1e4),np.log(Rvals),1,full=True) 
         print(stats)
         ngal_linsp = np.linspace(0.1, 4, 20)
