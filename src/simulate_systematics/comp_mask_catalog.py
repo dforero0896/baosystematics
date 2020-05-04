@@ -77,7 +77,7 @@ def comp_mask_catalog(fn, odir, sigma_noise=0.2, function=parabola,\
             raise(NotImplementedError(f"Value {use_scaled_r} not understood."))
 
         oname_void = [os.path.join(obases[i],\
-			 f"{cat_type}s_void_xyz_wt_scaledR",\
+			 f"{cat_type}s_void_xyz",\
 			 os.path.basename(on).replace('.dat', f".VOID.dat")), \
 			 os.path.join(obases[i], 
 			 f"{cat_type}s_void_xyz_wt_scaledR",\

@@ -5,7 +5,7 @@ from mask_comp_func import mask_with_function
 NCORES = 16 
 BOX = "1"
 SPACE = "real"
-NMOCKS = 500
+NMOCKS = 100
 NGAL = {'1':3.976980e-4, '5':1.976125e-4}
 ZBOXES = {'1':0.2384, '5':0.6383}
 NGRID=2500
@@ -64,7 +64,7 @@ def parabola_off(y, x, N_grid, Cmin):
 funclist = [parabola, xplane, flat, parabola_off]
 
 # Define which function is actually being used
-FUNCTION = parabola 
+FUNCTION = flat 
 
 # Define function to compute average galaxy density
 def line_count(filename):
