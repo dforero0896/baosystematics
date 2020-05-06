@@ -49,4 +49,4 @@ out_dict = dict(zip([0,1,2,3,4, 5, 6],[xdata, mean_data_0, std_data_0, mean_data
 
 all_mocks = pd.DataFrame.from_dict(out_dict)
 all_mocks.to_csv(os.path.join(out,'TwoPCF_mockavg_%s.ascii'%outname), sep='\t', index=False, header = False)
-np.save('TwoPCF_mockavg_%s.samples.npy'%outname, data)
+np.save(os.path.join(out,'TwoPCF_mockavg_%s.samples.npy'%outname), data)
