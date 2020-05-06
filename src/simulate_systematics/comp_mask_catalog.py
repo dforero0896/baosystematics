@@ -11,7 +11,7 @@ def comp_mask_catalog(fn, odir, sigma_noise=0.2, function=parabola,\
 			cmin=0.8, names = ['x', 'y', 'z'], N_grid=2500, \
 			noise_sampler=noise_sampler, rmin=RMIN, rmax=RMAX, \
 			cat_type='mock', use_scaled_r=0, scaled_rmin=None,\
-			scaled_rmax=None, space=SPACE):
+			scaled_rmax=None, space=SPACE, isfirst=False):
     print(f"==> Using function {function.__name__}")
     print(f"==> Using min. completeness {cmin}")
     complete_command='module load spack/default  gcc/5.4.0 boost\n'
@@ -28,6 +28,8 @@ def comp_mask_catalog(fn, odir, sigma_noise=0.2, function=parabola,\
 	 s,f"{function.__name__}_{cmin}") for s in ['smooth', 'noise']]
     conf_file_gal = WORKDIR+"/src/fcfc_box/fcfc_box_count_%s.conf"%space
     conf_file_void = WORKDIR+"/src/fcfc_box/fcfc_box_void_count_%s.conf"%space
+    random_shuf=f"{obases[0]}/void_ran/void_ran.dat" # Not considering random for noise
+    rr_file_shuf = os.path.join(os.path.dirname(random_shuf), 'RR_'+os.path.basename(random_shuf))
     joblist=open('joblist.sh', 'w')
     for i , on in enumerate(onames):
         write_void=False #So they are not recomputed in reruns
@@ -73,11 +75,12 @@ def comp_mask_catalog(fn, odir, sigma_noise=0.2, function=parabola,\
             rmax_fid = f"loc_scaled{scaled_rmax}" 
             void_aux_col=6
             void_dir_suffix='_wt_scaledR'
+            rr_file_shuf = rr_file_shuf.replace('.dat',f"R-{rmin_fid}-{rmax_fid}.dat") 
         else: 
             raise(NotImplementedError(f"Value {use_scaled_r} not understood."))
 
         oname_void = [os.path.join(obases[i],\
-			 f"{cat_type}s_void_xyz",\
+			 f"{cat_type}s_void_xyz_wt_scaledR",\
 			 os.path.basename(on).replace('.dat', f".VOID.dat")), \
 			 os.path.join(obases[i], 
 			 f"{cat_type}s_void_xyz_wt_scaledR",\
@@ -137,10 +140,17 @@ def comp_mask_catalog(fn, odir, sigma_noise=0.2, function=parabola,\
 		 "TwoPCF_"+os.path.basename(oname_void[weight]).replace('.dat',\
 						f".R-{rmin_fid}-{rmax_fid}.dat"))
             data_wt_col=data_wt_cols_void[weight]
+            rr_file_shuf = rr_file_shuf.replace('.dat', f"_wt{weight}.dat")
             if not os.path.exists(dd_file_void):
-                count_mode=1
+                if use_scaled_r == 2:
+                    if not os.path.exists(rr_file_shuf) and isfirst: 
+                        count_mode = 5
+                    else:
+                        count_mode = 1    
+                    cf_mode = 2
+                else:  count_mode=1; cf_mode=3
                 ncores = NCORES
-                fcfc_void_command = f"srun -n 1 -c {ncores} {RUN_FCFC} --conf={conf_file_void} --data={oname_void[weight]} --count-mode={count_mode} --dd={dd_file_void} --output={out_file_void} --data-wt-col={data_wt_col} --data-aux-col={void_aux_col} --data-aux-min={rmin} --data-aux-max={rmax} --cf-mode=3\n"
+                fcfc_void_command = f"srun -n 1 -c {ncores} {RUN_FCFC} --conf={conf_file_void} --data={oname_void[weight]} --rand={random_shuf} --count-mode={count_mode} --dd={dd_file_void} --rr={rr_file_shuf} --output={out_file_void} --data-wt-col={data_wt_col} --rand-wt-col={data_wt_col} --data-aux-col={void_aux_col} --data-aux-min={rmin} --data-aux-max={rmax} --rand-aux-col={void_aux_col} --rand-aux-min={rmin} --rand-aux-max={rmax} --rand-select=23 --cf-mode={cf_mode}\n"
             else:
                 ncores=1
                 count_mode=0
@@ -198,14 +208,14 @@ if __name__ == '__main__':
     filenames_split = np.array_split(filenames, nproc)
     joblist = open(f"joblists/jobs_{space}_{FUNCTION.__name__}_{comp_min}_{iproc}_box{box}_scaled_rmin{scaled_rmin}.sh", 'w')
 
-    for f in filenames_split[iproc]:
+    for i,f in enumerate(filenames_split[iproc]):
         odir = os.path.abspath(os.path.dirname(f)+'/../..')
         command=comp_mask_catalog(f, odir, noise_sampler=noise_sampler, \
 				function = FUNCTION, cmin = comp_min, \
 				N_grid = NGRID, rmin = RMIN, rmax = RMAX, \
 				sigma_noise=0.2, use_scaled_r=USE_SCALED_R,\
 				scaled_rmin=scaled_rmin, scaled_rmax=SCALED_RMAX,\
-				space=space)
+				space=space, isfirst=i==0)
         joblist.write(command)
     joblist.close()
     if iproc==0:

@@ -2,7 +2,7 @@
 import numpy as np
 import pandas as pd
 import multiprocessing as mp
-#from mpi4py import MPI
+from mpi4py import MPI
 import os
 import sys
 from dotenv import load_dotenv
@@ -30,7 +30,7 @@ def worker(filename):
         oname_left=f"{odir}/{id_:0>3}_zmax{key[0]}_rmax{key[1]}.left"
         oname_right=f"{odir}/{id_:0>3}_zmax{key[0]}_rmax{key[1]}.right"
         #if not os.path.exists(oname_left) or overwrite:
-        df[names[:2]].sample().to_csv(oname_left, header=False, index=False, sep=" ")
+        df[names[:2]].sample(frac=1).to_csv(oname_left, header=False, index=False, sep=" ")
         #if not os.path.exists(oname_right):
         df[names[2:]].to_csv(oname_right, header=False, index=False, sep=" ")
         lens.append(len(df))
@@ -57,8 +57,9 @@ if __name__ == '__main__':
  
     size=mp.cpu_count()
     #with mp.Pool(processes=size) as pool:
-        result=pool.map(worker, args)
+    #    result=pool.map(worker, args)
     #print(sum(result))
-    np.savetxt(f"{odir}/zedges.dat", zedges) 
-    np.savetxt(f"{odir}/redges.dat", radius_bins) 
+    if iproc==0:
+        np.savetxt(f"{odir}/zedges.dat", zedges) 
+        np.savetxt(f"{odir}/redges.dat", radius_bins) 
     MPI.Finalize()

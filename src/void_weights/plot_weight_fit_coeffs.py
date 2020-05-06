@@ -13,6 +13,7 @@ sys.path.append(f"../misc")
 from params import *
 from style_plots import set_size
 from compute_fit_coeffs  import load_binaries
+import matplotlib as mpl
 
 def plot_weight_fit_coeffs(filename, ax, label='', ngal=None, **kwargs):
 
@@ -26,25 +27,28 @@ def plot_weight_fit_coeffs(filename, ax, label='', ngal=None, **kwargs):
 
 
 if __name__ == '__main__':
-    fitfig, ax = plt.subplots(1,2, figsize=set_size('mnras_full'), 
-				constrained_layout=True, sharey=True)
-    fitfig.suptitle('Model: $w_v(R) = c_0(R) + c_1(R)w_g + c_2(R)w_g^2$', fontsize=12)
-    [a.set_xlabel(r'$\bar{n}_{\mathrm{gal}}^{1/4}~R$ [$h^{-1}$ Mpc]', fontsize=12) for a in ax]
+    fitfig, ax = plt.subplots(2,1, figsize=set_size('mnras_full', subplots=(2,1)), 
+				constrained_layout=True, sharex=True)
+    fitfig.suptitle('Model: $w_v(R) = c_0(R) + c_1(R)w_g + c_2(R)w_g^2$', fontsize=11)
+    ax[1].set_xlabel(r'$\bar{n}_{\mathrm{gal}}^{1/4}~R$ [$h^{-1/4}$ Mpc$^{1/4}$]', fontsize=11)
     colorc = 'bgr'
+    cmap = mpl.cm.get_cmap('inferno')
+    colorc = [cmap(i) for i in [0.25, 0.5, 0.75]]
     [a.set_prop_cycle(cycler(color=colorc)) for a in ax]
-    ax[0].set_title('Real space', fontsize=12)
-    ax[1].set_title('Redshift space', fontsize=12)
+    ax[0].text(0.05, 0.1, 'Real space', fontsize=11, transform=ax[0].transAxes)
+    ax[1].text(0.05, 0.1, 'Redshift space', fontsize=11,transform=ax[1].transAxes)
     plot_weight_fit_coeffs('void_weights_c_of_r_real.dat', ax=ax[0], 
-				label='real box1', 
+				#label='box1', 
 				ls = '-', ngal = NGAL['1'])
     plot_weight_fit_coeffs('void_weights_c_of_r_redshift.dat', ax=ax[1], 
-				label='redshift box1', 
+				#label='box1', 
 				ls = '--', ngal=NGAL['1'])
     plot_weight_fit_coeffs('void_weights_c_of_r_real_box5.dat', ax=ax[0], 
-				label='real box5', ls = ':', lw=3, ngal=NGAL['5'])
+				#label='box5', 
+				ls = '-', lw=1, ngal=NGAL['5'])
     plot_weight_fit_coeffs('void_weights_c_of_r_redshift_box5.dat', ax=ax[1], 
-				label='redshift box5', 
-				ls = '-.', ngal=NGAL['5'])
+				#label='box5', 
+				ls = '--', ngal=NGAL['5'])
     [a.legend() for a in ax]
     [a.set_yscale('symlog') for a in ax]
     odir = f"{WORKDIR}/patchy_results/box1/plots"
@@ -54,23 +58,22 @@ if __name__ == '__main__':
     [a.clear() for a in ax] 
 
 
-    ax[0].set_title(r'Box 1: $\bar{n}_{\mathrm{gal}}=%.5e$ $h^3~$Mpc$^{-3}$'%NGAL['1'])
-    ax[1].set_title(r'Box 5: $\bar{n}_{\mathrm{gal}}=%.5e$ $h^3~$Mpc$^{-3}$'%NGAL['5'])
+    ax[0].text(0.05, 0.1, r'Box 1: $\bar{n}_{\mathrm{gal}}=%.5e$ $h^3~$Mpc$^{-3}$'%NGAL['1'], transform=ax[0].transAxes)
+    ax[1].text(0.05, 0.1, r'Box 5: $\bar{n}_{\mathrm{gal}}=%.5e$ $h^3~$Mpc$^{-3}$'%NGAL['5'], transform=ax[1].transAxes)
     
-    [a.set_xlabel(r'$\bar{n}_{\mathrm{gal}}^{1/4}~R$ [$h^{-1}$ Mpc]', fontsize=12) for a in ax]
-    colorc = 'bgr'
+    ax[1].set_xlabel(r'$\bar{n}_{\mathrm{gal}}^{1/4}~R$ [$h^{-1/4}$ Mpc$^{1/4}$]', fontsize=11)
     [a.set_prop_cycle(cycler(color=colorc)) for a in ax]
     plot_weight_fit_coeffs('void_weights_c_of_r_real.dat', ax=ax[0], 
-				label='real box1', 
+				label='real', 
 				ls = '-', ngal = NGAL['1'])
     plot_weight_fit_coeffs('void_weights_c_of_r_redshift.dat', ax=ax[0], 
-				label='redshift box1', 
+				label='redshift', 
 				ls = '--', ngal=NGAL['1'])
     plot_weight_fit_coeffs('void_weights_c_of_r_real_box5.dat', ax=ax[1], 
-				label='real box5', ls = ':', lw=3, ngal=NGAL['5'])
+				label='real', ls = '-', lw=1, ngal=NGAL['5'])
     plot_weight_fit_coeffs('void_weights_c_of_r_redshift_box5.dat', ax=ax[1], 
-				label='redshift box5', 
-				ls = '-.', ngal=NGAL['5'])
+				label='redshift', 
+				ls = '--', ngal=NGAL['5'])
     [a.legend() for a in ax]
     [a.set_yscale('symlog') for a in ax]
     odir = f"{WORKDIR}/patchy_results/box1/plots"

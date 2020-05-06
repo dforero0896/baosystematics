@@ -10,11 +10,10 @@ BINSDIR=$1
 SHUFCOLSDIR=$(dirname $BINSDIR)/shuf_cols
 ODIR=$(dirname $BINSDIR)
 OFILE=${ODIR}/BIG_RAN_VOID.dat
-mkdir -p -v $SHUFCOLSDIR
 
 zin=0
 zfin=$(( $BOX_SIZE ))
-zbin_width=1
+zbin_width=100
 rin=0
 rfin=21
 rbin_width=1
