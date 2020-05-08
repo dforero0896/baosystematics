@@ -63,6 +63,6 @@ for idx, tpcf in enumerate(in2pcf):
 	if not os.path.isfile(o+'.txt' ): #Check if chain file exists
 		joblist.write(f"{run} {i} {m} {outPath} {r} {compute_cov} {o} && python {stats_run} {o} 3\n")
 	elif not os.path.isfile(b): #Check if mystats file has been created
-		stats_center.stats_center(o, nparams=3, plot=False)
+		stats_center.stats_center(o, nparams=3, plot=True)
 joblist.close()
 mockFile.close()

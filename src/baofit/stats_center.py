@@ -26,6 +26,22 @@ def stats_center(fileroot, nparams=3, plot = True, cat_type=None):
   
   names = ['alpha', 'B', 'Snl']
   labels = [r'\alpha', r'B', r'\Sigma_{\rm nl}']
+  lowbound = ['N'] * npar
+  upbound = ['N'] * npar
+  # I/O files
+  path, name = os.path.split(fileroot)
+  if path == '':
+    fileroot = './' + fileroot
+  chains = fileroot + '.txt'
+  fparam = fileroot + '.paramnames'
+  frange = fileroot + '.ranges'
+  ofile = fileroot + 'mystats.txt'
+  if not os.path.isfile(chains):
+    print('Error: cannot access {}'.format(chains), file=sys.stderr)
+    sys.exit(1)
+  
+  np.savetxt(fparam, np.transpose([names, labels]), fmt='%s')
+  np.savetxt(frange, np.transpose([names, lowbound, upbound]), fmt='%s')
   # Output file
   ofile = fileroot + 'mystats.txt'
 
@@ -63,6 +79,7 @@ def stats_center(fileroot, nparams=3, plot = True, cat_type=None):
   if plot:
     sample = loadMCSamples(fileroot, \
         settings={'fine_bins_2D':1024,'fine_bins':8192})
+    print(sample)
     g = plots.getSubplotPlotter()
     g.settings.lab_fontsize = 16
     g.triangle_plot(sample, filled='True', \
@@ -181,4 +198,4 @@ if __name__=='__main__':
   # Getting catalog type
   nparams = int(sys.argv[2])
   fileroot = sys.argv[1]
-  stats_center(fileroot, nparams=nparams, plot=False)
+  stats_center(fileroot, nparams=nparams, plot=True)
