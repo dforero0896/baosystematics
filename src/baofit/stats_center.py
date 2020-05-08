@@ -11,6 +11,7 @@ def stats_center(fileroot, nparams=3, plot = True, cat_type=None):
   # Accepts cat_type for backward compatibility  
   # Set parameter names and labels for plotting 
   npar = nparams   # number of parameters
+  print(fileroot)
   if cat_type is not None:
     if cat_type == 'void':
       npar = 4
@@ -180,4 +181,4 @@ if __name__=='__main__':
   # Getting catalog type
   nparams = int(sys.argv[2])
   fileroot = sys.argv[1]
-  stats_center(fileroot, nparams=nparams, plot=True)
+  stats_center(fileroot, nparams=nparams, plot=False)

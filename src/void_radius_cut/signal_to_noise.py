@@ -40,5 +40,12 @@ if __name__ == '__main__':
         signal_arr = np.array(signal_arr)
         SNR, bias, stderr, conf_interval = jackknife_stats(signal_arr, signal_to_noise_ratio, 0.95)
         print(f"{SNR}\t{bias}\t{stderr}\t{conf_interval[0]}\t{conf_interval[1]}\t{os.path.dirname(ilist[0])}\t{len(ilist)}")
+        resamples = jackknife_resampling(signal_arr)
+
+        #jack_stat = np.apply_along_axis(signal_to_noise_ratio, 1, resamples)
+        #import matplotlib.pyplot as plt
+        #plt.hist(jack_stat, bins=100, label='%.1f +/- %.1f'%(SNR, stderr), histtype='step')
+        #plt.legend()
         #SNR = signal_to_noise_ratio(signal_arr)
         #print(f"{SNR}\t{os.path.dirname(ilist[0])}\t{len(ilist)}")
+    plt.show()

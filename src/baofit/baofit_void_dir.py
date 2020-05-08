@@ -4,10 +4,13 @@ import sys
 import tempfile
 import numpy as np
 import stats_center
-from mpi4py import MPI
-nproc = MPI.COMM_WORLD.Get_size()   # Size of communicator
-iproc = MPI.COMM_WORLD.Get_rank()   # Ranks in communicator
-inode = MPI.Get_processor_name()    # Node where this MPI process runs
+import re
+
+def trim_letters(name):
+    name = name.replace('TwoPCF_','')
+    new = re.sub('sigma.*R','R', name)
+    print(new)
+    return new
 
 if len(sys.argv)!=5:
 	sys.exit('ERROR:\tUnexpected number of arguments.\nUSAGE:\t{0} INPUT_DIR OUT_DIR CAT_TYPE CAP'.format(sys.argv[0]))
@@ -37,14 +40,13 @@ elif cat_type=='gal':
 	run = os.path.join(WORKDIR,'bin/BAOfit_galaxy/BAOfit')
 	sys.exit("The name says this file is for voids!\n")
 else:
-	sys.exit('ERROR:\tCatalog type not understood.\nCAT_TYPE=void, gal\n')
+	sys.exit('ERROR:\tCatalog type not understood.\nCAT_TYPE=void\n')
 stats_run = os.path.join(WORKDIR, 'src/baofit/stats_center.py')
 for m in in2pcf:
 	mockFile.writelines(os.path.join(input2PCF, m+'\n'))
-files = np.array_split(in2pcf, nproc)
 
 joblist = open('void_dir_joblist.sh', 'w')
-for idx, tpcf in enumerate(files[iproc]):
+for idx, tpcf in enumerate(in2pcf):
 	tpcf_fn = os.path.join(input2PCF, tpcf)
 	print(tpcf_fn)
 	tpcf_base, ext = os.path.splitext(tpcf)
@@ -54,13 +56,13 @@ for idx, tpcf in enumerate(files[iproc]):
 		compute_cov = 0 
 	i = tpcf_fn
 	m = mockFile_name
-	o = os.path.join(outPath, "BAOfit_"+tpcf)
+	o = os.path.join(outPath, "BAOfit_"+trim_letters(tpcf))
+	print(o)
 	b = o+'mystats.txt' 
 	# Check if the output of stats_center exists.
 	if not os.path.isfile(o+'.txt' ): #Check if chain file exists
-		joblist.write(f"{run} {i} {m} {outPath} {r} {compute_cov} && python {stats_run} {o} 3\n")
+		joblist.write(f"{run} {i} {m} {outPath} {r} {compute_cov} {o} && python {stats_run} {o} 3\n")
 	elif not os.path.isfile(b): #Check if mystats file has been created
-		stats_center.stats_center(o, nparams=3, plot=True)
+		stats_center.stats_center(o, nparams=3, plot=False)
 joblist.close()
 mockFile.close()
-MPI.Finalize()
