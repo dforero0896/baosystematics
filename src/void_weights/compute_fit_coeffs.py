@@ -23,11 +23,16 @@ def load_binaries(filenames, ax = None, ngal=None, threshold=0.5, **kwargs):
     #        if completeness[-1] < threshold: continue
         except: label = '1'
         data = np.load(data_bin)
-        data_mean = data[:,:,1].mean(axis=0)
+        if len(data.shape)==3:
+            data_mean = data[:,:,1].mean(axis=0)
+            data_std = data[:,:,0].std(axis=0)
+            Rbins = data[0,:,0]
+        elif len(data.shape)==2:
+            data_mean = data[:,1]
+            data_stds = np.empty_like(data[:,1])
+            Rbins = data[:,0]
         store_means[i,:] = data_mean
-        data_std = data[:,:,0].std(axis=0)
         store_stds[i,:] = data_std
-        Rbins = data[0,:,0]
         try:
             add_label=kwargs.pop('label')
         except:
@@ -36,7 +41,8 @@ def load_binaries(filenames, ax = None, ngal=None, threshold=0.5, **kwargs):
             if ngal is not None: r_scaling = ngal**(1./4)
             else: r_scaling=1
             ax.plot(r_scaling * Rbins, data_mean, label = label+add_label, **kwargs)
-            ax.fill_between(r_scaling * Rbins, data_mean-data_std, data_mean+data_std, alpha=0.2)
+            if len(data.shape)==3:
+                ax.fill_between(r_scaling * Rbins, data_mean-data_std, data_mean+data_std, alpha=0.2)
     
     return Rbins, store_means, store_stds, completeness
 
