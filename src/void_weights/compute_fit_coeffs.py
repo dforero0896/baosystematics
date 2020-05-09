@@ -29,7 +29,7 @@ def load_binaries(filenames, ax = None, ngal=None, threshold=0.5, **kwargs):
             Rbins = data[0,:,0]
         elif len(data.shape)==2:
             data_mean = data[:,1]
-            data_stds = np.empty_like(data[:,1])
+            data_std = np.empty_like(data[:,1])
             Rbins = data[:,0]
         store_means[i,:] = data_mean
         store_stds[i,:] = data_std
