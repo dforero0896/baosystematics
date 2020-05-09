@@ -14,7 +14,7 @@ using namespace std;
 
 const gsl_rng_type *Gen_Type; //Type of random number generator to use.
 gsl_rng *Gen; //The actual generator object.
-const int TIMES = 10;
+const int TIMES = 1;
 
 int main(int argc, char const *argv[]){
   if (argc != 4){

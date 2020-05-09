@@ -1,1 +1,0 @@
-/home/epfl/dforero/scratch/projects/baosystematics/bin/DIVE_box/DIVE_box /home/epfl/dforero/scratch/projects/baosystematics/patchy_results/box1/real/ang/mocks_gal_xyz/CATALPTCICz0.466G960S1475223854.ANG.dat /home/epfl/dforero/scratch/projects/baosystematics/patchy_results/box1/real/ang/mocks_void_xyz/CATALPTCICz0.466G960S1475223854.ANG.VOID.dat 2500 0 999

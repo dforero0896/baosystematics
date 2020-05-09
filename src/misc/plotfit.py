@@ -13,7 +13,8 @@ outdir = sys.argv[-2]
 title = sys.argv[-1]
 name=os.path.splitext(os.path.basename(mean_files[0]))[0]+'_'+title.lower().replace(' ','')
 def plot_bao(s, xi, **kwargs):
-	fit_range_mask = (s >= 60) & (s <= 150)
+#	fit_range_mask = (s >= 60) & (s <= 150)
+	fit_range_mask = (s >= 0) & (s <= 200)
 	plt.plot(s[fit_range_mask], s[fit_range_mask]**2*xi[fit_range_mask], **kwargs)
 def plot_bao_error(s, xi, xi_std, **kwargs):
 	fit_range_mask = (s >= 60) & (s <= 150)
@@ -30,10 +31,13 @@ bestfit_data = np.loadtxt(bestfit_file)
 plot_bao(bestfit_data[:,0], bestfit_data[:,-1], label = 'Best fit', c = 'b', lw = 3, ls = '--')
 plt.xlabel(r'$s$ [$h^{-1}$Mpc]')
 plt.ylabel(r'$s^2\xi_0$')
-plt.xlim(60, 150)
+#plt.xlim(60, 150)
 #plt.ylim(-25, 30)
 plt.legend(loc=0)
 plt.title(title)
 plt.gcf()
 plt.tight_layout()
-plt.savefig(os.path.join(outdir, 'bestfit_%s.pdf'%name), dpi=200)
+oname = os.path.join(outdir, 'bestfit_%s.pdf'%name)
+plt.savefig(oname, dpi=200)
+print(f"==> Saved {oname}")
+
