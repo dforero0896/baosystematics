@@ -259,7 +259,7 @@ if __name__ == '__main__':
     void_weight_matrix =\
 		 get_known_void_weight_matrix(raw_void_dens_fn, void_dens_fn)
     void_wt_coeff_fn = 'void_weights_c_of_r_real.dat' 
-    void_wt_coeff = np.loadtxt(void_wt_coeff_fn, dtype = np.float32)
+    #void_wt_coeff = np.loadtxt(void_wt_coeff_fn, dtype = np.float32)
     rc, rw = edges_to_centers(radius_bins)
     xc, xw = edges_to_centers(xedges)
     yc, yw = edges_to_centers(yedges)

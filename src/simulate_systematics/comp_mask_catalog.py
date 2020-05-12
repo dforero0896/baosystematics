@@ -80,7 +80,7 @@ def comp_mask_catalog(fn, odir, sigma_noise=0.2, function=parabola,\
             raise(NotImplementedError(f"Value {use_scaled_r} not understood."))
 
         oname_void = [os.path.join(obases[i],\
-			 f"{cat_type}s_void_xyz_wt_scaledR",\
+			 f"{cat_type}s_void_xyz",\
 			 os.path.basename(on).replace('.dat', f".VOID.dat")), \
 			 os.path.join(obases[i], 
 			 f"{cat_type}s_void_xyz_wt_scaledR",\
@@ -144,10 +144,10 @@ def comp_mask_catalog(fn, odir, sigma_noise=0.2, function=parabola,\
             if not os.path.exists(dd_file_void):
                 if use_scaled_r == 2:
                     if not os.path.exists(rr_file_shuf) and isfirst: 
-                        count_mode = 5
+                        count_mode = 1#5
                     else:
                         count_mode = 1    
-                    cf_mode = 2
+                    cf_mode = 3#2
                 else:  count_mode=1; cf_mode=3
                 ncores = NCORES
                 fcfc_void_command = f"srun -n 1 -c {ncores} {RUN_FCFC} --conf={conf_file_void} --data={oname_void[weight]} --rand={random_shuf} --count-mode={count_mode} --dd={dd_file_void} --rr={rr_file_shuf} --output={out_file_void} --data-wt-col={data_wt_col} --rand-wt-col={data_wt_col} --data-aux-col={void_aux_col} --data-aux-min={rmin} --data-aux-max={rmax} --rand-aux-col={void_aux_col} --rand-aux-min={rmin} --rand-aux-max={rmax} --rand-select=23 --cf-mode={cf_mode}\n"

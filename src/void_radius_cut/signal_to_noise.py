@@ -48,4 +48,4 @@ if __name__ == '__main__':
         #plt.legend()
         #SNR = signal_to_noise_ratio(signal_arr)
         #print(f"{SNR}\t{os.path.dirname(ilist[0])}\t{len(ilist)}")
-    plt.show()
+    #plt.show()
