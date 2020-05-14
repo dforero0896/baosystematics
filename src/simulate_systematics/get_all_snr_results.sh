@@ -48,15 +48,15 @@ echo '../src/void_radius_cut/signal_to_noise.py <(ls box1/redshift/nosyst/tpcf_g
 
 echo \#\# Angular
 
-echo '../src/void_radius_cut/signal_to_noise.py <(ls box1/redshift/nosyst/tpcf_gal_mock/T*) <(ls box1/redshift/smooth/parabola_0.8/tpcf_gal_mock_nowt/T*) | tee box1/redshift/smooth/parabola_0.8/plots/snr_analysis_gal.dat ' | bash
+echo '../src/void_radius_cut/signal_to_noise.py <(ls box1/redshift/nosyst/tpcf_gal_mock/T*) <(ls box1/redshift/smooth/parabola_0.8/tpcf_gal_mock_nowt/T*) <(ls box1/redshift/smooth/parabola_0.8/tpcf_gal_mock/T*) | tee box1/redshift/smooth/parabola_0.8/plots/snr_analysis_gal.dat ' | bash
 
-echo '../src/void_radius_cut/signal_to_noise.py <(ls box1/redshift/nosyst/tpcf_gal_mock/T*) <(ls box1/redshift/smooth/parabola_0.8/tpcf_gal_mock_nowt/T*) | tee box1/redshift/smooth/parabola_0.8/plots/snr_analysis_gal.dat ' | sed -e "s/redshift/real/g" | bash
-
-
-echo '../src/void_radius_cut/signal_to_noise.py <(ls box1/redshift/nosyst/tpcf_gal_mock/T*) <(ls box1/redshift/smooth/parabola_0.8/tpcf_gal_mock_nowt/T*) | tee box1/redshift/smooth/parabola_0.8/plots/snr_analysis_gal.dat ' | sed -e "s/redshift/real/g; s/box1/box5/g" | bash
+echo '../src/void_radius_cut/signal_to_noise.py <(ls box1/redshift/nosyst/tpcf_gal_mock/T*) <(ls box1/redshift/smooth/parabola_0.8/tpcf_gal_mock_nowt/T*) <(ls box1/redshift/smooth/parabola_0.8/tpcf_gal_mock/T*) | tee box1/redshift/smooth/parabola_0.8/plots/snr_analysis_gal.dat ' | sed -e "s/redshift/real/g" | bash
 
 
-echo '../src/void_radius_cut/signal_to_noise.py <(ls box1/redshift/nosyst/tpcf_gal_mock/T*) <(ls box1/redshift/smooth/parabola_0.8/tpcf_gal_mock_nowt/T*) | tee box1/redshift/smooth/parabola_0.8/plots/snr_analysis_gal.dat ' | sed -e "s/box1/box5/g" | bash
+echo '../src/void_radius_cut/signal_to_noise.py <(ls box1/redshift/nosyst/tpcf_gal_mock/T*) <(ls box1/redshift/smooth/parabola_0.8/tpcf_gal_mock_nowt/T*) <(ls box1/redshift/smooth/parabola_0.8/tpcf_gal_mock/T*)  | tee box1/redshift/smooth/parabola_0.8/plots/snr_analysis_gal.dat ' | sed -e "s/redshift/real/g; s/box1/box5/g" | bash
+
+
+echo '../src/void_radius_cut/signal_to_noise.py <(ls box1/redshift/nosyst/tpcf_gal_mock/T*) <(ls box1/redshift/smooth/parabola_0.8/tpcf_gal_mock_nowt/T*) <(ls box1/redshift/smooth/parabola_0.8/tpcf_gal_mock/T*)  | tee box1/redshift/smooth/parabola_0.8/plots/snr_analysis_gal.dat ' | sed -e "s/box1/box5/g" | bash
 
 echo \#\# Random
 
