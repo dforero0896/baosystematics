@@ -8,7 +8,7 @@ from params import *
 
 
 def comp_mask_catalog(fn, odir, sigma_noise=0.2, function=parabola,\
-			cmin=0.8, names = ['x', 'y', 'z'], N_grid=2500, \
+			cmin=0.8, names = ['x', 'y', 'z'], N_grid=2500, seed=2,\
 			noise_sampler=noise_sampler, rmin=RMIN, rmax=RMAX, \
 			cat_type='mock', use_scaled_r=0, scaled_rmin=None,\
 			scaled_rmax=None, space=SPACE, isfirst=False):
@@ -47,7 +47,7 @@ def comp_mask_catalog(fn, odir, sigma_noise=0.2, function=parabola,\
             masked_dat = mask_with_function(data, mask_function,\
 					 noise=bool(i), box_size=2500,\
 					 N_grid=N_grid, sigma_noise=sigma_noise,\
-					 cmin=0, noise_sampler=nsampler)
+					 cmin=0, noise_sampler=nsampler, seed=seed)
             masked_dat.to_csv(on, sep = ' ', header=False, index=False)
         #print(f"==> WARNING: Saving voids in 'nearest' directory")
         #This line should be changed if we wish to have selection wrt rescaled radii
@@ -207,7 +207,7 @@ if __name__ == '__main__':
     filenames = [os.path.join(indir, f) for f in os.listdir(indir)][:NMOCKS]
     filenames_split = np.array_split(filenames, nproc)
     joblist = open(f"joblists/jobs_{space}_{FUNCTION.__name__}_{comp_min}_{iproc}_box{box}_scaled_rmin{scaled_rmin}.sh", 'w')
-
+    seeds = np.array_split(np.arange(0, len(filenames)), nproc)
     for i,f in enumerate(filenames_split[iproc]):
         odir = os.path.abspath(os.path.dirname(f)+'/../..')
         command=comp_mask_catalog(f, odir, noise_sampler=noise_sampler, \
@@ -215,7 +215,7 @@ if __name__ == '__main__':
 				N_grid = NGRID, rmin = RMIN, rmax = RMAX, \
 				sigma_noise=0.2, use_scaled_r=USE_SCALED_R,\
 				scaled_rmin=scaled_rmin, scaled_rmax=SCALED_RMAX,\
-				space=space, isfirst=i==0)
+				space=space, isfirst=i==0, seed = seeds[iproc][i])
         joblist.write(command)
     joblist.close()
     if iproc==0:

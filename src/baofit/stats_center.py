@@ -11,6 +11,8 @@ def stats_center(fileroot, nparams=3, plot = True, cat_type=None):
   # Accepts cat_type for backward compatibility  
   # Set parameter names and labels for plotting 
   npar = nparams   # number of parameters
+  names = ['alpha', 'B', 'Snl']
+  labels = [r'\alpha', r'B', r'\Sigma_{\rm nl}']
   print(fileroot)
   if cat_type is not None:
     if cat_type == 'void':
@@ -23,9 +25,6 @@ def stats_center(fileroot, nparams=3, plot = True, cat_type=None):
       labels = [r'\alpha', r'B', r'\Sigma_{\rm nl}']
     else:
       sys.exit('ERROR:\tCatalog type not understood.\nCAT_TYPE=void, gal\n')
-  
-  names = ['alpha', 'B', 'Snl']
-  labels = [r'\alpha', r'B', r'\Sigma_{\rm nl}']
   lowbound = ['N'] * npar
   upbound = ['N'] * npar
   # I/O files
@@ -63,6 +62,7 @@ def stats_center(fileroot, nparams=3, plot = True, cat_type=None):
     sigma_med.append(sigma_med_par)
     med_sigma_med.append(med_par)
     med_sigma_med.append(sigma_med_par)
+  print(med_sigma_med)
   # Read evidence from FILE_ROOTstats.dat
   fstat = fileroot + 'stats.dat'
   with open(fstat, "r") as f:
@@ -72,8 +72,12 @@ def stats_center(fileroot, nparams=3, plot = True, cat_type=None):
   med_sigma_med.append(chi2)
   med_sigma_med.append(evi)
   # Export file
+  ostr = ''
+  for i in range(len(med_sigma_med)):
+    ostr = ostr+'{%i:.6f} '%i
+  ostr = ostr+'{%i:s}\n'%(len(med_sigma_med))
   with open(ofile, 'w') as f:
-    f.write('{0:.5f} {1:.6f} {2:.5f} {3:.6f} {4:.5f} {5:.6f} {6:.6f} {7:.6f} {8:s}\n'.format(*med_sigma_med, fileroot)) 
+    f.write(ostr.format(*med_sigma_med, fileroot)) 
   
   # Load samples file to do plots
   if plot:
@@ -109,6 +113,7 @@ def stats_center(fileroot, nparams=3, plot = True, cat_type=None):
         ax.set_yticks(np.round(np.linspace(xmin_new, xmax_new, nx), 0))
 
     g.fig.savefig(fileroot+'triplot.pdf', bbox_inches='tight', transparent=True)
+  return med_sigma_med    
 
 def stats_center_getdist(fileroot, cat_type, plot=True):
   # Setting parameter names and ranges
