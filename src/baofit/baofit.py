@@ -66,7 +66,7 @@ import matplotlib.pyplot as plt
 import matplotlib as mpl
 mpl.use('Agg')
 f = plt.figure()
-plotfit([i], b, outPath, r'$\chi^2$=%0.3f'%results[-3])
+plotfit([i], b, outPath, r'$\chi^2$=%0.3f'%results[-2])
 
 mockFile.close()
 
