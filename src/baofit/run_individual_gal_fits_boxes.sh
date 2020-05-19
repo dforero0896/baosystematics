@@ -1,0 +1,22 @@
+ echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/radialgauss/tpcf_gal_mock_nowt box1/redshift/radialgauss/baofit/individual_gal_nowt gal none"' | bash
+ echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/radialgauss/tpcf_gal_mock_nowt box1/redshift/radialgauss/baofit/individual_gal_nowt gal none"' | sed -e "s/box1/box5/g; s/15\.6/18.5/g" | bash
+ echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/radialgauss/tpcf_gal_mock_nowt box1/redshift/radialgauss/baofit/individual_gal_nowt gal none"' | sed -e "s/box1/box5/g; s/15\.6/18.5/g; s/redshift/real/g" | bash
+ echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/radialgauss/tpcf_gal_mock_nowt box1/redshift/radialgauss/baofit/individual_gal_nowt gal none"' | sed -e "s/redshift/real/g" | bash
+
+
+ echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/smooth/parabola_0.8/tpcf_gal_mock_nowt/ box1/redshift/smooth/parabola_0.8/baofit/individual_gal_nowt gal none"' | bash
+ echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/smooth/parabola_0.8/tpcf_gal_mock_nowt/ box1/redshift/smooth/parabola_0.8/baofit/individual_gal_nowt gal none"'   | sed -e "s/box1/box5/g" | bash
+ echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/smooth/parabola_0.8/tpcf_gal_mock_nowt/ box1/redshift/smooth/parabola_0.8/baofit/individual_gal_nowt gal none"'   | sed -e "s/box1/box5/g; s/redshift/real/g" | bash
+ echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/smooth/parabola_0.8/tpcf_gal_mock_nowt/ box1/redshift/smooth/parabola_0.8/baofit/individual_gal_nowt gal none"'   | sed -e "s/redshift/real/g" | bash
+
+
+ echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/nosyst/tpcf_gal_mock box1/redshift/nosyst/baofit/individual_gal gal none"' | bash
+ echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/nosyst/tpcf_gal_mock box1/redshift/nosyst/baofit/individual_gal gal none"' | sed -e "s/redshift/real/g" | bash
+ echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/nosyst/tpcf_gal_mock box1/redshift/nosyst/baofit/individual_gal gal none"' | sed -e "s/redshift/real/g; s/box1/box5/g; s/15\.6/18.5/g" | bash
+ echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/nosyst/tpcf_gal_mock box1/redshift/nosyst/baofit/individual_gal gal none"' | sed -e "s/box1/box5/g; s/15\.6/18.5/g" | bash
+ 
+
+ echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/smooth/parabola_0.8/tpcf_gal_mock/ box1/redshift/smooth/parabola_0.8/baofit/individual_gal gal none"' | bash
+  echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/radialgauss/tpcf_gal_mock box1/redshift/radialgauss/baofit/individual_gal gal none"' | sed -e "s/box1/box5/g; s/15\.6/18.5/g" | bash
+ echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/radialgauss/tpcf_gal_mock box1/redshift/radialgauss/baofit/individual_gal gal none"' | sed -e "s/box1/box5/g; s/15\.6/18.5/g; s/redshift/real/g" | bash
+ echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/radialgauss/tpcf_gal_mock box1/redshift/radialgauss/baofit/individual_gal gal none"' | sed -e "s/redshift/real/g" | bash

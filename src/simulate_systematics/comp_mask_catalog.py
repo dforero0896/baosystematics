@@ -123,7 +123,7 @@ def comp_mask_catalog(fn, odir, sigma_noise=0.2, function=parabola,\
             else:
                 ncores=1
                 count_mode=0
-                fcfc_gal_command = f"{WORKDIR}/bin/2pcf.py {dd_file_gal} {out_file_gal}\n"
+                fcfc_gal_command = f"{WORKDIR}/bin/2pcf.py -dd {dd_file_gal} -o {out_file_gal}\n"
             joblist.write(fcfc_gal_command)    
             complete_command+=fcfc_gal_command
             
@@ -154,7 +154,7 @@ def comp_mask_catalog(fn, odir, sigma_noise=0.2, function=parabola,\
             else:
                 ncores=1
                 count_mode=0
-                fcfc_void_command = f"{WORKDIR}/bin/2pcf.py {dd_file_void} {out_file_void}\n"
+                fcfc_void_command = f"{WORKDIR}/bin/2pcf.py -dd {dd_file_void} -o {out_file_void}\n"
             joblist.write(fcfc_void_command)    
             complete_command+=fcfc_void_command
              # Compute cross-terms
@@ -170,10 +170,10 @@ def comp_mask_catalog(fn, odir, sigma_noise=0.2, function=parabola,\
                 if not os.path.exists(dgdv_file):
                     count_mode=2
                     ncores = NCORES
-                    fcfc_cross_command = f"srun -n 1 -c {ncores} {RUN_FCFC} --conf={conf_file_void} --rand={on} --data={oname_void[weight]} --count-mode={count_mode} --dr={dgdv_file} --output={out_file_xgv} --data-wt-col={data_wt_cols_void[weight]} --rand-wt-col={data_wt_cols_gal[weight_gal]} --data-aux-col={void_aux_col} --data-aux-min={rmin} --data-aux-max={rmax} --cf-mode=0 && {WORKDIR}/bin/2pcf.py {dgdv_file} {out_file_xgv}\n"
+                    fcfc_cross_command = f"srun -n 1 -c {ncores} {RUN_FCFC} --conf={conf_file_void} --rand={on} --data={oname_void[weight]} --count-mode={count_mode} --dr={dgdv_file} --output={out_file_xgv} --data-wt-col={data_wt_cols_void[weight]} --rand-wt-col={data_wt_cols_gal[weight_gal]} --data-aux-col={void_aux_col} --data-aux-min={rmin} --data-aux-max={rmax} --cf-mode=0 && {WORKDIR}/bin/2pcf.py -dd {dgdv_file} -o {out_file_xgv}\n"
                 else:
                     ncores=1
-                    fcfc_cross_command = f"{WORKDIR}/bin/2pcf.py {dgdv_file} {out_file_xgv}\n"
+                    fcfc_cross_command = f"{WORKDIR}/bin/2pcf.py -dd {dgdv_file} -o {out_file_xgv}\n"
                 joblist.write(fcfc_cross_command)    
                 complete_command+=fcfc_cross_command
       

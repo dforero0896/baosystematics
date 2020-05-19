@@ -1,12 +1,23 @@
 #!/usr/bin/env python3
 import os
+import subprocess
 import sys
 import tempfile
 import numpy as np
 import stats_center
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+mpl.use('Agg')
+from tqdm import tqdm
 from mpi4py import MPI
-nproc = MPI.COMM_WORLD.Get_size()   # Size of communicator
-iproc = MPI.COMM_WORLD.Get_rank()   # Ranks in communicator
+from dotenv import load_dotenv
+load_dotenv()
+SRC=os.environ.get('SRC')
+sys.path.append(f"{SRC}/misc")
+from plotfit import plotfit
+comm = MPI.COMM_WORLD
+nproc = comm.Get_size()   # Size of communicator
+iproc = comm.Get_rank()   # Ranks in communicator
 inode = MPI.Get_processor_name()    # Node where this MPI process runs
 
 if len(sys.argv)!=5:
@@ -26,8 +37,8 @@ try:
 except StopIteration:
 	sys.stderr.write('ERROR: Empty input directory.\n')
 	sys.exit(1)  
-if not os.path.isdir(outPath):
-	os.makedirs(outPath)
+
+os.makedirs(outPath, exist_ok=True)
 mockFile = tempfile.NamedTemporaryFile(mode='w+t')
 mockFile_name = mockFile.name
 r = os.path.join(outPath, 'cov_%s.dat'%cap)
@@ -41,11 +52,9 @@ else:
 	sys.exit('ERROR:\tCatalog type not understood.\nCAT_TYPE=void, gal\n')
 for m in in2pcf:
 	mockFile.writelines(os.path.join(input2PCF, m+'\n'))
-print(mockFile.read())
-files = np.array_split(in2pcf, nproc)
-for idx, tpcf in enumerate(files[iproc]):
+mockFile.seek(0)
+def run_fit(idx, tpcf):
 	tpcf_fn = os.path.join(input2PCF, tpcf)
-	print(tpcf_fn)
 	tpcf_base, ext = os.path.splitext(tpcf)
 	if idx==0 and not os.path.isfile(r):
 		c = os.path.join(WORKDIR,'src/baofit/baofit_covcomp.conf')
@@ -57,10 +66,21 @@ for idx, tpcf in enumerate(files[iproc]):
 	o = os.path.join(outPath, tpcf_base+'_')
 	b = o+'bestfit.txt' 
 	# Check if the output of stats_center exists.
+	print(idx,'ok')
 	if not os.path.isfile(b.replace('bestfit', 'mystats')):
-		os.system('%s -c %s -i %s -m %s -o %s -b %s -r %s'%(run, c, i, m, o, b, r))
-		stats_center.stats_center(o, cat_type=cat_type, plot=False)
+		fit_exit = subprocess.call([run, '-c', c, '-i', i, '-m', m, '-o', o, '-b', b, '-r', r])
+		if fit_exit==0: results = stats_center.stats_center(o, cat_type=cat_type, plot=True)
+		else: raise Exception("Fit failed")
 	if not os.path.isfile(b):
-		os.system('%s -c %s -i %s -m %s -o %s -b %s -r %s'%(run_bestfit, c_bestfit, i, m, o, b, r))
+		bestfit_exit = subprocess.call([run_bestfit, '-c', c_bestfit, '-i', i, '-m', m, '-o', o, '-b', b, '-r', r])
+	results = stats_center.stats_center(o, cat_type=cat_type, plot=False)
+	f = plt.figure()
+#	plotfit([i], b, outPath, r'$\chi^2$=%0.3f'%results[-2])
+print(in2pcf[0])
+if iproc==0: run_fit(idx=0, tpcf=in2pcf[0])
+comm.barrier()
+files = np.array_split(in2pcf[1:], nproc)
+for tpcf in tqdm(files[iproc]):
+	run_fit(999, tpcf) #Avoid recomputing covmat
 mockFile.close()
 MPI.Finalize()

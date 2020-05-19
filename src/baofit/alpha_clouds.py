@@ -4,7 +4,7 @@ from scipy import stats
 import sys
 import os
 import matplotlib as mpl
-#mpl.use('Agg')
+mpl.use('Agg')
 import matplotlib.pyplot as plt
 from uncertainties import ufloat
 WORKDIR ='/hpcstorage/dforero/projects/baosystematics' 
@@ -13,8 +13,10 @@ labels = [r'\alpha_{\mathrm{gal, w}}', r'\alpha_{\mathrm{gal, now}}', r'\alpha_{
 def single_cloud_plot(x_samples, y_samples, fig, x_label, y_label, guides = True, quantity_label=r'\alpha', **kwargs):
     widths = [6,2]
     heights = [2,6]
-    # Compute means and standard deviations
-    x_mean, y_mean = np.mean(x_samples), np.mean(y_samples)
+    min_ = np.min(np.c_[x_samples, y_samples])
+    max_ = np.max(np.c_[x_samples, y_samples])
+    # Compute means and standard deviations the means are replaced by the medians
+    x_mean, y_mean = np.median(x_samples), np.median(y_samples)
     x_std, y_std = np.std(x_samples), np.std(y_samples)
     x_value = ufloat(x_mean, x_std)
     y_value = ufloat(y_mean, y_std)
@@ -26,31 +28,33 @@ def single_cloud_plot(x_samples, y_samples, fig, x_label, y_label, guides = True
     if guides: 
         main.axvline(1, lw = 2, ls = ':', c = 'k')
         main.axhline(1, lw = 2, ls = ':', c = 'k')
-    main.plot(main.get_xlim(), main.get_ylim(), lw=2, ls=':', c='k')
+    xlim = main.get_xlim() ; ylim = main.get_ylim()
+    main.plot([min_, max_], [min_,max_], lw=2, ls=':', c='k')
+    main.set_xlim(xlim); main.set_ylim(ylim)
     x_mean_line = main.axvline(x_mean, lw=2, ls=':', c='r', label=r'${}={:.6L}$'.format(quantity_label, x_value))
     y_mean_line = main.axhline(y_mean, lw=2, ls=':', c='b', label=r'${}={:.6L}$'.format(quantity_label, y_value))
-    main.set_xlabel(r'%s'%(x_label), fontsize=15)
-    main.set_ylabel(r'%s'%(y_label), fontsize=15)
+    main.set_xlabel(r'%s'%(x_label), fontsize=11)
+    main.set_ylabel(r'%s'%(y_label), fontsize=11)
     y_x_mean_diff = np.abs(y_value-x_value)
     y_x_mean_diff_handle = mpl.patches.Patch(linewidth=0,fill=False, edgecolor='none', visible=False, label=r'$\Delta{}={:.3eL}$'.format(quantity_label, y_x_mean_diff))
     main.legend(handles=[x_mean_line, y_mean_line, y_x_mean_diff_handle], loc='upper left', bbox_to_anchor=(0.0, 1.5), fontsize=12, ncol=2)
     # Histogram along x
     x_hist = fig.add_subplot(gs[0,0], sharex = main)
-    x_hist.hist(x_samples, density = True, histtype='step', color = 'r', lw=3, **kwargs)
+    x_hist.hist(x_samples, density = True, histtype='step', color = 'r', lw=2, **kwargs)
     if guides: x_hist.axvline(1, lw = 2, ls = ':', c = 'k')
     x_hist.axvline(x_mean, lw = 2, ls = ':', c = 'r')
     plt.setp(x_hist.get_xticklabels(), visible=False)
     plt.setp(x_hist.get_yticklabels(), visible=False)
     # Histogram along y
     y_hist = fig.add_subplot(gs[1,1], sharey = main)
-    y_hist.hist(y_samples, density = True, histtype='step', color = 'b', orientation='horizontal', lw=3, **kwargs)
+    y_hist.hist(y_samples, density = True, histtype='step', color = 'b', orientation='horizontal', lw=2, **kwargs)
     if guides: y_hist.axhline(1, lw = 2, ls = ':', c = 'k')
     y_hist.axhline(y_mean, lw = 2, ls = ':', c = 'b')
     plt.setp(y_hist.get_yticklabels(), visible=False)
     plt.setp(y_hist.get_xticklabels(), visible=False)
 
     
-    return fig
+    return fig, main, x_hist, y_hist
   
 def samples_alpha(cap, systresults, systkey='nosyst'):
     cases_files = [os.path.join(systresults[systkey], s) for s in ['baofit/individual_combined_gal/alpha_samples_%s.dat'%cap, 'baofit/individual_combined_gal_nowt/alpha_samples_%s.dat'%cap, 'baofit/individual_combined_void/alpha_samples_%s.dat'%cap]]
@@ -88,6 +92,7 @@ def process_filenames(fn, funcname='parabola', workdir=f"{WORKDIR}/patchy_result
     abs_fn = abs_fn.replace(workdir, '')
     abs_fn = abs_fn.replace(f"/{funcname}", f"_{funcname}")
     abs_fn = abs_fn.replace(f"baofit/individual_", '')
+    abs_fn = abs_fn.replace(f"baofit/ind_", '')
     abs_fn = abs_fn[1:].replace('/', ' ')
     return abs_fn
 
@@ -96,7 +101,6 @@ if __name__=='__main__':
         sys.exit(f"ERROR: Unexpected number of arguments.\nUSAGE: {sys.argv[0]} SAMPLES_1 SAMPLES_2 [SAMPLES_3 ... SAMPLES_N] OUT_DIR")
     import itertools
 #    workdir=f"{WORKDIR}/results"
-    workdir=f"{WORKDIR}/patchy_results/box1"
     outdir = sys.argv[-1]
     os.makedirs(outdir, exist_ok=True)
     samples_fn = sys.argv[1:-1]
@@ -105,6 +109,7 @@ if __name__=='__main__':
     min_length = min([len(s) for s in samples])
     samples = [s[:min_length] for s in samples]
     pairs = itertools.combinations(range(len(samples_fn)), 2)
+    workdir=os.path.dirname(os.path.abspath(outdir))
     for ix, iy in pairs:
         x_label = process_filenames(samples_fn[ix], workdir=workdir)
         y_label = process_filenames(samples_fn[iy], workdir=workdir)
@@ -113,7 +118,7 @@ if __name__=='__main__':
         x_samples = samples[ix][:,0]
         y_samples = samples[iy][:,0]
         fig = plt.figure(figsize=(8,8))
-        fig = single_cloud_plot(x_samples, y_samples, fig, x_label+r' $\alpha$', y_label+r' $\alpha$')
+        fig , _, _, _= single_cloud_plot(x_samples, y_samples, fig, x_label+r' $\alpha$', y_label+r' $\alpha$')
         oname = f"{outdir}/alpha_clouds_{x_label.replace(' ','-')}_vs_{y_label.replace(' ','-')}.pdf"
         fig.savefig(oname, dpi=200)
         plt.close(fig)
@@ -123,7 +128,7 @@ if __name__=='__main__':
         x_samples = samples[ix][:,1]
         y_samples = samples[iy][:,1]
         fig = plt.figure(figsize=(8,8))
-        fig = single_cloud_plot(x_samples, y_samples, fig, x_label+r' $\sigma_{\alpha}$', y_label+r' $\sigma_{\alpha}$', guides=False, quantity_label=r'\sigma')
+        fig, _, _, _ = single_cloud_plot(x_samples, y_samples, fig, x_label+r' $\sigma_{\alpha}$', y_label+r' $\sigma_{\alpha}$', guides=False, quantity_label=r'\sigma')
         oname = f"{outdir}/sigma_alpha_clouds_{x_label.replace(' ','-')}_vs_{y_label.replace(' ','-')}.pdf"
         fig.savefig(oname, dpi=200)
         plt.close(fig)

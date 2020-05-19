@@ -45,7 +45,7 @@ def main():
 		chsq, n_points = chisq(tpcf_mean, tpcf_bestfit, tpcf_cov[fit_range_mask,:][:,fit_range_mask])
 		dof_  = dof(n_points, n_params)
 		#print(dof_)
-		n_mocks = 1 #Overwrite number of mocks when dealing with the fit to a single realization
+	#	n_mocks = 1 #Overwrite number of mocks when dealing with the fit to a single realization
 		red_chsq = n_mocks*chsq/dof_
 		print('Reduced chisq for %s: %i * %.3f / %i = %.5f'%(os.path.basename(bestfit_filename),n_mocks, chsq, dof_, red_chsq))
 		print(red_chsq)
