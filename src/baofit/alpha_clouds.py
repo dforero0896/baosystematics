@@ -10,9 +10,24 @@ from uncertainties import ufloat
 WORKDIR ='/hpcstorage/dforero/projects/baosystematics' 
 cases = ['gal_w', 'gal_nw', 'void_nw']
 labels = [r'\alpha_{\mathrm{gal, w}}', r'\alpha_{\mathrm{gal, now}}', r'\alpha_{\mathrm{void,now}}']
+def find_outliers(data, threshold = 3):
+    zscore = np.abs(stats.zscore(data))
+    outliers = zscore > threshold
+    return  outliers
+
 def single_cloud_plot(x_samples, y_samples, fig, x_label, y_label, guides = True, quantity_label=r'\alpha', **kwargs):
+    x_complete = np.copy(x_samples)
+    y_complete = np.copy(y_samples)
     widths = [6,2]
     heights = [2,6]
+    x_outliers = find_outliers(x_samples) #mask
+    y_outliers = find_outliers(y_samples) #mask
+    xy_outliers = x_outliers | y_outliers #mask
+    x_outliers = x_samples[xy_outliers] #outliers
+    y_outliers = y_samples[xy_outliers] #outliers
+    x_samples = x_samples[~xy_outliers]
+    y_samples = y_samples[~xy_outliers]
+    print(x_samples.shape, y_samples.shape)
     min_ = np.min(np.c_[x_samples, y_samples])
     max_ = np.max(np.c_[x_samples, y_samples])
     # Compute means and standard deviations the means are replaced by the medians
@@ -39,15 +54,16 @@ def single_cloud_plot(x_samples, y_samples, fig, x_label, y_label, guides = True
     y_x_mean_diff_handle = mpl.patches.Patch(linewidth=0,fill=False, edgecolor='none', visible=False, label=r'$\Delta{}={:.3eL}$'.format(quantity_label, y_x_mean_diff))
     main.legend(handles=[x_mean_line, y_mean_line, y_x_mean_diff_handle], loc='upper left', bbox_to_anchor=(0.0, 1.5), fontsize=12, ncol=2)
     # Histogram along x
+    bins = np.sort(np.concatenate((np.linspace(0.98*min_, 1.01*min_, 3), np.linspace(*np.percentile(np.concatenate((x_complete, y_complete), axis=0), [2, 98]), 20), np.linspace(0.99*max_, 1.01*max_, 3))))
     x_hist = fig.add_subplot(gs[0,0], sharex = main)
-    x_hist.hist(x_samples, density = True, histtype='step', color = 'r', lw=2, **kwargs)
+    x_hist.hist(x_samples, density = True, histtype='step', color = 'r', lw=2, bins=bins, **kwargs)
     if guides: x_hist.axvline(1, lw = 2, ls = ':', c = 'k')
     x_hist.axvline(x_mean, lw = 2, ls = ':', c = 'r')
     plt.setp(x_hist.get_xticklabels(), visible=False)
     plt.setp(x_hist.get_yticklabels(), visible=False)
     # Histogram along y
     y_hist = fig.add_subplot(gs[1,1], sharey = main)
-    y_hist.hist(y_samples, density = True, histtype='step', color = 'b', orientation='horizontal', lw=2, **kwargs)
+    y_hist.hist(y_samples, density = True, histtype='step', color = 'b', orientation='horizontal', lw=2, bins=bins,**kwargs)
     if guides: y_hist.axhline(1, lw = 2, ls = ':', c = 'k')
     y_hist.axhline(y_mean, lw = 2, ls = ':', c = 'b')
     plt.setp(y_hist.get_yticklabels(), visible=False)
@@ -99,16 +115,23 @@ def process_filenames(fn, funcname='parabola', workdir=f"{WORKDIR}/patchy_result
 if __name__=='__main__':
     if len(sys.argv) < 4:
         sys.exit(f"ERROR: Unexpected number of arguments.\nUSAGE: {sys.argv[0]} SAMPLES_1 SAMPLES_2 [SAMPLES_3 ... SAMPLES_N] OUT_DIR")
+
     import itertools
 #    workdir=f"{WORKDIR}/results"
     outdir = sys.argv[-1]
     os.makedirs(outdir, exist_ok=True)
     samples_fn = sys.argv[1:-1]
-    samples =  [np.loadtxt(f, usecols=[0,1]) for f in samples_fn]
+    samples =  []
+    for f in samples_fn:
+        dat = np.loadtxt(f, usecols=[0,1])
+        print(dat.shape)
+        if len(dat)==0:
+            continue
+        samples.append(dat)
     # Keep elements up to length of shortest sequence
     min_length = min([len(s) for s in samples])
     samples = [s[:min_length] for s in samples]
-    pairs = itertools.combinations(range(len(samples_fn)), 2)
+    pairs = itertools.combinations(range(len(samples)), 2)
     workdir=os.path.dirname(os.path.abspath(outdir))
     for ix, iy in pairs:
         x_label = process_filenames(samples_fn[ix], workdir=workdir)

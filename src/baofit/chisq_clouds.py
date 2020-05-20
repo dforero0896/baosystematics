@@ -19,12 +19,19 @@ if __name__ == '__main__':
     workdir=f"{WORKDIR}/patchy_results/box1"
     outdir = sys.argv[-1]
     os.makedirs(outdir, exist_ok=True)
+    workdir = os.path.abspath(f"{outdir}/../")
+    print(workdir); sys.exit(0)
     samples_fn = sys.argv[1:-1]
-    samples =  [np.loadtxt(f, usecols=[-3]) for f in samples_fn] #Using chisq from multinest
+    samples =  [] #Using chisq from multinest
+    for f in samples_fn:
+        dat = np.loadtxt(f, usecols=[-3])
+        if len(dat)==0:
+            continue
+        samples.append(dat)
     # Keep elements up to length of shortest sequence
     min_length = min([len(s) for s in samples])
     samples = [s[:min_length] for s in samples]
-    pairs = itertools.combinations(range(len(samples_fn)), 2)
+    pairs = itertools.combinations(range(len(samples)), 2)
     for ix, iy in pairs:
         x_label = process_filenames(samples_fn[ix], workdir=workdir)
         y_label = process_filenames(samples_fn[iy], workdir=workdir)
@@ -44,7 +51,8 @@ if __name__ == '__main__':
             elif 'void' in labels[i]: df = 11
             else: raise NotImplementedError
 
-            #median = np.mean(sample_list[i])
+            median = np.median(sample_list[i])
+            df = median
             analytic_chisq = chi2.pdf(chisq_linsp, df, loc = 0)
             if i==0:
                 hist[i].plot(chisq_linsp, analytic_chisq, c='purple', ls='--')
