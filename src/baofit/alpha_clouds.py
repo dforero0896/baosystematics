@@ -25,8 +25,8 @@ def single_cloud_plot(x_samples, y_samples, fig, x_label, y_label, guides = True
     xy_outliers = x_outliers | y_outliers #mask
     x_outliers = x_samples[xy_outliers] #outliers
     y_outliers = y_samples[xy_outliers] #outliers
-    x_samples = x_samples[~xy_outliers]
-    y_samples = y_samples[~xy_outliers]
+    #x_samples = x_samples[~xy_outliers]
+    #y_samples = y_samples[~xy_outliers]
     print(x_samples.shape, y_samples.shape)
     min_ = np.min(np.c_[x_samples, y_samples])
     max_ = np.max(np.c_[x_samples, y_samples])
@@ -54,7 +54,8 @@ def single_cloud_plot(x_samples, y_samples, fig, x_label, y_label, guides = True
     y_x_mean_diff_handle = mpl.patches.Patch(linewidth=0,fill=False, edgecolor='none', visible=False, label=r'$\Delta{}={:.3eL}$'.format(quantity_label, y_x_mean_diff))
     main.legend(handles=[x_mean_line, y_mean_line, y_x_mean_diff_handle], loc='upper left', bbox_to_anchor=(0.0, 1.5), fontsize=12, ncol=2)
     # Histogram along x
-    bins = np.sort(np.concatenate((np.linspace(0.98*min_, 1.01*min_, 3), np.linspace(*np.percentile(np.concatenate((x_complete, y_complete), axis=0), [2, 98]), 20), np.linspace(0.99*max_, 1.01*max_, 3))))
+    bins = np.sort(np.concatenate((np.linspace(0.98*min_, 1.01*min_, 3), np.linspace(*np.percentile(np.concatenate((x_complete, y_complete), axis=0), [2, 98]), 50), np.linspace(0.99*max_, 1.01*max_, 3))))
+    #bins = 100
     x_hist = fig.add_subplot(gs[0,0], sharex = main)
     x_hist.hist(x_samples, density = True, histtype='step', color = 'r', lw=2, bins=bins, **kwargs)
     if guides: x_hist.axvline(1, lw = 2, ls = ':', c = 'k')
