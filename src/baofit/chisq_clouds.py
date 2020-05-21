@@ -20,7 +20,7 @@ if __name__ == '__main__':
     outdir = sys.argv[-1]
     os.makedirs(outdir, exist_ok=True)
     workdir = os.path.abspath(f"{outdir}/../")
-    print(workdir); sys.exit(0)
+    print(workdir)
     samples_fn = sys.argv[1:-1]
     samples =  [] #Using chisq from multinest
     for f in samples_fn:
