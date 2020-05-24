@@ -98,21 +98,22 @@ if __name__ == '__main__':
       weights=False
       print(f"==> Done")
   if iproc==0:
-    X, Y = np.meshgrid(xedges, yedges)
+    X, Y = np.meshgrid(xedges, yedges, indexing='ij')
     abs_vmin = np.min(histograms)
     abs_vmax = np.max(histograms)
     for i, a in enumerate(ax.ravel()):
       bin_hist =  histograms[i, :, :]
-      bin_stdev = np.std(bin_hist)
+      bin_stdev = np.std(bin_hist[bin_hist.shape[0]//2 +10:, :])
       bin_hist -= np.min(bin_hist)
       bin_hist/=(np.max(bin_hist)-np.min(bin_hist))
       vmin, vmax, mean = np.min(bin_hist), np.max(bin_hist), np.mean(bin_hist)
+      
       h=a.pcolorfast(X, Y, bin_hist, vmin=vmin, vmax=vmax, cmap = plt.get_cmap('hot'))
       h.set_rasterized(True)
       a.set_title("(%.0f, %.0f)"%(radius_bins[i], radius_bins[i+1]), fontsize = 8)
       a.set_ylabel("$\sigma = %.1f$"%(bin_stdev), fontsize=8)
       a.set_aspect('equal', 'box')
-    cb=fig.colorbar(h, ax=ax.ravel().tolist())
+    cb=fig.colorbar(h, ax=ax.ravel().tolist(), aspect=30)
     cb.set_label('Normalized void density', rotation=270, x=5, labelpad=15)
     cb.ax.tick_params(labelsize=8)
     fig.add_subplot(111, frameon=False)

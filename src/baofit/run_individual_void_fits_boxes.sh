@@ -1,54 +1,59 @@
+## Angular nowt
+## C 2
  echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/smooth/parabola_0.8/tpcf_void_mock_nowt_R-scaled2.2-50/ box1/redshift/smooth/parabola_0.8/baofit/ind_void_nowt_parabola_case2 void none"' | bash
  echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/smooth/parabola_0.8/tpcf_void_mock_nowt_R-scaled2.2-50/ box1/redshift/smooth/parabola_0.8/baofit/ind_void_nowt_parabola_case2 void none"'  | sed -e "s/box1/box5/g" | bash
  echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/smooth/parabola_0.8/tpcf_void_mock_nowt_R-scaled2.2-50/ box1/redshift/smooth/parabola_0.8/baofit/ind_void_nowt_parabola_case2 void none"'  | sed -e "s/box1/box5/g; s/redshift/real/g" | bash
  echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/smooth/parabola_0.8/tpcf_void_mock_nowt_R-scaled2.2-50/ box1/redshift/smooth/parabola_0.8/baofit/ind_void_nowt_parabola_case2 void none"'  | sed -e "s/redshift/real/g" | bash
-
+## C 3
  echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/smooth/parabola_0.8/tpcf_void_mock_nowt_R-loc_scaled2.2-loc_scaled5/ box1/redshift/smooth/parabola_0.8/baofit/ind_void_nowt_parabola_case3 void none"' | bash
  echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/smooth/parabola_0.8/tpcf_void_mock_nowt_R-loc_scaled2.2-loc_scaled5/ box1/redshift/smooth/parabola_0.8/baofit/ind_void_nowt_parabola_case3 void none"' | sed -e "s/box1/box5/g" | bash
  echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/smooth/parabola_0.8/tpcf_void_mock_nowt_R-loc_scaled2.2-loc_scaled5/ box1/redshift/smooth/parabola_0.8/baofit/ind_void_nowt_parabola_case3 void none"' | sed -e "s/box1/box5/g; s/redshift/real/g" | bash
  echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/smooth/parabola_0.8/tpcf_void_mock_nowt_R-loc_scaled2.2-loc_scaled5/ box1/redshift/smooth/parabola_0.8/baofit/ind_void_nowt_parabola_case3 void none"' | sed -e "s/redshift/real/g" | bash
-
+## C 2
  echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/smooth/parabola_0.8/tpcf_void_mock_nowt_R-15.6-50/ box1/redshift/smooth/parabola_0.8/baofit/ind_void_nowt_parabola_case1 void none"' | bash
  echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/smooth/parabola_0.8/tpcf_void_mock_nowt_R-15.6-50/ box1/redshift/smooth/parabola_0.8/baofit/ind_void_nowt_parabola_case1 void none"' | sed -e "s/redshift/real/g" | bash
  echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/smooth/parabola_0.8/tpcf_void_mock_nowt_R-15.6-50/ box1/redshift/smooth/parabola_0.8/baofit/ind_void_nowt_parabola_case1 void none"' | sed -e "s/redshift/real/g; s/box1/box5/g; s/15\.6/18.5/g" | bash
  echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/smooth/parabola_0.8/tpcf_void_mock_nowt_R-15.6-50/ box1/redshift/smooth/parabola_0.8/baofit/ind_void_nowt_parabola_case1 void none"' | sed -e "s/box1/box5/g; s/15\.6/18.5/g" | bash
-
+## Radial
+## C 1
  echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/radialgauss/tpcf_void_mock_nowt_R-15.6-50/ box1/redshift/radialgauss/baofit/ind_void_nowt_parabola_case1 void none"' | bash
  echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/radialgauss/tpcf_void_mock_nowt_R-15.6-50/ box1/redshift/radialgauss/baofit/ind_void_nowt_parabola_case1 void none"' | sed -e "s/box1/box5/g; s/15\.6/18.5/g" | bash
  echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/radialgauss/tpcf_void_mock_nowt_R-15.6-50/ box1/redshift/radialgauss/baofit/ind_void_nowt_parabola_case1 void none"' | sed -e "s/box1/box5/g; s/15\.6/18.5/g; s/redshift/real/g" | bash
  echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/radialgauss/tpcf_void_mock_nowt_R-15.6-50/ box1/redshift/radialgauss/baofit/ind_void_nowt_parabola_case1 void none"' | sed -e "s/redshift/real/g" | bash
-
+## C 2
  echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/radialgauss/tpcf_void_mock_nowt_R-scaled2.2-50/ box1/redshift/radialgauss/baofit/ind_void_nowt_parabola_case2 void none"' | sed -e "s/box1/box5/g; s/15\.6/18.5/g; s/redshift/real/g" | bash
  echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/radialgauss/tpcf_void_mock_nowt_R-scaled2.2-50/ box1/redshift/radialgauss/baofit/ind_void_nowt_parabola_case2 void none"' | sed -e "s/box1/box5/g; s/15\.6/18.5/g" | bash
  echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/radialgauss/tpcf_void_mock_nowt_R-scaled2.2-50/ box1/redshift/radialgauss/baofit/ind_void_nowt_parabola_case2 void none"' | sed -e "s/redshift/real/g" | bash
  echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/radialgauss/tpcf_void_mock_nowt_R-scaled2.2-50/ box1/redshift/radialgauss/baofit/ind_void_nowt_parabola_case2 void none"' | bash
-
+## C 3
  echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/radialgauss/tpcf_void_mock_nowt_R-loc_scaled2.2-loc_scaled5/ box1/redshift/radialgauss/baofit/ind_void_nowt_parabola_case3 void none"' | bash
  echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/radialgauss/tpcf_void_mock_nowt_R-loc_scaled2.2-loc_scaled5/ box1/redshift/radialgauss/baofit/ind_void_nowt_parabola_case3 void none"' | sed -e "s/box1/box5/g; s/15\.6/18.5/g; s/redshift/real/g" | bash
  echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/radialgauss/tpcf_void_mock_nowt_R-loc_scaled2.2-loc_scaled5/ box1/redshift/radialgauss/baofit/ind_void_nowt_parabola_case3 void none"' | sed -e "s/box1/box5/g; s/15\.6/18.5/g" | bash
  echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/radialgauss/tpcf_void_mock_nowt_R-loc_scaled2.2-loc_scaled5/ box1/redshift/radialgauss/baofit/ind_void_nowt_parabola_case3 void none"' | sed -e "s/redshift/real/g" | bash
-
+# No Syst.
+## C 1
  echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/nosyst/tpcf_void_mock_nowt_R-15.6-50/ box1/redshift/nosyst/baofit/ind_void_nowt_parabola_case1 void none"' | bash
  echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/nosyst/tpcf_void_mock_nowt_R-15.6-50/ box1/redshift/nosyst/baofit/ind_void_nowt_parabola_case1 void none"' | sed -e "s/redshift/real/g" | bash
  echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/nosyst/tpcf_void_mock_nowt_R-15.6-50/ box1/redshift/nosyst/baofit/ind_void_nowt_parabola_case1 void none"' | sed -e "s/redshift/real/g; s/box1/box5/g; s/15\.6/18.5/g" | bash
  echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/nosyst/tpcf_void_mock_nowt_R-15.6-50/ box1/redshift/nosyst/baofit/ind_void_nowt_parabola_case1 void none"' | sed -e "s/box1/box5/g; s/15\.6/18.5/g" | bash
- 
+## C 3 
  echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/nosyst/tpcf_void_mock_nowt_R-loc_scaled2.2-loc_scaled5/ box1/redshift/nosyst/baofit/ind_void_nowt_parabola_case3 void none"' | sed -e "s/redshift/real/g" | bash
  echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/nosyst/tpcf_void_mock_nowt_R-loc_scaled2.2-loc_scaled5/ box1/redshift/nosyst/baofit/ind_void_nowt_parabola_case3 void none"' | bash
  echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/nosyst/tpcf_void_mock_nowt_R-loc_scaled2.2-loc_scaled5/ box1/redshift/nosyst/baofit/ind_void_nowt_parabola_case3 void none"' | sed -e "s/redshift/real/g; s/box1/box5/g" | bash
  echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/nosyst/tpcf_void_mock_nowt_R-loc_scaled2.2-loc_scaled5/ box1/redshift/nosyst/baofit/ind_void_nowt_parabola_case3 void none"' | sed -e "s/box1/box5/g" | bash
 
-
+#Angular wt
+## C 2
  echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/smooth/parabola_0.8/tpcf_void_mock_R-scaled2.2-50/ box1/redshift/smooth/parabola_0.8/baofit/ind_void_parabola_case2 void none"' | bash
  echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/smooth/parabola_0.8/tpcf_void_mock_R-scaled2.2-50/ box1/redshift/smooth/parabola_0.8/baofit/ind_void_parabola_case2 void none"'  | sed -e "s/box1/box5/g" | bash
  echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/smooth/parabola_0.8/tpcf_void_mock_R-scaled2.2-50/ box1/redshift/smooth/parabola_0.8/baofit/ind_void_parabola_case2 void none"'  | sed -e "s/box1/box5/g; s/redshift/real/g" | bash
  echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/smooth/parabola_0.8/tpcf_void_mock_R-scaled2.2-50/ box1/redshift/smooth/parabola_0.8/baofit/ind_void_parabola_case2 void none"'  | sed -e "s/redshift/real/g" | bash
-
+## C 3
  echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/smooth/parabola_0.8/tpcf_void_mock_R-loc_scaled2.2-loc_scaled5/ box1/redshift/smooth/parabola_0.8/baofit/ind_void_parabola_case3 void none"' | bash
  echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/smooth/parabola_0.8/tpcf_void_mock_R-loc_scaled2.2-loc_scaled5/ box1/redshift/smooth/parabola_0.8/baofit/ind_void_parabola_case3 void none"' | sed -e "s/box1/box5/g" | bash
  echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/smooth/parabola_0.8/tpcf_void_mock_R-loc_scaled2.2-loc_scaled5/ box1/redshift/smooth/parabola_0.8/baofit/ind_void_parabola_case3 void none"' | sed -e "s/box1/box5/g; s/redshift/real/g" | bash
  echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/smooth/parabola_0.8/tpcf_void_mock_R-loc_scaled2.2-loc_scaled5/ box1/redshift/smooth/parabola_0.8/baofit/ind_void_parabola_case3 void none"' | sed -e "s/redshift/real/g" | bash
-
+## C 1
  echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/smooth/parabola_0.8/tpcf_void_mock_R-15.6-50/ box1/redshift/smooth/parabola_0.8/baofit/ind_void_parabola_case1 void none"' | bash
  echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/smooth/parabola_0.8/tpcf_void_mock_R-15.6-50/ box1/redshift/smooth/parabola_0.8/baofit/ind_void_parabola_case1 void none"' | sed -e "s/redshift/real/g" | bash
  echo 'sbatch -p p4 -n16 -c1 --wrap="srun -n16 -c1 --mpi=pmi2 python /hpcstorage/dforero/projects/baosystematics/src/baofit/baofit_dir.py box1/redshift/smooth/parabola_0.8/tpcf_void_mock_R-15.6-50/ box1/redshift/smooth/parabola_0.8/baofit/ind_void_parabola_case1 void none"' | sed -e "s/redshift/real/g; s/box1/box5/g; s/15\.6/18.5/g" | bash
