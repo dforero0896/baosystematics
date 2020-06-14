@@ -12,6 +12,7 @@ import sys
 import os
 from params import *
 names = ['x', 'y', 'z', 'r', 'w', 'scaledr']
+from tqdm import tqdm
 def get_histogram(cat, rmin, rmax, bins=20, weights = False):
   cat_bin = cat[(cat['r'] > rmin ) & (cat['r'] < rmax)]
   H, edges = da.histogram(cat_bin['z'].values, density=False, bins=bins, range = [[0, box_size], [0, box_size]])
@@ -37,11 +38,13 @@ if __name__ == '__main__':
   
   zedges = np.linspace(0, box_size, NGRID + 1)
   if not os.path.exists(out_fn):
+    client = Client()
     data = dd.read_csv(f"{sys.argv[1]}/*", delim_whitespace=True, names=['z', 'r'], usecols=[2, 3])
-    #data = data.persist()
-    data['rid'] = da.digitize(data['r'].values, bins=radius_bins, right=True)
+    data=data.compute(scheduler='processes')
+    #data = client.persist(data)
+#    data['rid'] = da.digitize(data['r'].values, bins=radius_bins, right=True)
     histograms=[]
-    for i in range(len(radius_bins)-1):
+    for i in tqdm(range(len(radius_bins)-1)):
       hist, edges = get_histogram(data, radius_bins[i], radius_bins[i+1], bins=zedges) 
       histograms.append(hist)
     histograms = np.array(histograms)

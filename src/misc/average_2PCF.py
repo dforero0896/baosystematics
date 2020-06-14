@@ -31,14 +31,21 @@ if not os.path.isdir(out):
 	os.makedirs(out)
 print(f"==> Reading dir {path}")
 data = np.array(list(gen))
+print(data.shape)
 data[np.isnan(data)]=0
 if len(data) == 0:
 	sys.exit('ERROR: No files found.')
 mocks_mean = data.mean(axis=0)
 mocks_std = data.std(axis=0)
-mean_data_0, mean_data_1 = mocks_mean[:,1], mocks_mean[:,2]
-std_data_0, std_data_1 = mocks_std[:,1], mocks_std[:,2]
+mean_data_0 = mocks_mean[:,1]
+std_data_0 = mocks_std[:,1]
 xdata = data[0, :, 0]
+if mocks_mean.shape[1]>2:
+	mean_data_1 = mocks_mean[:,2]
+	std_data_1 = mocks_std[:,2]
+else:
+	mean_data_1 = np.zeros_like(mean_data_0)
+	std_data_1 = np.zeros_like(std_data_0)
 if mocks_mean.shape[1]>3:
 	mean_data_2 = mocks_mean[:,3]
 	std_data_2 = mocks_std[:,3]

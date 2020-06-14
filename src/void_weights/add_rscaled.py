@@ -1,8 +1,12 @@
 #!/usr/bin/env python
-from apply_void_weights import batch_add_scaled_void_radii, get_numdens_from_matrix, get_numdens_radial
 import sys
 import os
 import numpy as np
+from dotenv import load_dotenv
+load_dotenv()
+SRC = os.environ.get('SRC')
+sys.path.append(f"{SRC}/void_weights")
+from apply_void_weights import batch_add_scaled_void_radii, get_numdens_from_matrix, get_numdens_radial
 
 if __name__ == '__main__':
     if len(sys.argv) < 3:
