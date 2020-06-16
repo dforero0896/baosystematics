@@ -6,12 +6,7 @@ import numpy as np
 from mask_comp_func import mask_with_function
 from params import *
 
-
-def comp_mask_catalog(fn, odir, sigma_noise=0.2, function=parabola,\
-			cmin=0.8, names = ['x', 'y', 'z'], N_grid=2500, seed=2,\
-			noise_sampler=noise_sampler, rmin=RMIN, rmax=RMAX, \
-			cat_type='mock', use_scaled_r=0, scaled_rmin=None,\
-			scaled_rmax=None, space=SPACE, isfirst=False):
+def comp_mask_catalog(fn, odir, sigma_noise=0.2, function=parabola, cmin=0.8, names=['x', 'y', 'z'], N_grid=2500, seed=2, noise_sampler=noise_sampler, rmin=RMIN, rmax=RMAX, cat_type='mock', use_scaled_r=0, scaled_rmin=None, scaled_rmax=None, space=SPACE, isfirst=False, nu=1./4):
     print(f"==> Using function {function.__name__}")
     print(f"==> Using min. completeness {cmin}")
     complete_command='module load spack/default  gcc/5.4.0 boost\n'
@@ -32,6 +27,7 @@ def comp_mask_catalog(fn, odir, sigma_noise=0.2, function=parabola,\
     rr_file_shuf = os.path.join(os.path.dirname(random_shuf), 'RR_'+os.path.basename(random_shuf))
     joblist=open('joblist.sh', 'w')
     for i , on in enumerate(onames):
+        if i==1: continue
         write_void=False #So they are not recomputed in reruns
         if not os.path.exists(on):
             write_void = True #In case of error, in galaxies, overwrite voids too.
@@ -61,7 +57,9 @@ def comp_mask_catalog(fn, odir, sigma_noise=0.2, function=parabola,\
             n_gal_incomp = get_average_galaxy_density(N_gal_incomp)
             print(f"==> Using scaled R min = {scaled_rmin}")
             print(f"==> rmin param. is ignored")
-            rmin = np.round(scaled_rmin / (n_gal_incomp)**(1./4), 2)
+            if N_gal_incomp==0: print(on);sys.exit(0)
+            print(N_gal_incomp, scaled_rmin, n_gal_incomp)
+            rmin = np.round(scaled_rmin / (n_gal_incomp)**(nu), 2)
             rmin_fid = f"scaled{scaled_rmin}"
             rmax_fid = rmax 
             void_aux_col=4
@@ -80,7 +78,8 @@ def comp_mask_catalog(fn, odir, sigma_noise=0.2, function=parabola,\
             raise(NotImplementedError(f"Value {use_scaled_r} not understood."))
 
         oname_void = [os.path.join(obases[i],\
-			 f"{cat_type}s_void_xyz_wt_scaledR",\
+			 f"{cat_type}s_void_xyz",\
+			 #f"{cat_type}s_void_xyz_wt_scaledR",\
 			 os.path.basename(on).replace('.dat', f".VOID.dat")), \
 			 os.path.join(obases[i], 
 			 f"{cat_type}s_void_xyz_wt_scaledR",\
@@ -183,7 +182,7 @@ def comp_mask_catalog(fn, odir, sigma_noise=0.2, function=parabola,\
 if __name__ == '__main__':
     import argparse
     from mpi4py import MPI
-
+    from fractions import Fraction
     nproc = MPI.COMM_WORLD.Get_size()   # Size of communicator
     iproc = MPI.COMM_WORLD.Get_rank()   # Ranks in communicator
     inode = MPI.Get_processor_name()    # Node where this MPI process runs
@@ -193,6 +192,7 @@ if __name__ == '__main__':
     parser.add_argument("-b", "--box", required=False, help="Box to use: 1 or 5.") 
     parser.add_argument("-s", "--space", required=False, help="Space in which to compute: real or redshift.") 
     parser.add_argument("-r", "--scaledrmin", required=False, help="Scaled rmin value to use.")
+    parser.add_argument("-nu", "--nu_exponent", required=False, help="Exponent of the galaxy density to rescale radii.")
     parsed = parser.parse_args()
     args = vars(parsed)
     indir = args['INDIR']
@@ -202,20 +202,22 @@ if __name__ == '__main__':
     space = args['space'] or SPACE
     scaled_rmin = args['scaledrmin'] or SCALED_RMIN
     scaled_rmin=float(scaled_rmin)
+    nu=float(Fraction(args['nu_exponent'])) or 1./4
     print(parsed)
-    print(f"==> Using params: box={box}, space={space} scaled_rmin={scaled_rmin}.") 
+    print(f"==> Using params: box={box}, space={space} scaled_rmin={scaled_rmin}, nu={nu}.") 
     filenames = [os.path.join(indir, f) for f in os.listdir(indir)][:NMOCKS]
     filenames_split = np.array_split(filenames, nproc)
     joblist = open(f"joblists/jobs_{space}_{FUNCTION.__name__}_{comp_min}_{iproc}_box{box}_scaled_rmin{scaled_rmin}.sh", 'w')
     seeds = np.array_split(np.arange(0, len(filenames)), nproc)
     for i,f in enumerate(filenames_split[iproc]):
+        print(i, iproc)
         odir = os.path.abspath(os.path.dirname(f)+'/../..')
         command=comp_mask_catalog(f, odir, noise_sampler=noise_sampler, \
 				function = FUNCTION, cmin = comp_min, \
 				N_grid = NGRID, rmin = RMIN, rmax = RMAX, \
 				sigma_noise=0.2, use_scaled_r=USE_SCALED_R,\
 				scaled_rmin=scaled_rmin, scaled_rmax=SCALED_RMAX,\
-				space=space, isfirst=i==0, seed = seeds[iproc][i])
+				space=space, isfirst=i==0, seed = seeds[iproc][i], nu=nu)
         joblist.write(command)
     joblist.close()
     if iproc==0:

@@ -22,7 +22,7 @@ def R_vs_ngal(ngal, a, b, c, d):
 if __name__ == '__main__':
     colorlist = list(mcolors.TABLEAU_COLORS.keys())
     default_cycler = (cycler(color=colorlist)+cycler(linestyle=['-','--','-.', '-', '--','-.','-','--','-.', '-']))
-    #os.system(f"bash {SRC}/simulate_systematics/optimum_rescaled_radius.sh | tee {WORKDIR}/patchy_results/box1/redshift/plots/optimum_rescaled_radius.dat")			
+    os.system(f"bash {SRC}/simulate_systematics/optimum_rescaled_radius.sh | tee {WORKDIR}/patchy_results/box1/redshift/plots/optimum_rescaled_radius.dat")			
     fig, ax = plt.subplots(1,1, figsize=set_size('mnras', fraction=2, subplots=(1,1)))
     #ax.set_yscale('log')
     #ax.set_xscale('log')
