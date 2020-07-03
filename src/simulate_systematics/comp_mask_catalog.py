@@ -140,7 +140,7 @@ def comp_mask_catalog(fn, odir, sigma_noise=0.2, function=parabola, cmin=0.8, na
 						f".R-{rmin_fid}-{rmax_fid}.dat"))
             data_wt_col=data_wt_cols_void[weight]
             rr_file_shuf = rr_file_shuf.replace('.dat', f"_wt{weight}.dat")
-            if True:#not os.path.exists(dd_file_void):
+            if not os.path.exists(dd_file_void):
                 if use_scaled_r == 2:
                     if not os.path.exists(rr_file_shuf) and isfirst: 
                         count_mode = 4#5

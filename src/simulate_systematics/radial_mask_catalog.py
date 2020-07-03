@@ -83,7 +83,7 @@ def radial_mask_catalog(fn, odir, sigma=0.235, center=0.5,\
             raise(NotImplementedError(f"Value {use_scaled_r} not understood."))
         print(f"==> Using radius range [{rmin}, {rmax}]")
         # Define files for fcfc
-        cf_mode=2
+        cf_mode=0#2
         rr_file_shuf = rr_file_shuf.replace('.dat',f"R-{rmin_fid}-{rmax_fid}.dat") 
         data_wt_cols_gal= [0, 4]
         data_wt_cols_void= [0, 5]
@@ -118,7 +118,7 @@ def radial_mask_catalog(fn, odir, sigma=0.235, center=0.5,\
                 fcfc_gal_command = f"srun -n 1 -c {ncores} {RUN_FCFC} --conf={conf_file_gal} --data={on} --rand={random_mask} --count-mode={count_mode} --dd={dd_file_gal} --dr={dr_file_gal} --rr={rr_file_mask} --output={out_file_gal} --data-wt-col={data_wt_col} --cf-mode={cf_mode}\n"
             else:
                 ncores=NCORES
-                count_mode=1#3
+                count_mode=2#3
                 fcfc_gal_command = f"srun -n 1 -c {ncores} {RUN_FCFC} --conf={conf_file_gal} --data={on} --rand={random_mask} --count-mode={count_mode} --dd={dd_file_gal} --dr={dr_file_gal} --rr={rr_file_mask} --output={out_file_gal} --data-wt-col={data_wt_col} --cf-mode={cf_mode}\n"
             if not os.path.exists(out_file_gal) or overwrite:
                 joblist.write(fcfc_gal_command)    
@@ -147,7 +147,7 @@ def radial_mask_catalog(fn, odir, sigma=0.235, center=0.5,\
                 fcfc_void_command = f"srun -n 1 -c {ncores} {RUN_FCFC} --conf={conf_file_void} --data={oname_void[weight]} --rand={random_shuf} --count-mode={count_mode} --dd={dd_file_void} --dr={dr_file_void} --rr={rr_file_shuf} --output={out_file_void} --data-wt-col={data_wt_col} --data-aux-col={void_aux_col} --data-aux-min={rmin} --data-aux-max={rmax} --rand-aux-col={void_aux_col} --rand-aux-min={rmin} --rand-aux-max={rmax} --rand-select=23 --cf-mode={cf_mode}\n"
             else:
                 ncores=NCORES
-                count_mode=1#3
+                count_mode=2#3
                 fcfc_void_command = f"srun -n 1 -c {ncores} {RUN_FCFC} --conf={conf_file_void} --data={oname_void[weight]} --rand={random_shuf} --count-mode={count_mode} --dd={dd_file_void} --dr={dr_file_void} --rr={rr_file_shuf} --output={out_file_void} --data-wt-col={data_wt_col} --data-aux-col={void_aux_col} --data-aux-min={rmin} --data-aux-max={rmax} --rand-aux-col={void_aux_col} --rand-aux-min={rmin} --rand-aux-max={rmax} --rand-select=23 --cf-mode={cf_mode}\n"
             if not os.path.exists(out_file_void) or overwrite:
                 joblist.write(fcfc_void_command)    
@@ -204,11 +204,11 @@ if __name__ == '__main__':
         command=radial_mask_catalog(f, odir, N_grid = NGRID, rmin = RMIN, rmax = RMAX, \
 				sigma=0.235, center = 0.5, use_scaled_r=USE_SCALED_R,\
 				scaled_rmin=SCALED_RMIN, scaled_rmax=SCALED_RMAX,\
-				space=space, overwrite=False, isfirst=i==0)
+				space=space, overwrite=True, isfirst=i==0)
         joblist.write(command)
     joblist.close()
     MPI.COMM_WORLD.Barrier()
-    if iproc == 0:
-        from save_spatial_densities import mp_save_radial_density
-        mp_save_radial_density(f"{odir}/radialgauss/mocks_gal_xyz")
+#    if iproc == 0:
+#        from save_spatial_densities import mp_save_radial_density
+#        mp_save_radial_density(f"{odir}/radialgauss/mocks_gal_xyz")
     MPI.Finalize()

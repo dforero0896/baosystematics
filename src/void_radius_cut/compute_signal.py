@@ -25,7 +25,7 @@ if __name__ == '__main__':
     s_dr_1 = 117.5
     s_dr_2 = 122.5
     s_vals = [s_bao, s_dl_1, s_dl_2, s_dr_1, s_dr_2]
-    print(f"# SNR\tbias\tstderr\tconf_int_low\tconf_int_high\tsamples_dir\tn_samples")
+    print(f"# S\tbias\tstderr\tconf_int_low\tconf_int_high\tsamples_dir\tn_samples")
     for ilist_fn in ilists_fn:
         ilist = read_inlist(ilist_fn)
         signal_arr=[]
@@ -40,8 +40,8 @@ if __name__ == '__main__':
             signal_arr.append(xi_vals[0] - np.mean(xi_vals[1:]))
         #signal_resamples = jackknife_resampling(signal_arr)
         signal_arr = np.array(signal_arr)
-        SNR, bias, stderr, conf_interval = jackknife_stats(signal_arr, signal_to_noise_ratio, 0.95)
-        print(f"{SNR}\t{bias}\t{stderr}\t{conf_interval[0]}\t{conf_interval[1]}\t{os.path.dirname(ilist[0])}\t{len(signal_arr)}")
+        S, bias, stderr, conf_interval = jackknife_stats(signal_arr, np.mean, 0.95)
+        print(f"{S}\t{bias}\t{stderr}\t{conf_interval[0]}\t{conf_interval[1]}\t{os.path.dirname(ilist[0])}\t{len(signal_arr)}")
         #resamples = jackknife_resampling(signal_arr)
 
         #jack_stat = np.apply_along_axis(signal_to_noise_ratio, 1, resamples)
