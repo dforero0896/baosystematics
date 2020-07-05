@@ -37,7 +37,7 @@ done
 
 
 RR_FILE=${WORKDIR}/patchy_results/box${BOX}/${SPACE}/radialgauss/void_ran/RR_2dvoid_ranR-15.6-50.dat
-IDIR=${WORKDIR}/patchy_results/box${BOX}/${SPACE}/radialgauss/tpcf2d_void_mock_nowt_R-15.6-50.dat
+IDIR=${WORKDIR}/patchy_results/box${BOX}/${SPACE}/radialgauss/tpcf2d_void_mock_nowt_R-15.6-50
 ODIR=${IDIR}_projected
 if [[ ! -e $ODIR ]]; then
 mkdir -v $ODIR
