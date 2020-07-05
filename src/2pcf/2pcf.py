@@ -14,25 +14,25 @@ def tpcf(dd, rr=None, dr=None, box_size=2500):
 		Default: box_size = 2500"""
     
     if rr is None:    
-        rr = rr_analytic(dd[:,0], dd[:,1], box_size)
+        rr0 = rr_analytic(dd[:,0], dd[:,1], box_size)
     else:
-        rr = rr[:,2]
+        rr0 = rr[:,2]
         
     delta_s = dd[:,1] - dd[:,0]
     s = dd[:,0] + 0.5 * delta_s
     if dr is None:
-        monopole = ( dd[:,2] / rr ) - 1
+        monopole = ( dd[:,2] / rr0 ) - 1
         if dd.shape[-1] > 3:
-            quadrupole =  dd[:,3] / rr 
-            hexadecapole = dd[:,4] / rr * 2 
+            quadrupole =  dd[:,3] / rr0 
+            hexadecapole = dd[:,4] / rr0 * 2 
         else:
             quadrupole = np.zeros_like(dd[:,0])
             hexadecapole=quadrupole
     else:
-        monopole = (dd[:,2] - 2 * dr[:,2] + rr) / rr
+        monopole = (dd[:,2] - 2 * dr[:,2] + rr0) / rr0
         if dd.shape[-1] > 3:
-            quadrupole = dd[:,3]  / rr
-            hexadecapole = dd[:,4] / rr * 2
+            quadrupole = (dd[:,3]  - 2 * dr[:,3] + rr[:,3]) / rr0
+            hexadecapole = (dd[:,4]  - 2 * dr[:,4] + rr[:,4]) / rr0
         else:
             quadrupole = np.zeros_like(dd[:,0])
             hexadecapole=quadrupole
