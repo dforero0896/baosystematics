@@ -31,7 +31,7 @@ if __name__ == '__main__':
         signal_arr=[]
         for ifile in ilist:
             ipath = ifile
-            iarr = pd.read_csv(ipath, delim_whitespace=True).values#np.loadtxt(ipath)
+            iarr = pd.read_csv(ipath, delim_whitespace=True, engine='c').values#np.loadtxt(ipath)
             if any((iarr[:,0]**2*iarr[:,1])[-2:]>5e2): continue
             s = iarr[:,0]
             xi = iarr[:,1]
