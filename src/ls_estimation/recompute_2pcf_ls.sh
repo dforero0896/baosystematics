@@ -12,7 +12,7 @@ DD_file=$(echo ${DR_file} | sed -e "s/DR_files/DD_files/g; s/DR/DD/g")
 OFILE=${ODIR}/$(basename ${TPCF_file})
 if [[ -e $OFILE ]]; then
 echo "Exists"
-#exit 0
+exit 0
 
 fi
 echo "~/codes/2pcf.py -dd ${DD_file} -dr ${DR_file} -rr ${RR_file} -o ${OFILE}"
