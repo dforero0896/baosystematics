@@ -11,7 +11,7 @@ TPCF_file=$(echo ${DR_file} | sed -e "s/DR_file\///g; s/DR/TwoPCF/g")
 DD_file=$(echo ${DR_file} | sed -e "s/DR_files/DD_files/g; s/DR/DD/g")
 OFILE=${ODIR}/$(basename ${TPCF_file})
 if [[ -e $OFILE ]]; then
-echo "Exists"
+echo "echo Exists"
 exit 0
 
 fi
