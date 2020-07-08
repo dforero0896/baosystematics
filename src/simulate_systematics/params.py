@@ -25,7 +25,7 @@ RUN_FCFC_2D=os.path.join(WORKDIR, 'bin/FCFC_2D/2pcf')
 RUN_DIVE = os.path.join(WORKDIR, 'bin/DIVE_box/DIVE_box') 
 box_size=2500
 
-USE_SCALED_R = 2	# Object selection mode for voids
+USE_SCALED_R = 0	# Object selection mode for voids
 			# 0: Use provided dimensionful RMIN, RMAX to select objects
 			#	from corresponding aux column (4) (default)
 			# 1: Compute scaled R using average galaxy density

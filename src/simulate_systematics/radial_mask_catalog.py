@@ -83,7 +83,7 @@ def radial_mask_catalog(fn, odir, sigma=0.235, center=0.5,\
             raise(NotImplementedError(f"Value {use_scaled_r} not understood."))
         print(f"==> Using radius range [{rmin}, {rmax}]")
         # Define files for fcfc
-        cf_mode=0#2
+        cf_mode=1#2
         rr_file_shuf = rr_file_shuf.replace('.dat',f"R-{rmin_fid}-{rmax_fid}.dat") 
         data_wt_cols_gal= [0, 4]
         data_wt_cols_void= [0, 5]
