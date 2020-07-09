@@ -1,7 +1,7 @@
 #!/bin/bash
 list=/hpcstorage/dforero/projects/baosystematics/data/patchy_boxes/used_patchy.dat
 N_mocks=500
-BOX=1
+BOX=5
 mockdir=/hpcstorage/dforero/projects/baosystematics/data/patchy_boxes/PATCHY_CMASS/box${BOX}
 subsetdir=/hpcstorage/dforero/projects/baosystematics/data/patchy_boxes/patchy_cmass_subset/box${BOX}/real
 mkdir -p -v $subsetdir

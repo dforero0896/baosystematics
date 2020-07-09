@@ -13,8 +13,8 @@ sys.path.append(f"{SRC}/simulate_systematics")
 from params import *
 def load_binaries(filenames, ax = None, ngal=None, threshold=0.5, **kwargs):
    
-    store_means=np.empty((len(filenames), 100))
-    store_stds = np.copy(store_means)
+    store_means=[]
+    store_stds = []
     completeness = []
     for i, data_bin in enumerate(filenames):
         try:
@@ -31,8 +31,8 @@ def load_binaries(filenames, ax = None, ngal=None, threshold=0.5, **kwargs):
             data_mean = data[:,1]
             data_std = np.empty_like(data[:,1])
             Rbins = data[:,0]
-        store_means[i,:] = data_mean
-        store_stds[i,:] = data_std
+        store_means.append(data_mean)
+        store_stds.append(data_std)
         try:
             add_label=kwargs.pop('label')
         except:
@@ -44,7 +44,7 @@ def load_binaries(filenames, ax = None, ngal=None, threshold=0.5, **kwargs):
             if len(data.shape)==3:
                 ax.fill_between(r_scaling * Rbins, data_mean-data_std, data_mean+data_std, alpha=0.2)
     
-    return Rbins, store_means, store_stds, completeness
+    return Rbins, np.array(store_means), np.array(store_stds), completeness
 
 def find_intersection_arrays(x, y1, y2, **kwargs):
 
