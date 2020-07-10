@@ -22,7 +22,7 @@ if __name__ == '__main__':
     obin = f"{odir}/void_radii_distribution.npy"
     radius_bins = np.append(np.linspace(0, 35, 71), [50])
     nbins = 100
-    if not os.path.isfile(obin):
+    if True:#not os.path.isfile(obin):
         radii_dist = np.empty([nbins, 2])
 #        for i, fn in enumerate(catalog_fn):
 #            print(f"==> Reading file: {fn}")
