@@ -25,8 +25,6 @@ if __name__ == '__main__':
     default_cycler = (cycler(color=colorlist)+cycler(linestyle=['-','--','-.', '-', '--','-.','-','--','-.', '-']))
     #os.system(f"bash {SRC}/simulate_systematics/optimum_rescaled_radius.sh | tee {WORKDIR}/patchy_results/box1/redshift/plots/optimum_rescaled_radius.dat")			
     fig, ax = plt.subplots(1,1, figsize=set_size('mnras', fraction=2, subplots=(1,1)))
-    #ax.set_yscale('log')
-    #ax.set_xscale('log')
     ax.set_prop_cycle(default_cycler)
     space='redshift'
     boxes = ['1']
@@ -49,9 +47,9 @@ if __name__ == '__main__':
         #rvals = NGAL[box]**(1./3) * Rvals
         line, = ax.plot(1e4 * ngals, Rvals*ngals**(-slope), marker=(5, 1, 180), lw=0, c = 'k')
         print(np.mean(Rvals*ngals**(-slope)))
-        ax.axhline(np.exp(intercept)*10**(4*slope), c='k', ls='--', label=r'$\bar{n}_{\mathrm{gal}}^{%0.2f}~R^* = %+.2f$ (Mpc/$h$)$^{1/4}$'%(-slope,np.exp(intercept)*10**(4*slope)))
+        ax.axhline(np.exp(intercept)*10**(4*slope), c='k', ls='--', label=r'$\bar{n}_{\mathrm{gal}}^{%0.2f}~R^* = %+.2f$ (Mpc/$h$)$^{%.2f}$'%(-slope,np.exp(intercept)*10**(4*slope), -slope))
         ax.plot(ngal_linsp, (ngal_linsp*1e-4)**(-slope)*np.exp(slope*np.log(ngal_linsp) + intercept), label=r"$\log R^* =%+.2f %+.2f \log(10^4\bar{n}_{\mathrm{gal}})$"%(intercept, slope), c = 'r')
-    ax.set_ylabel(r'$\bar{n}_{\mathrm{gal}}^{1/4}~R^*$ [(Mpc/$h$)$^{1/4}$]', fontsize=11)
+    ax.set_ylabel(r'$\bar{n}_{\mathrm{gal}}^{%.2f}~R^*$ [(Mpc/$h$)$^{%.2f}$]'%(-slope, -slope), fontsize=11)
     ax.set_xlabel(r'$\bar{n}_{\mathrm{gal}}$ [$10^{-4}h^3$/Mpc$^3]$', fontsize=11)
     ax.set_ylim(1,3)
     ax.legend(loc=0)
