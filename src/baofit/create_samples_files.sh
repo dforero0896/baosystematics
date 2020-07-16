@@ -1,5 +1,5 @@
 #!/bin/bash
-BOX="5"
+BOX="1"
 WORKDIR=/hpcstorage/dforero/projects/baosystematics/patchy_results/box${BOX}
 for case_ in 1 2 3
 do
