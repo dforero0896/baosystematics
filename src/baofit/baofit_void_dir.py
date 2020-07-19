@@ -5,11 +5,11 @@ import tempfile
 import numpy as np
 import stats_center
 import re
+from tqdm import tqdm
 
 def trim_letters(name):
     name = name.replace('TwoPCF_','')
     new = re.sub('sigma.*R','R', name)
-    print(new)
     return new
 
 if len(sys.argv)!=5:
@@ -46,9 +46,8 @@ for m in in2pcf:
 	mockFile.writelines(os.path.join(input2PCF, m+'\n'))
 
 joblist = open('void_dir_joblist.sh', 'w')
-for idx, tpcf in enumerate(in2pcf):
+for idx, tpcf in tqdm(enumerate(in2pcf)):
 	tpcf_fn = os.path.join(input2PCF, tpcf)
-	print(tpcf_fn)
 	tpcf_base, ext = os.path.splitext(tpcf)
 	if idx==0 and not os.path.isfile(r):
 		compute_cov = 1
@@ -57,7 +56,6 @@ for idx, tpcf in enumerate(in2pcf):
 	i = tpcf_fn
 	m = mockFile_name
 	o = os.path.join(outPath, "BAOfit_"+trim_letters(tpcf))
-	print(o)
 	b = o+'mystats.txt' 
 	# Check if the output of stats_center exists.
 	if not os.path.isfile(o+'.txt' ): #Check if chain file exists

@@ -5,7 +5,7 @@ for case_ in 1 2 3
 do
 for space in real redshift
 do
-for tracer in individual_gal individual_gal_nowt ind_void_parabola_case${case_} ind_void_nowt_parabola_case${case_}
+for tracer in individual_gal individual_gal_nowt ind_void_parabola_case${case_} ind_void_nowt_parabola_case${case_} individual_void_nowt_case${case_}_template
 do
 
 files=$WORKDIR/$space/nosyst/baofit/${tracer}/*mystats*
