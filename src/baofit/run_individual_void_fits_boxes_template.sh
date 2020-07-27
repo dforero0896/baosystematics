@@ -31,7 +31,7 @@ if [[ ! -e ${ODIR} ]]; then
 mkdir -v ${ODIR}
 fi
 cd $ODIR && ${RUN} ../../tpcf_void_mock_nowt_R-${SUFFIX}/ ./ void none
-#echo "cd ${ODIR} && $(head -1 ${ODIR}/void_dir_joblist.sh)"
+wc -l ${ODIR}/void_dir_joblist.sh
 echo "sbatch -p p5 -n1 -c1 --chdir=${ODIR} --wrap='bash void_dir_joblist.sh'"
 done
 done

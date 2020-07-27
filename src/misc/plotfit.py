@@ -26,7 +26,7 @@ def plotfit(mean_files, bestfit_file, outdir, title):
 	plot_bao(bestfit_data[:,0], bestfit_data[:,-1], label = 'Best fit', c = 'b', lw = 3, ls = '--')
 	plt.xlabel(r'$s$ [$h^{-1}$Mpc]')
 	plt.ylabel(r'$s^2\xi_0$')
-	plt.xlim(60, 150)
+#	plt.xlim(60, 150)
 	plt.ylim(-25, 30)
 	plt.legend(loc=0)
 	plt.title(title)

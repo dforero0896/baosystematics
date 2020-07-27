@@ -1,4 +1,6 @@
 #!/bin/bash
+find abacus_results/ -name '*.npy' -size -3G | xargs -I '{}' cp -u -v {} --parents reports/
+find abacus_results/ -wholename '*/avg*' -size -3G | xargs -I '{}' cp -u -v {} --parents reports/
 find patchy_results/ -wholename '*plots/*' -size -3G| xargs -I '{}' cp -u -v {} --parents reports/
 find patchy_results/ -name '*.npy' -size -3G | xargs -I '{}' cp -u -v {} --parents reports/
 find patchy_results/ -wholename '*baofit/avg*/*' -size -3G | xargs -I '{}' cp -u -v {} --parents reports/
