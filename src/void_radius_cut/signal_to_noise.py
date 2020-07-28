@@ -14,6 +14,15 @@ def read_inlist(inlist_fn):
     return inlist
 def signal_to_noise_ratio(arr):
     return np.mean(arr)/np.std(arr)
+def snr_constant_noise(arr, confidence_level=0.95):
+    snr = arr/np.std(arr)
+    mean_snr = np.mean(snr)
+    std_err = np.std(snr)/np.sqrt(snr.shape[0])
+    from scipy.special import erfinv
+    estimate = mean_snr
+    z_score = np.sqrt(2.0)*erfinv(confidence_level)
+    conf_interval = estimate + z_score*np.array((-std_err, std_err))
+    return estimate, 0, std_err, conf_interval
 if __name__ == '__main__':
     if len(sys.argv)<2:
         sys.exit('ERROR: Unexpecte number of arguments.\nUSAGE: %s INPUT_FILE_LIST_1 [...INPUT_FILE_LIST_N]\n'%sys.argv[0])
@@ -40,14 +49,7 @@ if __name__ == '__main__':
             signal_arr.append(xi_vals[0] - np.mean(xi_vals[1:]))
         #signal_resamples = jackknife_resampling(signal_arr)
         signal_arr = np.array(signal_arr)
-        SNR, bias, stderr, conf_interval = jackknife_stats(signal_arr, signal_to_noise_ratio, 0.95)
+        #SNR, bias, stderr, conf_interval = jackknife_stats(signal_arr, signal_to_noise_ratio, 0.95)
+        SNR, bias, stderr, conf_interval = snr_constant_noise(signal_arr, 0.95)
         print(f"{SNR}\t{bias}\t{stderr}\t{conf_interval[0]}\t{conf_interval[1]}\t{os.path.dirname(ilist[0])}\t{len(signal_arr)}")
-        #resamples = jackknife_resampling(signal_arr)
 
-        #jack_stat = np.apply_along_axis(signal_to_noise_ratio, 1, resamples)
-        #import matplotlib.pyplot as plt
-        #plt.hist(jack_stat, bins=100, label='%.1f +/- %.1f'%(SNR, stderr), histtype='step')
-        #plt.legend()
-        #SNR = signal_to_noise_ratio(signal_arr)
-        #print(f"{SNR}\t{os.path.dirname(ilist[0])}\t{len(ilist)}")
-    #plt.show()

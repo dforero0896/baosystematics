@@ -3,7 +3,7 @@ source ../.env
 
 RUN=${SRC}/baofit/baofit_void_dir.py
 
-for BOX in 1 #5
+for BOX in 5 #1
 do
 for SPACE in real redshift
 do
@@ -13,13 +13,20 @@ for CASE in 1 #2 3
 do
 case ${CASE} in
 1)
-SUFFIX=15.6-50
+	case ${BOX} in
+	1)
+	SUFFIX=15.6-50
+	;;
+	5)
+	SUFFIX=18.5-50
+	;;
+	esac
 ;;
 2)
-SUFFIX=scaled2.2-50
+	SUFFIX=scaled2.2-50
 ;;
 3)
-SUFFIX=loc_scaled2.2-loc_scaled5
+	SUFFIX=loc_scaled2.2-loc_scaled5
 ;;
 *)
 exit 1

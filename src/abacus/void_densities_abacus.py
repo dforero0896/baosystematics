@@ -19,7 +19,7 @@ def void_density(ifile):
     obase = os.path.dirname(ifile)
     ofile = f"{obase}/void_number_density.npy"
     data = pd.read_csv(ifile, delim_whitespace=True, names=['r'], usecols=[3], engine='c')
-    edges = np.linspace(0, 60, 100)
+    edges = np.linspace(0, 50, 100)
     hist, _ = np.histogram(data.values, bins=edges, density=True)
     tosave = np.c_[edges[:-1], edges[1:], hist]
     np.save(ofile, tosave)    
