@@ -7,7 +7,7 @@ for BOX in 5 #1
 do
 for SPACE in real redshift
 do
-for SYST in nosyst #smooth/parabola_0.8 radialgauss
+for SYST in radialgauss smooth/parabola_0.8 #nosyst radialgauss
 do
 for CASE in 1 #2 3
 do
@@ -39,7 +39,7 @@ mkdir -v ${ODIR}
 fi
 cd $ODIR && ${RUN} ../../tpcf_void_mock_nowt_R-${SUFFIX}/ ./ void none
 wc -l ${ODIR}/void_dir_joblist.sh
-echo "sbatch -p p5 -n1 -c1 --chdir=${ODIR} --wrap='bash void_dir_joblist.sh'"
+echo "sbatch -p p4 -n1 -c16 --chdir=${ODIR} --wrap='~/codes/jobfork_setup/jobfork_omp void_dir_joblist.sh'"
 done
 done
 done
