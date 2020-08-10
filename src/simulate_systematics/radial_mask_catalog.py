@@ -208,7 +208,7 @@ if __name__ == '__main__':
         joblist.write(command)
     joblist.close()
     MPI.COMM_WORLD.Barrier()
-#    if iproc == 0:
-#        from save_spatial_densities import mp_save_radial_density
-#        mp_save_radial_density(f"{odir}/radialgauss/mocks_gal_xyz")
+    if iproc == 0:
+        from save_spatial_densities import mp_save_radial_density
+        mp_save_radial_density(f"{odir}/radialgauss/mocks_gal_xyz")
     MPI.Finalize()

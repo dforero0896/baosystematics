@@ -9,6 +9,7 @@ NMOCKS = 500
 NGAL = {'1':3.976980e-4, '5':1.976125e-4}
 ZBOXES = {'1':0.2384, '5':0.6383}
 NGRID=2500
+NGRID_HIST=250
 # Define relevant paths
 WORKDIR = "/home/epfl/dforero/scratch/projects/baosystematics"
 RESULTS = WORKDIR+"/patchy_results"
@@ -65,7 +66,7 @@ def parabola_off(y, x, N_grid, Cmin):
 funclist = [parabola, xplane, flat, parabola_off]
 
 # Define which function is actually being used
-FUNCTION = flat #parabola 
+FUNCTION = parabola 
 
 # Define function to compute average galaxy density
 def line_count(filename):

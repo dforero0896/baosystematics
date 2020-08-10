@@ -10,7 +10,7 @@ load_dotenv()
 SRC = os.environ.get('SRC')
 sys.path.append(f"{SRC}/simulate_systematics")
 from params import *
-def dask_save_radial_density(files, box_size=box_size, N_grid=NGRID):
+def dask_save_radial_density(files, box_size=box_size, N_grid=NGRID_HIST):
     fnlist = os.listdir(files)
     nmocks = len(fnlist)
     zedges = np.linspace(0, box_size, N_grid + 1)
@@ -25,14 +25,14 @@ def dask_save_radial_density(files, box_size=box_size, N_grid=NGRID):
     np.save(oname, histcomp)    
     print(f"==> Saved {oname}")
 
-def radial_n_worker(fname, box_size=box_size, N_grid=NGRID):
+def radial_n_worker(fname, box_size=box_size, N_grid=NGRID_HIST):
     zedges = np.linspace(0, box_size, N_grid + 1)
     data = pd.read_csv(f"{fname}", delim_whitespace=True, usecols=[2],\
 			names = ['z'], dtype=np.float32)
     hist, _ = np.histogram(data['z'].values, bins = zedges)
     #hist = hist/(box_size * box_size * (zedges[1:] - zedges[:-1]))
     return hist
-def ang_n_worker(fname, box_size=box_size, N_grid=NGRID):
+def ang_n_worker(fname, box_size=box_size, N_grid=NGRID_HIST):
     xedges = np.linspace(0, box_size, N_grid + 1)
     yedges = xedges
     data = pd.read_csv(f"{fname}", delim_whitespace=True, usecols=[0,1],\
@@ -41,7 +41,7 @@ def ang_n_worker(fname, box_size=box_size, N_grid=NGRID):
 				bins =(xedges, yedges))
     #hist = hist/(box_size * (xedges[1:] - xedges[:-1]) * (yedges[1:] - yedges[:-1]))
     return hist
-def mp_save_radial_density(files, box_size=box_size, N_grid=NGRID, out='ngal_radial.npy'):
+def mp_save_radial_density(files, box_size=box_size, N_grid=NGRID_HIST, out='ngal_radial.npy'):
 
     import multiprocessing as mp
     size = mp.cpu_count()
@@ -54,7 +54,7 @@ def mp_save_radial_density(files, box_size=box_size, N_grid=NGRID, out='ngal_rad
     oname = f"{odir}/{out}"
     np.save(oname, histcomp)    
     print(f"==> Saved {oname}")
-def mp_save_ang_density(files, box_size=box_size, N_grid=NGRID, out="ngal_ang.npy"):
+def mp_save_ang_density(files, box_size=box_size, N_grid=NGRID_HIST, out="ngal_ang.npy"):
     import multiprocessing as mp
     size = mp.cpu_count()
     fnlist = [os.path.join(files, f) for f in os.listdir(files)]
@@ -68,7 +68,7 @@ def mp_save_ang_density(files, box_size=box_size, N_grid=NGRID, out="ngal_ang.np
     print(f"==> Saved {oname}")
 
         
-def iter_save_radial_density(files, box_size=box_size, N_grid=NGRID):
+def iter_save_radial_density(files, box_size=box_size, N_grid=NGRID_HIST):
     # Very slow
     fnlist = [os.path.join(files, f) for f in os.listdir(files)]
     result = []

@@ -202,13 +202,15 @@ if __name__ == '__main__':
     space = args['space'] or SPACE
     scaled_rmin = args['scaledrmin'] or SCALED_RMIN
     scaled_rmin=float(scaled_rmin)
-    nu=float(Fraction(args['nu_exponent'])) or 1./4
+    nu_str = args['nu_exponent'] or "1/4"
+    nu=float(Fraction(nu_str))
     print(parsed)
     print(f"==> Using params: box={box}, space={space} scaled_rmin={scaled_rmin}, nu={nu}.") 
     filenames = [os.path.join(indir, f) for f in os.listdir(indir)][:NMOCKS]
     filenames_split = np.array_split(filenames, nproc)
     joblist = open(f"joblists/jobs_{space}_{FUNCTION.__name__}_{comp_min}_{iproc}_box{box}_scaled_rmin{scaled_rmin}.sh", 'w')
-    seeds = np.array_split(np.arange(0, len(filenames)), nproc)
+#    seeds = np.array_split(np.arange(0, len(filenames)), nproc)
+    seeds = np.array_split(2 * np.ones(len(filenames), dtype=int), nproc)
     for i,f in enumerate(filenames_split[iproc]):
         print(i, iproc)
         odir = os.path.abspath(os.path.dirname(f)+'/../..')
@@ -220,11 +222,12 @@ if __name__ == '__main__':
 				space=space, isfirst=i==0, seed = seeds[iproc][i], nu=nu)
         joblist.write(command)
     joblist.close()
+    MPI.COMM_WORLD.Barrier()
     if iproc==0:
         from save_spatial_densities import mp_save_ang_density
-        if not os.path.exists(f"{odir}/noise/{FUNCTION.__name__}_{cmin_map}/mocks_gal_xyz"):
-            mp_save_ang_density(f"{odir}/noise/{FUNCTION.__name__}_{cmin_map}/mocks_gal_xyz")
-        if not os.path.exists(f"{odir}/smooth/{FUNCTION.__name__}_{cmin_map}/mocks_gal_xyz"):
+        #if not os.path.exists(f"{odir}/noise/{FUNCTION.__name__}_{cmin_map}/plots"):
+        #    mp_save_ang_density(f"{odir}/noise/{FUNCTION.__name__}_{cmin_map}/mocks_gal_xyz")
+        if True:#not os.path.exists(f"{odir}/smooth/{FUNCTION.__name__}_{cmin_map}/plots"):
             mp_save_ang_density(f"{odir}/smooth/{FUNCTION.__name__}_{cmin_map}/mocks_gal_xyz")
     MPI.Finalize()
     
