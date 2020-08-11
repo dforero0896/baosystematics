@@ -3,13 +3,13 @@ source ../.env
 
 RUN=${SRC}/baofit/baofit_void_dir.py
 
-for BOX in 5 1
+for BOX in 5 #1
 do
-for SPACE in real redshift
+for SPACE in real #redshift
 do
-for SYST in radialgauss smooth/parabola_0.8 #nosyst radialgauss
+for SYST in radialgauss #smooth/parabola_0.8 #nosyst radialgauss
 do
-for CASE in 3 2 #1
+for CASE in 3 #2 #1
 do
 case ${CASE} in
 1)
