@@ -1,11 +1,13 @@
 #---------------------------------------------------------------------
 # BAO REC: parameter file
 #---------------------------------------------------------------------
-file =  CATALPTCICz0.466G960S1005638091.dat
+#file =  /home/astro/dforero/scratch/projects/baosystematics/patchy_results/box5/redshift/nosyst/mocks_gal_xyz/CATALPTCICz0.638G960S1005638091_zspace.dat
+file = /home/astro/dforero/scratch/projects/baosystematics/patchy_results/box5/real/nosyst/mocks_gal_xyz/CATALPTCICz0.638G960S1005638091.dat
 fileWin = # is not being used at the moment, but should be used with survey geomtery
 inputformat = 1 # 0: px,py,pz,vx,vy,vz | 1: px,py,pz,vx,vy,vz,d1 | 2: px,py,pz,vx,vy,vz,d1,d2
 #---------------------------------------------------------------------
-dir = 
+#dir = /home/astro/dforero/scratch/projects/baosystematics/patchy_recon/box5/redshift/nosyst/mocks_gal_xyz/
+dir = /home/astro/dforero/scratch/projects/baosystematics/patchy_recon/box5/real/nosyst/mocks_gal_xyz/
 #---------------------------------------------------------------------
 Nx =  960 # Number of voxels x 
 #---------------------------------------------------------------------
@@ -16,7 +18,7 @@ N_bin2 = 200 # is not being used at the moment
 #---------------------------------------------------------------------
 masskernel = 1 # 0: NGP, 1: CIC, 2:TSC
 #---------------------------------------------------------------------
-rsd = false # adds RSD from vx,vy,vz and plane parallel approximation
+rsd = true # adds RSD from vx,vy,vz and plane parallel approximation
 secordLPT = false # 2nd order LPT
 rsmol = 5.  # smoothing scale
 biasL = 2.2

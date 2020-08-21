@@ -1,5 +1,5 @@
 #!/usr/bin/bash
-WORKDIR=/hpcstorage/dforero/projects/baosystematics
+source ../.env
 results_dir=$1
 if [[ $# -ne 5 ]]; then
 	echo ERROR: Unexpected number of arguments.

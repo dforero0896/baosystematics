@@ -50,7 +50,7 @@ case ${case_} in
   1)
    SEL_COL=4
    SEL_MIN=${RMIN_C1}
-   OSUFFIX=15.6-inf
+   OSUFFIX=${RMIN_C1}-inf
   ;;
   2)
    SEL_COL=4
@@ -76,7 +76,7 @@ mkdir -v ${ODIR}
 fi
 
 ONAME=${ODIR}/powspec_$(basename ${DAT})
-SELECTION="\"\\\$${SEL_COL} > ${SEL_MIN}\""
+SELECTION="\"\\\$${SEL_COL} > ${SEL_MIN} && \\\$1 < 2500 && \\\$1 > 0 && \\\$2 < 2500 && \\\$2 > 0 && \\\$3 < 2500 && \\\$3 > 0\""
 COMMAND="${RUN} --data=${DAT} --rand=${RAN} --data-formatter=${FORMAT} --rand-formatter=${FORMAT} --data-nz=${DATA_NZ} --data-select=${SELECTION} --rand-select=${SELECTION} --auto=${ONAME} --sim=${CUBIC_SIM} --conf=$(readlink -f ${WORKDIR}/src/powspec/powspec.conf)"
 
 echo "sbatch -J powspec -p p4 --mem-per-cpu=64G -n1 -c16 --wrap='${COMMAND}'"
