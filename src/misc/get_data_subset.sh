@@ -9,6 +9,6 @@ fi
 
 if [[ "$side" == "L" ]]; then
 DIR=${2:-"."}
-head -1 copy_to_local.dat | xargs -I'{}' rsync --relative -av -e 'ssh -p 4022' dforero@localhost:{} --parents ${DIR}
+head -1 copy_to_local.dat | xargs -I'{}' rsync --relative -av -e 'ssh -p 4022' dforero@localhost:{} ${DIR}
 fi
 
