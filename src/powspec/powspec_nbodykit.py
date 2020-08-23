@@ -70,9 +70,9 @@ if __name__=='__main__':
     plt.xlim(0.01, 0.6)
 
 
-    Pk1d=np.c_[Pk['k'], Pk['power'].real-Pk.attrs['shotnoise'])
+    Pk1d=np.c_[Pk['k'], Pk['power'].real-Pk.attrs['shotnoise']]
     np.savetxt(f"{args['out']}/powspec1d_{os.path.basename(args['filename'])}", Pk1d)
-    Pk1d=np.c_[poles['k'], poles['power_0'].real-poles.attrs['shotnoise'])
+    Pk1d=np.c_[poles['k'], poles['power_0'].real-poles.attrs['shotnoise']]
     np.savetxt(f"{args['out']}/powspec2d_ell0_{os.path.basename(args['filename'])}", Pk1d)
     plt.gcf()
     plt.savefig(f"{args['out']}/powspec_{os.path.basename(args['filename'])}.pdf", dpi=300, rasterize=True)
