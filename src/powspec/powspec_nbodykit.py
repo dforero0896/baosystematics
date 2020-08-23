@@ -12,6 +12,7 @@ from dotenv import load_dotenv
 load_dotenv()
 import os
 WORKDIR=os.getenv('WORKDIR')
+import matplotlib.pyplot as plt
 
 
 if __name__=='__main__':  
