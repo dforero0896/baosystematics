@@ -8,13 +8,18 @@ from nbodykit import setup_logging
 import dask.array as da
 from nbodykit import CurrentMPIComm
 comm = CurrentMPIComm.get()
+from dotenv import load_dotenv
+load_dotenv()
+import os
+WORKDIR=os.getenv('WORKDIR')
+
 
 if __name__=='__main__':  
     setup_logging()
 #    nproc = MPI.COMM_WORLD.Get_size()   # Size of communicator
 #    iproc = MPI.COMM_WORLD.Get_rank()   # Ranks in communicator
 #    inode = MPI.Get_processor_name()    # Node where this MPI process runs
-    test_filename = glob.glob("/hpcstorage/dforero/projects/baosystematics/patchy_results/box1/real/nosyst/mocks_gal_xyz/CATALPTCICz*S1005638091*")[0]
+    test_filename = glob.glob(f"{WORKDIR}/patchy_results/box1/real/nosyst/mocks_gal_xyz/CATALPTCICz*S1005638091*")[0]
     max_names = ['x', 'y', 'z', 'vx', 'vy', 'vz', 'vmax']
     parser = argparse.ArgumentParser()
     parser.add_argument('-f', '--filename', help="Catalog to compute the power spectrum with.", default=test_filename)

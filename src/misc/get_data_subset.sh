@@ -10,7 +10,7 @@ elif [[ "$side" == "L" ]]; then
 DIR=${2:-"."}
 echo Running local side
 echo Saving in ${DIR}
-rsync -P --relative -av -e 'ssh -p 4022' --files-from=dforero@localhost:/hpcstorage/dforero/projects/baosystematics/copy_to_local.dat ${DIR}
+rsync -P --relative -av -e 'ssh -p 4022' --files-from=:/hpcstorage/dforero/projects/baosystematics/copy_to_local.dat dforero@localhost:/ ${DIR}
 else
 echo Option not understood
 exit 1
