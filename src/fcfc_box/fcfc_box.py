@@ -79,7 +79,7 @@ for fileno, fileName in enumerate(fdat):
 	counter+=1
 	dd_file = os.path.join(outPath,'DD_files/DD_'+fileName)
 	dr_file = os.path.join(outPath,'DR_files/DR_'+fileName)
-	rr_file = os.path.join(WORKDIR,'patchy_results/randoms/RR_%s'%os.path.basename(ran_cat_file))
+	rr_file = os.path.join(inPath,'../randoms/RR_%s'%os.path.basename(ran_cat_file))
 #	if cat_type == 'void':
 #		rr_file=os.path.join(WORKDIR, 'patchy_results/randoms/RR_box_uniform_random_seed1_0-2500.dat')
 #	elif cat_type == 'gal':
@@ -90,7 +90,8 @@ for fileno, fileName in enumerate(fdat):
 	else:
 		count_mode = 3
 	if 'none' in ran_cat_file: count_mode=1
-	bash_script.write('srun -n 1 -c 16 %s --conf=%s --data=%s --rand=%s --count-mode=%s --dd=%s --dr=%s --rr=%s --output=%s --data-aux-min=%s --data-aux-max=%s --rand-aux-min=%s --rand-aux-max=%s\n'%(RUN, conf_file, dat_cat_file, ran_cat_file, count_mode, dd_file, dr_file, rr_file, out_file, r_min, r_max, r_min, r_max))
+	os.makedirs(os.path.dirname(rr_file), exist_ok=True)
+	bash_script.write('srun -n 1 -c 32 %s --conf=%s --data=%s --rand=%s --count-mode=%s --dd=%s --dr=%s --rr=%s --output=%s --data-aux-min=%s --data-aux-max=%s --rand-aux-min=%s --rand-aux-max=%s\n'%(RUN, conf_file, dat_cat_file, ran_cat_file, count_mode, dd_file, dr_file, rr_file, out_file, r_min, r_max, r_min, r_max))
 bash_script.close()
 print("Wrote %s commands in job list: %s"%(counter, bash_script_name))
 dd_dir = os.path.join(outPath, 'DD_files')

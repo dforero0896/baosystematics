@@ -145,7 +145,7 @@ def comp_mask_catalog(fn, odir, sigma_noise=0.2, function=parabola, cmin=0.8, na
                     if not os.path.exists(rr_file_shuf) and isfirst: 
                         count_mode = 4#5
                     else:
-                        count_mode =0#1    
+                        count_mode =2#1    
                     cf_mode = 2
                 else:  count_mode=1; cf_mode=3
                 ncores = NCORES
@@ -153,7 +153,7 @@ def comp_mask_catalog(fn, odir, sigma_noise=0.2, function=parabola, cmin=0.8, na
             else:
                 ncores=1
                 count_mode=0
-                fcfc_void_command = f"{WORKDIR}/bin/2pcf.py -dd {dd_file_void} -o {out_file_void}\n"
+                fcfc_void_command = f"{WORKDIR}/bin/2pcf.py -dd {dd_file_void} -o {out_file_void} -rr {rr_file_shuf}\n"
             joblist.write(fcfc_void_command)    
             complete_command+=fcfc_void_command
              # Compute cross-terms
@@ -227,7 +227,7 @@ if __name__ == '__main__':
         from save_spatial_densities import mp_save_ang_density
         #if not os.path.exists(f"{odir}/noise/{FUNCTION.__name__}_{cmin_map}/plots"):
         #    mp_save_ang_density(f"{odir}/noise/{FUNCTION.__name__}_{cmin_map}/mocks_gal_xyz")
-        if True:#not os.path.exists(f"{odir}/smooth/{FUNCTION.__name__}_{cmin_map}/plots"):
+        if not os.path.exists(f"{odir}/smooth/{FUNCTION.__name__}_{cmin_map}/plots"):
             mp_save_ang_density(f"{odir}/smooth/{FUNCTION.__name__}_{cmin_map}/mocks_gal_xyz")
     MPI.Finalize()
     
