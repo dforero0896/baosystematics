@@ -49,7 +49,7 @@ if __name__ == '__main__':
             signal_arr.append(xi_vals[0] - np.mean(xi_vals[1:]))
         #signal_resamples = jackknife_resampling(signal_arr)
         signal_arr = np.array(signal_arr)
-        #SNR, bias, stderr, conf_interval = jackknife_stats(signal_arr, signal_to_noise_ratio, 0.95)
-        SNR, bias, stderr, conf_interval = snr_constant_noise(signal_arr, 0.95)
+        SNR, bias, stderr, conf_interval = jackknife_stats(signal_arr, signal_to_noise_ratio, 0.95)
+        #SNR, bias, stderr, conf_interval = snr_constant_noise(signal_arr, 0.95)
         print(f"{SNR}\t{bias}\t{stderr}\t{conf_interval[0]}\t{conf_interval[1]}\t{os.path.dirname(ilist[0])}\t{len(signal_arr)}")
 
