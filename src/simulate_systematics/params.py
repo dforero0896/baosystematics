@@ -2,10 +2,14 @@ import os
 import pandas as pd
 import numpy as np
 from mask_comp_func import mask_with_function
-NCORES = 32 
+try:
+    from fast_line_count.fast_line_count import count_lines
+except:
+    print("Cython module import failed.")
+NCORES = 16 
 BOX = "1"
 SPACE = "real"
-NMOCKS = 500
+NMOCKS = 1000
 NGAL = {'1':3.976980e-4, '5':1.976125e-4}
 ZBOXES = {'1':0.2384, '5':0.6383}
 NGRID=2500
@@ -26,7 +30,7 @@ RUN_FCFC_2D=os.path.join(WORKDIR, 'bin/FCFC_2D/2pcf')
 RUN_DIVE = os.path.join(WORKDIR, 'bin/DIVE_box/DIVE_box') 
 box_size=2500
 
-USE_SCALED_R = 2	# Object selection mode for voids
+USE_SCALED_R = 1	# Object selection mode for voids
 			# 0: Use provided dimensionful RMIN, RMAX to select objects
 			#	from corresponding aux column (4) (default)
 			# 1: Compute scaled R using average galaxy density
@@ -66,12 +70,12 @@ def parabola_off(y, x, N_grid, Cmin):
 funclist = [parabola, xplane, flat, parabola_off]
 
 # Define which function is actually being used
-FUNCTION = parabola 
+FUNCTION = flat 
 
 # Define function to compute average galaxy density
-def line_count(filename):
-    return sum(1 for _ in open(filename, 'rbU'))
-
+#def line_count(filename):
+#    return sum(1 for _ in open(filename, 'rbU'))
+line_count = count_lines
 def get_average_galaxy_density(N_gal, box_size=box_size):
     return float(N_gal) / float((box_size**3))
     

@@ -34,7 +34,7 @@ def comp_mask_catalog(fn, odir, sigma_noise=0.2, function=parabola, cmin=0.8, na
             data = pd.read_csv(fn, delim_whitespace = True, \
 				usecols=(0, 1, 2), names = names)
             os.makedirs(os.path.dirname(on), exist_ok=True)
-            print(f"Creating {on}")
+            print(f"Creating {on}", flush=True)
             mask_function = lambda y, x: function(y, x, N_grid, cmin)
             if noise_sampler is not None:
                 nsampler = lambda n_samples: noise_sampler(sigma_noise, n_samples)
@@ -188,24 +188,23 @@ if __name__ == '__main__':
     inode = MPI.Get_processor_name()    # Node where this MPI process runs
     parser = argparse.ArgumentParser()
     parser.add_argument("INDIR")
-    parser.add_argument("-c", "--mincomp", required=False, help="Minimum completeness for the angular map.") 
-    parser.add_argument("-b", "--box", required=False, help="Box to use: 1 or 5.") 
-    parser.add_argument("-s", "--space", required=False, help="Space in which to compute: real or redshift.") 
-    parser.add_argument("-r", "--scaledrmin", required=False, help="Scaled rmin value to use.")
-    parser.add_argument("-nu", "--nu_exponent", required=False, help="Exponent of the galaxy density to rescale radii.")
+    parser.add_argument("-c", "--mincomp", required=False, help="Minimum completeness for the angular map.", default=cmin_map) 
+    parser.add_argument("-b", "--box", required=False, help="Box to use: 1 or 5.", default=BOX) 
+    parser.add_argument("-s", "--space", required=False, help="Space in which to compute: real or redshift.", default=SPACE) 
+    parser.add_argument("-r", "--scaledrmin", required=False, help="Scaled rmin value to use.", default=SCALED_RMIN)
+    parser.add_argument("-nu", "--nu_exponent", required=False, help="Exponent of the galaxy density to rescale radii.", default=1/4, type=float)
     parsed = parser.parse_args()
     args = vars(parsed)
     indir = args['INDIR']
-    comp_min = float(args['mincomp']) or cmin_map
-    box = args['box'] or BOX
+    comp_min = float(args['mincomp'])
+    box = args['box']
     RMIN=RMIN_DICT[box]
-    space = args['space'] or SPACE
-    scaled_rmin = args['scaledrmin'] or SCALED_RMIN
+    space = args['space']
+    scaled_rmin = args['scaledrmin']
     scaled_rmin=float(scaled_rmin)
-    nu_str = args['nu_exponent'] or "1/4"
-    nu=float(Fraction(nu_str))
+    nu = args['nu_exponent']
     print(parsed)
-    print(f"==> Using params: box={box}, space={space} scaled_rmin={scaled_rmin}, nu={nu}.") 
+    print(f"==> Using params: box={box}, space={space} scaled_rmin={scaled_rmin}, nu={nu}.", flush=True) 
     filenames = [os.path.join(indir, f) for f in os.listdir(indir)][:NMOCKS]
     filenames_split = np.array_split(filenames, nproc)
     joblist = open(f"joblists/jobs_{space}_{FUNCTION.__name__}_{comp_min}_{iproc}_box{box}_scaled_rmin{scaled_rmin}.sh", 'w')
@@ -228,6 +227,7 @@ if __name__ == '__main__':
         #if not os.path.exists(f"{odir}/noise/{FUNCTION.__name__}_{cmin_map}/plots"):
         #    mp_save_ang_density(f"{odir}/noise/{FUNCTION.__name__}_{cmin_map}/mocks_gal_xyz")
         if not os.path.exists(f"{odir}/smooth/{FUNCTION.__name__}_{cmin_map}/plots"):
+            os.makedirs(f"{odir}/smooth/{FUNCTION.__name__}_{cmin_map}/plots", exist_ok=True)
             mp_save_ang_density(f"{odir}/smooth/{FUNCTION.__name__}_{cmin_map}/mocks_gal_xyz")
     MPI.Finalize()
     

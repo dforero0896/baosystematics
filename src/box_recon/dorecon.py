@@ -106,9 +106,10 @@ if parms.do_recon:
     if not parms.is_box:
         cat.ra, cat.dec, cat.redshift = recon.get_new_radecz(recon.cat)
 
+    #recon.summary()    
     print("==> Applying shifts") 
     recon.apply_shifts_full()    
-    
+    #recon.summary()    
     # save real-space positions to file
     root = parms.output_folder + parms.handle + '_pos'
     root2 = parms.output_folder + parms.handle_ran + '_pos'

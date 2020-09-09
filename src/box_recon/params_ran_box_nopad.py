@@ -4,7 +4,7 @@
 
 # ======= runtime options ======== #
 verbose = True  # True for more informative output statements
-debug = True    # True for output checks during reconstruction
+debug = False    # True for output checks during reconstruction
 nthreads = 32     # set to the number of CPUs available, more is better
 # ================================ #
 
