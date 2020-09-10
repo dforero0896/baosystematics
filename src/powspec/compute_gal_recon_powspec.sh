@@ -2,7 +2,7 @@
 
 source ../.env
 RUN="srun -p p5 -n1 -c 16 --mem-per-cpu=64G ${WORKDIR}/bin/powspec/POWSPEC"
-SEED=1005638091
+#SEED=1005638091
 #SEED=996166056
 BOX_SIZE=2500
 VOLUME=$(( ${BOX_SIZE} * ${BOX_SIZE} * ${BOX_SIZE} ))
@@ -40,8 +40,9 @@ CUBIC_SIM=0
 fi
 
 IDIR=${WORKDIR}/patchy_recon/box${box}/${space}/${syst}/mocks_gal_xyz${SUFFIX}
-RAN=${WORKDIR}/patchy_recon/box${box}/${space}/${syst}/void_ran/void_ran.dat
-for DAT in $(ls ${IDIR}/CATCAT*${SEED}*datrS5.0.dat);do
+
+for DAT in $(ls ${IDIR}/CAT*${SEED}*.dat | grep -v .ran);do
+RAN=$(echo ${DAT} | sed -e 's/_pos_shift.dat/.ran_pos_shift.dat/g')
 NELEM=$(wc -l ${DAT} | awk '{print $1}')
 DATA_NZ=$(echo "${NELEM}/${VOLUME}" | bc -l)
 

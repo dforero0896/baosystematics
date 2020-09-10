@@ -1,7 +1,7 @@
 #!/bin/bash
 BOX=1
 SPACE=redshift
-NCORES=6
+NCORES=1
 source ../.env
 DIR=${WORKDIR}/patchy_recon
 NU=$(python -c 'print(1./3)')

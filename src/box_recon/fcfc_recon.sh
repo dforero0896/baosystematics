@@ -7,9 +7,6 @@ N=${SLURM_NTASKS:-1}
 echo \#Using ${N} tasks
 #SEED=996166056
 #SEED=1005638091
-task(){
-srun -n1 -c16 -N1 ${RUN} --par=${PARAMS} --tracer-file=$1 --random-file=$2 --output-folder=$3
-}
 for box in 1 #5
 do
 
