@@ -23,6 +23,7 @@ parser.add_argument('-t', '--tracer-file', dest='tracer_file', help="Path to tra
 parser.add_argument('-r', '--random-file', dest='random_file', help="Path to random file.")
 parser.add_argument('-f', '--f', dest="f", help="Linear growth rate at the mean redshift.", type=float)
 parser.add_argument('-b', '--bias', dest="bias", help="Linear tracer bias.", type=float)
+parser.add_argument('-rsd', '--rsd-correct', dest='rsd_corr', help="0 if no RSD correction needed (real-space catalogs).", type=int)
 args = parser.parse_args()
 
 
@@ -97,6 +98,10 @@ if parms.do_recon:
 
     start = time.time()
     # now run the iteration loop to solve for displacement field
+    if not parms.rsd_corr:
+    
+        print("==> RSD correction is %s, forcing niter=1."%parms.rsd_corr)
+        parms.niter=1
     
     for i in range(parms.niter):
         recon.iterate(i, debug=parms.debug)
@@ -107,7 +112,7 @@ if parms.do_recon:
         cat.ra, cat.dec, cat.redshift = recon.get_new_radecz(recon.cat)
 
     #recon.summary()    
-    print("==> Applying shifts") 
+    print("==> Applying shifts", flush=True) 
     recon.apply_shifts_full()    
     #recon.summary()    
     # save real-space positions to file

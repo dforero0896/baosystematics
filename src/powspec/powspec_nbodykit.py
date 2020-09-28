@@ -21,20 +21,20 @@ if __name__=='__main__':
 #    nproc = MPI.COMM_WORLD.Get_size()   # Size of communicator
 #    iproc = MPI.COMM_WORLD.Get_rank()   # Ranks in communicator
 #    inode = MPI.Get_processor_name()    # Node where this MPI process runs
-    test_filename = glob.glob(f"{WORKDIR}/patchy_results/box1/real/nosyst/mocks_gal_xyz/CATALPTCICz*S1005638091*")[0]
+    test_filename = glob.glob(f"{WORKDIR}/patchy_results/box1/redshift/nosyst/mocks_gal_xyz/CATALPTCICz*S1005638091*")[0]
     max_names = ['x', 'y', 'z', 'vx', 'vy', 'vz', 'vmax']
     parser = argparse.ArgumentParser()
     parser.add_argument('-f', '--filename', help="Catalog to compute the power spectrum with.", default=test_filename)
-    parser.add_argument('-n', '--num-cols', help="Number of columns. First three columns are assumed to be position. Default=7.", default=7)
-    parser.add_argument('-z', '--redshift', help="Redshift", default=0.466)
-    parser.add_argument('-hub', '--hubble', help="Dimensionless Hubble. Default is h=0.6777", default=0.6777)
-    parser.add_argument('-om', '--Omega0_cdm', help="Current matter abundance. Default is 0.307115", default = 0.307115)
-    parser.add_argument('-ob', '--Omega0_b', help="Current baryon abundance. Default 0.048206.", default = 0.048206)
-    parser.add_argument('-t', '--T0_cmb', help="Current CMB temperature. Default 2.7255 K.", default=2.7255)
-    parser.add_argument('-nnu', '--N_ur', help="Number of massless neutrino species. Default 2.046.", default=2.046)
-    parser.add_argument('-ns', '--n_s', help="Tilt of primordial power spectrum. Default 0.96", default = 0.96)
+    parser.add_argument('-n', '--num-cols', help="Number of columns. First three columns are assumed to be position. Default=7.", default=7, type=int)
+    parser.add_argument('-z', '--redshift', help="Redshift", default=0.466, type=float)
+    parser.add_argument('-hub', '--hubble', help="Dimensionless Hubble. Default is h=0.6777", default=0.6777, type=float)
+    parser.add_argument('-om', '--Omega0_cdm', help="Current matter abundance. Default is 0.307115", default = 0.307115, type=float)
+    parser.add_argument('-ob', '--Omega0_b', help="Current baryon abundance. Default 0.048206.", default = 0.048206, type=float)
+    parser.add_argument('-t', '--T0_cmb', help="Current CMB temperature. Default 2.7255 K.", default=2.7255, type=float)
+    parser.add_argument('-nnu', '--N_ur', help="Number of massless neutrino species. Default 2.046.", default=2.046, type=float)
+    parser.add_argument('-ns', '--n_s', help="Tilt of primordial power spectrum. Default 0.96", default = 0.96, type=float)
     parser.add_argument('-rsd', '--rsd', help="Whether to compute the redshift space catalog. Default 0.", default=0)
-    parser.add_argument('-bs', '--box-size', help="Box size of the simulation box. Default 2500 Mpc/h.", default=2500)
+    parser.add_argument('-bs', '--box-size', help="Box size of the simulation box. Default 2500 Mpc/h.", default=2500, type=float)
     parser.add_argument('-o', '--out', help="Output directory. Default: . ", default='.')
     parsed=parser.parse_args()
     args = vars(parsed)
@@ -46,9 +46,10 @@ if __name__=='__main__':
     redshift = args['redshift']
     Plin = cosmology.LinearPower(cosmo, redshift, transfer='EisensteinHu')
     catalog['Position'] = da.stack([catalog[s] for s in names[:3]], axis=-1)
-    catalog['Velocity'] = da.stack([catalog[s] for s in names[3:-1]], axis=-1)
-    catalog['VelocityOffset'] = (1 + redshift) / (100 * cosmo.efunc(redshift))
-    if bool(int(args['rsd'])): catalog['RSDPosition'] = catalog['Position'] + catalog['VelocityOffset'] * line_of_sight
+    if args['num_cols']>3:
+        catalog['Velocity'] = da.stack([catalog[s] for s in names[3:-1]], axis=-1)
+        catalog['VelocityOffset'] = (1 + redshift) / (100 * cosmo.efunc(redshift))
+        if bool(int(args['rsd'])): catalog['RSDPosition'] = catalog['Position'] + catalog['VelocityOffset'] * line_of_sight
     mesh = catalog.to_mesh(resampler='cic', Nmesh=256, compensated=True, position='Position', BoxSize=args['box_size'])
     r = FFTPower(mesh, mode='1d', dk=0.005, kmin=0.01) 
     Pk = r.power

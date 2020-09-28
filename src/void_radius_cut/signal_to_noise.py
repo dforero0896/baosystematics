@@ -37,6 +37,7 @@ if __name__ == '__main__':
     print(f"# SNR\tbias\tstderr\tconf_int_low\tconf_int_high\tsamples_dir\tn_samples")
     for ilist_fn in ilists_fn:
         ilist = read_inlist(ilist_fn)
+        if len(ilist)<1: continue
         signal_arr=[]
         for ifile in ilist:
             ipath = ifile

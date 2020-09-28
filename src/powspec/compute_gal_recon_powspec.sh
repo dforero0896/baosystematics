@@ -10,9 +10,11 @@ for box in 1 5; do
 case $box in
   1)
    RMIN_C1=15.6
+   AVG_DATA_NZ=3.976980e-4
   ;;
   5)
    RMIN_C1=18.5
+   AVG_DATA_NZ=1.976125e-4
   ;;
   *)
    exit 1
@@ -34,7 +36,7 @@ SUFFIX=
 FORMAT='"%f %f %f"'
 fi
 if [[ "$syst" == "nosyst" ]]; then
-CUBIC_SIM=1
+CUBIC_SIM=0
 else
 CUBIC_SIM=0
 fi
@@ -43,9 +45,9 @@ IDIR=${WORKDIR}/patchy_recon/box${box}/${space}/${syst}/mocks_gal_xyz${SUFFIX}
 
 for DAT in $(ls ${IDIR}/CAT*${SEED}*.dat | grep -v .ran);do
 RAN=$(echo ${DAT} | sed -e 's/_pos_shift.dat/.ran_pos_shift.dat/g')
-NELEM=$(wc -l ${DAT} | awk '{print $1}')
-DATA_NZ=$(echo "${NELEM}/${VOLUME}" | bc -l)
-
+#NELEM=$(wc -l ${DAT} | awk '{print $1}')
+#DATA_NZ=$(echo "${NELEM}/${VOLUME}" | bc -l)
+DATA_NZ=${AVG_DATA_NZ}
 ODIR=${WORKDIR}/patchy_recon/box${box}/${space}/${syst}/powspec_gal_mock_nowt
 if [[ ! -e ${ODIR} ]]; then
 mkdir -v ${ODIR}

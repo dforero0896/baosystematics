@@ -2,49 +2,33 @@
 import sys
 import os
 import numpy as np
-if len(sys.argv) == 7:
-	cat_type = 'gal'
-	ran_cat_file=sys.argv[5]
-	overwrite = bool(int(sys.argv[6]))
-	r_min = None
-	r_max = r_min
-	subsample_size = None
-	sys.stdout.write('Looking for gal catalogs\n')
-elif len(sys.argv) == 8:
-	cat_type = 'gal'
-	subsample_size = int(sys.argv[5])
-	ran_cat_file=sys.argv[6]
-	overwrite = bool(int(sys.argv[7]))
-	r_min = None
-	r_max = r_min
-	sys.stdout.write('Looking for gal catalogs\n')
-elif len(sys.argv) == 9:
-	cat_type = 'void'
-	r_min = sys.argv[6]
-	r_max = sys.argv[7]
-	ran_cat_file=sys.argv[5]
-	overwrite = bool(int(sys.argv[8]))
-	subsample_size = None
-	sys.stdout.write('Looking for void catalogs\n')
-elif len(sys.argv) == 10:
-	cat_type = 'void'
-	r_min = sys.argv[6]
-	r_max = sys.argv[7]
-	subsample_size = int(sys.argv[8])
-	ran_cat_file=sys.argv[5]
-	overwrite = bool(int(sys.argv[9]))
-	sys.stdout.write('Looking for void catalogs\n')
-else:
-	sys.stderr.write('ERROR:\tUnexpected number of arguments.\nUSAGE:\tpython %s INPUT_PATH OUTPUT_PATH JOB_LIST_ID CONF_FILE RAN_CAT_FILE [R_MIN R_MAX] [SUBSAMPLE_SIZE] OVERWRITE\n'%os.path.basename(sys.argv[0]))
-	sys.exit(1)
+import argparse
+parser= argparse.ArgumentParser()
+parser.add_argument("INPUT_PATH")
+parser.add_argument("OUTPUT_PATH")
+parser.add_argument("CONF_FILE")
+parser.add_argument("-r", "--rand", required=False, default="none")
+parser.add_argument("-rmin", "--rmin", required=False, default=None, type=float)
+parser.add_argument("-rmax", "--rmax", required=False, default=None, type=float)
+parser.add_argument("-s", "--subsample", required=False, default=None, type=int)
+parser.add_argument("-ow", "--overwrite", required=False, default=False)
+parser.add_argument("-j", "--joblist-id", default="")
+args = parser.parse_args()
+print(args)
 this_dir = os.path.dirname(sys.argv[0])
-inPath = os.path.abspath(sys.argv[1])
-outPath = os.path.abspath(sys.argv[2])
-joblist_id = sys.argv[3]
-conf_file = os.path.realpath(sys.argv[4])
+inPath = os.path.abspath(args.INPUT_PATH)
+outPath = os.path.abspath(args.OUTPUT_PATH)
+joblist_id = args.joblist_id
+conf_file = os.path.realpath(args.CONF_FILE)
+r_min = args.rmin
+r_max = args.rmax
 WORKDIR="/hpcstorage/dforero/projects/baosystematics"
 RUN=os.path.join(WORKDIR, 'bin/FCFC_box/2pcf')
-ran_cat_file = os.path.abspath(ran_cat_file)
+ran_cat_file = os.path.abspath(args.rand)
+if args.rmin is None or args.rmax is None: cat_type="gal"
+else: cat_type="void"
+overwrite=args.overwrite
+subsample_size=args.subsample
 try:
 	(_, _, f) = next(os.walk(inPath))
 except StopIteration:

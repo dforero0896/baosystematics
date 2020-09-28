@@ -15,7 +15,7 @@ ZBOXES = {'1':0.2384, '5':0.6383}
 NGRID=2500
 NGRID_HIST=250
 # Define relevant paths
-WORKDIR = "/home/epfl/dforero/scratch/projects/baosystematics"
+WORKDIR = "/home/astro/dforero/scratch/projects/baosystematics"
 RESULTS = WORKDIR+"/patchy_results"
 ODIR = RESULTS+f"/box{BOX}/{SPACE}"
 cmin_map = 0.8

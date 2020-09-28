@@ -24,12 +24,14 @@ if __name__ == '__main__':
     colorlist = list(mcolors.TABLEAU_COLORS.keys())
     default_cycler = (cycler(color=colorlist)+cycler(linestyle=['-','--','-.', '-', '--','-.','-','--','-.', '-']))
     #os.system(f"bash {SRC}/simulate_systematics/optimum_rescaled_radius.sh | tee {WORKDIR}/patchy_results/box1/redshift/plots/optimum_rescaled_radius.dat")			
+    #os.system(f"bash {SRC}/simulate_systematics/optimum_rescaled_radius.sh | tee {WORKDIR}/patchy_recon/box1/redshift/plots/optimum_rescaled_radius.dat")			
     fig, ax = plt.subplots(1,1, figsize=set_size('mnras', fraction=2, subplots=(1,1)))
     ax.set_prop_cycle(default_cycler)
     space='redshift'
     boxes = ['1']
     for box in boxes:
-        data, dirnames = np.loadtxt(f"{WORKDIR}/patchy_results/box{box}/{space}/plots/optimum_rescaled_radius.dat", usecols=(0,-2), unpack=True, dtype=str)
+        #data, dirnames = np.loadtxt(f"{WORKDIR}/patchy_results/box{box}/{space}/plots/optimum_rescaled_radius.dat", usecols=(0,-2), unpack=True, dtype=str)
+        data, dirnames = np.loadtxt(f"{WORKDIR}/patchy_recon/box{box}/{space}/plots/optimum_rescaled_radius.dat", usecols=(0,-2), unpack=True, dtype=str)
         data = data.astype(float)
         Rvals = np.array([re.findall('R.scaled[0-9].*-50$', \
 		s)[0].replace('R-scaled','').replace('-50','') for s in dirnames],\
@@ -39,7 +41,8 @@ if __name__ == '__main__':
 									 dtype=float)
         ngals = Cvals * NGAL[box]
         Rvals/=ngals**(1./3)
-        np.savetxt(f"{WORKDIR}/patchy_results/box{box}/{space}/plots/optimum_rescaled_radius_clean.dat", np.c_[Rvals, ngals], header='Roptimum ngal')
+        #np.savetxt(f"{WORKDIR}/patchy_results/box{box}/{space}/plots/optimum_rescaled_radius_clean.dat", np.c_[Rvals, ngals], header='Roptimum ngal')
+        np.savetxt(f"{WORKDIR}/patchy_recon/box{box}/{space}/plots/optimum_rescaled_radius_clean.dat", np.c_[Rvals, ngals], header='Roptimum ngal')
         slope, intercept, r_value, p_value, std_err = stats.linregress(np.log(ngals*1e4), np.log(Rvals))
         c, stats = P.polyfit(np.log(ngals * 1e4),np.log(Rvals),1,full=True) 
         print(slope, intercept, r_value, std_err)
@@ -51,9 +54,10 @@ if __name__ == '__main__':
         ax.plot(ngal_linsp, (ngal_linsp*1e-4)**(-slope)*np.exp(slope*np.log(ngal_linsp) + intercept), label=r"$\log R^* =%+.2f %+.2f \log(10^4\bar{n}_{\mathrm{gal}})$"%(intercept, slope), c = 'r')
     ax.set_ylabel(r'$\bar{n}_{\mathrm{gal}}^{%.2f}~R^*$ [(Mpc/$h$)$^{%.2f}$]'%(-slope, -slope), fontsize=11)
     ax.set_xlabel(r'$\bar{n}_{\mathrm{gal}}$ [$10^{-4}h^3$/Mpc$^3]$', fontsize=11)
-    ax.set_ylim(1,3)
+    ax.set_ylim(1,5)
     ax.legend(loc=0)
     fig.tight_layout()
-    oname = f"{WORKDIR}/patchy_results/box1/redshift/plots/optimum_rescaled_radius.pdf"
+    #oname = f"{WORKDIR}/patchy_results/box1/redshift/plots/optimum_rescaled_radius.pdf"
+    oname = f"{WORKDIR}/patchy_recon/box1/redshift/plots/optimum_rescaled_radius.pdf"
     fig.savefig(oname, dpi=200)
     print(f"==> Saved figure in {oname}")

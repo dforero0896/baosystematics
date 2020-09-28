@@ -7,11 +7,13 @@ from mask_comp_func import mask_with_function
 from params import *
 
 def comp_mask_catalog(fn, odir, sigma_noise=0.2, function=parabola, cmin=0.8, names=['x', 'y', 'z'], N_grid=2500, seed=2, noise_sampler=noise_sampler, rmin=RMIN, rmax=RMAX, cat_type='mock', use_scaled_r=0, scaled_rmin=None, scaled_rmax=None, space=SPACE, isfirst=False, nu=1./4):
+    print(f"####################################", flush=True)
     print(f"==> Using function {function.__name__}")
     print(f"==> Using min. completeness {cmin}")
     complete_command='module load spack/default  gcc/5.4.0 boost\n'
     # Create data catalog with mask
     fn_base = os.path.basename(fn)
+    if "ran" in fn_base: return ""
     oname_gal = fn_base.replace('.dat',\
 	 f".{function.__name__}.sigma{sigma_noise}.dat")
     oname_gal_noise = os.path.join(odir,\
@@ -45,6 +47,18 @@ def comp_mask_catalog(fn, odir, sigma_noise=0.2, function=parabola, cmin=0.8, na
 					 N_grid=N_grid, sigma_noise=sigma_noise,\
 					 cmin=0, noise_sampler=nsampler, seed=seed)
             masked_dat.to_csv(on, sep = ' ', header=False, index=False)
+
+
+        oname_void = [os.path.join(obases[i],\
+			 f"{cat_type}s_void_xyz",\
+			 #f"{cat_type}s_void_xyz_wt_scaledR",\
+			 os.path.basename(on).replace('.dat', f".VOID.dat")), \
+			 os.path.join(obases[i], 
+			 f"{cat_type}s_void_xyz_wt_scaledR",\
+			 os.path.basename(on).replace('.dat', f".VOID.dat"))]
+        [os.makedirs(os.path.dirname(oname_void[i]), exist_ok=True) for i in range(2)]
+        dive_command = f"{RUN_DIVE} {on} {oname_void[0]} {box_size} 0 999\n"
+
         #print(f"==> WARNING: Saving voids in 'nearest' directory")
         #This line should be changed if we wish to have selection wrt rescaled radii
         if use_scaled_r == 0 :
@@ -53,13 +67,8 @@ def comp_mask_catalog(fn, odir, sigma_noise=0.2, function=parabola, cmin=0.8, na
             void_aux_col=4
             void_dir_suffix=''
         elif use_scaled_r==1 :
-            N_gal_incomp = line_count(on)
-            n_gal_incomp = get_average_galaxy_density(N_gal_incomp)
             print(f"==> Using scaled R min = {scaled_rmin}")
             print(f"==> rmin param. is ignored")
-            if N_gal_incomp==0: print(on);sys.exit(0)
-            print(N_gal_incomp, scaled_rmin, n_gal_incomp)
-            rmin = np.round(scaled_rmin / (n_gal_incomp)**(nu), 2)
             rmin_fid = f"scaled{scaled_rmin}"
             rmax_fid = rmax 
             void_aux_col=4
@@ -77,20 +86,10 @@ def comp_mask_catalog(fn, odir, sigma_noise=0.2, function=parabola, cmin=0.8, na
         else: 
             raise(NotImplementedError(f"Value {use_scaled_r} not understood."))
 
-        oname_void = [os.path.join(obases[i],\
-			 f"{cat_type}s_void_xyz",\
-			 #f"{cat_type}s_void_xyz_wt_scaledR",\
-			 os.path.basename(on).replace('.dat', f".VOID.dat")), \
-			 os.path.join(obases[i], 
-			 f"{cat_type}s_void_xyz_wt_scaledR",\
-			 os.path.basename(on).replace('.dat', f".VOID.dat"))]
-        [os.makedirs(os.path.dirname(oname_void[i]), exist_ok=True) for i in range(2)]
-        dive_command = f"{RUN_DIVE} {on} {oname_void[0]} {box_size} 0 999\n"
         # Write command to create void catalog
         if not os.path.exists(oname_void[0]) or write_void:
             joblist.write(dive_command)
             complete_command+=dive_command
-        print(f"==> Using radius range [{rmin}, {rmax}]")
         # Define files for fcfc
         data_wt_cols_gal= [0, 4]
         data_wt_cols_void= [0, 5]
@@ -108,7 +107,19 @@ def comp_mask_catalog(fn, odir, sigma_noise=0.2, function=parabola, cmin=0.8, na
 			f"/tpcf_xgv_{cat_type}_vw_gnw_R-{rmin_fid}-{rmax_fid}", \
 			obases[i]+\
 			f"/tpcf_xgv_{cat_type}_vw_gw_R-{rmin_fid}-{rmax_fid}"]
-        for weight in [0,1]:
+
+        if os.path.isfile(f"{tpcf_void_dirs[0]}/TwoPCF_{os.path.basename(oname_void[0])}.replace('.dat', '.R-{rmin_fid}-{rmax_fid}.dat)'"): 
+            print(f"{tpcf_void_dirs[0]}/TwoPCF_{os.path.basename(oname_void[0])}.replace('.dat', '.R-{rmin_fid}-{rmax_fid}.dat)'")
+            print(f"==> Found void 2pcf, skipping", flush=True)
+            return "" #Continuing if void catalog exists
+        if use_scaled_r==1 :
+            N_gal_incomp = line_count(on)
+            n_gal_incomp = get_average_galaxy_density(N_gal_incomp)
+            if N_gal_incomp==0: print(on);sys.exit(0)
+            print(N_gal_incomp, scaled_rmin, n_gal_incomp)
+            rmin = np.round(scaled_rmin / (n_gal_incomp)**(nu), 2)
+        print(f"==> Using radius range [{rmin}, {rmax}]")
+        for weight in [0]:#,1]:
             os.makedirs(tpcf_gal_dirs[weight]+"/DD_files", exist_ok=True)
             dd_file_gal = os.path.join(tpcf_gal_dirs[weight],"DD_files",\
 					"DD_"+os.path.basename(on))

@@ -28,7 +28,11 @@ def rr_analytic2d(bin_low_bound, bin_high_bound, box_size, nmu_bins=80):
     return pd.DataFrame(dict(zip(['mono', 'quad'], [RR0, RR2])))
 
 def main():
-    use_rr_num=False
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-rrnum', '--rrnum', dest='rrnum', default=False, action='store_true')
+    args = parser.parse_args()
+    use_rr_num=args.rrnum
     for box in boxes:
 
         for space in spaces:
@@ -46,7 +50,9 @@ def main():
                DD = tpcf_fn.replace("TwoPCF_", "DD_files/DD_")
                DS = tpcf_fn.replace("TwoPCF_", "DS_files/DS_")
                SS = tpcf_fn.replace("TwoPCF_", "SS_files/SS_")
-               if not (os.path.isfile(DD) and os.path.isfile(DS) and os.path.isfile(SS)): continue
+               if not (os.path.isfile(DD) and os.path.isfile(DS) and os.path.isfile(SS)): 
+                   print("Skipped {tpcf_fn}", flush=True)
+                   continue
                dd = pd.read_csv(DD, delim_whitespace=True, engine='c', names = ['s_low', 's_high', 'mono', 'quad'], usecols=[0,1,3,5]) 
                ds = pd.read_csv(DS, delim_whitespace=True, engine='c', names = ['mono', 'quad'], usecols=[3,5]) 
                ss = pd.read_csv(SS, delim_whitespace=True, engine='c', names = ['mono', 'quad'], usecols=[3,5]) 
