@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 WORKDIR=/hpcstorage/dforero/projects/baosystematics
 NCORES=32
-#suffix=_Csamp
+suffix=_scaledR
 odir=void_ran${suffix}
 results_dir=$1
 if [[ $# -ne 3 ]]; then
@@ -24,7 +24,7 @@ kind=$3
 nrandoms=240000000
 if [[ ! -e $results_dir/${odir}/BIG_RAN_VOID.dat ]] || [[ $overwrite -eq 1 ]];then
 rm -v -r $results_dir/${odir}/bins
-srun -n $NCORES -c 1 --mpi=pmi2 python $WORKDIR/src/void_random/create_bins.py $results_dir/mocks_void_xyz_wt_scaledR${suffix}/ 1 --kind ${kind} --odir=${odir} || exit 1
+srun -n $NCORES -c 1 --mpi=pmi2 python $WORKDIR/src/void_random/create_bins.py $results_dir/mocks_void_xyz${suffix}/ 1 --kind ${kind} --odir=${odir} || exit 1
 echo Shuffling...
 srun -n1 -c1 bash $WORKDIR/src/void_random/box_shuffle_columns.sh $results_dir/${odir}/bins ${kind} 0 || exit 1
 fi

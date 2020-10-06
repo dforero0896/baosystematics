@@ -21,7 +21,7 @@ WORKDIR = os.getenv("WORKDIR")
 NGAL = {'1':3.976980e-4, '5':1.976125e-4}
 boxes = ['1']
 spaces = ['redshift']
-recon = ['patchy_recon', 'patchy_results']
+recon = ['patchy_recon_nods']#,'patchy_recon', 'patchy_results']
 dimless_r = [0.7, 0.75, 0.8,0.87, 0.93, 1.0, 1.07, 1.13, 1.18, 1.19, 1.25, 1.33]
 
 def call_proc(cmd):
@@ -62,6 +62,8 @@ if __name__ == '__main__':
              joblist.write(" ".join(command)+"&\n")
            else:
              data = pd.read_csv(snr_file, delim_whitespace=True, usecols=[0,2,5], names=['snr', 'std', 'dir'], comment="#", dtype={'snr':float, 'std':float, 'dir':str})
+             if data.shape[0] < 3: continue 
+             print(data)
              dr = np.array([re.findall('R.scaled[0-9].*-50', data['dir'].iloc[i])[0].replace("R-scaled","").replace("-50", "") for i in range(data.shape[0])], dtype=float)
              snr_interp = interp1d(dr, data['snr'].values, kind="quadratic")
              res = minimize_scalar(lambda x: -snr_interp(x), method="Bounded", bounds = dr[[0, -1]])

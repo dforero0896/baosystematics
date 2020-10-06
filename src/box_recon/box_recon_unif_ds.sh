@@ -2,26 +2,16 @@
 
 source ../.env
 RUN=${WORKDIR}/src/box_recon/dorecon.py
-PARAMS=${WORKDIR}/src/box_recon/params_ran_box_nopad.py
+PARAMS=${WORKDIR}/src/box_recon/params_ran_box_noran.py
 N=${SLURM_NTASKS:-1}
 echo Using ${N} tasks
 #SEED=1656249224
 #SEED=824062495
 #SEED=1005638091
-for syst in smooth/parabola_0.8 #radialgauss nosyst
+#for syst in smooth/flat_0.1  smooth/flat_0.15  smooth/flat_0.2  smooth/flat_0.25  smooth/flat_0.3  smooth/flat_0.35  smooth/flat_0.4  smooth/flat_0.45  smooth/flat_0.5  smooth/flat_0.55  smooth/flat_0.6  smooth/flat_0.65  smooth/flat_0.7  smooth/flat_0.75 smooth/flat_0.8  smooth/flat_0.85 smooth/flat_0.9 smooth/flat_0.95   
+for syst in smooth/flat_0.9   
 do
-case ${syst} in
-  smooth/parabola_0.8 |  nosyst)
-    RAND=${WORKDIR}/patchy_results/randoms/box_uniform_random_seed1_0-2500.dat
-  ;;
-  radialgauss)
-    RAND=${WORKDIR}/patchy_results/randoms/box_uniform_random_seed1_0-2500.radialgauss.sigma0.235.dat
-  ;;
-  *)
-    echo Systematics case ${syst} not recognized
-  ;;
-esac
-for box in 1 5
+for box in 1 #5 
 do
 case ${box} in
   1)
@@ -37,7 +27,7 @@ case ${box} in
   ;;
 esac
 
-for space in real #redshift
+for space in redshift #real
 do
 case ${space} in
     real)
@@ -52,7 +42,7 @@ case ${space} in
 esac
 bias=1.92
 IDIR=${WORKDIR}/patchy_results/box${box}/${space}/${syst}/mocks_gal_xyz
-ODIR=${WORKDIR}/patchy_recon/box${box}/${space}/${syst}/mocks_gal_xyz/
+ODIR=${WORKDIR}/patchy_recon_nods/box${box}/${space}/${syst}/mocks_gal_xyz/
 if [[ ! -e ${ODIR} ]] ; then
 mkdir -vp ${ODIR}
 fi
@@ -65,8 +55,8 @@ fi
 #if [[ -e ${ODIR}/$(basename ${file} |  sed -e "s/.dat/_pos_shift.dat/g") ]]; then
 #continue
 #fi
-srun -n1 -c16 -N1 python ${RUN} --par=${PARAMS} --tracer-file=${file} --random-file=${RAND} --output-folder=${ODIR} --f=${f} --bias=${bias} --rsd-correct=${rsd_corr} &
-#python ${RUN} --par=${PARAMS} --tracer-file=${file} --random-file=${RAND} --output-folder=${ODIR} --f=${f} --bias=${bias} --rsd-correct=${rsd_corr} 
+srun -n1 -c16 -N1 python ${RUN} --par=${PARAMS} --tracer-file=${file} --output-folder=${ODIR} --f=${f} --bias=${bias} --rsd-correct=${rsd_corr} &
+#python ${RUN} --par=${PARAMS} --tracer-file=${file} --output-folder=${ODIR} --f=${f} --bias=${bias} --rsd-correct=${rsd_corr} 
 #exit 0
 done
 done

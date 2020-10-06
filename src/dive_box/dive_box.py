@@ -7,7 +7,7 @@ if len(sys.argv) != 4:
 # Parameters
 box_size = sys.argv[3]
 # Paths
-WORKDIR='/home/epfl/dforero/scratch/projects/baosystematics'
+WORKDIR='/home/astro/dforero/scratch/projects/baosystematics'
 RUN = os.path.join(WORKDIR, 'bin/DIVE_box/DIVE_box')
 OUTDIR = os.path.abspath(sys.argv[2])
 INDIR = os.path.abspath(sys.argv[1])
@@ -18,10 +18,11 @@ joblist=open(JOBLIST, 'w')
 for i in input_catalogs:
     input_catalog = os.path.join(INDIR, i)
     in_name, in_ext = os.path.splitext(i)
+    if "ran" in in_name: continue
     output_catalog = os.path.join(OUTDIR, in_name+'.VOID'+in_ext)
     if os.path.isfile(output_catalog):
         continue
-    command = '%s %s %s %s %s %s\n'%(RUN, input_catalog, output_catalog, str(box_size), '0', '999')
+    command = 'srun -n1 -c1 %s %s %s %s %s %s\n'%(RUN, input_catalog, output_catalog, str(box_size), '0', '999')
 #    print(command)
     joblist.write(command)
 joblist.close()

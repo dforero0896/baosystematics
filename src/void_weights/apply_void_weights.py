@@ -8,6 +8,7 @@ sys.path.append(f"{WORKDIR}/src/simulate_systematics")
 from params import *
 import matplotlib.pyplot as plt
 from scipy.interpolate import NearestNDInterpolator, RegularGridInterpolator
+from tqdm import tqdm
 
 def add_void_weights_interp(void_cat_fn, void_wt_coeff_fn, comp_function, 
 			out_cat_fn = None,
@@ -62,7 +63,7 @@ def add_void_weights(void_cat_fn, get_weights_func, out_cat_fn = None,
 
 def add_scaled_void_radii(void_cat_fn, get_dens_func, out_cat_fn = None,
 			 out_dir_suffix='_scaledR', save=True, 
-			 overwrite=False, **kwargs):
+			 overwrite=False, exponent=0.236, **kwargs):
     """Add column with scaled void radii.
    """ 
     
@@ -80,7 +81,7 @@ def add_scaled_void_radii(void_cat_fn, get_dens_func, out_cat_fn = None,
     print(f"==> Computing local halo density with {get_dens_func.__name__}")
     ngal = get_dens_func(void_cat['x'], void_cat['y'], void_cat['z'],
 				**kwargs)
-    void_cat['scaledR'] = ngal**(1./4) * void_cat['r']
+    void_cat['scaledR'] = ngal**(exponent)* void_cat['r']
     print(np.any(void_cat['scaledR'].values==0)) 
     if save:
         print(f"==> Saving catalog to {out_cat_fn}")
@@ -109,7 +110,7 @@ def batch_add_void_weights(void_cat_fn_list, get_weights_func,
     MPI.Finalize()
 
 def batch_add_scaled_void_radii(void_cat_fn_list, get_dens_func, 
-				out_dir_suffix = '_scaledR', overwrite=False, **kwargs):
+				out_dir_suffix = '_scaledR', overwrite=False, exponent=0.236, **kwargs):
     
 
     from mpi4py import MPI
@@ -119,11 +120,12 @@ def batch_add_scaled_void_radii(void_cat_fn_list, get_dens_func,
     if rank ==0 : print(f"==> Using {size} processes.")
     void_cat_chunk_fn = np.array_split(void_cat_fn_list, size)[rank]
     print(f"==> MPI process {rank} has {len(void_cat_chunk_fn)} jobs allocated.")
-    for void_cat_fn in void_cat_chunk_fn:
+    print(f"Using exponent {exponent}", flush=True)
+    for void_cat_fn in tqdm(void_cat_chunk_fn):
         add_scaled_void_radii(void_cat_fn, get_dens_func, 
 			out_dir_suffix = out_dir_suffix,
-			out_cat_fn = None, save=True, overwrite=overwrite, **kwargs)
-    print(f"==> MPI process {rank} finished.")
+			out_cat_fn = None, save=True, overwrite=overwrite, exponent=exponent, **kwargs)
+    print(f"==> MPI process {rank} finished.", flush=True)
     MPI.Finalize()
 
 def get_void_weights_interp(r, x, y, coeffs, comp_function):
