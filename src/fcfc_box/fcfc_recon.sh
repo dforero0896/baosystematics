@@ -1,5 +1,5 @@
 #!/bin/bash
-
+rm -v recon_joblist.sh
 source ../.env
 RUN=${WORKDIR}/bin/FCFC_box/2pcf
 CONF=${WORKDIR}/src/fcfc_box/fcfc_box_void_count_redshift.conf
@@ -17,11 +17,11 @@ do
 for space in redshift #real
 do
 IDIR=${WORKDIR}/patchy_recon_nods/box${box}/${space}/smooth/flat_${comp}/mocks_void_xyz
-for sr in 0.7 0.75 0.8 0.87 0.93 1.0 1.07 1.13 1.18 1.19 1.25 1.33
+for sr in 0.8 0.87 0.93 1.0 1.07 1.13 #1.19 1.25 1.33 0.7 0.75
 do
-if (( $(echo "${comp} > 0.85" | bc -l) )) && (( $(echo "${sr} < 0.85" | bc -l) )); then
-continue
-fi
+#if (( $(echo "${comp} > 0.35" | bc -l) )) && (( $(echo "${sr} < 0.85" | bc -l) )); then
+#continue
+#fi
 
 RMIN=$(python -c "print(${sr}/(${NGAL})**(1/3))")
 ODIR=$(dirname ${IDIR})/tpcf_void_mock_nowt_R-scaled${sr}-50
@@ -44,7 +44,8 @@ TPCF=${ODIR}/TwoPCF_${BASE}
 if [[ -e ${TPCF} ]]; then
 continue
 fi
-srun -n1 -c16 -N1 ${RUN} --conf=${CONF} --data=${DAT} --dd=${DD} --output=${TPCF} --data-aux-min=${RMIN} --data-aux-max=50 --count-mode=1 --cf-mode=3 &
+#srun -n1 -c16 -N1 ${RUN} --conf=${CONF} --data=${DAT} --dd=${DD} --output=${TPCF} --data-aux-min=${RMIN} --data-aux-max=50 --count-mode=1 --cf-mode=3 &
+echo "srun -n1 -c16 -N1 ${RUN} --conf=${CONF} --data=${DAT} --dd=${DD} --output=${TPCF} --data-aux-min=${RMIN} --data-aux-max=50 --count-mode=1 --cf-mode=3" >> recon_joblist.sh
 done
 done
 done
