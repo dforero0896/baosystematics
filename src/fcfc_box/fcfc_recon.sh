@@ -34,7 +34,7 @@ mkdir -vp ${ODIR}/SS_files
 fi
 fi
 
-for DAT in $(ls ${IDIR}/*$SEED* ); do
+for DAT in $(ls ${IDIR}/*$SEED*dat ); do
 ((i=i%N)); ((i++==0)) && wait
 BASE=$(basename ${DAT})
 DD=${ODIR}/DD_files/DD_${BASE}
@@ -42,10 +42,11 @@ DR=${ODIR}/DS_files/DS_${BASE}
 RR=${ODIR}/SS_files/SS_${BASE}
 TPCF=${ODIR}/TwoPCF_${BASE}
 if [[ -e ${TPCF} ]]; then
+echo Skipping, ${TPCF} exists.
 continue
 fi
-#srun -n1 -c16 -N1 ${RUN} --conf=${CONF} --data=${DAT} --dd=${DD} --output=${TPCF} --data-aux-min=${RMIN} --data-aux-max=50 --count-mode=1 --cf-mode=3 &
-echo "srun -n1 -c16 -N1 ${RUN} --conf=${CONF} --data=${DAT} --dd=${DD} --output=${TPCF} --data-aux-min=${RMIN} --data-aux-max=50 --count-mode=1 --cf-mode=3" >> recon_joblist.sh
+srun -n1 -c16 ${RUN} --conf=${CONF} --data=${DAT} --dd=${DD} --output=${TPCF} --data-aux-min=${RMIN} --data-aux-max=50 --count-mode=1 --cf-mode=3 &
+#echo "srun -n1 -c64 ${RUN} --conf=${CONF} --data=${DAT} --dd=${DD} --output=${TPCF} --data-aux-min=${RMIN} --data-aux-max=50 --count-mode=1 --cf-mode=3" >> recon_joblist.sh
 done
 done
 done
