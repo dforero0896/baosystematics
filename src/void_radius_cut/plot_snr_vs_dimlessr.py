@@ -16,12 +16,17 @@ from dotenv import load_dotenv
 from scipy.optimize import minimize_scalar, curve_fit
 from scipy.interpolate import interp1d
 from scipy import stats
+import argparse
+parser = argparse.ArgumentParser()
+parser.add_argument("-c", "--create", action="store_true")
+args = parser.parse_args()
+create_jobs = args.create
 load_dotenv()
 WORKDIR = os.getenv("WORKDIR")
 NGAL = {'1':3.976980e-4, '5':1.976125e-4}
 boxes = ['1']
 spaces = ['redshift']
-recon = ['patchy_recon_nods']#,'patchy_recon', 'patchy_results']
+recon = ['patchy_recon_nods']#,'patchy_recon', 'patchy_recon_nods']
 dimless_r = [0.7, 0.75, 0.8,0.87, 0.93, 1.0, 1.07, 1.13, 1.18, 1.19, 1.25, 1.33]
 
 def call_proc(cmd):
@@ -57,7 +62,8 @@ if __name__ == '__main__':
              existing_dr.append(dr)
            if len(r_dirlist)==0: continue
            snr_file = f"{odir}/snr_{os.path.basename(dir_)}.dat"
-           if not os.path.exists(snr_file):
+           if not os.path.exists(snr_file) or create_jobs:
+             print(f"Creating joblist to update SNR files.")
              command = ["./signal_to_noise.py"] + [f"<(ls {d}/T*)" for d in r_dirlist] + [">", f"{snr_file}"]
              joblist.write(" ".join(command)+"&\n")
            else:
@@ -74,7 +80,7 @@ if __name__ == '__main__':
              color = p[0].get_color()
              dr_linsp = np.linspace(dr[0], dr[-1], 100)
              plt.plot(dr_linsp, snr_interp(dr_linsp), color=color, ls = "--")
-        if os.path.exists(snr_file):
+        if os.path.exists(snr_file) and not create_jobs:
           optima = np.array(optima)
           ngal = np.array(ngal)
           plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left')

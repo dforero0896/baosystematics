@@ -5,11 +5,11 @@ RUN=${WORKDIR}/src/box_recon/dorecon.py
 PARAMS=${WORKDIR}/src/box_recon/params_ran_box_noran.py
 N=${SLURM_NTASKS:-1}
 echo Using ${N} tasks
-#SEED=1656249224
-#SEED=824062495
+#SEED=1876527057
+SEED=609522891
 #SEED=1005638091
 #for syst in smooth/flat_0.1  smooth/flat_0.15  smooth/flat_0.2  smooth/flat_0.25  smooth/flat_0.3  smooth/flat_0.35  smooth/flat_0.4  smooth/flat_0.45  smooth/flat_0.5  smooth/flat_0.55  smooth/flat_0.6  smooth/flat_0.65  smooth/flat_0.7  smooth/flat_0.75 smooth/flat_0.8  smooth/flat_0.85 smooth/flat_0.9 smooth/flat_0.95   
-for syst in smooth/flat_0.9   
+for syst in smooth/flat_0.85   
 do
 for box in 1 #5 
 do
@@ -49,14 +49,14 @@ fi
 
 for file in $(ls ${IDIR}/*$SEED*); do
 ((i=i%N)); ((i++==0)) && wait
-if [[ -e ${ODIR}/$(basename ${file} |  sed -e "s/.dat/.ran_pos_shift.dat/g") ]]; then
-continue
-fi
+#if [[ -e ${ODIR}/$(basename ${file} |  sed -e "s/.dat/.ran_pos_shift.dat/g") ]]; then
+#continue
+#fi
 #if [[ -e ${ODIR}/$(basename ${file} |  sed -e "s/.dat/_pos_shift.dat/g") ]]; then
 #continue
 #fi
-srun -n1 -c16 -N1 python ${RUN} --par=${PARAMS} --tracer-file=${file} --output-folder=${ODIR} --f=${f} --bias=${bias} --rsd-correct=${rsd_corr} &
-#python ${RUN} --par=${PARAMS} --tracer-file=${file} --output-folder=${ODIR} --f=${f} --bias=${bias} --rsd-correct=${rsd_corr} 
+#srun -n1 -c16 -N1 python ${RUN} --par=${PARAMS} --tracer-file=${file} --output-folder=${ODIR} --f=${f} --bias=${bias} --rsd-correct=${rsd_corr} &
+python ${RUN} --par=${PARAMS} --tracer-file=${file} --output-folder=${ODIR} --f=${f} --bias=${bias} --rsd-correct=${rsd_corr} 
 #exit 0
 done
 done
