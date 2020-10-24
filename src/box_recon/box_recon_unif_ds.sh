@@ -6,7 +6,7 @@ PARAMS=${WORKDIR}/src/box_recon/params_ran_box_noran.py
 N=${SLURM_NTASKS:-1}
 echo Using ${N} tasks
 #SEED=1876527057
-SEED=609522891
+SEED=1702508998
 #SEED=1005638091
 #for syst in smooth/flat_0.1  smooth/flat_0.15  smooth/flat_0.2  smooth/flat_0.25  smooth/flat_0.3  smooth/flat_0.35  smooth/flat_0.4  smooth/flat_0.45  smooth/flat_0.5  smooth/flat_0.55  smooth/flat_0.6  smooth/flat_0.65  smooth/flat_0.7  smooth/flat_0.75 smooth/flat_0.8  smooth/flat_0.85 smooth/flat_0.9 smooth/flat_0.95   
 for syst in smooth/flat_0.85   
