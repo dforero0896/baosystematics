@@ -15,16 +15,20 @@ spaces = ['redshift']
 boxes = ['1']
 completeness = [0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95]
 #threshold = lambda c: 3e3 if c<=0.4 else 2e2
-threshold = lambda c: 3e3 if c<=0.4 else 2e2
+def threshold(c):
+  if c==0.1: return 1e4
+  elif c<=0.2: return 5e3
+  else: return 2e2
 faulty_catalogs = []
 ofile = open("faulty_2pcf.dat", "w")
 for c in completeness:
   for d in dimless_radii:
   
-    DIR=f"{WORKDIR}/patchy_recon/box1/redshift/smooth/flat_{c}"
+    DIR=f"{WORKDIR}/patchy_results/box1/redshift/smooth/flat_{c}"
     VOID_DIR=f"{DIR}/mocks_void_xyz"
     MOCK_DIR=f"{DIR}/mocks_gal_xyz"
     TPCF_DIR=f"{DIR}/tpcf_void_mock_nowt_R-scaled{d}-50"
+    if not os.path.isdir(TPCF_DIR): continue
     print(f"==> Searching dir {TPCF_DIR}.") 
     tpcf_list = glob.glob(f"{TPCF_DIR}/T*")
     data = np.empty((len(tpcf_list), 40))

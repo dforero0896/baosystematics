@@ -26,7 +26,7 @@ WORKDIR = os.getenv("WORKDIR")
 NGAL = {'1':3.976980e-4, '5':1.976125e-4}
 boxes = ['1']
 spaces = ['redshift']
-recon = ['patchy_recon_nods']#,'patchy_recon', 'patchy_recon_nods']
+recon = ['patchy_results']#,'patchy_recon', 'patchy_recon_nods']
 dimless_r = [0.7, 0.75, 0.8,0.87, 0.93, 1.0, 1.07, 1.13, 1.18, 1.19, 1.25, 1.33]
 
 def call_proc(cmd):
