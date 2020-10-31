@@ -140,7 +140,7 @@ def pipeline_single_uniform(filename, cmin):
 
   #filename is the complete, non reconstructed patchy galaxy catalog
   box_size=2500
-  n_threads=64
+  n_threads=32
   overwrite=True
   odir = os.path.abspath(os.path.dirname(filename)+"/../../")
   basename = os.path.basename(filename)
@@ -171,15 +171,15 @@ def pipeline_single_uniform(filename, cmin):
 
   print(f"Loading reconstructed galaxy catalog", flush=True)
 #  ds_gal_recon = np.load(ds_gal_recon_fn)
-  print(f"==> Downsampled number of reconstructed galaxies {ds_gal_recon.shape}") 
+#  print(f"==> Downsampled number of reconstructed galaxies {ds_gal_recon.shape}") 
 
 #  print(f"==> Extracting voids from reconstructed catalog", flush=True)
   ds_voids_recon_fn = ds_gal_recon_fn.replace('mocks_gal_xyz', 'mocks_void_xyz').replace('.npy', '.VOID.npy')
 #  if not os.path.isfile(ds_voids_recon_fn) or overwrite:
 #    ds_voids_recon = galaxies_to_voids(ds_gal_recon.astype(np.double), box_size=box_size, is_box=True, cpy_range=80, n_threads=n_threads)
-    print(f"==> Saving reconstructed void catalog", flush=True)
+#    print(f"==> Saving reconstructed void catalog", flush=True)
 #    np.save(ds_voids_recon_fn, ds_voids_recon)
-  else:
+#  else:
 #    ds_voids_recon = np.load(ds_voids_recon_fn)
   ds_voids_recon_fn = ds_voids_recon_fn.replace(".npy", ".dat")
 
@@ -204,9 +204,9 @@ def pipeline_single_uniform(filename, cmin):
   box_void_tpcf(ds_voids, ds_voids_fn, box_size, 32, bins, bin_centers, f"{odir}/smooth/flat_{cmin}/", cmin, NGAL['1'], recon=False) 
   
   del ds_gal
-  del ds_gal_recon
+#  del ds_gal_recon
   del ds_voids
-  del ds_voids_recon
+#  del ds_voids_recon
   gc.collect()
 
 if __name__ == '__main__':

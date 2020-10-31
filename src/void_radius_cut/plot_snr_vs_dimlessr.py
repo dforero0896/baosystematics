@@ -48,6 +48,7 @@ if __name__ == '__main__':
         fig = plt.figure()
         main_path = f"{WORKDIR}/{rec}/box{box}/{space}/smooth/flat_*"
         dirlist = list(filter(os.path.isdir, glob.glob(main_path)))
+        print(dirlist)
         odir = f"{WORKDIR}/{rec}/box{box}/{space}/plots/"
         optima = []
         ngal = []
@@ -69,7 +70,7 @@ if __name__ == '__main__':
            else:
              data = pd.read_csv(snr_file, delim_whitespace=True, usecols=[0,2,5], names=['snr', 'std', 'dir'], comment="#", dtype={'snr':float, 'std':float, 'dir':str})
              if data.shape[0] < 3: continue 
-             print(data)
+             #print(data)
              dr = np.array([re.findall('R.scaled[0-9].*-50', data['dir'].iloc[i])[0].replace("R-scaled","").replace("-50", "") for i in range(data.shape[0])], dtype=float)
              snr_interp = interp1d(dr, data['snr'].values, kind="quadratic")
              res = minimize_scalar(lambda x: -snr_interp(x), method="Bounded", bounds = dr[[0, -1]])
