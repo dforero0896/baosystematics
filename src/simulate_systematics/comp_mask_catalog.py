@@ -6,7 +6,7 @@ import numpy as np
 from mask_comp_func import mask_with_function
 from params import *
 
-def comp_mask_catalog(fn, odir, sigma_noise=0.2, function=parabola, cmin=0.8, names=['x', 'y', 'z'], N_grid=2500, seed=2, noise_sampler=noise_sampler, rmin=RMIN, rmax=RMAX, cat_type='mock', use_scaled_r=0, scaled_rmin=None, scaled_rmax=None, space=SPACE, isfirst=False, nu=1./4):
+def comp_mask_catalog(fn, odir, sigma_noise=0.2, function=parabola, cmin=0.8, names=['x', 'y', 'z'], N_grid=2500, seed=2, noise_sampler=noise_sampler, rmin=RMIN, rmax=RMAX, cat_type='mock', use_scaled_r=0, scaled_rmin=None, scaled_rmax=None, space=SPACE, isfirst=False, nu=0.238):
     print(f"####################################", flush=True)
     print(f"==> Using function {function.__name__}")
     print(f"==> Using min. completeness {cmin}")
@@ -203,7 +203,7 @@ if __name__ == '__main__':
     parser.add_argument("-b", "--box", required=False, help="Box to use: 1 or 5.", default=BOX) 
     parser.add_argument("-s", "--space", required=False, help="Space in which to compute: real or redshift.", default=SPACE) 
     parser.add_argument("-r", "--scaledrmin", required=False, help="Scaled rmin value to use.", default=SCALED_RMIN)
-    parser.add_argument("-nu", "--nu_exponent", required=False, help="Exponent of the galaxy density to rescale radii.", default=1/4, type=float)
+    parser.add_argument("-nu", "--nu_exponent", required=False, help="Exponent of the galaxy density to rescale radii.", default=0.238, type=float)
     parsed = parser.parse_args()
     args = vars(parsed)
     indir = args['INDIR']

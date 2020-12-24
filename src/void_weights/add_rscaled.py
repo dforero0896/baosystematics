@@ -16,9 +16,13 @@ if __name__ == '__main__':
     void_cat_fn_list = sys.argv[2:]
     print(f"==> Loading galaxy number density from {ngal_fn}")
     ngal = np.load(ngal_fn)
+    if ngal.ndim ==1 : 
+        func =  get_numdens_radial
+    elif ngal.ndim ==2 : 
+        func =  get_numdens_from_matrix
+            
     batch_add_scaled_void_radii(void_cat_fn_list,
-				get_dens_func=get_numdens_radial,
-				#get_dens_func=get_numdens_from_matrix,
+				get_dens_func=func,
 				n_matrix=ngal,
 				overwrite=True,
-				exponent = 0.213) #0.213 for postrecon, 0.236 for prerecon
+				exponent = 0.238, N_grid=ngal.shape[0]) #0.243 for postrecon, 0.238 for prerecon

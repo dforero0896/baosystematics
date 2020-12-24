@@ -25,7 +25,7 @@ def worker(filename):
     data['zid'] = np.searchsorted(zedges, data.z, side='right')
     data['rid'] = np.searchsorted(radius_bins, data.r, side='right')
     lens = []
-    if data.shape[1] <= 4: kind='radial'
+    #if data.shape[1] <= 4: kind='radial'
     if kind=='ang':
         cols = [[names[0], names[1], names[-1]], names[2:-1]]
     elif kind=='radial':

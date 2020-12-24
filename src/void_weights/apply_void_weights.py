@@ -63,7 +63,7 @@ def add_void_weights(void_cat_fn, get_weights_func, out_cat_fn = None,
 
 def add_scaled_void_radii(void_cat_fn, get_dens_func, out_cat_fn = None,
 			 out_dir_suffix='_scaledR', save=True, 
-			 overwrite=False, exponent=0.236, **kwargs):
+			 overwrite=False, exponent=0.238, **kwargs):
     """Add column with scaled void radii.
    """ 
     
@@ -81,13 +81,15 @@ def add_scaled_void_radii(void_cat_fn, get_dens_func, out_cat_fn = None,
     print(f"==> Computing local halo density with {get_dens_func.__name__}")
     ngal = get_dens_func(void_cat['x'], void_cat['y'], void_cat['z'],
 				**kwargs)
+    print(type(ngal))
     void_cat['scaledR'] = ngal**(exponent)* void_cat['r']
     print(np.any(void_cat['scaledR'].values==0)) 
     if save:
         print(f"==> Saving catalog to {out_cat_fn}")
         os.makedirs(os.path.dirname(out_cat_fn), exist_ok=True)
-        void_cat.to_csv(out_cat_fn, index=False, header = False, sep = ' ',\
+        void_cat.to_csv(out_cat_fn+".TMP", index=False, header = False, sep = ' ',\
 			 float_format='%.5f')
+        os.rename(out_cat_fn+".TMP", out_cat_fn)
         print("==> Done")
     return void_cat
 
@@ -206,7 +208,7 @@ def get_known_void_weight(r, x, y, void_weight_matrix,
     yindex = np.searchsorted(yedges, y, side=side) -1
     return void_weight_matrix[rindex, xindex, yindex]
 
-def get_numdens_from_matrix(x, y, z, n_matrix, box_size=box_size, N_grid=NGRID_HIST):
+def get_numdens_from_matrix(x, y, z, n_matrix, box_size=box_size, N_grid=NGRID):
     """Get tracer number density  by sampling the matrix of number densities.
 
     param: x (array_like): X-coordinate of void to be weighted.
@@ -242,7 +244,7 @@ def get_numdens_from_matrix(x, y, z, n_matrix, box_size=box_size, N_grid=NGRID_H
     print(np.any(nvals==0))
     return nvals 
 
-def get_numdens_radial(x, y, z, n_matrix, box_size = box_size, N_grid=NGRID_HIST):
+def get_numdens_radial(x, y, z, n_matrix, box_size = box_size, N_grid=NGRID):
 
     zedges = np.linspace(0, box_size, N_grid + 1)
     zedges[0]-=1e-5; zedges[-1]+=1e-5

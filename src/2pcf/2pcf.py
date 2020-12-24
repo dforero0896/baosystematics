@@ -24,11 +24,15 @@ def tpcf(dd, rr=None, dr=None, box_size=2500):
         monopole = ( dd[:,2] / rr0 ) - 1
         if dd.shape[-1] > 3:
             if rr is None:
-                quadrupole =  dd[:,3] / rr0 
-                hexadecapole = dd[:,4] / rr0 * 2 
+                quadrupole =  dd[:,3] / rr0
+                if dd.shape[-1]>4: 
+                    hexadecapole = dd[:,4] / rr0 * 2 
+                else: hexadecapole = np.zeros_like(quadrupole)
             else:
                 quadrupole =  (dd[:,3] - rr[:,3])/ rr0 
-                hexadecapole = (dd[:,4] - rr[:,4] ) / rr0 
+                if dd.shape[-1]>4: 
+                    hexadecapole = (dd[:,4] - rr[:,4] ) / rr0 
+                else: hexadecapole = np.zeros_like(quadrupole)
         else:
             quadrupole = np.zeros_like(dd[:,0])
             hexadecapole=quadrupole
