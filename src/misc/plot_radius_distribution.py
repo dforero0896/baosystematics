@@ -26,7 +26,7 @@ if __name__ == '__main__':
         radii_dist = np.empty([nbins, 2])
 #        for i, fn in enumerate(catalog_fn):
 #            print(f"==> Reading file: {fn}")
-        data = dd.read_csv(f"{catalog_fn}/*", header=None, delim_whitespace=True, usecols=[3], names=['r'])
+        data = dd.read_csv(f"{catalog_fn}/*.dat", header=None, delim_whitespace=True, usecols=[3], names=['r'])
         _hist, bin_edges = da.histogram(data['r'].values, bins=nbins, density=True, range=[0, 50])
         hist= _hist.compute(scheduler='processes')
         delta_r = bin_edges[1:] - bin_edges[:-1]

@@ -2,11 +2,11 @@
 BOX="5"
 WORKDIR=/hpcstorage/dforero/projects/baosystematics/patchy_results/box${BOX}
 OVERWRITE=0
-for case_ in 1 2 3
+for case_ in 2 # 1 3
 do
 for space in real redshift
 do
-for tracer in individual_gal individual_gal_nowt ind_void_parabola_case${case_} ind_void_nowt_parabola_case${case_} individual_void_nowt_case${case_}_template
+for tracer in ind_void_nowt_parabola_case${case_}_dl #individual_void_nowt_case${case_}_template individual_gal individual_gal_nowt ind_void_parabola_case${case_} 
 do
 
 files=$WORKDIR/$space/nosyst/baofit/${tracer}/*mystats*

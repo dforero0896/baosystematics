@@ -163,7 +163,7 @@ def pipeline_single(njobs, jobid, n_threads, onlyrr=True):
           void_rand_fn = f"{odir}/void_ran/void_ran.dat"
           #vran = pd.read_csv(void_rand_fn, delim_whitespace=True, usecols=(0, 1, 2, 3, 4), engine="c", names= ['x', 'y', 'z', 'r', 'sr']).values
           #vran = vran[vran[:,3]<RMAX]
-        filenames = glob.glob(f"{odir}/mocks_gal_xyz/CAT*")
+        filenames = glob.glob(f"{odir}/mocks_gal_xyz/CAT*")[::-1]
         myfilenames = np.array_split(filenames, njobs)[jobid]
         for filename in myfilenames:
           gal_fn=filename
