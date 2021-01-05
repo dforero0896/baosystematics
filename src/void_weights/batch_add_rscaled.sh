@@ -2,14 +2,14 @@
 
 source ../.env
 RUN=./add_rscaled.py
-for box in 1 5
+for box in 1 #5
 do
-    for space in real redshift
+    for space in redshift #real 
     do
 
 
 
-        for syst in smooth/parabola_0.8
+        for syst in radialgauss #smooth/parabola_0.8
         do
         VOIDIDIR=${WORKDIR}/patchy_results/box${box}/${space}/${syst}/mocks_void_xyz
         case ${syst} in
@@ -22,7 +22,7 @@ do
             ;;
         esac
 
-        srun -n32 -c1 --mpi=pmi2 ${RUN} ${NGAL} ${VOIDIDIR}/* 
+        srun -n100 -c1 --mpi=pmi2 ${RUN} ${NGAL} ${VOIDIDIR}/* 
 
     done
 done
