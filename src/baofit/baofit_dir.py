@@ -61,13 +61,13 @@ def run_fit(idx, tpcf):
 	else:
 		c = os.path.join(WORKDIR,'src/baofit/baofit.conf')
 	c_bestfit = os.path.join(WORKDIR,'src/baofit/baofit.conf')
-	if os.path.isfile(tpcf_fn):
-		if os.path.getmtime(tpcf_fn) < 1609848144:
-		    print("==> tpcf has not been recomputed", flush=True)
-		    return
-		else:
-		    os.remove(os.path.join(outPath, tpcf_base+'_')+"resume.dat")
-		    os.remove(os.path.join(outPath, tpcf_base+'_')+"mystats.txt")
+	#if os.path.isfile(tpcf_fn):
+	#	if os.path.getmtime(tpcf_fn) < 1609848144:
+	#	    print("==> tpcf has not been recomputed", flush=True)
+	#	    return
+	#	else:
+	#	    os.remove(os.path.join(outPath, tpcf_base+'_')+"resume.dat")
+	#	    os.remove(os.path.join(outPath, tpcf_base+'_')+"mystats.txt")
 
 	i = tpcf_fn
 	m = mockFile_name
