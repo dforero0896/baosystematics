@@ -145,7 +145,7 @@ def reconstruction(catalog, cat_fn, odir, filename="params_recon_ds.py"):
     print("Reconstruction took %0.3f seconds" % (end - start))
   
 
-def pipeline_single(njobs, jobid, n_threads, onlyrr=True):
+def pipeline_single(njobs, jobid, n_threads, onlyrr=False):
 
   box_size=2500
   overwrite=True
@@ -186,6 +186,7 @@ def pipeline_single(njobs, jobid, n_threads, onlyrr=True):
           
 
           r_dimless=[0.87, 0.93, 1.0, 1.13, 1.19, 1.25, 1.33]
+          '''
           if box=='1' and space=='redshift' and syst=='radialgauss':
               r_dimless=[1.]
           elif box=='1' and space=='redshift' and syst=='smooth/parabola_0.8':
@@ -202,11 +203,12 @@ def pipeline_single(njobs, jobid, n_threads, onlyrr=True):
               r_dimless=[0.93]
           elif box=='5' and space=='real' and syst=='smooth/parabola_0.8':
               r_dimless=[1.]
+          '''
           for sr in r_dimless:
           
             RMIN = sr / (ngal**(1./3))
             print(RMIN)
-            break
+            #break
             TPCF=f"{odir}/tpcf_void_mock_nowt_R-dl{sr}-{RMAX}/"
             os.makedirs(TPCF, exist_ok=True)
             os.makedirs(f"{TPCF}/DD_files/", exist_ok=True)
