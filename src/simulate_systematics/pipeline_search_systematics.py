@@ -186,7 +186,9 @@ def pipeline_single(njobs, jobid, n_threads, onlyrr=False):
           
 
           r_dimless=[0.87, 0.93, 1.0, 1.13, 1.19, 1.25, 1.33]
-          '''
+          if box=='5' and syst=='radialgauss':
+              r_dimless=[0.75, 0.8]+r_dimless[:-2]
+         
           if box=='1' and space=='redshift' and syst=='radialgauss':
               r_dimless=[1.]
           elif box=='1' and space=='redshift' and syst=='smooth/parabola_0.8':
@@ -203,7 +205,7 @@ def pipeline_single(njobs, jobid, n_threads, onlyrr=False):
               r_dimless=[0.93]
           elif box=='5' and space=='real' and syst=='smooth/parabola_0.8':
               r_dimless=[1.]
-          '''
+          
           for sr in r_dimless:
           
             RMIN = sr / (ngal**(1./3))
@@ -216,7 +218,7 @@ def pipeline_single(njobs, jobid, n_threads, onlyrr=False):
             TPCF+=f"TwoPCF_{os.path.basename(voids_fn)}"
             #print(DD_f, TPCF)
             if os.path.isfile(TPCF):
-                if os.path.getmtime(TPCF)>1607355694:
+                if os.path.getmtime(TPCF)>1610456254:#1607355694:
                     print("==> Skipping TPCF since it was recently created")
                     continue
             #mask_data = (voids[:,3] > RMIN) & (voids[:,3] < RMAX)  

@@ -201,8 +201,8 @@ def pipeline_single(njobs, jobid, n_threads, onlyrr=False):
               else: count_mode=5
               cf_mode=2
 
-          #subprocess.check_call(["srun", "-n1", f"-c{n_threads}", f"{WORKDIR}/bin/FCFC_box/2pcf", "--conf=fcfc.conf", f"--data={voids_fn}", f"--rand={void_rand_fn}", f"--dd={DD_f}", f"--dr={DR}", f"--rr={RR}", f"--output={TPCF}", "--data-aux-col=5", "--rand-aux-col=5", f"--data-aux-min={RMIN}", f"--data-aux-max={RMAX}", f"--rand-aux-min={RMIN}", f"--rand-aux-max={RMAX}", f"--count-mode={count_mode}", "--moment=1", f"--cf-mode={cf_mode}"])
-          subprocess.check_call([f"{WORKDIR}/bin/FCFC_box/2pcf", "--conf=fcfc.conf", f"--data={voids_fn}", f"--rand={void_rand_fn}", f"--dd={DD_f}", f"--dr={DR}", f"--rr={RR}", f"--output={TPCF}", "--data-aux-col=5", "--rand-aux-col=5", f"--data-aux-min={RMIN}", f"--data-aux-max={RMAX}", f"--rand-aux-min={RMIN}", f"--rand-aux-max={RMAX}", f"--count-mode={count_mode}", "--moment=1", f"--cf-mode={cf_mode}"])
+          subprocess.check_call(["srun", "-n1", f"-c{n_threads}", f"{WORKDIR}/bin/FCFC_box/2pcf", "--conf=fcfc.conf", f"--data={voids_fn}", f"--rand={void_rand_fn}", f"--dd={DD_f}", f"--dr={DR}", f"--rr={RR}", f"--output={TPCF}", "--data-aux-col=5", "--rand-aux-col=5", f"--data-aux-min={RMIN}", f"--data-aux-max={RMAX}", f"--rand-aux-min={RMIN}", f"--rand-aux-max={RMAX}", f"--count-mode={count_mode}", "--moment=1", f"--cf-mode={cf_mode}"])
+          #subprocess.check_call([f"{WORKDIR}/bin/FCFC_box/2pcf", "--conf=fcfc.conf", f"--data={voids_fn}", f"--rand={void_rand_fn}", f"--dd={DD_f}", f"--dr={DR}", f"--rr={RR}", f"--output={TPCF}", "--data-aux-col=5", "--rand-aux-col=5", f"--data-aux-min={RMIN}", f"--data-aux-max={RMAX}", f"--rand-aux-min={RMIN}", f"--rand-aux-max={RMAX}", f"--count-mode={count_mode}", "--moment=1", f"--cf-mode={cf_mode}"])
 
           if onlyrr: break
 if __name__ == '__main__':
