@@ -24,6 +24,7 @@ from python_tools.fastmodules import survey_cuts_logical
 from params import *
 sys.path.append(f"{SRC}/void_weights")
 from apply_void_weights import get_numdens_from_matrix, get_numdens_radial
+from fast_line_count.fast_line_count import count_lines
 
 def box_void_tpcf(data, box_size, nthreads, bins, bin_centers, TPCF, ddfn, RMIN, RMAX, overwrite=False):
   nthreads=32
@@ -153,7 +154,7 @@ def pipeline_single(njobs, jobid, n_threads, onlyrr=False):
   bin_centers = 0.5 * (bins[1:] + bins[:-1])
   RMAX = 10
   RMIN = 2.37
-
+  RMIN_SCALED = 2.37
   for space in ['redshift', 'real']:
     for box in ['1', '5']:
       for syst in ['radialgauss', 'smooth/parabola_0.8']:
@@ -168,21 +169,25 @@ def pipeline_single(njobs, jobid, n_threads, onlyrr=False):
           gal_fn=filename
           voids_fn = gal_fn.replace('mocks_gal_xyz', 'mocks_void_xyz_scaledR').replace('.dat', '.VOID.dat')
 
-          print(f"==> Computing case 3 CF: ")
-          
-          TPCF=f"{odir}/tpcf_void_mock_nowt_R-loc_scaled{RMIN}-loc_scaled{RMAX}/"
+
+          print(f"==> Computing case 2 CF:")
+
+          TPCF=f"{odir}/tpcf_void_mock_nowt_R-scaled{RMIN_SCALED}-50/"
           os.makedirs(TPCF, exist_ok=True)
           os.makedirs(f"{TPCF}/DD_files/", exist_ok=True)
           DD_f = TPCF+f"/DD_files/DD_{os.path.basename(voids_fn)}"
           TPCF+=f"TwoPCF_{os.path.basename(voids_fn)}"
           if os.path.isfile(TPCF):
-              if os.path.getmtime(TPCF)>1607538997:
+              if os.path.getmtime(TPCF)>1610718586:
                   print("==> Skipping TPCF since it was recently created")
                   continue
-
+          N_gal_avg = count_lines(str(gal_fn)) / (box_size**3)
+          RMIN = RMIN_SCALED * N_gal_avg**(-0.238)
+          RMAX=50
+          print(f" ==> Using constant RMIN = {RMIN} Mpc/h")
           RR = os.path.dirname(TPCF)+f"/RR_files"
           os.makedirs(RR, exist_ok=True)
-          RR +=f"/RR_void_ran_R-loc_scaled{RMIN}-loc_scaled{RMAX}.dat"
+          RR +=f"/RR_void_ran_R-scaled{RMIN_SCALED}-50.dat"
           DR = os.path.dirname(TPCF)+f"/DR_files"
           os.makedirs(DR, exist_ok=True)
           DR+=f"/DR_{os.path.basename(voids_fn)}"
@@ -201,7 +206,44 @@ def pipeline_single(njobs, jobid, n_threads, onlyrr=False):
               else: count_mode=5
               cf_mode=2
 
-          subprocess.check_call(["srun", "-n1", f"-c{n_threads}", f"{WORKDIR}/bin/FCFC_box/2pcf", "--conf=fcfc.conf", f"--data={voids_fn}", f"--rand={void_rand_fn}", f"--dd={DD_f}", f"--dr={DR}", f"--rr={RR}", f"--output={TPCF}", "--data-aux-col=5", "--rand-aux-col=5", f"--data-aux-min={RMIN}", f"--data-aux-max={RMAX}", f"--rand-aux-min={RMIN}", f"--rand-aux-max={RMAX}", f"--count-mode={count_mode}", "--moment=1", f"--cf-mode={cf_mode}"])
+          subprocess.check_call(["srun", "-n1", f"-c{n_threads}", f"{WORKDIR}/bin/FCFC_box/2pcf", "--conf=fcfc.conf", f"--data={voids_fn}", f"--rand={void_rand_fn}", f"--dd={DD_f}", f"--dr={DR}", f"--rr={RR}", f"--output={TPCF}", "--data-aux-col=4", "--rand-aux-col=4", f"--data-aux-min={RMIN}", f"--data-aux-max={RMAX}", f"--rand-aux-min={RMIN}", f"--rand-aux-max={RMAX}", f"--count-mode={count_mode}", "--moment=1", f"--cf-mode={cf_mode}"])
+          #subprocess.check_call([f"{WORKDIR}/bin/FCFC_box/2pcf", "--conf=fcfc.conf", f"--data={voids_fn}", f"--rand={void_rand_fn}", f"--dd={DD_f}", f"--dr={DR}", f"--rr={RR}", f"--output={TPCF}", "--data-aux-col=4", "--rand-aux-col=4", f"--data-aux-min={RMIN}", f"--data-aux-max={RMAX}", f"--rand-aux-min={RMIN}", f"--rand-aux-max={RMAX}", f"--count-mode={count_mode}", "--moment=1", f"--cf-mode={cf_mode}"])
+
+          #print(f"==> Computing case 3 CF: ")
+          #RMIN=2.37
+          #RMAX=10
+          #TPCF=f"{odir}/tpcf_void_mock_nowt_R-loc_scaled{RMIN}-loc_scaled{RMAX}/"
+          #os.makedirs(TPCF, exist_ok=True)
+          #os.makedirs(f"{TPCF}/DD_files/", exist_ok=True)
+          #DD_f = TPCF+f"/DD_files/DD_{os.path.basename(voids_fn)}"
+          #TPCF+=f"TwoPCF_{os.path.basename(voids_fn)}"
+          #if os.path.isfile(TPCF):
+              #if os.path.getmtime(TPCF)>1607538997:
+                  #print("==> Skipping TPCF since it was recently created")
+                  #continue
+#
+          #RR = os.path.dirname(TPCF)+f"/RR_files"
+          #os.makedirs(RR, exist_ok=True)
+          #RR +=f"/RR_void_ran_R-loc_scaled{RMIN}-loc_scaled{RMAX}.dat"
+          #DR = os.path.dirname(TPCF)+f"/DR_files"
+          #os.makedirs(DR, exist_ok=True)
+          #DR+=f"/DR_{os.path.basename(voids_fn)}"
+          #if syst == "radialgauss":
+              #if os.path.isfile(RR): 
+                #print(f"==> Found RR counts, not rewriting.")
+                #count_mode=3
+              #else: count_mode=7
+              #cf_mode=1
+          #elif syst == "smooth/parabola_0.8":
+              #if os.path.isfile(RR): 
+                #print(f"==> Found RR counts, not rewriting.")
+                #count_mode=1
+                #if os.path.isfile(DD_f):
+                  #count_mode=0
+              #else: count_mode=5
+              #cf_mode=2
+#
+          #subprocess.check_call(["srun", "-n1", f"-c{n_threads}", f"{WORKDIR}/bin/FCFC_box/2pcf", "--conf=fcfc.conf", f"--data={voids_fn}", f"--rand={void_rand_fn}", f"--dd={DD_f}", f"--dr={DR}", f"--rr={RR}", f"--output={TPCF}", "--data-aux-col=5", "--rand-aux-col=5", f"--data-aux-min={RMIN}", f"--data-aux-max={RMAX}", f"--rand-aux-min={RMIN}", f"--rand-aux-max={RMAX}", f"--count-mode={count_mode}", "--moment=1", f"--cf-mode={cf_mode}"])
           #subprocess.check_call([f"{WORKDIR}/bin/FCFC_box/2pcf", "--conf=fcfc.conf", f"--data={voids_fn}", f"--rand={void_rand_fn}", f"--dd={DD_f}", f"--dr={DR}", f"--rr={RR}", f"--output={TPCF}", "--data-aux-col=5", "--rand-aux-col=5", f"--data-aux-min={RMIN}", f"--data-aux-max={RMAX}", f"--rand-aux-min={RMIN}", f"--rand-aux-max={RMAX}", f"--count-mode={count_mode}", "--moment=1", f"--cf-mode={cf_mode}"])
 
           if onlyrr: break
