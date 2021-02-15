@@ -146,7 +146,7 @@ def reconstruction(catalog, cat_fn, odir, filename="params_recon_ds.py"):
     print("Reconstruction took %0.3f seconds" % (end - start))
   
 
-def pipeline_single(njobs, jobid, n_threads, onlyrr=False):
+def pipeline_single(njobs, jobid, n_threads, onlyrr=True):
 
   box_size=2500
   overwrite=True
@@ -156,8 +156,11 @@ def pipeline_single(njobs, jobid, n_threads, onlyrr=False):
   RMIN = 2.37
   RMIN_SCALED = 2.37
   for space in ['redshift', 'real']:
+    print(f"{space}")
     for box in ['1', '5']:
+      print(f"\t{box}")
       for syst in ['radialgauss', 'smooth/parabola_0.8']:
+        print(f"\t\t{syst}")
         odir = f"{WORKDIR}/patchy_results/box{box}/{space}/{syst}"
         if syst == "radialgauss":
           void_rand_fn = f"{odir}/void_ran/void_ran.dat"
@@ -177,14 +180,15 @@ def pipeline_single(njobs, jobid, n_threads, onlyrr=False):
           os.makedirs(f"{TPCF}/DD_files/", exist_ok=True)
           DD_f = TPCF+f"/DD_files/DD_{os.path.basename(voids_fn)}"
           TPCF+=f"TwoPCF_{os.path.basename(voids_fn)}"
-          if os.path.isfile(TPCF):
-              if os.path.getmtime(TPCF)>1610718586:
-                  print("==> Skipping TPCF since it was recently created")
-                  continue
           N_gal_avg = count_lines(str(gal_fn)) / (box_size**3)
           RMIN = RMIN_SCALED * N_gal_avg**(-0.238)
           RMAX=50
           print(f" ==> Using constant RMIN = {RMIN} Mpc/h")
+          break # Removed if need to rerun
+          if os.path.isfile(TPCF):
+              if os.path.getmtime(TPCF)>1610718586:
+                  print("==> Skipping TPCF since it was recently created")
+                  continue
           RR = os.path.dirname(TPCF)+f"/RR_files"
           os.makedirs(RR, exist_ok=True)
           RR +=f"/RR_void_ran_R-scaled{RMIN_SCALED}-50.dat"

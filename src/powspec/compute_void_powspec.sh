@@ -5,7 +5,8 @@ RUN="srun -p p4 -n1 -c 16 --mem-per-cpu=64G ${WORKDIR}/bin/powspec/POWSPEC"
 SEED=1005638091
 BOX_SIZE=2500
 VOLUME=$(( ${BOX_SIZE} * ${BOX_SIZE} * ${BOX_SIZE} ))
-for box in 1 5; do
+for box in 1 #5
+do
 case $box in
   1)
    RMIN_C1=15.6
@@ -18,11 +19,14 @@ case $box in
   ;;
 esac 
 
-for space in real redshift; do
+for space in redshift #real
+do
 
-for syst in nosyst radialgauss smooth/parabola_0.8; do
+for syst in nosyst #radialgauss smooth/parabola_0.8 
+do
 
-for case_ in 1 2 3; do
+for case_ in 2 #3
+do
 
 
 
@@ -31,7 +35,7 @@ SUFFIX=_wt_scaledR
 FORMAT='"%f %f %f %f %*s %f"'
 else
 SUFFIX=_scaledR
-FORMAT='"%f %f %f %f %f"'
+FORMAT='"%f %f %f %f %*f"'
 fi
 if [[ "$syst" == "nosyst" ]]; then
 CUBIC_SIM=1
@@ -56,14 +60,16 @@ case ${case_} in
    SEL_COL=4
    MATTERDAT=${WORKDIR}/patchy_results/box${box}/${space}/${syst}/mocks_gal_xyz/$(echo $(basename $DAT) | sed -e "s/\.VOID//g")
    NMATTERELEM=$(wc -l ${MATTERDAT} | awk '{print $1}')
-   NGAL=$(python -c "print(${NMATTERELEM}/${VOLUME})")
-   SEL_MIN=$(python -c "print(2.2/(${NGAL})**(1/4))")
-   OSUFFIX=scaled2.2-inf
+   echo ${NMATTERELEM}
+   NGAL=$(python -c "print(${NMATTERELEM}./${VOLUME})")
+   echo ${NGAL}
+   SEL_MIN=$(python -c "print(2.37/(${NGAL})**(0.238))")
+   OSUFFIX=scaled2.37-inf
   ;;
   3)
    SEL_COL=5
-   SEL_MIN=2.2
-   OSUFFIX=loc-scaled2.2-inf
+   SEL_MIN=2.37
+   OSUFFIX=loc-scaled2.37-inf
   ;;
   *)
    exit 1

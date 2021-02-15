@@ -10,8 +10,8 @@ import multiprocessing
 from mpi4py import MPI
 rank = MPI.COMM_WORLD.Get_rank()
 size = MPI.COMM_WORLD.Get_size()
-dr = [0.7, 0.75, 0.8, 0.87, 0.93, 1.0, 1.07, 1.13, 1.18, 1.19, 1.25, 1.33]
-#dr = [0.93, 1.0, 1.07, 1.13, 1.18, 1.19, 1.25, 1.33]
+#dr = [0.7, 0.75, 0.8, 0.87, 0.93, 1.0, 1.07, 1.13, 1.18, 1.19, 1.25, 1.33]
+dr = [1.13, 1.18, 1.19, 1.25, 1.33]
 comps = [0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95]
 nthreads = 32
 def fit_average_2pcf(ifile, mocks, plin, pnw, ptemp, outdir, symlinkid):
@@ -86,9 +86,9 @@ if __name__ == '__main__':
         for r in dr:
             for comp in comps:
                 ifile_list = glob.glob(f"{avg_tpcf_dir}/*flat_{comp}_*scaled{r}-*ascii")
-                mockdir_list = glob.glob(f"{main_path}/flat_{comp}/tpcf_void_mock_nowt_R*{r}-*/")
+                mockdir_list = glob.glob(f"{main_path}/flat_{comp}/tpcf_void_mock_nowt_R-scaled{r}-*/")
                 
-                if len(mockdir_list)>1: print(mockdir_list); exit(0)
+                if len(mockdir_list)>1: print(mockdir_list); sys.exit(f"Found more than one mock directory")
                 #exit(0)
                 template_list = glob.glob(f"{WORKDIR}/data/templates/templates/powspecFST*dr{r:.2f}*flat{comp:.2f}*N20*")
   
